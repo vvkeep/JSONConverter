@@ -1,0 +1,30 @@
+//
+//  YWCommon.swift
+//  YWJsonModelConverter
+//
+//  Created by 姚巍 on 2018/1/28.
+//  Copyright © 2018年 姚巍. All rights reserved.
+//
+
+import Foundation
+
+let kDefaultRootClassName = "RootClass"
+
+let kSwiftPrefixFunc: NSString = """
+                        class func prefix() -> String {\n    return \"%@\"\n}\n
+                    """
+
+
+let kSWiftOptionalProperty: NSString = "      var %@: %@?\n"
+
+let kSWiftProperty: NSString = "      var %@ = %@\n"
+
+let kSWiftNumberProperty: NSString = "      var %@:%@ = %@\n"
+
+let kSwiftClass: NSString = "\nclass %@ :NSObject {\n%@\n}\n"
+
+
+let boolNumber: NSNumber = NSNumber(value: Bool())
+let floatNumber: NSNumber = NSNumber(value: Float())
+let doubleNumber: NSNumber = NSNumber(value: Double())
+let intNumber: NSNumber = NSNumber(value: Int())
