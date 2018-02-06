@@ -12,6 +12,7 @@ enum YWTransformType: Int {
     case Swift = 0
     case HandyJSON
     case SwiftyJSON
+    case ObjectMapper
     case ObjC
 }
 
@@ -33,7 +34,7 @@ struct YWTransStructModel {
 class MainViewController: NSViewController {
     
     lazy var transTypeTitleArr: [String] = {
-        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "Objective-C"]
+        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C"]
         return titleArr
     }()
     
