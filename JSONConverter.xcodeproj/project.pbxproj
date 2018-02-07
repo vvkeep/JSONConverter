@@ -22,6 +22,9 @@
 		7B45DB0F202AA572007E8D56 /* YWFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DB0E202AA572007E8D56 /* YWFile.swift */; };
 		7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */; };
 		7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */; };
+		7BD7FEDA202AC7C10003AE80 /* YWContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* YWContent.swift */; };
+		7BD7FEDC202AC7EB0003AE80 /* YWProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* YWProperty.swift */; };
+		7BD7FEE0202AD1470003AE80 /* YWAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDF202AD1470003AE80 /* YWAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
 		7BD7FED5202AC1E80003AE80 /* NoodleLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberView.h; sourceTree = "<group>"; };
 		7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberMarker.m; sourceTree = "<group>"; };
+		7BD7FED9202AC7C10003AE80 /* YWContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWContent.swift; sourceTree = "<group>"; };
+		7BD7FEDB202AC7EB0003AE80 /* YWProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWProperty.swift; sourceTree = "<group>"; };
+		7BD7FEDF202AD1470003AE80 /* YWAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,14 +90,12 @@
 		7B45DAEB202A95BE007E8D56 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7B45DB0E202AA572007E8D56 /* YWFile.swift */,
+				7BD7FEE1202AD1F30003AE80 /* MainView */,
+				7BD7FEDE202AC85B0003AE80 /* FileContent */,
 				7B45DAEC202A95BE007E8D56 /* YWJsonParserUtils.swift */,
-				7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */,
-				7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */,
-				7B45DAEF202A95BE007E8D56 /* MainViewController.swift */,
-				7B45DAED202A95BE007E8D56 /* MainViewController.xib */,
 				7B45DAF0202A95BE007E8D56 /* YWPropertyStrUtils.swift */,
 				7B45DAF1202A95BE007E8D56 /* YWCommon.swift */,
+				7BD7FEDF202AD1470003AE80 /* YWAlertView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -130,6 +134,27 @@
 				7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */,
 			);
 			path = NoodleLineNumber;
+			sourceTree = "<group>";
+		};
+		7BD7FEDE202AC85B0003AE80 /* FileContent */ = {
+			isa = PBXGroup;
+			children = (
+				7B45DB0E202AA572007E8D56 /* YWFile.swift */,
+				7BD7FED9202AC7C10003AE80 /* YWContent.swift */,
+				7BD7FEDB202AC7EB0003AE80 /* YWProperty.swift */,
+			);
+			path = FileContent;
+			sourceTree = "<group>";
+		};
+		7BD7FEE1202AD1F30003AE80 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */,
+				7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */,
+				7B45DAEF202A95BE007E8D56 /* MainViewController.swift */,
+				7B45DAED202A95BE007E8D56 /* MainViewController.xib */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,8 +243,11 @@
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				7B45DB02202A95BF007E8D56 /* YWPropertyStrUtils.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
+				7BD7FEDA202AC7C10003AE80 /* YWContent.swift in Sources */,
+				7BD7FEE0202AD1470003AE80 /* YWAlertView.swift in Sources */,
 				7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */,
 				7B45DB0F202AA572007E8D56 /* YWFile.swift in Sources */,
+				7BD7FEDC202AC7EB0003AE80 /* YWProperty.swift in Sources */,
 				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* YWJsonParserUtils.swift in Sources */,

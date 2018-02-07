@@ -95,11 +95,6 @@ class MainViewController: NSViewController {
     
     @IBAction func converBtnAction(_ sender: NSButton) {
         _isConver = true
-        var rootClassName = rootClassField.stringValue
-        if rootClassName.count == 0 {
-            rootClassName = "RootClass"
-        }
-        
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
@@ -115,13 +110,8 @@ class MainViewController: NSViewController {
                 setJsonContent(content: formatJsonStr)
             }
             
-            if rootClassField.stringValue.count > 0{
-                rootClassName = rootClassField.stringValue
-            }
-            
-            if prefixField.stringValue.count > 0 {
-                prefixName = prefixField.stringValue
-            }
+            rootClassName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
+            prefixName = prefixField.stringValue.isEmpty ? "" : prefixField.stringValue
             
             guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
                 let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {

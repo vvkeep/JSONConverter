@@ -146,7 +146,6 @@ extension YWJsonParserUtils {
         return Name as String
     }
     
-    
     private func handlePropertyName(propertyKey: String) -> String {
         let propertyName = propertyKey as NSString
         if  propertyName.length > 0 {
