@@ -8,12 +8,11 @@
 
 import Foundation
 class YWContent {
-    var properties: [YWProperty]
+    var properties = [YWProperty]()
     
     var langStruct: LangStruct
     
-    init(properties: [YWProperty], langStruct: LangStruct) {
-        self.properties = properties
+    init(langStruct: LangStruct) {
         self.langStruct = langStruct
     }
     

@@ -11,19 +11,24 @@ import Foundation
 class YWFile {
     
     /// 文件名
-    var name: String
+    var name: String = ""
     
-    var langStruct: LangStruct
+    var prefix: String = ""
+    
+    var langStruct = LangStruct(langType: .Swift, structType: .struct)
     
     var header: String = ""
     
-    var contents: [YWContent]
+    var contents = [YWContent]()
     
-    init(className: String, langStruct: LangStruct, contents: [YWContent]) {
-        self.name = className
-        self.langStruct = langStruct
-        self.contents = contents
+    class func file(withName name: String, prefix: String, langStruct: LangStruct) -> YWFile {
+        let file = YWFile()
+        file.name = name
+        file.prefix = prefix
+        file.langStruct = langStruct
+        return file
     }
+    
     
     func toString() -> String {
         return ""
