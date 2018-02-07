@@ -20,9 +20,9 @@ class YWPropertyStrUtils {
             }
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper:
             if isArr {
-                str = "      var \(key) = [CGFloat]()\n"
+                str = "\tvar \(key) = [CGFloat]()\n"
             }else {
-                str = "      var \(key): CGFloat = 0.0\n"
+                str = "\tvar \(key): CGFloat = 0.0\n"
             }
         }
         
@@ -40,9 +40,9 @@ class YWPropertyStrUtils {
             }
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper:
             if isArr {
-                str = "      var \(key) = [Int]()\n"
+                str = "\tvar \(key) = [Int]()\n"
             }else {
-                str = "      var \(key): Int = 0\n"
+                str = "\tvar \(key): Int = 0\n"
             }
             
         }
@@ -62,9 +62,9 @@ class YWPropertyStrUtils {
             }
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper:
             if isArr {
-                str = "      var \(key) = [String]()\n"
+                str = "\tvar \(key) = [String]()\n"
             }else{
-                str = "      var \(key): String?\n"
+                str = "\tvar \(key): String?\n"
             }
             
         }
@@ -83,9 +83,9 @@ class YWPropertyStrUtils {
             }
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper:
             if isArr {
-                str = "      var \(key) = [Bool]()\n"
+                str = "\tvar \(key) = [Bool]()\n"
             }else{
-                str = "      var \(key): Bool = false\n"
+                str = "\tvar \(key): Bool = false\n"
             }
             
         }
@@ -104,9 +104,9 @@ class YWPropertyStrUtils {
             }
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper:
             if isArr {
-                str = "      var \(key) = [\(className)]()\n"
+                str = "\tvar \(key) = [\(className)]()\n"
             }else{
-                str = "      var \(key): \(className)?\n"
+                str = "\tvar \(key): \(className)?\n"
             }
             
         }
@@ -129,11 +129,11 @@ class YWPropertyStrUtils {
                 case .Swift:
                     str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n}\n"
                 case .HandyJSON:
-                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n       required init() {}\n}\n"
+                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n\trequired init() {}\n}\n"
                 case .SwiftyJSON:
-                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n       init(json: JSON) {\n\(swiftyJsonInitStr)       }\n}\n"
+                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n\tinit(json: JSON) {\n\(swiftyJsonInitStr)\t}\n}\n"
                 case .ObjectMapper:
-                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n       required init?(map: Map) {\n       }\n       func mapping(map: Map) {\n\(swiftyJsonInitStr)}\n}\n"
+                    str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(swiftyJsonInitStr)\t}\n}\n"
                 default:
                     break
                 }
@@ -142,12 +142,11 @@ class YWPropertyStrUtils {
                 case .Swift, .HandyJSON:
                     str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n}\n"
                 case .SwiftyJSON:
-                    str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n       init(json: JSON) {\n\(swiftyJsonInitStr)       }\n}\n"
+                    str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n\tinit(json: JSON) {\n\(swiftyJsonInitStr)\t}\n}\n"
                 case .ObjectMapper:
-                    str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n       init?(map: Map) {\n       }\n       mutating func mapping(map: Map) {\n\(swiftyJsonInitStr)}\n}\n"
+                    str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(swiftyJsonInitStr)\t}\n}\n"
                 default:
                     break
-                    
                 }
             }
         }
@@ -181,12 +180,12 @@ class YWSwifyJSONInitUtils {
         switch transModel.transform {
         case .SwiftyJSON:
             if isArr {
-                str = "            \(key) = json[\"\(key)\"].arrayValue.flatMap({$0.doubleValue})\n"
+                str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.doubleValue})\n"
             }else {
-                str = "            \(key) = json[\"\(key)\"].floatValue\n"
+                str = "\t\t\(key) = json[\"\(key)\"].floatValue\n"
             }
         case .ObjectMapper:
-                str = "            \(key)        <- map[\"\(key)\"]\n"
+                str = "\t\t\(key)        <- map[\"\(key)\"]\n"
         default:
             break
         }
@@ -199,12 +198,12 @@ class YWSwifyJSONInitUtils {
         switch transModel.transform {
         case .SwiftyJSON:
             if isArr {
-                str = "            \(key) = json[\"\(key)\"].arrayValue.flatMap({$0.stringValue})\n"
+                str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.stringValue})\n"
             }else {
-                str = "            \(key) = json[\"\(key)\"].stringValue\n"
+                str = "\t\t\(key) = json[\"\(key)\"].stringValue\n"
             }
         case .ObjectMapper:
-                str = "            \(key)        <- map[\"\(key)\"]\n"
+                str = "\t\t\(key)        <- map[\"\(key)\"]\n"
         default:
             break
         }
@@ -217,12 +216,12 @@ class YWSwifyJSONInitUtils {
         switch transModel.transform {
         case .SwiftyJSON:
             if isArr {
-                str = "            \(key) = json[\"\(key)\"].arrayValue.flatMap({$0.intValue})\n"
+                str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.intValue})\n"
             }else {
-                str = "            \(key) = json[\"\(key)\"].intValue\n"
+                str = "\t\t\(key) = json[\"\(key)\"].intValue\n"
             }
         case .ObjectMapper:
-                str = "            \(key)        <- map[\"\(key)\"]\n"
+                str = "\t\t\(key)        <- map[\"\(key)\"]\n"
         default:
             break
         }
@@ -235,12 +234,12 @@ class YWSwifyJSONInitUtils {
         switch transModel.transform {
         case .SwiftyJSON:
             if isArr {
-                str = "            \(key) = json[\"\(key)\"].arrayValue.flatMap({$0.boolValue})\n"
+                str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.boolValue})\n"
             }else {
-                str = "            \(key) = json[\"\(key)\"].boolValue\n"
+                str = "\t\t\(key) = json[\"\(key)\"].boolValue\n"
             }
         case .ObjectMapper:
-                str = "            \(key)        <- map[\"\(key)\"]\n"
+                str = "\t\t\(key)        <- map[\"\(key)\"]\n"
         default:
             break
         }
@@ -254,12 +253,12 @@ class YWSwifyJSONInitUtils {
         switch transModel.transform {
         case .SwiftyJSON:
             if isArr {
-                str = "            \(key) = json[\"\(key)\"].arrayValue.flatMap({\(className)(json: $0)})\n"
+                str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({\(className)(json: $0)})\n"
             }else {
-                str = "            \(key) = \(className)(json: json[\"\(key)\"])\n"
+                str = "\t\t\(key) = \(className)(json: json[\"\(key)\"])\n"
             }
         case .ObjectMapper:
-                str = "            \(key)        <- map[\"\(key)\"]\n"
+                str = "\t\t\(key)        <- map[\"\(key)\"]\n"
         default:
             break
         }
