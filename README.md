@@ -1,6 +1,6 @@
-YWJsonModelConverter
+JSONConverter
 ==========
-YWJsonModelConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数据转换生成对应的模型类属性，完美贴合Swift的知名第三方库 [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，省去手动创建的麻烦，借此提高我们的开发效率。
+JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数据转换生成对应的模型类属性，完美贴合Swift的知名第三方库 [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，省去手动创建的麻烦，借此提高我们的开发效率。
 
 效果
 ========================
