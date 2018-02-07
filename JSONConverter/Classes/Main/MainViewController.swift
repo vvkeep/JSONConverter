@@ -54,6 +54,8 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var superClassField: NSTextField!
     
+    @IBOutlet weak var jsonSrollView: NSScrollView!
+    
     @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
@@ -79,6 +81,12 @@ class MainViewController: NSViewController {
         
         classTextView.isEditable = false
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
+        
+        let lineNumberView = NoodleLineNumberView(scrollView: jsonSrollView)
+        jsonSrollView.hasVerticalRuler = true
+        jsonSrollView.hasHorizontalRuler = false
+        jsonSrollView.verticalRulerView = lineNumberView
+        jsonSrollView.rulersVisible = true
     }
     
     @IBAction func supportMeAction(_ sender: NSButton) {

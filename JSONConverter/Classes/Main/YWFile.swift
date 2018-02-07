@@ -1,5 +1,5 @@
 //
-//  FileContentModel.swift
+//  YWFile.swift
 //  JSONExport
 //
 //  Created by 姚巍 on 2018/2/7.
@@ -8,12 +8,14 @@
 
 import Foundation
 
-class FileContentModel {
+class YWFile {
     
     /// 文件名 == RootClssName
     var className: String
     
     var langStruct: LangStruct
+    
+    
     
     init(className: String, langStruct: LangStruct) {
         self.className = className
