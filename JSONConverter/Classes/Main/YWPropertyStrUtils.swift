@@ -9,9 +9,9 @@
 import Foundation
 
 class YWPropertyStrUtils {
-    class func getCGFloatPropertyStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getCGFloatPropertyStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .ObjC:
             if isArr {
                 str = "@property (nonatomic, strong) NSArray<CGFloat> *\(key);\n"
@@ -29,9 +29,9 @@ class YWPropertyStrUtils {
         return str
     }
     
-    class func getIntPropertyStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getIntPropertyStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .ObjC:
             if isArr {
                 str = "@property (nonatomic, strong) NSArray<Int> *\(key);\n"
@@ -51,9 +51,9 @@ class YWPropertyStrUtils {
     }
     
     
-    class func getStringPropertyStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getStringPropertyStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .ObjC:
             if isArr {
                 str = "@property (nonatomic, strong) NSArray<NSString *> *\(key);\n"
@@ -72,9 +72,9 @@ class YWPropertyStrUtils {
         return str
     }
     
-    class func getBoolPropertyStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getBoolPropertyStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .ObjC:
             if isArr {
                 str = "@property (nonatomic, strong) NSArray<BOOL> *\(key);\n"
@@ -93,9 +93,9 @@ class YWPropertyStrUtils {
         return str
     }
     
-    class func getObjectPropertyStr(transModel: YWTransStructModel, key: String, className: String, isArr: Bool) -> String {
+    class func getObjectPropertyStr(transModel: LangStruct, key: String, className: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .ObjC:
             if isArr {
                 str = "@property (nonatomic, strong) NSArray<\(className) *> *\(key);\n"
@@ -115,17 +115,17 @@ class YWPropertyStrUtils {
     }
     
     
-    class func getClassStr(transModel: YWTransStructModel, className: String, propertyStr: String, superClassName: String, swiftyJsonInitStr: String) -> String {
+    class func getClassStr(transModel: LangStruct, className: String, propertyStr: String, superClassName: String, swiftyJsonInitStr: String) -> String {
         var str = ""
         
         let superClassStr = getSuperClassStr(transModel: transModel, superClassStr: superClassName)
         
-        if transModel.transform == .ObjC {
+        if transModel.langType == .ObjC {
             str = "\n@interface \(className)\(superClassStr)\n\(propertyStr)\n@end\n"
         }else {
-            switch transModel.structure {
+            switch transModel.structType {
             case .class:
-                switch transModel.transform {
+                switch transModel.langType {
                 case .Swift:
                     str = "\nclass \(className)\(superClassStr) {\n\(propertyStr)\n}\n"
                 case .HandyJSON:
@@ -138,7 +138,7 @@ class YWPropertyStrUtils {
                     break
                 }
             case .struct:
-                switch transModel.transform {
+                switch transModel.langType {
                 case .Swift, .HandyJSON:
                     str = "\nstruct \(className)\(superClassStr) {\n\(propertyStr)\n}\n"
                 case .SwiftyJSON:
@@ -154,10 +154,10 @@ class YWPropertyStrUtils {
         return str
     }
     
-    private class func getSuperClassStr(transModel: YWTransStructModel, superClassStr: String) -> String {
+    private class func getSuperClassStr(transModel: LangStruct, superClassStr: String) -> String {
         var superClassPart: String = ""
         
-        switch transModel.transform {
+        switch transModel.langType {
         case .HandyJSON:
             superClassPart = superClassStr.isEmpty ? ": HandyJSON" : ": \(superClassStr)"
         case .Swift, .SwiftyJSON:
@@ -175,9 +175,9 @@ class YWPropertyStrUtils {
 
 
 class YWSwifyJSONInitUtils {
-    class func getFloatInitStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getFloatInitStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .SwiftyJSON:
             if isArr {
                 str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.doubleValue})\n"
@@ -193,9 +193,9 @@ class YWSwifyJSONInitUtils {
         return str
     }
     
-    class func getStringInitStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getStringInitStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .SwiftyJSON:
             if isArr {
                 str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.stringValue})\n"
@@ -211,9 +211,9 @@ class YWSwifyJSONInitUtils {
         return str
     }
     
-    class func getIntInitStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getIntInitStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .SwiftyJSON:
             if isArr {
                 str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.intValue})\n"
@@ -229,9 +229,9 @@ class YWSwifyJSONInitUtils {
         return str
     }
     
-    class func getBoolInitStr(transModel: YWTransStructModel, key: String, isArr: Bool) -> String {
+    class func getBoolInitStr(transModel: LangStruct, key: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .SwiftyJSON:
             if isArr {
                 str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({$0.boolValue})\n"
@@ -248,9 +248,9 @@ class YWSwifyJSONInitUtils {
     }
     
     
-    class func getObjInitStr(transModel: YWTransStructModel, key: String, className: String, isArr: Bool) -> String {
+    class func getObjInitStr(transModel: LangStruct, key: String, className: String, isArr: Bool) -> String {
         var str = ""
-        switch transModel.transform {
+        switch transModel.langType {
         case .SwiftyJSON:
             if isArr {
                 str = "\t\t\(key) = json[\"\(key)\"].arrayValue.flatMap({\(className)(json: $0)})\n"

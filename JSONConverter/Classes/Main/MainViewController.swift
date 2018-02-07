@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum YWTransformType: Int {
+enum LangType: Int {
     case Swift = 0
     case HandyJSON
     case SwiftyJSON
@@ -16,18 +16,18 @@ enum YWTransformType: Int {
     case ObjC
 }
 
-enum YWStructureType: Int {
+enum StructType: Int {
     case `struct` = 0
     case `class`
 }
 
-struct YWTransStructModel {
-    var transform: YWTransformType
-    var structure: YWStructureType
+struct LangStruct {
+    var langType: LangType
+    var structType: StructType
     
-    init(transform: YWTransformType, structure: YWStructureType) {
-        self.transform = transform
-        self.structure = structure
+    init(langType: LangType, structType: StructType) {
+        self.langType = langType
+        self.structType = structType
     }
 }
 
@@ -115,12 +115,12 @@ class MainViewController: NSViewController {
                 prefixName = prefixField.stringValue
             }
             
-            guard let transformType = YWTransformType(rawValue: converTypeBox.indexOfSelectedItem),
-                let structType = YWStructureType(rawValue: converStructBox.indexOfSelectedItem) else {
+            guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
+                let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                     return
             }
             
-            let transStructModel = YWTransStructModel(transform: transformType, structure: structType)
+            let transStructModel = LangStruct(langType: langTypeType, structType: structType)
             let classString = YWJsonParserUtils.shared.handleObjEngine(from: json, transModel: transStructModel,  prefix: prefixName, rootClassName: rootClassName, superClassName: superClassField.stringValue)
             
             setClassContent(content: classString)
@@ -150,9 +150,9 @@ class MainViewController: NSViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxSelectionDidChange(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        let transform = YWTransformType(rawValue: comBox.indexOfSelectedItem)
+        let langType = LangType(rawValue: comBox.indexOfSelectedItem)
         
-        if transform == YWTransformType.ObjC {
+        if langType == LangType.ObjC {
             converStructBox.selectItem(at: 1)
         }
         

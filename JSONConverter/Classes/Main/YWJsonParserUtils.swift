@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias YWStructureContent = (propertyStr: String, SwiftyJSONInitStr: String)
+typealias YWstructTypeContent = (propertyStr: String, SwiftyJSONInitStr: String)
 
 class YWJsonParserUtils {
     
@@ -23,9 +23,9 @@ class YWJsonParserUtils {
     
     var superClassStr: String = ""
     
-    var transStructModelType: YWTransStructModel = YWTransStructModel(transform: .Swift, structure: .struct)
+    var transStructModelType: LangStruct = LangStruct(langType: .Swift, structType: .struct)
     
-    func handleObjEngine(from obj: Any, transModel: YWTransStructModel, prefix: String, rootClassName: String, superClassName: String) -> String{
+    func handleObjEngine(from obj: Any, transModel: LangStruct, prefix: String, rootClassName: String, superClassName: String) -> String{
         allSubClassStr = ""
         prefixStr = prefix
         superClassStr = superClassName

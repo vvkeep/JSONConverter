@@ -19,6 +19,7 @@
 		7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF7202A95BE007E8D56 /* MainMenu.xib */; };
 		7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */; };
 		7B45DB09202A95BF007E8D56 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAFA202A95BE007E8D56 /* Info.plist */; };
+		7B45DB0F202AA572007E8D56 /* FileContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DB0E202AA572007E8D56 /* FileContentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		7B45DAF8202A95BE007E8D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B45DAFA202A95BE007E8D56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B45DB0E202AA572007E8D56 /* FileContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileContentModel.swift; sourceTree = "<group>"; };
 		7B4B5EAA201B87A10098712B /* JSONConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 		7B45DAEB202A95BE007E8D56 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7B45DB0E202AA572007E8D56 /* FileContentModel.swift */,
 				7B45DAEC202A95BE007E8D56 /* YWJsonParserUtils.swift */,
 				7B45DAED202A95BE007E8D56 /* MainViewController.xib */,
 				7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */,
@@ -193,6 +196,7 @@
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				7B45DB02202A95BF007E8D56 /* YWPropertyStrUtils.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
+				7B45DB0F202AA572007E8D56 /* FileContentModel.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* YWJsonParserUtils.swift in Sources */,
 			);
