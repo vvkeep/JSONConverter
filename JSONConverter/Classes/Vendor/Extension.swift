@@ -36,6 +36,20 @@ extension String {
             return self
         }
     }
+    
+    mutating func removeLastChar() {
+        let range = Range(self.index(endIndex, offsetBy: -1)..<self.endIndex)
+        self.removeSubrange(range)
+    }
+    
+    static func numSpace(count: Int) -> String {
+        var space = ""
+        for _ in 0..<count {
+            space += "a"
+        }
+        
+        return space
+    }
 }
 
 extension NSNumber {

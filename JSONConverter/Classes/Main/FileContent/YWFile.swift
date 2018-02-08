@@ -10,7 +10,6 @@ import Foundation
 
 class YWFile {
     
-    /// 文件名
     var name: String = ""
     
     var prefix: String = ""
@@ -31,7 +30,6 @@ class YWFile {
         file.superName = superName
         return file
     }
-    
     
     func toString() -> String {
         var totalStr = ""

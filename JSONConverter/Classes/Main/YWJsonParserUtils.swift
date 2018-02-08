@@ -33,7 +33,7 @@ class YWJsonParserUtils {
         }
         
         if let content = content {
-            file.contents.append(content)
+            file.contents.insert(content, at: 0)
         }
         
         return file.toString()
@@ -54,7 +54,7 @@ class YWJsonParserUtils {
             case let dic as [String: Any]:
                 propertyModel = YWProperty(propertyKey: itemKey, type: .Dictionary, langStruct: file.langStruct, prefixStr: file.prefix)
                 let content = handleDic(propertyKey: itemKey, dic: dic)
-                file.contents.append(content)
+                file.contents.insert(content, at: 0)
             case let arr as [Any]:
                 propertyModel = handleArr(itemKey: itemKey, arr: arr)
             case  _ as NSNull:
@@ -94,7 +94,6 @@ class YWJsonParserUtils {
         
         return nil
     }
-    
 }
     
     

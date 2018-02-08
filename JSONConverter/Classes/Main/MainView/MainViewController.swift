@@ -126,7 +126,6 @@ class MainViewController: NSViewController {
         }
     }
     
-    
     private func setJsonContent(content: String){
         if content.count > 0{
             let attrContent = NSMutableAttributedString(string: content)

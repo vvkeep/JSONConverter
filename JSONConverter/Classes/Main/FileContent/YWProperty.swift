@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+/// count = 3
+let currentMapperSpace = "   "
 enum YWPropertyType: Int {
     case `String` = 0
     case `Int`
@@ -41,7 +42,6 @@ class YWProperty {
         self.prefixStr = prefixStr
     }
     
-    
     func toString() -> (String, String){
         var propertyStr = ""
         var swiftInitStr = ""
@@ -57,7 +57,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): String?\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .Int:
             switch langStruct.langType{
@@ -70,7 +70,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].intValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .Float:
             switch langStruct.langType{
@@ -83,7 +83,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].floatValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .Double:
             switch langStruct.langType{
@@ -96,7 +96,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].doubleValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .Bool:
             switch langStruct.langType{
@@ -109,7 +109,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].boolValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .Dictionary:
             switch langStruct.langType{
@@ -122,7 +122,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = \(propertyKey.className(withPrefix: prefixStr))(json: json[\"\(propertyKey)\"])\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayString:
             switch langStruct.langType{
@@ -135,7 +135,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayInt:
             switch langStruct.langType{
@@ -148,7 +148,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayFloat:
             switch langStruct.langType{
@@ -161,7 +161,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayDouble:
             switch langStruct.langType{
@@ -174,7 +174,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayBool:
             switch langStruct.langType{
@@ -187,7 +187,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         case .ArrayDictionary:
             switch langStruct.langType{
@@ -200,7 +200,7 @@ class YWProperty {
                 swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                swiftInitStr = "\t\t\(propertyKey)        <- map[\"\(propertyKey)\"]\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
         }
         
