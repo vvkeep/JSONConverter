@@ -48,6 +48,7 @@ class YWContent {
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init() {}\n}\n"
             }else if langStruct.structType == .struct {
+                propertyTotalPart.removeLastChar()
                 contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n}\n"
             }
         case .SwiftyJSON:
