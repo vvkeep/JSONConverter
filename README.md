@@ -11,7 +11,8 @@ JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数�
  ![Json转Swift-Struct.png](http://upload-images.jianshu.io/upload_images/2240549-13e2e83e7eabd753.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 **3.Json转HandyJSON**
-![屏son转HandyJSON.png](http://upload-images.jianshu.io/upload_images/2240549-d8564eba7047be4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Json转HandyJSON.png](http://upload-images.jianshu.io/upload_images/2240549-d456ae73a17d2a52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 **4.Json转SwiftyJSON**
 ![son转SwiftyJSON.png](http://upload-images.jianshu.io/upload_images/2240549-52593f6afa9bcb04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -19,8 +20,8 @@ JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数�
 **5.Json转ObjectMapper**
 ![Json转ObhectMapper.png](http://upload-images.jianshu.io/upload_images/2240549-f94dbef231b7dd63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**5.Json转Objective-C**
-![Json转Objective-C.png](http://upload-images.jianshu.io/upload_images/2240549-1607a6f5d8d845d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+**6.Json转Objective-C**
+![Json转Objective-C.png](http://upload-images.jianshu.io/upload_images/2240549-68f9b9ba991152db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 安装说明
 ========================
