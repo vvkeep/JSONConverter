@@ -294,9 +294,9 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Transformations" id="2oI-Rn-ZJC">
+                            <menuItem title="langTypeations" id="2oI-Rn-ZJC">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Transformations" id="c8a-y6-VQd">
+                                <menu key="submenu" title="langTypeations" id="c8a-y6-VQd">
                                     <items>
                                         <menuItem title="Make Upper Case" id="vmV-6d-7jI">
                                             <modifierMask key="keyEquivalentModifierMask"/>

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum YWTransformType: Int {
+enum LangType: Int {
     case Swift = 0
     case HandyJSON
     case SwiftyJSON
@@ -16,18 +16,18 @@ enum YWTransformType: Int {
     case ObjC
 }
 
-enum YWStructureType: Int {
+enum StructType: Int {
     case `struct` = 0
     case `class`
 }
 
-struct YWTransStructModel {
-    var transform: YWTransformType
-    var structure: YWStructureType
+struct LangStruct {
+    var langType: LangType
+    var structType: StructType
     
-    init(transform: YWTransformType, structure: YWStructureType) {
-        self.transform = transform
-        self.structure = structure
+    init(langType: LangType, structType: StructType) {
+        self.langType = langType
+        self.structType = structType
     }
 }
 
@@ -54,6 +54,8 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var superClassField: NSTextField!
     
+    @IBOutlet weak var jsonSrollView: NSScrollView!
+    
     @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
@@ -79,6 +81,12 @@ class MainViewController: NSViewController {
         
         classTextView.isEditable = false
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
+        
+        let lineNumberView = NoodleLineNumberView(scrollView: jsonSrollView)
+        jsonSrollView.hasVerticalRuler = true
+        jsonSrollView.hasHorizontalRuler = false
+        jsonSrollView.verticalRulerView = lineNumberView
+        jsonSrollView.rulersVisible = true
     }
     
     @IBAction func supportMeAction(_ sender: NSButton) {
@@ -87,11 +95,6 @@ class MainViewController: NSViewController {
     
     @IBAction func converBtnAction(_ sender: NSButton) {
         _isConver = true
-        var rootClassName = rootClassField.stringValue
-        if rootClassName.count == 0 {
-            rootClassName = "RootClass"
-        }
-        
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
@@ -107,26 +110,21 @@ class MainViewController: NSViewController {
                 setJsonContent(content: formatJsonStr)
             }
             
-            if rootClassField.stringValue.count > 0{
-                rootClassName = rootClassField.stringValue
-            }
+            rootClassName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
+            prefixName = prefixField.stringValue.isEmpty ? "" : prefixField.stringValue
             
-            if prefixField.stringValue.count > 0 {
-                prefixName = prefixField.stringValue
-            }
-            
-            guard let transformType = YWTransformType(rawValue: converTypeBox.indexOfSelectedItem),
-                let structType = YWStructureType(rawValue: converStructBox.indexOfSelectedItem) else {
+            guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
+                let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                     return
             }
             
-            let transStructModel = YWTransStructModel(transform: transformType, structure: structType)
-            let classString = YWJsonParserUtils.shared.handleObjEngine(from: json, transModel: transStructModel,  prefix: prefixName, rootClassName: rootClassName, superClassName: superClassField.stringValue)
+            let transStructModel = LangStruct(langType: langTypeType, structType: structType)
             
-            setClassContent(content: classString)
+            let classStr = YWJsonParserUtils.shared.handleEngine(frome: json, langStruct: transStructModel, prefix: prefixName, rootName: rootClassName, superName: superClassField.stringValue)
+            
+            setClassContent(content: classStr)
         }
     }
-    
     
     private func setJsonContent(content: String){
         if content.count > 0{
@@ -150,9 +148,9 @@ class MainViewController: NSViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxSelectionDidChange(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        let transform = YWTransformType(rawValue: comBox.indexOfSelectedItem)
+        let langType = LangType(rawValue: comBox.indexOfSelectedItem)
         
-        if transform == YWTransformType.ObjC {
+        if langType == LangType.ObjC {
             converStructBox.selectItem(at: 1)
         }
         
