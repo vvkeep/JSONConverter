@@ -14,7 +14,7 @@ extension String {
     }
     
     func className(withPrefix prefix: String) -> String {
-        return (prefix + self).uppercaseFirstChar()
+        return prefix + self.uppercaseFirstChar()
     }
     
     func lowercaseFirstChar() -> String {

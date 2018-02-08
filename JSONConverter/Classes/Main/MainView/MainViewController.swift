@@ -119,7 +119,6 @@ class MainViewController: NSViewController {
             }
             
             let transStructModel = LangStruct(langType: langTypeType, structType: structType)
-//            let classString = YWJsonParserUtils.shared.handleObjEngine(from: json, transModel: transStructModel,  prefix: prefixName, rootClassName: rootClassName, superClassName: superClassField.stringValue)
             
             let classStr = YWJsonParserUtils.shared.handleEngine(frome: json, langStruct: transStructModel, prefix: prefixName, rootName: rootClassName, superName: superClassField.stringValue)
             
