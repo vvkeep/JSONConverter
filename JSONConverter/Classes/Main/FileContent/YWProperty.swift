@@ -62,7 +62,7 @@ class YWProperty {
         case .Int:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, assign) Int \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, assign) NSInteger \(propertyKey);\n"
             case .Swift, .HandyJSON:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
             case .SwiftyJSON:
