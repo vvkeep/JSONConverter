@@ -197,7 +197,7 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
+                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(propertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
                 swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
