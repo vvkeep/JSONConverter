@@ -37,6 +37,7 @@ class YWFile {
             totalStr += content.toString()
         }
         
+        totalStr.removeFistChar()
         return totalStr
     }
 }

@@ -42,6 +42,12 @@ extension String {
         self.removeSubrange(range)
     }
     
+    mutating func removeFistChar() {
+        let range = Range(self.startIndex..<self.index(startIndex, offsetBy: 1))
+        self.removeSubrange(range)
+    }
+
+    
     static func numSpace(count: Int) -> String {
         var space = ""
         for _ in 0..<count {
