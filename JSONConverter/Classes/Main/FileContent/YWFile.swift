@@ -10,25 +10,30 @@ import Foundation
 
 class YWFile {
     
-    var name: String = ""
-    
     var prefix: String = ""
     
     var superName: String = ""
     
     var langStruct = LangStruct(langType: .Swift, structType: .struct)
-    
-    var header: String = ""
-    
+        
     var contents = [YWContent]()
     
     class func file(withName name: String, prefix: String, langStruct: LangStruct, superName: String) -> YWFile {
         let file = YWFile()
-        file.name = name
         file.prefix = prefix
         file.langStruct = langStruct
         file.superName = superName
         return file
+    }
+    
+    func fileContent(withPropertyKey key: String) -> YWContent {
+        let content = YWContent(propertyKey: key, langStruct: langStruct, superClass: superName, prefixStr: prefix)
+        return content
+    }
+    
+    func fileProperty(withPropertykey key: String, type: YWPropertyType) -> YWProperty {
+        let property = YWProperty(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix)
+        return property
     }
     
     func toString() -> String {

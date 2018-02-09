@@ -40,7 +40,7 @@ class YWJsonParserUtils {
     }
     
     private func handleDic(propertyKey: String, dic: [String: Any]) -> YWContent {
-        let content = YWContent(propertyKey: propertyKey, langStruct: file.langStruct, superClass: file.superName, prefixStr: file.prefix)
+        let content = file.fileContent(withPropertyKey: propertyKey)
         
         dic.forEach { (item) in
             let itemKey = item.key
@@ -48,11 +48,11 @@ class YWJsonParserUtils {
             
             switch item.value {
             case _ as String:
-                propertyModel = YWProperty(propertyKey: itemKey, type: .String, langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .String)
             case let num as NSNumber:
-                propertyModel = YWProperty(propertyKey: itemKey, type: num.valueType(), langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: num.valueType())
             case let dic as [String: Any]:
-                propertyModel = YWProperty(propertyKey: itemKey, type: .Dictionary, langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .Dictionary)
                 let content = handleDic(propertyKey: itemKey, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
@@ -76,12 +76,12 @@ class YWJsonParserUtils {
             var propertyModel: YWProperty?
             switch first {
             case _ as String:
-                propertyModel = YWProperty(propertyKey: itemKey, type: .ArrayString, langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayString)
             case let num as NSNumber:
                 let type = YWPropertyType(rawValue: num.valueType().hashValue + 6)!
-                propertyModel = YWProperty(propertyKey: itemKey, type: type, langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: type)
             case let dic as [String: Any]:
-                propertyModel = YWProperty(propertyKey: itemKey, type: .ArrayDictionary, langStruct: file.langStruct, prefixStr: file.prefix)
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayDictionary)
                 let content = handleDic(propertyKey: itemKey, dic: dic)
                 file.contents.append(content)
             default:
