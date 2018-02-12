@@ -18,8 +18,11 @@ class YWFile {
         
     var contents = [YWContent]()
     
+    var rootName: String = ""
+    
     class func file(withName name: String, prefix: String, langStruct: LangStruct, superName: String) -> YWFile {
         let file = YWFile()
+        file.rootName = name
         file.prefix = prefix
         file.langStruct = langStruct
         file.superName = superName
