@@ -19,7 +19,7 @@ extension String {
     
     func lowercaseFirstChar() -> String {
         if count > 0{
-            let range = Range(startIndex..<index(startIndex, offsetBy: 1))
+            let range = startIndex..<index(startIndex, offsetBy: 1)
             let firstLowerChar = self[range].lowercased()
             return replacingCharacters(in: range, with: firstLowerChar)
         }else {
@@ -29,7 +29,7 @@ extension String {
     
     func uppercaseFirstChar() -> String {
         if count > 0{
-            let range = Range(startIndex..<index(startIndex, offsetBy: 1))
+            let range = startIndex..<index(startIndex, offsetBy: 1)
             let firstLowerChar = self[range].uppercased()
             return replacingCharacters(in: range, with: firstLowerChar)
         }else {
@@ -38,12 +38,12 @@ extension String {
     }
     
     mutating func removeLastChar() {
-        let range = Range(self.index(endIndex, offsetBy: -1)..<self.endIndex)
+        let range = self.index(endIndex, offsetBy: -1)..<self.endIndex
         self.removeSubrange(range)
     }
     
     mutating func removeFistChar() {
-        let range = Range(self.startIndex..<self.index(startIndex, offsetBy: 1))
+        let range = startIndex..<index(startIndex, offsetBy: 1)
         self.removeSubrange(range)
     }
 
