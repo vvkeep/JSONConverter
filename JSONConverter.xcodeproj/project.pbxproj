@@ -449,7 +449,7 @@
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UA5HV76FRQ;
+				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -469,7 +469,7 @@
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UA5HV76FRQ;
+				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;

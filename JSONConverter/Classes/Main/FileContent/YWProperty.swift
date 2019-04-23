@@ -114,7 +114,7 @@ class YWProperty {
         case .Dictionary:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) \(propertyKey.className(withPrefix: prefixStr)) \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) \(propertyKey.className(withPrefix: prefixStr)) *\(propertyKey);\n"
             case .Swift, .HandyJSON:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
             case .SwiftyJSON:
