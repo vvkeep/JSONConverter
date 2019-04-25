@@ -58,7 +58,7 @@ class YWJsonParserUtils {
             case let arr as [Any]:
                 propertyModel = handleArr(itemKey: itemKey, arr: arr)
             case  _ as NSNull:
-                break
+                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .nil)
             default:
                 assertionFailure("解析出现不识别类型")
             }

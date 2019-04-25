@@ -22,6 +22,7 @@ enum YWPropertyType: Int {
     case ArrayDouble
     case ArrayBool
     case ArrayDictionary
+    case `nil` // 目前 nil 的属性 使用 string 类型来替代
 }
 
 
@@ -202,6 +203,20 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
                 swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             }
+        case .nil:
+            switch langStruct.langType{
+            case .ObjC:
+                propertyStr = "@property (nonatomic, copy) NSString *\(propertyKey);\n"
+            case .Swift,.HandyJSON:
+                propertyStr = "\tvar \(propertyKey): String?\n"
+            case .SwiftyJSON:
+                propertyStr = "\tvar \(propertyKey): String?\n"
+                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
+            case .ObjectMapper:
+                propertyStr = "\tvar \(propertyKey): String?\n"
+                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            }
+
         }
         
         return (propertyStr, swiftInitStr)
