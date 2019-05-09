@@ -43,9 +43,10 @@ class MainViewController: NSViewController {
         return titleArr
     }()
     
-    /// 转换模式Box
+    /// 转换模式Box 选择 语言
     @IBOutlet weak var converTypeBox: NSComboBox!
     
+    // 选择 类 或 结构体
     @IBOutlet weak var converStructBox: NSComboBox!
     
     @IBOutlet weak var prefixField: NSTextField!
@@ -65,10 +66,14 @@ class MainViewController: NSViewController {
     private var prefixName = "YW"
     
     private var rootClassName = "RootClass"
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()        
         setupUI()
+    }
+    
+    deinit {
+        print("销毁了")
     }
     
     private func setupUI(){
@@ -78,6 +83,7 @@ class MainViewController: NSViewController {
         
         converStructBox.addItems(withObjectValues: structTypeTitleArr)
         converStructBox.selectItem(at: 0)
+        converStructBox.delegate = self
         
         classTextView.isEditable = false
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
@@ -131,7 +137,7 @@ class MainViewController: NSViewController {
             let attrContent = NSMutableAttributedString(string: content)
             jsonTextView.textStorage?.setAttributedString(attrContent)
             jsonTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
-            jsonTextView.textStorage?.foregroundColor = NSColor.darkGray
+            jsonTextView.textStorage?.foregroundColor = NSColor.labelColor
         }
     }
     
@@ -140,7 +146,7 @@ class MainViewController: NSViewController {
             let attrContent = NSMutableAttributedString(string: content)
             classTextView.textStorage?.setAttributedString(attrContent)
             classTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
-            classTextView.textStorage?.foregroundColor = NSColor.black
+            classTextView.textStorage?.foregroundColor = NSColor.labelColor
         }
     }
 }
@@ -148,12 +154,17 @@ class MainViewController: NSViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxSelectionDidChange(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        let langType = LangType(rawValue: comBox.indexOfSelectedItem)
-        
-        if langType == LangType.ObjC {
-            converStructBox.selectItem(at: 1)
+        if comBox == converTypeBox { // 选择语言
+            let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
+            if langType == LangType.ObjC { // 如果是OC 就选择 class
+                converStructBox.selectItem(at: 1)
+            }
+        }else if comBox == converStructBox { //选择类或结构体
+            let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
+            if langType == LangType.ObjC { // 如果是OC 无论怎么选 都是 类
+                converStructBox.selectItem(at: 1)
+            }
         }
-        
     }
 }
 
