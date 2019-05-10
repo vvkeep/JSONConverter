@@ -17,12 +17,12 @@ class YWJsonParserUtils {
         return manager
     }()
     
-    private var file = YWFile()
+    private var file: YWFile!
     
-    func handleEngine(frome obj: Any, langStruct: LangStruct, prefix: String, rootName: String, superName: String) -> String {
-        file = YWFile.file(withName: rootName, prefix: prefix, langStruct: langStruct, superName: superName)
+    func handleEngine(frome obj: Any, file: YWFile) -> String {
+        self.file = file
         var content : YWContent?
-        let propertyKey = rootName.propertyName()
+        let propertyKey = file.rootName.propertyName()
         switch obj {
         case let dic as [String: Any]:
             content = handleDic(propertyKey: propertyKey, dic: dic)

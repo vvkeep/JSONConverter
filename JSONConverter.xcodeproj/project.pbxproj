@@ -12,7 +12,7 @@
 		7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */; };
 		7B45DB01202A95BF007E8D56 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEF202A95BE007E8D56 /* MainViewController.swift */; };
 		7B45DB04202A95BF007E8D56 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */; };
-		7B45DB05202A95BF007E8D56 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF4202A95BE007E8D56 /* Extension.swift */; };
+		7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF4202A95BE007E8D56 /* String+Extension.swift */; };
 		7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF6202A95BE007E8D56 /* Assets.xcassets */; };
 		7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF7202A95BE007E8D56 /* MainMenu.xib */; };
 		7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */; };
@@ -23,6 +23,7 @@
 		7BD7FEDA202AC7C10003AE80 /* YWContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* YWContent.swift */; };
 		7BD7FEDC202AC7EB0003AE80 /* YWProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* YWProperty.swift */; };
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
+		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 		7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		7B45DAEF202A95BE007E8D56 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
-		7B45DAF4202A95BE007E8D56 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7B45DAF4202A95BE007E8D56 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		7B45DAF5202A95BE007E8D56 /* JSONConverter.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = JSONConverter.entitlements; sourceTree = "<group>"; };
 		7B45DAF6202A95BE007E8D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B45DAF8202A95BE007E8D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterUITests.swift; sourceTree = "<group>"; };
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				7BD7FED1202AC1B20003AE80 /* NoodleLineNumber */,
-				7B45DAF4202A95BE007E8D56 /* Extension.swift */,
+				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
+				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */,
 				7B45DB01202A95BF007E8D56 /* MainViewController.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
@@ -300,7 +304,7 @@
 				7B45DB0F202AA572007E8D56 /* YWFile.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* YWProperty.swift in Sources */,
 				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
-				7B45DB05202A95BF007E8D56 /* Extension.swift in Sources */,
+				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* YWJsonParserUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

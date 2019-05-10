@@ -29,6 +29,21 @@ class YWFile {
         return file
     }
     
+    class func cacheFile(withDic dic: [String: String]) -> YWFile {
+        let file = YWFile()
+        file.rootName = dic["rootName"] ?? ""
+        file.prefix = dic["prefix"] ?? ""
+        file.superName = dic["superName"] ?? ""
+        
+        let langIndex = Int(dic["langType"] ?? "0")!
+        let structIndex = Int(dic["structType"] ?? "0")!
+        let langTypeType = LangType(rawValue: langIndex)!
+        let structType = StructType(rawValue: structIndex)!
+        let transStruct = LangStruct(langType: langTypeType, structType: structType)
+        file.langStruct = transStruct
+        return file
+    }
+    
     func fileContent(withPropertyKey key: String) -> YWContent {
         let content = YWContent(propertyKey: key, langStruct: langStruct, superClass: superName, prefixStr: prefix)
         return content
@@ -48,5 +63,13 @@ class YWFile {
         totalStr.removeFistChar()
         return totalStr
     }
+    
+    func toCacheConfig() -> Dictionary<String, Any> {
+        return ["rootName": rootName, "prefix": prefix, "superName": superName, "langType": "\(langStruct.langType.rawValue)", "structType": "\(langStruct.structType.rawValue)"]
+    }
+    
+    
+    
+    
 }
 

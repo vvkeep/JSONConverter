@@ -18,10 +18,18 @@ class MainWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         contentViewController = mainViewController
+        window?.delegate = self
     }
     
     override var windowNibName: NSNib.Name? {
         return NSNib.Name(rawValue: "MainWindowController")
     }
     
+}
+
+extension MainWindowController: NSWindowDelegate {
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        //print("关闭窗口了")
+        return true;
+    }
 }

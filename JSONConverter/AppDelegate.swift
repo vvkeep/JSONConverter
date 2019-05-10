@@ -22,15 +22,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        print("退出程序了")
+        NotificationCenter.default.post(name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag{
-            sender.windows.forEach({ (window) in
-                window.makeKeyAndOrderFront(self)
-            })
+            mainWindowController.window?.makeKeyAndOrderFront(self)
         }
         return true
     }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return false
+    }
 }
+
 

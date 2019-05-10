@@ -31,6 +31,7 @@ struct LangStruct {
     }
 }
 
+let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
 class MainViewController: NSViewController {
     
     lazy var transTypeTitleArr: [String] = {
@@ -61,28 +62,18 @@ class MainViewController: NSViewController {
     
     @IBOutlet var classTextView: NSTextView!
     
-    private var _isConver: Bool = false
-    
-    private var prefixName = "YW"
-    
-    private var rootClassName = "RootClass"
-    
     override func viewDidLoad() {
         super.viewDidLoad()        
         setupUI()
+        setupCacheConfigData()
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
     }
-    
-    deinit {
-        print("销毁了")
-    }
-    
+        
     private func setupUI(){
         converTypeBox.addItems(withObjectValues: transTypeTitleArr)
-        converTypeBox.selectItem(at: 0)
         converTypeBox.delegate = self
         
         converStructBox.addItems(withObjectValues: structTypeTitleArr)
-        converStructBox.selectItem(at: 0)
         converStructBox.delegate = self
         
         classTextView.isEditable = false
@@ -95,19 +86,29 @@ class MainViewController: NSViewController {
         jsonSrollView.rulersVisible = true
     }
     
+    private func setupCacheConfigData() {
+        if let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]  {
+            let file = YWFile.cacheFile(withDic: config)
+            converTypeBox.selectItem(at: file.langStruct.langType.rawValue)
+            converStructBox.selectItem(at: file.langStruct.structType.rawValue)
+            prefixField.stringValue = file.prefix
+            rootClassField.stringValue = file.rootName
+            superClassField.stringValue = file.superName
+        }else {
+            converTypeBox.selectItem(at: 0)
+            converStructBox.selectItem(at: 0)
+        }
+    }
+    
     @IBAction func supportMeAction(_ sender: NSButton) {
         NSWorkspace.shared.open(URL(string: "http://devyao.com/about/")!)
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
-        _isConver = true
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
-                    let alert = NSAlert()
-                    alert.messageText = "转换出错"
-                    alert.informativeText = "未知数据格式无法解析,请提供正确的Json字符串"
-                    alert.runModal()
+                    alert(title: "转换内容Josn出错", desc: "未知数据格式无法解析,请提供正确的Json字符串")
                     return
             }
             
@@ -116,18 +117,12 @@ class MainViewController: NSViewController {
                 setJsonContent(content: formatJsonStr)
             }
             
-            rootClassName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
-            prefixName = prefixField.stringValue.isEmpty ? "" : prefixField.stringValue
-            
-            guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
-                let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
-                    return
+            guard let file = fileStructure() else {
+                alert(title: "转换配置出错", desc: "解析Josn配置出错，请清空配置信息重新解析")
+                return
             }
             
-            let transStructModel = LangStruct(langType: langTypeType, structType: structType)
-            
-            let classStr = YWJsonParserUtils.shared.handleEngine(frome: json, langStruct: transStructModel, prefix: prefixName, rootName: rootClassName, superName: superClassField.stringValue)
-            
+            let classStr = YWJsonParserUtils.shared.handleEngine(frome: json, file:file)
             setClassContent(content: classStr)
         }
     }
@@ -148,6 +143,42 @@ class MainViewController: NSViewController {
             classTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
             classTextView.textStorage?.foregroundColor = NSColor.labelColor
         }
+    }
+    
+    private func fileStructure() -> YWFile? {
+        let rootName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
+        let prefix = prefixField.stringValue
+        let superName = superClassField.stringValue
+        
+        guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
+            let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
+                assert(false, "语言和结构类型组合出错")
+                return nil
+        }
+        
+        let transStruct = LangStruct(langType: langTypeType, structType: structType)
+        let file = YWFile.file(withName: rootName, prefix: prefix, langStruct: transStruct, superName: superName)
+        return file
+    }
+    
+    private func alert(title: String, desc: String) {
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = desc
+        alert.runModal()
+    }
+}
+
+extension MainViewController {
+    @objc func applicationWillTerminateNotiAction() {
+        // 保存 prefix rootclass superclass 结构类型 语言 配置，下次打开默认使用此配置
+        guard let file = fileStructure() else {
+            return
+        }
+        
+        let cacheDic = file.toCacheConfig()
+        UserDefaults.standard.set(cacheDic, forKey: FILE_CACHE_CONFIG_KEY)
+        UserDefaults.standard.synchronize()
     }
 }
 
