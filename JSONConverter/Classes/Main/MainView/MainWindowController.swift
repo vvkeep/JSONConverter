@@ -24,7 +24,7 @@ class MainWindowController: NSWindowController {
     override var windowNibName: NSNib.Name? {
         return NSNib.Name(rawValue: "MainWindowController")
     }
-    
+
 }
 
 extension MainWindowController: NSWindowDelegate {

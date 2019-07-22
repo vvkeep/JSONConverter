@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B2D34EF22E601C7009D2ED2 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */; };
+		7B2D34F022E601C7009D2ED2 /* RewardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */; };
+		7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34F822E6072A009D2ED2 /* wechat.jpeg */; };
 		7B45DAFE202A95BF007E8D56 /* YWJsonParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEC202A95BE007E8D56 /* YWJsonParserUtils.swift */; };
 		7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAED202A95BE007E8D56 /* MainViewController.xib */; };
 		7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
+		7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardViewController.xib; sourceTree = "<group>"; };
+		7B2D34F822E6072A009D2ED2 /* wechat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpeg; sourceTree = "<group>"; };
 		7B45DAEC202A95BE007E8D56 /* YWJsonParserUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YWJsonParserUtils.swift; sourceTree = "<group>"; };
 		7B45DAED202A95BE007E8D56 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -81,10 +87,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B2D34E822E5F65C009D2ED2 /* RewardView */ = {
+			isa = PBXGroup;
+			children = (
+				7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */,
+				7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */,
+			);
+			path = RewardView;
+			sourceTree = "<group>";
+		};
+		7B2D34F122E603C7009D2ED2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7B2D34F822E6072A009D2ED2 /* wechat.jpeg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7B45DAE9202A95BE007E8D56 /* JSONConverter */ = {
 			isa = PBXGroup;
 			children = (
 				7B45DAEA202A95BE007E8D56 /* Classes */,
+				7B2D34F122E603C7009D2ED2 /* Resources */,
 				7B45DAF5202A95BE007E8D56 /* JSONConverter.entitlements */,
 				7BD7FED2202AC1E70003AE80 /* JSONConverter-Bridging-Header.h */,
 				7B45DAF6202A95BE007E8D56 /* Assets.xcassets */,
@@ -108,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7BD7FEE1202AD1F30003AE80 /* MainView */,
+				7B2D34E822E5F65C009D2ED2 /* RewardView */,
 				7BD7FEDE202AC85B0003AE80 /* FileContent */,
 				7B45DAEC202A95BE007E8D56 /* YWJsonParserUtils.swift */,
 			);
@@ -274,9 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B45DB04202A95BF007E8D56 /* MainWindowController.xib in Resources */,
+				7B2D34F022E601C7009D2ED2 /* RewardViewController.xib in Resources */,
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
 				7B45DB09202A95BF007E8D56 /* Info.plist in Resources */,
+				7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */,
 				7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +332,7 @@
 				7BD7FEDC202AC7EB0003AE80 /* YWProperty.swift in Sources */,
 				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
+				7B2D34EF22E601C7009D2ED2 /* RewardViewController.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* YWJsonParserUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

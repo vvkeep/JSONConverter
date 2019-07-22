@@ -101,7 +101,8 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func supportMeAction(_ sender: NSButton) {
-        NSWorkspace.shared.open(URL(string: "http://devyao.com/about/")!)
+        let rewardVC = RewardViewController()
+        presentViewControllerAsModalWindow(rewardVC)
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
