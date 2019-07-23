@@ -14,6 +14,7 @@ enum LangType: Int {
     case SwiftyJSON
     case ObjectMapper
     case ObjC
+    case Flutter
 }
 
 enum StructType: Int {
@@ -32,10 +33,11 @@ struct LangStruct {
 }
 
 let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
+
 class MainViewController: NSViewController {
     
     lazy var transTypeTitleArr: [String] = {
-        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C"]
+        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter"]
         return titleArr
     }()
     
@@ -188,12 +190,12 @@ extension MainViewController: NSComboBoxDelegate {
         let comBox = notification.object as! NSComboBox
         if comBox == converTypeBox { // 选择语言
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
-            if langType == LangType.ObjC { // 如果是OC 就选择 class
+            if langType == LangType.ObjC || langType == LangType.Flutter { // 如果是OC Flutter 就选择 class
                 converStructBox.selectItem(at: 1)
             }
         }else if comBox == converStructBox { //选择类或结构体
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
-            if langType == LangType.ObjC { // 如果是OC 无论怎么选 都是 类
+            if langType == LangType.ObjC  || langType == LangType.Flutter { // 如果是OC Flutter  无论怎么选 都是 类
                 converStructBox.selectItem(at: 1)
             }
         }

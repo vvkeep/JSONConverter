@@ -56,6 +56,10 @@ class YWFile {
     
     func toString() -> String {
         var totalStr = ""
+        if langStruct.langType == LangType.Flutter {
+            var className = rootName.className(withPrefix: prefix);
+            totalStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
+        }
         contents.forEach { (content) in
             totalStr += content.toString()
         }

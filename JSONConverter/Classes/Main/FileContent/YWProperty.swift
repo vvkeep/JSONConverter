@@ -45,7 +45,7 @@ class YWProperty {
     
     func toString() -> (String, String){
         var propertyStr = ""
-        var swiftInitStr = ""
+        var initStr = ""
         switch type {
         case .String:
             switch langStruct.langType{
@@ -55,10 +55,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): String?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): String?\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): String?\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .Int:
             switch langStruct.langType{
@@ -68,10 +71,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].intValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].intValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tint \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .Float:
             switch langStruct.langType{
@@ -81,10 +87,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].floatValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].floatValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .Double:
             switch langStruct.langType{
@@ -94,10 +103,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].doubleValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].doubleValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .Bool:
             switch langStruct.langType{
@@ -107,10 +119,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].boolValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].boolValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tbool \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .Dictionary:
             switch langStruct.langType{
@@ -120,10 +135,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
-                swiftInitStr = "\t\t\(propertyKey) = \(propertyKey.className(withPrefix: prefixStr))(json: json[\"\(propertyKey)\"])\n"
+                initStr = "\t\t\(propertyKey) = \(propertyKey.className(withPrefix: prefixStr))(json: json[\"\(propertyKey)\"])\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tMap<String,dynamic> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayString:
             switch langStruct.langType{
@@ -133,10 +151,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<String> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayInt:
             switch langStruct.langType{
@@ -146,10 +167,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<int> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayFloat:
             switch langStruct.langType{
@@ -159,10 +183,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayDouble:
             switch langStruct.langType{
@@ -172,10 +199,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayBool:
             switch langStruct.langType{
@@ -185,10 +215,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<bool> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .ArrayDictionary:
             switch langStruct.langType{
@@ -198,10 +231,13 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(propertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(propertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<\(propertyKey.className(withPrefix: prefixStr))> \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
         case .nil:
             switch langStruct.langType{
@@ -211,15 +247,18 @@ class YWProperty {
                 propertyStr = "\tvar \(propertyKey): String?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): String?\n"
-                swiftInitStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
+                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(propertyKey): String?\n"
-                swiftInitStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+            case .Flutter:
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(propertyKey);\n"
+                initStr = "this.\(propertyKey),"
             }
 
         }
         
-        return (propertyStr, swiftInitStr)
+        return (propertyStr, initStr)
     }
     
 }

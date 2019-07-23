@@ -29,9 +29,9 @@ class YWContent {
         let className = propertyKey.className(withPrefix: prefixStr)
         var contentStr = ""
         
-        let result = propertyPartAndIntPart()
+        let result = propertyAndInitPart()
         var propertyTotalPart = result.0
-        let initSwiftTotalPart = result.1
+        let initTotalPart = result.1
         
         switch langStruct.langType {
         case .ObjC:
@@ -53,22 +53,24 @@ class YWContent {
             }
         case .SwiftyJSON:
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initSwiftTotalPart)\t}\n}\n"
+                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
             }else if langStruct.structType == .struct {
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initSwiftTotalPart)\t}\n}\n"
+                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
             }
         case .ObjectMapper:
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(initSwiftTotalPart)\t}\n}\n"
+                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
             }else if langStruct.structType == .struct {
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(initSwiftTotalPart)\t}\n}\n"
+                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
             }
+        case .Flutter:
+            contentStr = "\n@JsonSerializable()\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\t\(className)(\(initTotalPart));\n\n\tfactory \(className).fromJson(Map<String, dynamic> srcJson) => _$\(className)FromJson(srcJson);\n\n\tMap<String, dynamic> toJson() => _$\(className)ToJson(this);\n\n}\n"
         }
         
         return contentStr
     }
     
-    private func propertyPartAndIntPart() -> (String, String) {
+    private func propertyAndInitPart() -> (String, String) {
         var propertyStr = ""
         var initSwiftStr = ""
 
@@ -93,7 +95,8 @@ class YWContent {
             superClassPart = superClass.isEmpty ? ": NSObject" : ": \(superClass)"
         case .ObjectMapper:
             superClassPart = superClass.isEmpty ? ": Mappable" : ": \(superClass)"
-            break
+        case .Flutter:
+            superClassPart = superClass.isEmpty ? " extends Object" : " extends \(superClass)"
         }
         
         return superClassPart

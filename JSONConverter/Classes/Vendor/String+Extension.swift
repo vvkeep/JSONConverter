@@ -56,6 +56,20 @@ extension String {
         
         return space
     }
+    
+    /// 驼峰转为下划线
+    mutating func underline() -> String {
+        self = lowercaseFirstChar()
+        var result = [String]();
+        for item in self {
+            if item >= "A" && item <= "Z" {
+                result.append("_\(item.lowercased())")
+            }else {
+                result.append(String(item))
+            }
+        }
+        return result.joined()
+    }
 }
 
 extension NSNumber {
