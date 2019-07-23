@@ -70,7 +70,7 @@ extension NSNumber {
             }else{
                 assert(true, "遇见Character类型")
             }
-        case .shortType, .intType:
+        case .shortType, .intType, .sInt64Type:
             type = .Int
         case .floatType, .float32Type, .float64Type:
             type = .Float

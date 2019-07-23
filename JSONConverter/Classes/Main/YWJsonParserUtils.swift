@@ -78,7 +78,7 @@ class YWJsonParserUtils {
             case _ as String:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayString)
             case let num as NSNumber:
-                let type = YWPropertyType(rawValue: num.valueType().hashValue + 6)!
+                let type = YWPropertyType(rawValue: num.valueType().rawValue + 6)!
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: type)
             case let dic as [String: Any]:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayDictionary)
