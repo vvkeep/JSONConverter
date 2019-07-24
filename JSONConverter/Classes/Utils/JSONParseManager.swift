@@ -1,5 +1,5 @@
 //
-//  YWJsonParserUtils.swift
+//  JSONParseManager.swift
 //  Test
 //
 //  Created by 姚巍 on 2018/2/3.
@@ -8,20 +8,18 @@
 
 import Foundation
 
-typealias YWstructTypeContent = (propertyStr: String, SwiftyJSONInitStr: String)
-
-class YWJsonParserUtils {
+class JSONParseManager {
     
-    static let shared: YWJsonParserUtils = {
-        let manager = YWJsonParserUtils()
+    static let shared: JSONParseManager = {
+        let manager = JSONParseManager()
         return manager
     }()
     
-    private var file: YWFile!
+    private var file: File!
     
-    func handleEngine(frome obj: Any, file: YWFile) -> String {
+    func handleEngine(frome obj: Any, file: File) -> String {
         self.file = file
-        var content : YWContent?
+        var content : Content?
         let propertyKey = file.rootName.propertyName()
         switch obj {
         case let dic as [String: Any]:
@@ -39,12 +37,12 @@ class YWJsonParserUtils {
         return file.toString()
     }
     
-    private func handleDic(propertyKey: String, dic: [String: Any]) -> YWContent {
+    private func handleDic(propertyKey: String, dic: [String: Any]) -> Content {
         let content = file.fileContent(withPropertyKey: propertyKey)
         
         dic.forEach { (item) in
             let itemKey = item.key
-            var propertyModel: YWProperty?
+            var propertyModel: Property?
             
             switch item.value {
             case _ as String:
@@ -71,9 +69,9 @@ class YWJsonParserUtils {
         return content
     }
     
-    private func handleArr(itemKey: String, arr: [Any]) -> YWProperty? {
+    private func handleArr(itemKey: String, arr: [Any]) -> Property? {
         if let first = arr.first {
-            var propertyModel: YWProperty?
+            var propertyModel: Property?
             switch first {
             case _ as String:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayString)

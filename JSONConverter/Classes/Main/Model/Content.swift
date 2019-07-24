@@ -7,8 +7,9 @@
 //
 
 import Foundation
-class YWContent {
-    var properties = [YWProperty]()
+
+class Content {
+    var properties = [Property]()
     
     var propertyKey: String
     

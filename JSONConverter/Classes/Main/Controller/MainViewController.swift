@@ -68,7 +68,26 @@ class MainViewController: NSViewController {
         super.viewDidLoad()        
         setupUI()
         setupCacheConfigData()
+        checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
+    }
+    
+    private func checkVerion() {
+        UpgradeUtils.newestVersion { (version) in
+            guard let tagName = version?.tag_name,
+            let bundleVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let newVer = Int(tagName.replacingOccurrences(of: ".", with: "")),
+                let currentVer = Int(bundleVer.replacingOccurrences(of: ".", with: "")) else {
+                return
+            }
+            
+            if newVer > currentVer {
+                let upgradeVc = UpgradeViewController()
+                upgradeVc.versionInfo = version
+                upgradeVc.currentVer = bundleVer
+                self.presentViewControllerAsModalWindow(upgradeVc)
+            }
+        }
     }
         
     private func setupUI(){
@@ -90,7 +109,7 @@ class MainViewController: NSViewController {
     
     private func setupCacheConfigData() {
         if let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]  {
-            let file = YWFile.cacheFile(withDic: config)
+            let file = File.cacheFile(withDic: config)
             converTypeBox.selectItem(at: file.langStruct.langType.rawValue)
             converStructBox.selectItem(at: file.langStruct.structType.rawValue)
             prefixField.stringValue = file.prefix
@@ -103,8 +122,8 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func supportMeAction(_ sender: NSButton) {
-        let rewardVC = RewardViewController()
-        presentViewControllerAsModalWindow(rewardVC)
+        let rewardVc = RewardViewController()
+        presentViewControllerAsModalWindow(rewardVc)
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
@@ -125,7 +144,7 @@ class MainViewController: NSViewController {
                 return
             }
             
-            let classStr = YWJsonParserUtils.shared.handleEngine(frome: json, file:file)
+            let classStr = JSONParseManager.shared.handleEngine(frome: json, file:file)
             setClassContent(content: classStr)
         }
     }
@@ -148,7 +167,7 @@ class MainViewController: NSViewController {
         }
     }
     
-    private func fileStructure() -> YWFile? {
+    private func fileStructure() -> File? {
         let rootName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
         let prefix = prefixField.stringValue
         let superName = superClassField.stringValue
@@ -160,7 +179,7 @@ class MainViewController: NSViewController {
         }
         
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
-        let file = YWFile.file(withName: rootName, prefix: prefix, langStruct: transStruct, superName: superName)
+        let file = File.file(withName: rootName, prefix: prefix, langStruct: transStruct, superName: superName)
         return file
     }
     

@@ -1,5 +1,5 @@
 //
-//  YWProperty.swift
+//  Property.swift
 //  JSONConverter
 //
 //  Created by 姚巍 on 2018/2/7.
@@ -7,8 +7,10 @@
 //
 
 import Foundation
+
 /// count = 3
 let currentMapperSpace = "   "
+
 enum YWPropertyType: Int {
     case `String` = 0
     case `Int`
@@ -26,7 +28,7 @@ enum YWPropertyType: Int {
 }
 
 
-class YWProperty {
+class Property {
     
     var propertyKey: String
     
