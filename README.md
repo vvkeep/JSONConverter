@@ -13,7 +13,7 @@ JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数�
 部分语言转换展示
 ========================
 **1.Json转Flutter**
-![Json转ObectMapper.png](https://upload-images.jianshu.io/upload_images/2240549-82c59edfe2b783d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![Json转ObectMapper.png](https://upload-images.jianshu.io/upload_images/2240549-82c59edfe2b783d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 **2.Json转ObectMapper**
 ![Json转ObectMapper.png](http://upload-images.jianshu.io/upload_images/2240549-9df1e76d252546be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
