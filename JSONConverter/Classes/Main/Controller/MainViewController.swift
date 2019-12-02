@@ -15,6 +15,7 @@ enum LangType: Int {
     case ObjectMapper
     case ObjC
     case Flutter
+    case Codable
 }
 
 enum StructType: Int {
@@ -37,7 +38,7 @@ let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
 class MainViewController: NSViewController {
     
     lazy var transTypeTitleArr: [String] = {
-        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter"]
+        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
         return titleArr
     }()
     
@@ -65,7 +66,7 @@ class MainViewController: NSViewController {
     @IBOutlet var classTextView: NSTextView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         setupUI()
         setupCacheConfigData()
         checkVerion()
@@ -211,11 +212,15 @@ extension MainViewController: NSComboBoxDelegate {
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
             if langType == LangType.ObjC || langType == LangType.Flutter { // 如果是OC Flutter 就选择 class
                 converStructBox.selectItem(at: 1)
+            } else if langType == LangType.Codable {//如果是Codable 就选择 struct
+                converStructBox.selectItem(at: 0)
             }
         }else if comBox == converStructBox { //选择类或结构体
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
             if langType == LangType.ObjC  || langType == LangType.Flutter { // 如果是OC Flutter  无论怎么选 都是 类
                 converStructBox.selectItem(at: 1)
+            } else if langType == LangType.Codable {//如果是Codable 就选择 struct
+                converStructBox.selectItem(at: 0)
             }
         }
     }
