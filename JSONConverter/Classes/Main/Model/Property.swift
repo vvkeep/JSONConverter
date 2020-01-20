@@ -53,7 +53,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, copy) NSString *\(propertyKey);\n"
-            case .Swift,.HandyJSON:
+            case .Swift,.HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): String?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): String?\n"
@@ -69,7 +69,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) NSInteger \(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Int = 0\n"
@@ -85,7 +85,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) Float \(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
@@ -101,7 +101,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) Double \(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
@@ -117,7 +117,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) BOOL \(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): Bool = false\n"
@@ -133,7 +133,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) \(propertyKey.className(withPrefix: prefixStr)) *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
@@ -149,7 +149,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<NSString *> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [String]()\n"
@@ -165,7 +165,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Int> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Int]()\n"
@@ -181,7 +181,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Float> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Float]()\n"
@@ -197,7 +197,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Double> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Double]()\n"
@@ -213,7 +213,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Bool> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
@@ -229,7 +229,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<\(propertyKey.className(withPrefix: prefixStr)) *> *\(propertyKey);\n"
-            case .Swift, .HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
@@ -245,7 +245,7 @@ class Property {
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, copy) NSString *\(propertyKey);\n"
-            case .Swift,.HandyJSON:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(propertyKey): String?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(propertyKey): String?\n"

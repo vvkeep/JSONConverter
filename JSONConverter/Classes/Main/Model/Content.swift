@@ -45,7 +45,7 @@ class Content {
             }else if langStruct.structType == .struct {
                 contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n}\n"
             }
-        case .HandyJSON:
+        case .HandyJSON, .Codable:
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init() {}\n}\n"
             }else if langStruct.structType == .struct {
@@ -98,6 +98,8 @@ class Content {
             superClassPart = superClass.isEmpty ? ": Mappable" : ": \(superClass)"
         case .Flutter:
             superClassPart = superClass.isEmpty ? " extends Object" : " extends \(superClass)"
+        case .Codable:
+            superClassPart = superClass.isEmpty ? ": Codable" : ": \(superClass)"
         }
         
         return superClassPart

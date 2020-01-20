@@ -4,7 +4,7 @@ JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数�
 
 支持的功能
 ========================
-* Objective-C、Swift(Codeable, SwiftyJSON, HandyJSON, ObjectMapper)、Flutter 对应的模型转化
+* Objective-C、Swift(Codeable, SwiftyJSON, HandyJSON, ObjectMapper，Codable)、Flutter 对应的模型转化
 * 版本更新自动提醒
 * 转换配置缓存，默认保存上一次转换的配置，无需每次转换都要选择对应的语言和类型
 * 黑暗模式
