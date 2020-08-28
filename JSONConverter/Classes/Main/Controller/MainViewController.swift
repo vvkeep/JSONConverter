@@ -86,7 +86,7 @@ class MainViewController: NSViewController {
                 let upgradeVc = UpgradeViewController()
                 upgradeVc.versionInfo = version
                 upgradeVc.currentVer = bundleVer
-                self.presentViewControllerAsModalWindow(upgradeVc)
+                self.presentAsModalWindow(upgradeVc)
             }
         }
     }
@@ -124,7 +124,7 @@ class MainViewController: NSViewController {
     
     @IBAction func supportMeAction(_ sender: NSButton) {
         let rewardVc = RewardViewController()
-        presentViewControllerAsModalWindow(rewardVc)
+        presentAsModalWindow(rewardVc)
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
