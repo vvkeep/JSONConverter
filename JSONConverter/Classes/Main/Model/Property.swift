@@ -257,7 +257,6 @@ class Property {
                 propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(propertyKey);\n"
                 initStr = "this.\(propertyKey),"
             }
-
         }
         
         return (propertyStr, initStr)
