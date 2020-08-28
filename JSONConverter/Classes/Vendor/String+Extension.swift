@@ -38,19 +38,19 @@ extension String {
     }
     
     mutating func removeLastChar() {
-		if !self.isEmpty {
-			let range = self.index(endIndex, offsetBy: -1)..<self.endIndex
-			self.removeSubrange(range)
-		}
+        if !self.isEmpty {
+            let range = self.index(endIndex, offsetBy: -1)..<self.endIndex
+            self.removeSubrange(range)
+        }
     }
     
     mutating func removeFistChar() {
-		if !self.isEmpty {			
-			let range = startIndex..<index(startIndex, offsetBy: 1)
-			self.removeSubrange(range)
-		}
+        if !self.isEmpty {
+            let range = startIndex..<index(startIndex, offsetBy: 1)
+            self.removeSubrange(range)
+        }
     }
-
+    
     
     static func numSpace(count: Int) -> String {
         var space = ""
