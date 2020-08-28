@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,9 +13,6 @@
                 <outlet property="converTypeBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
                 <outlet property="jsonSrollView" destination="9hl-9H-OB5" id="pCj-Nx-0VJ"/>
                 <outlet property="jsonTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
-                <outlet property="prefixField" destination="taY-P9-Cbu" id="TEY-O5-Vda"/>
-                <outlet property="rootClassField" destination="ucg-fW-Fb3" id="aUR-Yl-dJq"/>
-                <outlet property="superClassField" destination="UL4-pu-QNa" id="SJu-vW-PqA"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -28,70 +25,58 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-9H-OB5">
                     <rect key="frame" x="0.0" y="50" width="400" height="600"/>
                     <clipView key="contentView" drawsBackground="NO" id="1E1-08-pKY">
-                        <rect key="frame" x="1" y="1" width="383" height="598"/>
+                        <rect key="frame" x="1" y="1" width="398" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="J8o-uy-DJ5">
-                                <rect key="frame" x="0.0" y="0.0" width="383" height="598"/>
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="598"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="383" height="598"/>
+                                <size key="minSize" width="398" height="598"/>
                                 <size key="maxSize" width="503" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="7ab-nf-3R6">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="7ab-nf-3R6">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ycb-vU-LWp">
-                        <rect key="frame" x="384" y="1" width="15" height="598"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ycb-vU-LWp">
+                        <rect key="frame" x="383" y="1" width="16" height="598"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-eC-QHs">
                     <rect key="frame" x="408" y="50" width="591" height="600"/>
                     <clipView key="contentView" drawsBackground="NO" id="FvW-F1-qIh">
-                        <rect key="frame" x="1" y="1" width="574" height="598"/>
+                        <rect key="frame" x="1" y="1" width="589" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="9fN-8x-2aw">
-                                <rect key="frame" x="0.0" y="0.0" width="574" height="598"/>
+                                <rect key="frame" x="0.0" y="0.0" width="589" height="598"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="574" height="598"/>
+                                <size key="minSize" width="589" height="598"/>
                                 <size key="maxSize" width="996" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pfY-jm-lVx">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pfY-jm-lVx">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="9VD-nB-hbx">
-                        <rect key="frame" x="575" y="1" width="15" height="598"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="9VD-nB-hbx">
+                        <rect key="frame" x="574" y="1" width="16" height="598"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE">
                     <rect key="frame" x="0.0" y="0.0" width="999" height="50"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ucg-fW-Fb3">
-                            <rect key="frame" x="94" y="13" width="125" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="TDD-yz-VYs"/>
-                                <constraint firstAttribute="width" constant="125" id="sWh-3w-yPQ"/>
-                            </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="RootClass" drawsBackground="YES" id="aXb-15-fOm">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zHm-8W-mp8">
                             <rect key="frame" x="909" y="6" width="82" height="36"/>
                             <constraints>
@@ -100,24 +85,12 @@
                             </constraints>
                             <buttonCell key="cell" type="push" title="转换" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uWG-Sb-jzp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="converBtnAction:" target="-2" id="JJ0-CN-o34"/>
                             </connections>
                         </button>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="taY-P9-Cbu">
-                            <rect key="frame" x="14" y="13" width="60" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="5op-xu-BSJ"/>
-                                <constraint firstAttribute="height" constant="25" id="F7E-hd-IjO"/>
-                            </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Prefix" drawsBackground="YES" id="Mbb-pO-H8S">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acr-Rb-HpB">
                             <rect key="frame" x="705" y="11" width="103" height="26"/>
                             <constraints>
@@ -125,23 +98,11 @@
                                 <constraint firstAttribute="width" constant="100" id="jFR-VO-k9q"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="SHd-ug-r0R">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
                         </comboBox>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UL4-pu-QNa">
-                            <rect key="frame" x="239" y="13" width="100" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="REq-o0-LH4"/>
-                                <constraint firstAttribute="width" constant="100" id="asH-JU-RiR"/>
-                            </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="SuperClass" drawsBackground="YES" id="fD2-OX-Mh2">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dbs-XQ-1fI">
                             <rect key="frame" x="819" y="6" width="82" height="36"/>
                             <constraints>
@@ -150,7 +111,7 @@
                             </constraints>
                             <buttonCell key="cell" type="push" title="打赏" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PzA-Oq-nJU">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="supportMeAction:" target="-2" id="XTE-NH-idm"/>
@@ -163,28 +124,38 @@
                                 <constraint firstAttribute="width" constant="90" id="Sf6-Sn-V4v"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="b5g-Qr-2Vq">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
                         </comboBox>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="zBe-Rp-cI7">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="zBe-Rp-cI7" secondAttribute="height" multiplier="1:1" id="jsi-q3-rih"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" inset="2" id="bJ5-2Y-TL5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="label" size="13"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="settingAction:" target="-2" id="9y4-PN-kgw"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="taY-P9-Cbu" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="23d-zz-hzt"/>
+                        <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="dbs-XQ-1fI" secondAttribute="trailing" constant="20" id="Bq7-gc-AQE"/>
-                        <constraint firstItem="UL4-pu-QNa" firstAttribute="leading" secondItem="ucg-fW-Fb3" secondAttribute="trailing" constant="20" id="OcN-Y2-Xuz"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
                         <constraint firstItem="3Ps-cQ-yR7" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="TEL-yx-wep"/>
                         <constraint firstItem="dbs-XQ-1fI" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="VQr-X1-Ncx"/>
                         <constraint firstItem="dbs-XQ-1fI" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="WP7-te-JNi"/>
-                        <constraint firstItem="UL4-pu-QNa" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="Wo5-nt-3DR"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="XLk-k6-FyG"/>
-                        <constraint firstItem="ucg-fW-Fb3" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="YXT-O0-56T"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="leading" secondItem="3Ps-cQ-yR7" secondAttribute="trailing" constant="20" id="YfS-lM-89F"/>
+                        <constraint firstItem="zBe-Rp-cI7" firstAttribute="top" secondItem="Rs5-vR-4VE" secondAttribute="top" id="ZAf-f1-Ce1"/>
+                        <constraint firstItem="zBe-Rp-cI7" firstAttribute="leading" secondItem="Rs5-vR-4VE" secondAttribute="leading" id="ftP-av-yKY"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="gEI-lV-qMU"/>
                         <constraint firstAttribute="trailing" secondItem="zHm-8W-mp8" secondAttribute="trailing" constant="14" id="mrc-wa-6Xw"/>
-                        <constraint firstItem="ucg-fW-Fb3" firstAttribute="leading" secondItem="taY-P9-Cbu" secondAttribute="trailing" constant="20" id="tOa-qO-68N"/>
-                        <constraint firstItem="taY-P9-Cbu" firstAttribute="leading" secondItem="Rs5-vR-4VE" secondAttribute="leading" constant="14" id="uZ3-ia-2gr"/>
                     </constraints>
                 </customView>
             </subviews>
@@ -204,4 +175,7 @@
             <point key="canvasLocation" x="225" y="7"/>
         </customView>
     </objects>
+    <resources>
+        <image name="setting" width="16" height="16"/>
+    </resources>
 </document>

@@ -3,7 +3,7 @@
 //  JSONConverter
 //
 //  Created by BOSMA on 2019/7/24.
-//  Copyright © 2019 姚巍. All rights reserved.
+//  Copyright © 2019 Yao. All rights reserved.
 //
 
 import Cocoa

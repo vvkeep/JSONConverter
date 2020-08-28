@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2018/1/26.
-//  Copyright © 2018年 姚巍. All rights reserved.
+//  Created by Yao on 2018/1/26.
+//  Copyright © 2018年 Yao. All rights reserved.
 //
 
 import Cocoa

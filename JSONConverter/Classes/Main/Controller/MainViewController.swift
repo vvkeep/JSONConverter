@@ -2,8 +2,8 @@
 //  MainViewController.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2018/1/27.
-//  Copyright © 2018年 姚巍. All rights reserved.
+//  Created by Yao on 2018/1/27.
+//  Copyright © 2018年 Yao. All rights reserved.
 //
 
 import Cocoa
@@ -47,17 +47,11 @@ class MainViewController: NSViewController {
         return titleArr
     }()
     
-    /// 转换模式Box 选择 语言
+    // 转换模式Box 选择 语言
     @IBOutlet weak var converTypeBox: NSComboBox!
     
     // 选择 类 或 结构体
     @IBOutlet weak var converStructBox: NSComboBox!
-    
-    @IBOutlet weak var prefixField: NSTextField!
-    
-    @IBOutlet weak var rootClassField: NSTextField!
-    
-    @IBOutlet weak var superClassField: NSTextField!
     
     @IBOutlet weak var jsonSrollView: NSScrollView!
     
@@ -65,10 +59,16 @@ class MainViewController: NSViewController {
     
     @IBOutlet var classTextView: NSTextView!
     
+    var currentCacheFile: File {
+        let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]
+        let file = File.cacheFile(withDic: config)
+        return file
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupCacheConfigData()
+        setupCacheConfig()
         checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
     }
@@ -76,16 +76,16 @@ class MainViewController: NSViewController {
     private func checkVerion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
-            let bundleVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            let newVer = Int(tagName.replacingOccurrences(of: ".", with: "")),
-                let currentVer = Int(bundleVer.replacingOccurrences(of: ".", with: "")) else {
-                return
+                let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
+                let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
+                    return
             }
             
-            if newVer > currentVer {
+            if newVersion > currentVeriosn {
                 let upgradeVc = UpgradeViewController()
                 upgradeVc.versionInfo = version
-                upgradeVc.currentVer = bundleVer
+                upgradeVc.currentVer = bundleVersion
                 self.presentAsModalWindow(upgradeVc)
             }
         }
@@ -108,23 +108,25 @@ class MainViewController: NSViewController {
         jsonSrollView.rulersVisible = true
     }
     
-    private func setupCacheConfigData() {
+    private func setupCacheConfig() {
         if let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]  {
             let file = File.cacheFile(withDic: config)
             converTypeBox.selectItem(at: file.langStruct.langType.rawValue)
             converStructBox.selectItem(at: file.langStruct.structType.rawValue)
-            prefixField.stringValue = file.prefix
-            rootClassField.stringValue = file.rootName
-            superClassField.stringValue = file.superName
         }else {
             converTypeBox.selectItem(at: 0)
             converStructBox.selectItem(at: 0)
         }
     }
     
+    @IBAction func settingAction(_ sender: NSButton) {
+        let settingVC = SettingViewController()
+        presentAsModalWindow(settingVC)
+    }
+
     @IBAction func supportMeAction(_ sender: NSButton) {
-        let rewardVc = RewardViewController()
-        presentAsModalWindow(rewardVc)
+        let rewardVC = RewardViewController()
+        presentAsModalWindow(rewardVC)
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
@@ -169,9 +171,9 @@ class MainViewController: NSViewController {
     }
     
     private func fileStructure() -> File? {
-        let rootName = rootClassField.stringValue.isEmpty ? "RootClass" : rootClassField.stringValue
-        let prefix = prefixField.stringValue
-        let superName = superClassField.stringValue
+        let rootName = currentCacheFile.rootName
+        let prefix = currentCacheFile.prefix
+        let parentName = currentCacheFile.parentName
         
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
@@ -180,7 +182,7 @@ class MainViewController: NSViewController {
         }
         
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
-        let file = File.file(withName: rootName, prefix: prefix, langStruct: transStruct, superName: superName)
+        let file = File.file(withName: rootName, prefix: prefix, langStruct: transStruct, parentName: parentName)
         return file
     }
     

@@ -2,8 +2,8 @@
 //  MainWindowController.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2018/1/27.
-//  Copyright © 2018年 姚巍. All rights reserved.
+//  Created by Yao on 2018/1/27.
+//  Copyright © 2018年 Yao. All rights reserved.
 //
 
 import Cocoa
@@ -29,7 +29,6 @@ class MainWindowController: NSWindowController {
 
 extension MainWindowController: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        //print("关闭窗口了")
         return true;
     }
 }

@@ -2,8 +2,8 @@
 //  String+Extension.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2018/1/28.
-//  Copyright © 2018年 姚巍. All rights reserved.
+//  Created by Yao on 2018/1/28.
+//  Copyright © 2018年 Yao. All rights reserved.
 //
 
 import Foundation
@@ -99,5 +99,13 @@ extension NSNumber {
         }
         
         return type
+    }
+}
+
+
+// MARK:-  i18n
+extension String {
+    public var localized: String {
+        return NSLocalizedString(self, comment: "")
     }
 }

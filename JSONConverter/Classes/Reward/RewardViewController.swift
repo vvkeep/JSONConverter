@@ -2,8 +2,8 @@
 //  RewardViewController.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2019/7/22.
-//  Copyright © 2019 姚巍. All rights reserved.
+//  Created by Yao on 2019/7/22.
+//  Copyright © 2019 Yao. All rights reserved.
 //
 
 import Cocoa

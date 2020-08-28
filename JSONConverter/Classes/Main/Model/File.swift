@@ -2,7 +2,7 @@
 //  File.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2018/2/7.
+//  Created by Yao on 2018/2/7.
 //  Copyright © 2018年 Ahmed Ali. All rights reserved.
 //
 
@@ -10,9 +10,11 @@ import Foundation
 
 class File {
     
+    var header: String = ""
+    
     var prefix: String = ""
     
-    var superName: String = ""
+    var parentName: String = ""
     
     var langStruct = LangStruct(langType: .Swift, structType: .struct)
         
@@ -20,32 +22,33 @@ class File {
     
     var rootName: String = ""
     
-    class func file(withName name: String, prefix: String, langStruct: LangStruct, superName: String) -> File {
+    class func file(withName name: String, prefix: String, langStruct: LangStruct, parentName: String) -> File {
         let file = File()
         file.rootName = name
         file.prefix = prefix
         file.langStruct = langStruct
-        file.superName = superName
+        file.parentName = parentName
         return file
     }
     
-    class func cacheFile(withDic dic: [String: String]) -> File {
+    class func cacheFile(withDic dic: [String: String]?) -> File {
         let file = File()
-        file.rootName = dic["rootName"] ?? ""
-        file.prefix = dic["prefix"] ?? ""
-        file.superName = dic["superName"] ?? ""
+        file.header = dic?["header"] ?? ""
+        file.rootName = dic?["rootName"] ?? "RootClass"
+        file.prefix = dic?["prefix"] ?? ""
+        file.parentName = dic?["parentName"] ?? ""
         
-        let langIndex = Int(dic["langType"] ?? "0")!
-        let structIndex = Int(dic["structType"] ?? "0")!
-        let langTypeType = LangType(rawValue: langIndex)!
+        let langIndex = Int(dic?["langType"] ?? "0")!
+        let structIndex = Int(dic?["structType"] ?? "0")!
+        let langType = LangType(rawValue: langIndex)!
         let structType = StructType(rawValue: structIndex)!
-        let transStruct = LangStruct(langType: langTypeType, structType: structType)
+        let transStruct = LangStruct(langType: langType, structType: structType)
         file.langStruct = transStruct
         return file
     }
     
     func fileContent(withPropertyKey key: String) -> Content {
-        let content = Content(propertyKey: key, langStruct: langStruct, superClass: superName, prefixStr: prefix)
+        let content = Content(propertyKey: key, langStruct: langStruct, superClass: parentName, prefixStr: prefix)
         return content
     }
     
@@ -69,7 +72,7 @@ class File {
     }
     
     func toCacheConfig() -> Dictionary<String, Any> {
-        return ["rootName": rootName, "prefix": prefix, "superName": superName, "langType": "\(langStruct.langType.rawValue)", "structType": "\(langStruct.structType.rawValue)"]
+        return ["header": header, "rootName": rootName, "prefix": prefix, "parentName": parentName, "langType": "\(langStruct.langType.rawValue)", "structType": "\(langStruct.structType.rawValue)"]
     }
     
 }

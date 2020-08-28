@@ -21,6 +21,7 @@
 		7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */; };
 		7B45DB09202A95BF007E8D56 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAFA202A95BE007E8D56 /* Info.plist */; };
 		7B45DB0F202AA572007E8D56 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DB0E202AA572007E8D56 /* File.swift */; };
+		7B95A32224F95F69000D141B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B95A32424F95F69000D141B /* Localizable.strings */; };
 		7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */; };
 		7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */; };
 		7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* Content.swift */; };
@@ -62,6 +63,9 @@
 		7B45DAFA202A95BE007E8D56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B45DB0E202AA572007E8D56 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7B4B5EAA201B87A10098712B /* JSONConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B95A31E24F95EA1000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		7B95A32324F95F69000D141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B95A32524F95F6E000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7BD7FED2202AC1E70003AE80 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		7BD7FED3202AC1E80003AE80 /* NoodleLineNumberMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberMarker.h; sourceTree = "<group>"; };
 		7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		7B2D34F122E603C7009D2ED2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7B95A32424F95F69000D141B /* Localizable.strings */,
 				7B2D34F822E6072A009D2ED2 /* wechat.jpeg */,
 			);
 			path = Resources;
@@ -134,6 +139,7 @@
 		7B45DAEA202A95BE007E8D56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7B95A31F24F95ECE000D141B /* Extension */,
 				8E2A9CFF24F91F8C00F03DCB /* Setting */,
 				8E43D13822E801FC00F52C8E /* Upgrade */,
 				7B45DAEB202A95BE007E8D56 /* Main */,
@@ -157,8 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				7BD7FED1202AC1B20003AE80 /* NoodleLineNumber */,
-				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
-				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -179,6 +183,15 @@
 				7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7B95A31F24F95ECE000D141B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
+				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		7BD7FED1202AC1B20003AE80 /* NoodleLineNumber */ = {
@@ -339,6 +352,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 7B4B5EA1201B87A10098712B;
 			productRefGroup = 7B4B5EAB201B87A10098712B /* Products */;
@@ -361,6 +375,7 @@
 				8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */,
 				7B2D34F022E601C7009D2ED2 /* RewardViewController.xib in Resources */,
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
+				7B95A32224F95F69000D141B /* Localizable.strings in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
 				7B45DB09202A95BF007E8D56 /* Info.plist in Resources */,
 				7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */,
@@ -424,8 +439,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				7B45DAF8202A95BE007E8D56 /* Base */,
+				7B95A31E24F95EA1000D141B /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		7B95A32424F95F69000D141B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B95A32324F95F69000D141B /* en */,
+				7B95A32524F95F6E000D141B /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -435,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -492,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -543,6 +570,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
@@ -564,6 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
