@@ -7,3 +7,8 @@
 */
 
 "parameter_setting_title" = "参数设置";
+"parameter_classes_prefix" = "类前缀";
+"parameter_root_class_title" = "根类名";
+"parameter_parent_class_title" = "父类名";
+"parameter_file_header_title" = "文件头";
+"parameter_save_title" = "保存";

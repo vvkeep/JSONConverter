@@ -7,3 +7,8 @@
 */
 
 "parameter_setting_title" = "parameter setting";
+"parameter_classes_prefix" = "Classes prefix";
+"parameter_root_class_title" = "Root class";
+"parameter_parent_class_title" = "Parent class";
+"parameter_file_header_title" = "File header";
+"parameter_save_title" = "Save";

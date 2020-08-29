@@ -10,7 +10,7 @@ import Foundation
 
 class File {
     
-    var header: String?
+    var header: String!
     
     var prefix: String?
     
@@ -22,7 +22,7 @@ class File {
     
     var rootName: String = "RootClass"
     
-    init(name: String, prefix: String?, header: String?, langStruct: LangStruct, parentName: String?) {
+    init(name: String, prefix: String?, header: String, langStruct: LangStruct, parentName: String?) {
         self.rootName = name
         self.prefix = prefix
         self.langStruct = langStruct
@@ -30,14 +30,14 @@ class File {
         self.header = header
     }
     
-    init(cachConfig dic: [String: String?]?) {
-        self.rootName = (dic?["rootName"] ?? "RootClass") ?? "RootClass"
+    init(cacheConfig dic: [String: String]?) {
+        self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""
         self.parentName = dic?["parentName"] ?? ""
-        self.header = dic?["header"] ?? defaultHeaderString()
+        self.header = StringUtils.isBlank(dic?["header"]) ? defaultHeaderString() : dic?["header"]
 
-        let langIndex = Int((dic?["langType"] ?? "0") ?? "0")!
-        let structIndex = Int((dic?["structType"] ?? "0") ?? "0")!
+        let langIndex = Int(dic?["langType"] ?? "0")!
+        let structIndex = Int(dic?["structType"] ?? "0")!
         let langType = LangType(rawValue: langIndex)!
         let structType = StructType(rawValue: structIndex)!
         let transStruct = LangStruct(langType: langType, structType: structType)
@@ -75,10 +75,13 @@ class File {
     func defaultHeaderString() -> String {
         let headerString = """
         //
-        // "\(rootName).\(langStruct.langType.suffix)"
-        // Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+        //  \(rootName).\(langStruct.langType.suffix)
+        //
+        //
+        //  Created by JSONConverter on \(Date.now(format: "yyyy/MM/dd")).
+        //  Copyright © \(Date.now(format: "yyyy"))年 JSONConverter. All rights reserved.
+        //
         """
         return headerString
     }
 }
-

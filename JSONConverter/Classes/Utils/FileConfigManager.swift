@@ -10,7 +10,7 @@ import Foundation
 
 class FileConfigManager {
     
-    private var file = File(cachConfig: UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String?])
+    private var file = File(cacheConfig: UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String])
     
     static let shared: FileConfigManager = {
         let manager = FileConfigManager()
