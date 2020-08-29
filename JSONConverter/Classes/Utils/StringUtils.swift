@@ -17,6 +17,10 @@ class StringUtils {
             return true
         }
     }
+    
+    class func isNotBlank(_ string: String?) -> Bool{
+        return !isBlank(string)
+    }
 }
 
 

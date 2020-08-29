@@ -58,13 +58,18 @@ class File {
         var totalStr = header ?? ""
         if langStruct.langType == LangType.Flutter {
             var className = rootName.className(withPrefix: prefix);
-            totalStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
+            totalStr += "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
         }
+        
+        contents.sort { $0 < $1 }
         contents.forEach { (content) in
             totalStr += content.toString()
         }
         
-        totalStr.removeFistChar()
+        if StringUtils.isBlank(header) {
+            totalStr.removeFistChar()
+        }
+        
         return totalStr
     }
     

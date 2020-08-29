@@ -74,7 +74,8 @@ class Content {
     private func propertyAndInitPart() -> (String, String) {
         var propertyStr = ""
         var initSwiftStr = ""
-
+        
+        properties.sort{ $0 < $1 }
         properties.forEach({ (property) in
             let result = property.toString()
             propertyStr += result.0
@@ -104,4 +105,9 @@ class Content {
         
         return parentClsNamePart
     }
+    
+}
+
+func < (lhs: Content, rhs:Content) -> Bool {
+    return lhs.propertyKey.localizedStandardCompare(rhs.propertyKey) == .orderedAscending
 }

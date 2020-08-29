@@ -261,5 +261,8 @@ class Property {
         
         return (propertyStr, initStr)
     }
-    
+}
+
+func < (lhs: Property, rhs:Property) -> Bool {
+    return lhs.propertyKey.localizedStandardCompare(rhs.propertyKey) == .orderedAscending
 }
