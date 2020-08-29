@@ -10,55 +10,52 @@ import Foundation
 
 class File {
     
-    var header: String = ""
+    var header: String?
     
-    var prefix: String = ""
+    var prefix: String?
     
-    var parentName: String = ""
+    var parentName: String?
     
     var langStruct = LangStruct(langType: .Swift, structType: .struct)
         
     var contents = [Content]()
     
-    var rootName: String = ""
+    var rootName: String = "RootClass"
     
-    class func file(withName name: String, prefix: String, langStruct: LangStruct, parentName: String) -> File {
-        let file = File()
-        file.rootName = name
-        file.prefix = prefix
-        file.langStruct = langStruct
-        file.parentName = parentName
-        return file
+    init(name: String, prefix: String?, header: String?, langStruct: LangStruct, parentName: String?) {
+        self.rootName = name
+        self.prefix = prefix
+        self.langStruct = langStruct
+        self.parentName = parentName
+        self.header = header
     }
     
-    class func cacheFile(withDic dic: [String: String]?) -> File {
-        let file = File()
-        file.header = dic?["header"] ?? ""
-        file.rootName = dic?["rootName"] ?? "RootClass"
-        file.prefix = dic?["prefix"] ?? ""
-        file.parentName = dic?["parentName"] ?? ""
-        
-        let langIndex = Int(dic?["langType"] ?? "0")!
-        let structIndex = Int(dic?["structType"] ?? "0")!
+    init(cachConfig dic: [String: String?]?) {
+        self.rootName = (dic?["rootName"] ?? "RootClass") ?? "RootClass"
+        self.prefix = dic?["prefix"] ?? ""
+        self.parentName = dic?["parentName"] ?? ""
+        self.header = dic?["header"] ?? defaultHeaderString()
+
+        let langIndex = Int((dic?["langType"] ?? "0") ?? "0")!
+        let structIndex = Int((dic?["structType"] ?? "0") ?? "0")!
         let langType = LangType(rawValue: langIndex)!
         let structType = StructType(rawValue: structIndex)!
         let transStruct = LangStruct(langType: langType, structType: structType)
-        file.langStruct = transStruct
-        return file
+        self.langStruct = transStruct
     }
-    
+        
     func fileContent(withPropertyKey key: String) -> Content {
-        let content = Content(propertyKey: key, langStruct: langStruct, superClass: parentName, prefixStr: prefix)
+        let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix)
         return content
     }
     
-    func fileProperty(withPropertykey key: String, type: YWPropertyType) -> Property {
+    func fileProperty(withPropertykey key: String, type: PropertyType) -> Property {
         let property = Property(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix)
         return property
     }
     
     func toString() -> String {
-        var totalStr = ""
+        var totalStr = header ?? ""
         if langStruct.langType == LangType.Flutter {
             var className = rootName.className(withPrefix: prefix);
             totalStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
@@ -71,9 +68,17 @@ class File {
         return totalStr
     }
     
-    func toCacheConfig() -> Dictionary<String, Any> {
+    func toCacheConfig() -> [String: String?] {
         return ["header": header, "rootName": rootName, "prefix": prefix, "parentName": parentName, "langType": "\(langStruct.langType.rawValue)", "structType": "\(langStruct.structType.rawValue)"]
     }
     
+    func defaultHeaderString() -> String {
+        let headerString = """
+        //
+        // "\(rootName).\(langStruct.langType.suffix)"
+        // Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+        """
+        return headerString
+    }
 }
 

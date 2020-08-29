@@ -19,8 +19,9 @@
 		7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF6202A95BE007E8D56 /* Assets.xcassets */; };
 		7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF7202A95BE007E8D56 /* MainMenu.xib */; };
 		7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */; };
-		7B45DB09202A95BF007E8D56 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAFA202A95BE007E8D56 /* Info.plist */; };
 		7B45DB0F202AA572007E8D56 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DB0E202AA572007E8D56 /* File.swift */; };
+		7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */; };
+		7B7D5AE424FA345C00A54D27 /* FileConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */; };
 		7B95A32224F95F69000D141B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B95A32424F95F69000D141B /* Localizable.strings */; };
 		7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */; };
 		7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */; };
@@ -63,6 +64,8 @@
 		7B45DAFA202A95BE007E8D56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B45DB0E202AA572007E8D56 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7B4B5EAA201B87A10098712B /* JSONConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileConfigManager.swift; sourceTree = "<group>"; };
 		7B95A31E24F95EA1000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		7B95A32324F95F69000D141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B95A32524F95F6E000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 			children = (
 				7B45DAEC202A95BE007E8D56 /* JSONParseManager.swift */,
 				8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */,
+				7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */,
+				7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -325,7 +330,7 @@
 			attributes = {
 				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "姚巍";
 				TargetAttributes = {
 					7B4B5EA9201B87A10098712B = {
@@ -340,6 +345,7 @@
 					};
 					7BDF296E202BDB7C00B7E2F5 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7B4B5EA9201B87A10098712B;
 					};
@@ -377,7 +383,6 @@
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
 				7B95A32224F95F69000D141B /* Localizable.strings in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
-				7B45DB09202A95BF007E8D56 /* Info.plist in Resources */,
 				7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */,
 				7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */,
 			);
@@ -406,7 +411,9 @@
 				7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */,
 				8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */,
 				7B45DB0F202AA572007E8D56 /* File.swift in Sources */,
+				7B7D5AE424FA345C00A54D27 /* FileConfigManager.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
+				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
 				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
@@ -471,6 +478,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -478,6 +486,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -529,6 +538,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -536,6 +546,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -574,6 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -596,6 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -617,7 +630,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanmo.JSONConverterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = JSONConverter;
 			};
 			name = Debug;
@@ -632,7 +645,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanmo.JSONConverterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = JSONConverter;
 			};
 			name = Release;

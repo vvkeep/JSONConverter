@@ -16,6 +16,17 @@ enum LangType: Int {
     case ObjC
     case Flutter
     case Codable
+    
+    var suffix: String {
+        switch self {
+        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
+            return "swift"
+        case .ObjC:
+            return "h"
+        case .Flutter:
+            return "dart"
+        }
+    }
 }
 
 enum StructType: Int {
@@ -37,12 +48,12 @@ let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
 
 class MainViewController: NSViewController {
     
-    lazy var transTypeTitleArr: [String] = {
+    lazy var transTypeTitleList: [String] = {
         let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
         return titleArr
     }()
     
-    lazy var structTypeTitleArr: [String] = {
+    lazy var structTypeTitleList: [String] = {
         let titleArr = ["struct", "class"]
         return titleArr
     }()
@@ -58,13 +69,7 @@ class MainViewController: NSViewController {
     @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
-    
-    var currentCacheFile: File {
-        let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]
-        let file = File.cacheFile(withDic: config)
-        return file
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -92,10 +97,10 @@ class MainViewController: NSViewController {
     }
         
     private func setupUI(){
-        converTypeBox.addItems(withObjectValues: transTypeTitleArr)
+        converTypeBox.addItems(withObjectValues: transTypeTitleList)
         converTypeBox.delegate = self
         
-        converStructBox.addItems(withObjectValues: structTypeTitleArr)
+        converStructBox.addItems(withObjectValues: structTypeTitleList)
         converStructBox.delegate = self
         
         classTextView.isEditable = false
@@ -109,14 +114,9 @@ class MainViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        if let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]  {
-            let file = File.cacheFile(withDic: config)
-            converTypeBox.selectItem(at: file.langStruct.langType.rawValue)
-            converStructBox.selectItem(at: file.langStruct.structType.rawValue)
-        }else {
-            converTypeBox.selectItem(at: 0)
-            converStructBox.selectItem(at: 0)
-        }
+        let configFile = FileConfigManager.shared.defaultConfigFile()
+        converTypeBox.selectItem(at: configFile.langStruct.langType.rawValue)
+        converStructBox.selectItem(at: configFile.langStruct.structType.rawValue)
     }
     
     @IBAction func settingAction(_ sender: NSButton) {
@@ -142,12 +142,8 @@ class MainViewController: NSViewController {
                 setJsonContent(content: formatJsonStr)
             }
             
-            guard let file = fileStructure() else {
-                alert(title: "转换配置出错", desc: "解析Josn配置出错，请清空配置信息重新解析")
-                return
-            }
-            
-            let classStr = JSONParseManager.shared.handleEngine(frome: json, file:file)
+            let configFile = FileConfigManager.shared.defaultConfigFile()
+            let classStr = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
             setClassContent(content: classStr)
         }
     }
@@ -170,20 +166,16 @@ class MainViewController: NSViewController {
         }
     }
     
-    private func fileStructure() -> File? {
-        let rootName = currentCacheFile.rootName
-        let prefix = currentCacheFile.prefix
-        let parentName = currentCacheFile.parentName
-        
+    private func updateConfigFile() {
+        let configFile = FileConfigManager.shared.defaultConfigFile()
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                 assert(false, "语言和结构类型组合出错")
-                return nil
+                return
         }
         
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
-        let file = File.file(withName: rootName, prefix: prefix, langStruct: transStruct, parentName: parentName)
-        return file
+        configFile.langStruct = transStruct
     }
     
     private func alert(title: String, desc: String) {
@@ -196,14 +188,7 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
-        // 保存 prefix rootclass superclass 结构类型 语言 配置，下次打开默认使用此配置
-        guard let file = fileStructure() else {
-            return
-        }
-        
-        let cacheDic = file.toCacheConfig()
-        UserDefaults.standard.set(cacheDic, forKey: FILE_CACHE_CONFIG_KEY)
-        UserDefaults.standard.synchronize()
+        FileConfigManager.shared.updateConfigFile()
     }
 }
 
@@ -225,6 +210,8 @@ extension MainViewController: NSComboBoxDelegate {
                 converStructBox.selectItem(at: 0)
             }
         }
+        
+        updateConfigFile()
     }
 }
 

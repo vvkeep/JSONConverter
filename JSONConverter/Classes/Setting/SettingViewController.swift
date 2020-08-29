@@ -21,7 +21,7 @@ class SettingViewController: NSViewController {
     
     @IBOutlet weak var headerKeyLab: NSTextField!
     @IBOutlet weak var headerField: NSTextField!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -33,11 +33,20 @@ class SettingViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        if let config = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]  {
-            let file = File.cacheFile(withDic: config)
-            prefixField.stringValue = file.prefix
-            rootClassField.stringValue = file.rootName
-            parentClassField.stringValue = file.parentName
-        }
+        let configFile = FileConfigManager.shared.defaultConfigFile()
+        prefixField.stringValue = configFile.prefix ?? ""
+        rootClassField.stringValue = configFile.rootName
+        parentClassField.stringValue = configFile.parentName ?? ""
+        headerField.stringValue = configFile.header ?? ""
+    }
+    
+    @IBAction func saveConfigAction(_ sender: NSButton) {
+        let configFile = FileConfigManager.shared.defaultConfigFile()
+        configFile.prefix = prefixField.stringValue
+        configFile.rootName = rootClassField.stringValue
+        configFile.parentName = parentClassField.stringValue
+        configFile.header =  headerField.stringValue
+        FileConfigManager.shared.updateConfigFile()
+        dismiss(nil)
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 /// count = 3
 let currentMapperSpace = "   "
 
-enum YWPropertyType: Int {
+enum PropertyType: Int {
     case `String` = 0
     case `Int`
     case `Float`
@@ -32,13 +32,13 @@ class Property {
     
     var propertyKey: String
     
-    var type: YWPropertyType
+    var type: PropertyType
     
     var langStruct: LangStruct
     
-    var prefixStr: String
+    var prefixStr: String?
     
-    init(propertyKey: String, type: YWPropertyType, langStruct: LangStruct, prefixStr: String) {
+    init(propertyKey: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?) {
         self.propertyKey = propertyKey
         self.type = type
         self.langStruct = langStruct

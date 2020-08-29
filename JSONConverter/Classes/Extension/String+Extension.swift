@@ -13,8 +13,8 @@ extension String {
         return lowercaseFirstChar()
     }
     
-    func className(withPrefix prefix: String) -> String {
-        return prefix + self.uppercaseFirstChar()
+    func className(withPrefix prefix: String?) -> String {
+        return (prefix ?? "") + self.uppercaseFirstChar()
     }
     
     func lowercaseFirstChar() -> String {
@@ -78,9 +78,9 @@ extension String {
 
 extension NSNumber {
     
-    func valueType() -> YWPropertyType {
+    func valueType() -> PropertyType {
         let numberType = CFNumberGetType(self as CFNumber)
-        var type: YWPropertyType = .Int
+        var type: PropertyType = .Int
         switch numberType{
         case .charType:
             if (self.int32Value == 0 || self.int32Value == 1){

@@ -19,6 +19,7 @@ class JSONParseManager {
     
     func handleEngine(frome obj: Any, file: File) -> String {
         self.file = file
+        self.file.contents.removeAll()
         var content : Content?
         let propertyKey = file.rootName.propertyName()
         switch obj {
@@ -76,7 +77,7 @@ class JSONParseManager {
             case _ as String:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayString)
             case let num as NSNumber:
-                let type = YWPropertyType(rawValue: num.valueType().rawValue + 6)!
+                let type = PropertyType(rawValue: num.valueType().rawValue + 6)!
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: type)
             case let dic as [String: Any]:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayDictionary)

@@ -15,14 +15,14 @@ class Content {
     
     var langStruct: LangStruct
     
-    var superClass: String
+    var parentClsName: String?
     
-    var prefixStr: String
+    var prefixStr: String?
     
-    init(propertyKey: String, langStruct: LangStruct, superClass: String, prefixStr: String) {
+    init(propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?) {
         self.propertyKey = propertyKey
         self.langStruct = langStruct
-        self.superClass = superClass
+        self.parentClsName = parentClsName
         self.prefixStr = prefixStr
     }
     
@@ -37,35 +37,35 @@ class Content {
         switch langStruct.langType {
         case .ObjC:
             propertyTotalPart.removeLastChar()
-            contentStr = "\n@interface \(className)\(superClassNamePart())\n\(propertyTotalPart)\n@end\n"
+            contentStr = "\n@interface \(className)\(parentClsNameNamePart())\n\(propertyTotalPart)\n@end\n"
         case .Swift:
             propertyTotalPart.removeLastChar()
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n}\n"
+                contentStr = "\nclass \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n}\n"
             }else if langStruct.structType == .struct {
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n}\n"
+                contentStr = "\nstruct \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n}\n"
             }
         case .HandyJSON, .Codable:
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init() {}\n}\n"
+                contentStr = "\nclass \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\trequired init() {}\n}\n"
             }else if langStruct.structType == .struct {
                 propertyTotalPart.removeLastChar()
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n}\n"
+                contentStr = "\nstruct \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n}\n"
             }
         case .SwiftyJSON:
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
+                contentStr = "\nclass \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
             }else if langStruct.structType == .struct {
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
+                contentStr = "\nstruct \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
             }
         case .ObjectMapper:
             if langStruct.structType == .class {
-                contentStr = "\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
+                contentStr = "\nclass \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
             }else if langStruct.structType == .struct {
-                contentStr = "\nstruct \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
+                contentStr = "\nstruct \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
             }
         case .Flutter:
-            contentStr = "\n@JsonSerializable()\nclass \(className)\(superClassNamePart()) {\n\(propertyTotalPart)\n\t\(className)(\(initTotalPart));\n\n\tfactory \(className).fromJson(Map<String, dynamic> srcJson) => _$\(className)FromJson(srcJson);\n\n\tMap<String, dynamic> toJson() => _$\(className)ToJson(this);\n\n}\n"
+            contentStr = "\n@JsonSerializable()\nclass \(className)\(parentClsNameNamePart()) {\n\(propertyTotalPart)\n\t\(className)(\(initTotalPart));\n\n\tfactory \(className).fromJson(Map<String, dynamic> srcJson) => _$\(className)FromJson(srcJson);\n\n\tMap<String, dynamic> toJson() => _$\(className)ToJson(this);\n\n}\n"
         }
         
         return contentStr
@@ -84,24 +84,24 @@ class Content {
         return (propertyStr, initSwiftStr)
     }
     
-    private func superClassNamePart() -> String {
-        var superClassPart: String = ""
+    private func parentClsNameNamePart() -> String {
+        var parentClsNamePart: String = ""
         
         switch langStruct.langType {
         case .HandyJSON:
-            superClassPart = superClass.isEmpty ? ": HandyJSON" : ": \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? ": HandyJSON" : ": \(parentClsName!)"
         case .Swift, .SwiftyJSON:
-            superClassPart = superClass.isEmpty ? "" : ": \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? "" : ": \(parentClsName!)"
         case .ObjC:
-            superClassPart = superClass.isEmpty ? ": NSObject" : ": \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? ": NSObject" : ": \(parentClsName!)"
         case .ObjectMapper:
-            superClassPart = superClass.isEmpty ? ": Mappable" : ": \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? ": Mappable" : ": \(parentClsName!)"
         case .Flutter:
-            superClassPart = superClass.isEmpty ? " extends Object" : " extends \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? " extends Object" : " extends \(parentClsName!)"
         case .Codable:
-            superClassPart = superClass.isEmpty ? ": Codable" : ": \(superClass)"
+            parentClsNamePart = StringUtils.isBlank(parentClsName) ? ": Codable" : ": \(parentClsName!)"
         }
         
-        return superClassPart
+        return parentClsNamePart
     }
 }
