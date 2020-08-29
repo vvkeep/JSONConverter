@@ -28,7 +28,7 @@ class JSONParseManager {
         case let arr as [Any]:
             _ = handleArr(itemKey: propertyKey, arr: arr) 
         default:
-            assert(true, "对象类型不识别")
+            assertionFailure("parse object type error")
         }
         
         if let content = content {
@@ -59,7 +59,7 @@ class JSONParseManager {
             case  _ as NSNull:
                 propertyModel = file.fileProperty(withPropertykey: itemKey, type: .nil)
             default:
-                assertionFailure("解析出现不识别类型")
+                assertionFailure("parse object type error")
             }
             
             if let propertyModel = propertyModel {
@@ -84,7 +84,7 @@ class JSONParseManager {
                 let content = handleDic(propertyKey: itemKey, dic: dic)
                 file.contents.append(content)
             default:
-                assertionFailure("解析出现不识别类型")
+                assertionFailure("parse object type error")
                 break
             }
             

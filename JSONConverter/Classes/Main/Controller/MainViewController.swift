@@ -133,7 +133,7 @@ class MainViewController: NSViewController {
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
-                    alert(title: "转换内容Josn出错", desc: "未知数据格式无法解析,请提供正确的Json字符串")
+                    alert(title: "app_converter_json_error_title".localized, desc: "app_converter_json_error_desc".localized)
                     return
             }
             

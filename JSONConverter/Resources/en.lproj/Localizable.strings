@@ -6,9 +6,20 @@
   Copyright © 2020 姚巍. All rights reserved.
 */
 
+"app_converter_json_error_title" = "converter error";
+"app_converter_json_error_desc" = "the date is not correct format json, plase check origin data";
+
 "parameter_setting_title" = "parameter setting";
 "parameter_classes_prefix" = "Classes prefix";
 "parameter_root_class_title" = "Root class";
 "parameter_parent_class_title" = "Parent class";
 "parameter_file_header_title" = "File header";
 "parameter_save_title" = "Save";
+
+"app_upgrade_veriosn_title" = "Version upgrade";
+"app_latest_veriosn_title" = "latest version";
+"app_current_veriosn_title" = "current version";
+"app_upgrade_version_desc" = "update description";
+
+"app_common_unknown_title" = "unknown";
+

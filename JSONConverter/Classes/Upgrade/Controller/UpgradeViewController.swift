@@ -19,10 +19,10 @@ class UpgradeViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "版本更新"
-        verstionLab.stringValue = "最新版本: \(versionInfo?.tag_name ?? "未知")"
-        currentVertionLab.stringValue = "目前版本: \(currentVer ?? "未知")"
-        descLab.stringValue = "更新说明:\n" + (versionInfo?.body ?? "此版本无相关描述")
+        title = "app_upgrade_veriosn_title".localized
+        verstionLab.stringValue = "\( "app_latest_veriosn_title".localized): \(versionInfo?.tag_name ?? "app_common_unknown_title".localized)"
+        currentVertionLab.stringValue = "\("app_current_veriosn_title".localized): \(currentVer ?? "app_common_unknown_title".localized)"
+        descLab.stringValue = "\("app_upgrade_version_desc".localized):\n" + (versionInfo?.body ?? "app_common_unknown_title".localized)
     }
     
     @IBAction func upgradeBtnAction(_ sender: NSButton) {

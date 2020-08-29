@@ -6,9 +6,19 @@
   Copyright © 2020 姚巍. All rights reserved.
 */
 
+"app_converter_json_error_title" = "转换内容JSON出错";
+"app_converter_json_error_desc" = "未知数据格式无法解析,请提供正确的JSON字符串";
+
 "parameter_setting_title" = "参数设置";
 "parameter_classes_prefix" = "类前缀";
 "parameter_root_class_title" = "根类名";
 "parameter_parent_class_title" = "父类名";
 "parameter_file_header_title" = "文件头";
 "parameter_save_title" = "保存";
+
+"app_upgrade_veriosn_title" = "版本更新";
+"app_latest_veriosn_title" = "最新版本";
+"app_current_veriosn_title" = "当前版本";
+"app_upgrade_version_desc" = "更新说明";
+
+"app_common_unknown_title" = "未知";
