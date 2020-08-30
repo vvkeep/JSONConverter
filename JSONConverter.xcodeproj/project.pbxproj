@@ -144,11 +144,9 @@
 		7B45DAEA202A95BE007E8D56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BF1DD2D24FBA3930090B531 /* Views */,
+				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7B95A31F24F95ECE000D141B /* Extension */,
-				8E2A9CFF24F91F8C00F03DCB /* Setting */,
-				8E43D13822E801FC00F52C8E /* Upgrade */,
-				7B45DAEB202A95BE007E8D56 /* Main */,
-				7B2D34E822E5F65C009D2ED2 /* Reward */,
 				8E43D13522E7E83F00F52C8E /* Utils */,
 				7B45DAF3202A95BE007E8D56 /* Vendor */,
 			);
@@ -241,6 +239,26 @@
 			path = JSONConverterUITests;
 			sourceTree = "<group>";
 		};
+		7BF1DD2D24FBA3930090B531 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E2A9CFF24F91F8C00F03DCB /* Setting */,
+				8E43D13822E801FC00F52C8E /* Upgrade */,
+				7B45DAEB202A95BE007E8D56 /* Main */,
+				7B2D34E822E5F65C009D2ED2 /* Reward */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7BF1DD2E24FBA3B70090B531 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7B45DAEC202A95BE007E8D56 /* JSONParseManager.swift */,
+				7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		8E2A9CFF24F91F8C00F03DCB /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,10 +271,8 @@
 		8E43D13522E7E83F00F52C8E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7B45DAEC202A95BE007E8D56 /* JSONParseManager.swift */,
 				8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */,
 				7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */,
-				7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
