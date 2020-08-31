@@ -44,12 +44,12 @@ class File {
         self.langStruct = transStruct
     }
         
-    func fileContent(withPropertyKey key: String) -> Content {
+    func content(withPropertyKey key: String) -> Content {
         let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix)
         return content
     }
     
-    func fileProperty(withPropertykey key: String, type: PropertyType) -> Property {
+    func property(withPropertykey key: String, type: PropertyType) -> Property {
         let property = Property(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix)
         return property
     }
@@ -61,7 +61,6 @@ class File {
             totalStr += "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
         }
         
-        contents.sort { $0 < $1 }
         contents.forEach { (content) in
             totalStr += content.toString()
         }

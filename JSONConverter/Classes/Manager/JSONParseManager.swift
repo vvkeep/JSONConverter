@@ -18,10 +18,11 @@ class JSONParseManager {
     private var file: File!
     
     func handleEngine(frome obj: Any, file: File) -> String {
+        file.contents.removeAll()
         self.file = file
-        self.file.contents.removeAll()
         var content : Content?
         let propertyKey = file.rootName.propertyName()
+        
         switch obj {
         case let dic as [String: Any]:
             content = handleDic(propertyKey: propertyKey, dic: dic)
@@ -39,7 +40,7 @@ class JSONParseManager {
     }
     
     private func handleDic(propertyKey: String, dic: [String: Any]) -> Content {
-        let content = file.fileContent(withPropertyKey: propertyKey)
+        let content = file.content(withPropertyKey: propertyKey)
         
         dic.forEach { (item) in
             let itemKey = item.key
@@ -47,17 +48,17 @@ class JSONParseManager {
             
             switch item.value {
             case _ as String:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .String)
+                propertyModel = file.property(withPropertykey: itemKey, type: .String)
             case let num as NSNumber:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: num.valueType())
+                propertyModel = file.property(withPropertykey: itemKey, type: num.valueType())
             case let dic as [String: Any]:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .Dictionary)
+                propertyModel = file.property(withPropertykey: itemKey, type: .Dictionary)
                 let content = handleDic(propertyKey: itemKey, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
                 propertyModel = handleArr(itemKey: itemKey, arr: arr)
             case  _ as NSNull:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .nil)
+                propertyModel = file.property(withPropertykey: itemKey, type: .nil)
             default:
                 assertionFailure("parse object type error")
             }
@@ -75,14 +76,14 @@ class JSONParseManager {
             var propertyModel: Property?
             switch first {
             case _ as String:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayString)
+                propertyModel = file.property(withPropertykey: itemKey, type: .ArrayString)
             case let num as NSNumber:
                 let type = PropertyType(rawValue: num.valueType().rawValue + 6)!
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: type)
+                propertyModel = file.property(withPropertykey: itemKey, type: type)
             case let dic as [String: Any]:
-                propertyModel = file.fileProperty(withPropertykey: itemKey, type: .ArrayDictionary)
+                propertyModel = file.property(withPropertykey: itemKey, type: .ArrayDictionary)
                 let content = handleDic(propertyKey: itemKey, dic: dic)
-                file.contents.append(content)
+                file.contents.insert(content, at: 0)
             default:
                 assertionFailure("parse object type error")
                 break
