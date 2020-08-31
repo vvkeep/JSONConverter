@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private let JSON_KEY_WORDS = ["null"]
+private let JSON_KEY_WORDS = ["null", "false", "true"]
 
 class JSONHightTextStorage: NSTextStorage {
     
@@ -63,10 +63,9 @@ extension JSONHightTextStorage {
         }
 
         // 值数字高亮
-        let numPatterns = try! NSRegularExpression(pattern: ": \\d+", options: .caseInsensitive)
+        let numPatterns = try! NSRegularExpression(pattern: "(?<=: )\\d+.*", options: .caseInsensitive)
         numPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            let range = result!.range
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x25aae2)], range: NSRange(location: range.location + 1, length: range.length - 1))
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x25aae2)], range: result!.range)
         }
         
         // 值URL高亮
@@ -75,11 +74,14 @@ extension JSONHightTextStorage {
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x61D2D6)], range: result!.range)
         }
         
-        // null关键字高亮
-        let nullPatterns = try! NSRegularExpression(pattern: "(?<=: )\"null\"", options: .caseInsensitive)
-        nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0xf1592a)], range: result!.range)
-        }        
+        // 关键字高亮
+        JSON_KEY_WORDS.forEach { (keyword) in
+            let nullPatterns = try! NSRegularExpression(pattern: "(?<=: )\(keyword)", options: .caseInsensitive)
+            nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+                self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0xf1592a)], range: result!.range)
+            }
+        }
+        
     }
 }
 
