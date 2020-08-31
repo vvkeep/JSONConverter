@@ -36,6 +36,8 @@
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
 		8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */; };
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
+		8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */; };
+		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeViewController.xib; sourceTree = "<group>"; };
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHightTextStorage.swift; sourceTree = "<group>"; };
+		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
 				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
 				7B7D5AE524FA520800A54D27 /* Date+Extension.swift */,
+				8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 		7BD7FEDE202AC85B0003AE80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */,
 				7B45DB0E202AA572007E8D56 /* File.swift */,
 				7BD7FED9202AC7C10003AE80 /* Content.swift */,
 				7BD7FEDB202AC7EB0003AE80 /* Property.swift */,
@@ -423,6 +429,7 @@
 			files = (
 				8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */,
 				7B45DB01202A95BF007E8D56 /* MainViewController.swift in Sources */,
+				8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
@@ -438,6 +445,7 @@
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				7B2D34EF22E601C7009D2ED2 /* RewardViewController.swift in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
+				8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONParseManager.swift in Sources */,
 			);

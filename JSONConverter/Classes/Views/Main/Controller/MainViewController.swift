@@ -69,7 +69,7 @@ class MainViewController: NSViewController {
     @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -95,7 +95,7 @@ class MainViewController: NSViewController {
             }
         }
     }
-        
+    
     private func setupUI(){
         converTypeBox.addItems(withObjectValues: transTypeTitleList)
         converTypeBox.delegate = self
@@ -105,12 +105,16 @@ class MainViewController: NSViewController {
         
         classTextView.isEditable = false
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
+        jsonTextView.isContinuousSpellCheckingEnabled = false
         
         let lineNumberView = NoodleLineNumberView(scrollView: jsonSrollView)
         jsonSrollView.hasVerticalRuler = true
         jsonSrollView.hasHorizontalRuler = false
         jsonSrollView.verticalRulerView = lineNumberView
         jsonSrollView.rulersVisible = true
+        
+        let jsonStorage = JSONHightTextStorage()
+        jsonStorage.addLayoutManager(jsonTextView.layoutManager!)
     }
     
     private func setupCacheConfig() {
@@ -123,7 +127,7 @@ class MainViewController: NSViewController {
         let settingVC = SettingViewController()
         presentAsModalWindow(settingVC)
     }
-
+    
     @IBAction func supportMeAction(_ sender: NSButton) {
         let rewardVC = RewardViewController()
         presentAsModalWindow(rewardVC)
@@ -138,32 +142,26 @@ class MainViewController: NSViewController {
             }
             
             if let formatJosnData = try? JSONSerialization.data(withJSONObject: json as AnyObject, options: .prettyPrinted),
-                let formatJsonStr = String(data: formatJosnData, encoding: .utf8){
-                setJsonContent(content: formatJsonStr)
+                let formatJsonStr = String(data: formatJosnData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
+                setupJSONTextViewContent(formatJsonStr)
             }
             
             let configFile = FileConfigManager.shared.defaultConfigFile()
             let classStr = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
-            setClassContent(content: classStr)
+            setupClassTextViewContent(classStr)
         }
     }
     
-    private func setJsonContent(content: String){
-        if content.count > 0{
-            let attrContent = NSMutableAttributedString(string: content)
-            jsonTextView.textStorage?.setAttributedString(attrContent)
-            jsonTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
-            jsonTextView.textStorage?.foregroundColor = NSColor.labelColor
-        }
+    private func setupJSONTextViewContent(_ content: String){
+        let attrContent = NSMutableAttributedString(string: content)
+        jsonTextView.textStorage?.setAttributedString(attrContent)
     }
     
-    private func setClassContent(content: String) {
-        if content.count > 0{
-            let attrContent = NSMutableAttributedString(string: content)
-            classTextView.textStorage?.setAttributedString(attrContent)
-            classTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
-            classTextView.textStorage?.foregroundColor = NSColor.labelColor
-        }
+    private func setupClassTextViewContent(_ content: String) {
+        let attrContent = NSMutableAttributedString(string: content)
+        classTextView.textStorage?.setAttributedString(attrContent)
+        classTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
+        classTextView.textStorage?.foregroundColor = NSColor.labelColor
     }
     
     private func updateConfigFile() {
