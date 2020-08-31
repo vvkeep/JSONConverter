@@ -81,7 +81,6 @@ extension JSONHightTextStorage {
                 self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0xf1592a)], range: result!.range)
             }
         }
-        
     }
 }
 
