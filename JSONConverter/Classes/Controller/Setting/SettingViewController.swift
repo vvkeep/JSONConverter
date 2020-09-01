@@ -35,7 +35,7 @@ class SettingViewController: NSViewController {
         rootClassKeyLab.stringValue = "parameter_root_class_title".localized
         parentClassKeyLab.stringValue = "parameter_parent_class_title".localized
         headerKeyLab.stringValue = "parameter_file_header_title".localized
-        saveBtn.stringValue = "parameter_save_title".localized
+        saveBtn.title = "parameter_save_title".localized
     }
     
     private func setupCacheConfig() {

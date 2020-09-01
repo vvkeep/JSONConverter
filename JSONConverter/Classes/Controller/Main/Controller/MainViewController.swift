@@ -70,6 +70,8 @@ class MainViewController: NSViewController {
     
     @IBOutlet var classTextView: NSTextView!
     
+    @IBOutlet weak var convertBtn: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -96,7 +98,9 @@ class MainViewController: NSViewController {
         }
     }
     
-    private func setupUI(){
+    private func setupUI() {
+        convertBtn.title = "main_view_convert_btn_title".localized
+        
         converTypeBox.addItems(withObjectValues: transTypeTitleList)
         converTypeBox.delegate = self
         
@@ -127,12 +131,7 @@ class MainViewController: NSViewController {
         let settingVC = SettingViewController()
         presentAsModalWindow(settingVC)
     }
-    
-    @IBAction func supportMeAction(_ sender: NSButton) {
-        let rewardVC = RewardViewController()
-        presentAsModalWindow(rewardVC)
-    }
-    
+        
     @IBAction func converBtnAction(_ sender: NSButton) {
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),

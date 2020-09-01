@@ -22,3 +22,6 @@
 "app_upgrade_version_desc" = "更新说明";
 
 "app_common_unknown_title" = "未知";
+
+"main_view_convert_btn_title" = "转换";
+"main_view_reward_btn_title" = "打赏";

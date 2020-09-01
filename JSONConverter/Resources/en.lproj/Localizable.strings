@@ -9,7 +9,7 @@
 "app_converter_json_error_title" = "converter error";
 "app_converter_json_error_desc" = "the date is not correct format json, plase check origin data";
 
-"parameter_setting_title" = "parameter setting";
+"parameter_setting_title" = "Parameter setting";
 "parameter_classes_prefix" = "Classes prefix";
 "parameter_root_class_title" = "Root class";
 "parameter_parent_class_title" = "Parent class";
@@ -23,3 +23,5 @@
 
 "app_common_unknown_title" = "unknown";
 
+"main_view_convert_btn_title" = "convert";
+"main_view_reward_btn_title" = "reward";

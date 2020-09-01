@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B2D34EF22E601C7009D2ED2 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */; };
-		7B2D34F022E601C7009D2ED2 /* RewardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */; };
 		7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34F822E6072A009D2ED2 /* wechat.jpeg */; };
 		7B45DAFE202A95BF007E8D56 /* JSONParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEC202A95BE007E8D56 /* JSONParseManager.swift */; };
 		7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAED202A95BE007E8D56 /* MainViewController.xib */; };
@@ -51,8 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
-		7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardViewController.xib; sourceTree = "<group>"; };
 		7B2D34F822E6072A009D2ED2 /* wechat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpeg; sourceTree = "<group>"; };
 		7B45DAEC202A95BE007E8D56 /* JSONParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParseManager.swift; sourceTree = "<group>"; };
 		7B45DAED202A95BE007E8D56 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -112,15 +108,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B2D34E822E5F65C009D2ED2 /* Reward */ = {
-			isa = PBXGroup;
-			children = (
-				7B2D34ED22E601C7009D2ED2 /* RewardViewController.swift */,
-				7B2D34EE22E601C7009D2ED2 /* RewardViewController.xib */,
-			);
-			path = Reward;
-			sourceTree = "<group>";
-		};
 		7B2D34F122E603C7009D2ED2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +238,6 @@
 				8E2A9CFF24F91F8C00F03DCB /* Setting */,
 				8E43D13822E801FC00F52C8E /* Upgrade */,
 				7B45DAEB202A95BE007E8D56 /* Main */,
-				7B2D34E822E5F65C009D2ED2 /* Reward */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,7 +390,6 @@
 				7B45DB04202A95BF007E8D56 /* MainWindowController.xib in Resources */,
 				8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */,
 				8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */,
-				7B2D34F022E601C7009D2ED2 /* RewardViewController.xib in Resources */,
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
 				7B95A32224F95F69000D141B /* Localizable.strings in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
@@ -443,7 +428,6 @@
 				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
-				7B2D34EF22E601C7009D2ED2 /* RewardViewController.swift in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
 				8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,

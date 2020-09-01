@@ -11,6 +11,7 @@
                 <outlet property="classTextView" destination="9fN-8x-2aw" id="9ab-zz-YPx"/>
                 <outlet property="converStructBox" destination="3Ps-cQ-yR7" id="NNW-og-YdH"/>
                 <outlet property="converTypeBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
+                <outlet property="convertBtn" destination="zHm-8W-mp8" id="PnE-0l-3uV"/>
                 <outlet property="jsonSrollView" destination="9hl-9H-OB5" id="pCj-Nx-0VJ"/>
                 <outlet property="jsonTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -92,7 +93,7 @@
                             </connections>
                         </button>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acr-Rb-HpB">
-                            <rect key="frame" x="705" y="11" width="103" height="26"/>
+                            <rect key="frame" x="795" y="11" width="103" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="T2a-pv-BJe"/>
                                 <constraint firstAttribute="width" constant="100" id="jFR-VO-k9q"/>
@@ -103,22 +104,8 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
                         </comboBox>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dbs-XQ-1fI">
-                            <rect key="frame" x="819" y="6" width="82" height="36"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="W3A-C9-6N9"/>
-                                <constraint firstAttribute="width" constant="70" id="t8v-Dr-Fnb"/>
-                            </constraints>
-                            <buttonCell key="cell" type="push" title="打赏" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PzA-Oq-nJU">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="label" size="13"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="supportMeAction:" target="-2" id="XTE-NH-idm"/>
-                            </connections>
-                        </button>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-cQ-yR7">
-                            <rect key="frame" x="595" y="11" width="93" height="26"/>
+                            <rect key="frame" x="685" y="11" width="93" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Fah-te-PL1"/>
                                 <constraint firstAttribute="width" constant="90" id="Sf6-Sn-V4v"/>
@@ -145,11 +132,9 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
-                        <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="dbs-XQ-1fI" secondAttribute="trailing" constant="20" id="Bq7-gc-AQE"/>
+                        <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="L68-oy-Lfw"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
                         <constraint firstItem="3Ps-cQ-yR7" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="TEL-yx-wep"/>
-                        <constraint firstItem="dbs-XQ-1fI" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="VQr-X1-Ncx"/>
-                        <constraint firstItem="dbs-XQ-1fI" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="WP7-te-JNi"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="XLk-k6-FyG"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="leading" secondItem="3Ps-cQ-yR7" secondAttribute="trailing" constant="20" id="YfS-lM-89F"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="top" secondItem="Rs5-vR-4VE" secondAttribute="top" id="ZAf-f1-Ce1"/>
