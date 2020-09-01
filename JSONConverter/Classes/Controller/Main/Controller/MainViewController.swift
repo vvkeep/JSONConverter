@@ -131,7 +131,7 @@ class MainViewController: NSViewController {
         let settingVC = SettingViewController()
         presentAsModalWindow(settingVC)
     }
-        
+    
     @IBAction func converBtnAction(_ sender: NSButton) {
         if let jsonStr = jsonTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
