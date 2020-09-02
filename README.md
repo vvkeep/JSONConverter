@@ -10,7 +10,6 @@ Using JSONConverter you will be able to:
 * Preview the generated content
 * Change the root class name.
 * Set a class name prefix for the generated classes.
-* Set a class name prefix for the generated classes.
 * Custom file header include author/date etc.
 * Support i18n(English/Chinese)
 
@@ -27,7 +26,7 @@ Currently supported languages
 Installation
 ============
 * Kindly clone the project, and build it using xCode.
-* Download [Release Packages](https://github.com/iosyaowei/JSONConverter/releases)
+* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
 
 To Do
 =====
@@ -45,8 +44,8 @@ Screenshots
 
 Flutter model instruction links
 ========================
-[json_serializable](https://github.com/dart-lang/json_serializable)
-[Flutter JSON](https://flutterchina.club/json/)
+* [json_serializable](https://github.com/dart-lang/json_serializable)
+* [Flutter JSON](https://flutterchina.club/json/)
 
 Final Notes
 ==========
