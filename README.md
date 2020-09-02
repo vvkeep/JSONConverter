@@ -1,76 +1,61 @@
+
+English | [简体中文](./README.zh-CN.md)
+
 JSONConverter
-==========
-JSONConverter is a desktop application for Mac OS X written in Swift. 
+============
+JSONConverter is a desktop application for MacOS written in Swift. 
 Using JSONConverter you will be able to:
 * Convert any valid JSON object to a class of one of the currently supported languages.
-* Preview the generated content before saving it.
-* Include constructors only, utility methods only, both or none.
+* Format JSON and display JSON with rich text
+* Preview the generated content
 * Change the root class name.
 * Set a class name prefix for the generated classes.
-* Set package name for Java files.
+* Set a class name prefix for the generated classes.
+* Custom file header include author/date etc.
+* Support i18n(English/Chinese)
 
-JSONConverter 是MAC上iOS开发的辅助小工具，可以快速的把json数据转换生成对应的模型类属性，目前支持Objective-C、Swift、Flutter以及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，借此提高我们的开发效率。
+Currently supported languages
+=============================
+- 1. Swift(Class/Struct)
+    - 1.1 HandyJSON
+    - 1.2 SwiftyJSON
+    - 1.3 ObjectMapper
+    - 1.4 Codable
+- 2. Objective-C
+- 3. Flutter
 
+Installation
+============
+* Kindly clone the project, and build it using xCode.
+* Download [Release Packages](https://github.com/iosyaowei/JSONConverter/releases)
 
-2.0开发计划
+To Do
+=====
+* Support JAVA Models 
+* Supprot Models File export
+* Supprot display models with rich text
+
+Screenshots
 ========================
-* 增加JAVA 模型导出
-* 增加模型文件导出功能
-* 修改APP ICON
-* 增加i18n
-* 优化JSON展示
+![1.png](/Screenshots/1.png)
+![2.png](/Screenshots/2.png)
+![3.png](/Screenshots/3.png)
+![4.png](/Screenshots/4.png)
 
-支持的功能
+
+Flutter model instruction links
 ========================
-* Objective-C、Swift(Codeable, SwiftyJSON, HandyJSON, ObjectMapper，Codable)、Flutter 对应的模型转化
-* 版本更新自动提醒
-* 转换配置缓存，默认保存上一次转换的配置，无需每次转换都要选择对应的语言和类型
-* 黑暗模式
-* ...
+[json_serializable](https://github.com/dart-lang/json_serializable)
+[Flutter JSON](https://flutterchina.club/json/)
 
-部分语言转换展示
-========================
-**1.Json转Flutter**
-![Json转ObectMapper.png](https://upload-images.jianshu.io/upload_images/2240549-82c59edfe2b783d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+Final Notes
+==========
+* The application still in its early stage. Please report any issue so I can improve it.
 
-**2.Json转ObectMapper**
-![Json转ObectMapper.png](http://upload-images.jianshu.io/upload_images/2240549-9df1e76d252546be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**3.Json转Swift-Struct**
- ![Json转Swift-Struct.png](http://upload-images.jianshu.io/upload_images/2240549-13e2e83e7eabd753.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**4.Json转HandyJSON**
-![Json转HandyJSON.png](http://upload-images.jianshu.io/upload_images/2240549-d456ae73a17d2a52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**5.Json转SwiftyJSON**
-![Json转SwiftyJSON.png](http://upload-images.jianshu.io/upload_images/2240549-be6939e3d3795d27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**6.Json转ObjectMapper**
-![Json转ObhectMapper.png](http://upload-images.jianshu.io/upload_images/2240549-f94dbef231b7dd63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**7.Json转Objective-C**
-![Json转Objective-C.png](http://upload-images.jianshu.io/upload_images/2240549-d01d60d19bd3f4de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-安装说明
-========================
-* Swift 版本 4.0.0
-* clone 这个工程，使用Xcode9及以上运行
-* 可以点击[releases](https://github.com/iosyaowei/JSONConverter/releases)选择最新的版本点击JSONConverter.zip, 下载解压后拖入Application
-
-
-Fluter转换备注
-========================
-因为,使用Flutter Json转换功能是配合[json_serializable](https://github.com/dart-lang/json_serializable)使用，具体的使用说明可以查看以下说明
-* [Flutter-快速完成JosnModel的转换](https://www.jianshu.com/p/8e22a383bc4b)
-* [JSON和序列化](https://flutterchina.club/json/)
-
-声明
-========================
-因为，并没有在项目中实际使用过[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)，所以并不知道初始化方法构建的是否合理，如果你有更好的建议，欢迎留言，大家共同进步，谢谢！,如果喜欢，请给一个star，鼓励一波，哈哈哈哈😁
-
-参考项目
+Thanks
 ========================
 * [WHC_DataModelFactory](https://github.com/netyouli/WHC_DataModelFactory)
 * [HandyJSON](https://github.com/alibaba/HandyJSON)
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+* [JSONExport](https://github.com/Ahmed-Ali/JSONExport)
 * ...
