@@ -204,10 +204,10 @@
 		7BD7FEDE202AC85B0003AE80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */,
 				7B45DB0E202AA572007E8D56 /* File.swift */,
 				7BD7FED9202AC7C10003AE80 /* Content.swift */,
 				7BD7FEDB202AC7EB0003AE80 /* Property.swift */,
+				8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

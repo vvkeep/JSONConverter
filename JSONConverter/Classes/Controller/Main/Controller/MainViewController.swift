@@ -110,6 +110,7 @@ class MainViewController: NSViewController {
         classTextView.isEditable = false
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
         jsonTextView.isContinuousSpellCheckingEnabled = false
+        jsonTextView.delegate = self
         
         let lineNumberView = NoodleLineNumberView(scrollView: jsonSrollView)
         jsonSrollView.hasVerticalRuler = true
@@ -209,6 +210,16 @@ extension MainViewController: NSComboBoxDelegate {
         }
         
         updateConfigFile()
+    }
+}
+
+extension MainViewController: NSTextViewDelegate {
+    func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
+        if let value = link as? String,
+            let url = URL(string: value) {
+            NSWorkspace.shared.open(url)
+        }
+        return true
     }
 }
 

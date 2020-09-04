@@ -109,3 +109,37 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
 }
+
+extension String{
+    
+    public func substring(from index: Int) -> String {
+        if(self.count > index){
+            let startIndex = self.index(self.startIndex,offsetBy: index)
+            let subString = self[startIndex..<self.endIndex];
+            return String(subString);
+        }else{
+            return ""
+        }
+    }
+    
+    public func substring(to index: Int) -> String {
+        if(self.count > index){
+            let endindex = self.index(self.startIndex, offsetBy: index)
+            let subString = self[self.startIndex..<endindex]
+            return String(subString)
+        }else{
+            return self
+        }
+    }
+    
+    public func subString(rang rangs:NSRange) -> String{
+        var string = String()
+        if(rangs.location >= 0) && (self.count > (rangs.location + rangs.length)){
+            let startIndex = self.index(self.startIndex,offsetBy: rangs.location)
+            let endIndex = self.index(self.startIndex,offsetBy: (rangs.location + rangs.length))
+            let subString = self[startIndex..<endIndex]
+            string = String(subString)
+        }
+        return string
+    }
+}

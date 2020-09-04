@@ -12,7 +12,6 @@ private let JSON_KEY_WORDS = ["null", "false", "true"]
 
 class JSONHightTextStorage: NSTextStorage {
     
-
     var _string = NSMutableAttributedString()
         
     override var string: String {
@@ -49,32 +48,37 @@ extension JSONHightTextStorage {
         
         let paragaphRange = NSString(string: string).paragraphRange(for: editedRange)
         
-        // key高亮
+        // key hightlight
         let keyPatterns = try! NSRegularExpression(pattern: "\".*?\" :", options: .caseInsensitive)
         keyPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             let range = result!.range
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x92278f)], range: NSRange(location: range.location, length: range.length - 1))
         }
         
-        // 值高亮
+        // value hightlight
         let valuePatterns = try! NSRegularExpression(pattern: "(?<=: )\".*?\"", options: .caseInsensitive)
         valuePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3ab54a)], range: result!.range)
         }
 
-        // 值数字高亮
+        // value number hightlight
         let numPatterns = try! NSRegularExpression(pattern: "(?<=: )\\d+.*", options: .caseInsensitive)
         numPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x25aae2)], range: result!.range)
         }
         
-        // 值URL高亮
+        // value URL highlight
         let urlPatterns = try! NSRegularExpression(pattern: "\"[a-zA-z]+://[^\\s]*\"", options: .caseInsensitive)
         urlPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x61D2D6)], range: result!.range)
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x61D2D6)],
+                               range: result!.range)
+            let underlineRnage = NSRange(location: result!.range.location + 1, length: result!.range.length - 2)
+            self.addAttributes([.underlineStyle : NSNumber(value: NSUnderlineStyle.single.rawValue)], range: underlineRnage)
+            let linkString = string.subString(rang: underlineRnage)
+            self.addAttributes([.link : linkString], range: underlineRnage)
         }
         
-        // 关键字高亮
+        // keywords highlight
         JSON_KEY_WORDS.forEach { (keyword) in
             let nullPatterns = try! NSRegularExpression(pattern: "(?<=: )\(keyword)", options: .caseInsensitive)
             nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
