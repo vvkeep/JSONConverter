@@ -10,7 +10,7 @@ import Cocoa
 
 class UpgradeUtils {
     
-    static let GITHUB_RELEASES_URL = "https://api.github.com/repos/iosyaowei/JSONConverter/releases"
+    static let GITHUB_RELEASES_URL = "https://api.github.com/repositories/120407973/releases"
     
     class func newestVersion(completion:@escaping ((VersionInfo?) -> ())) {
         DispatchQueue.global().async {
