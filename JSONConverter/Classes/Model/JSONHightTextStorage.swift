@@ -48,17 +48,17 @@ extension JSONHightTextStorage {
         
         let paragaphRange = NSString(string: string).paragraphRange(for: editedRange)
         
+        // string hightlight
+        let valuePatterns = try! NSRegularExpression(pattern: "\".*?\"", options: .caseInsensitive)
+        valuePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3ab54a)], range: result!.range)
+        }
+        
         // key hightlight
         let keyPatterns = try! NSRegularExpression(pattern: "\".*?\" :", options: .caseInsensitive)
         keyPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             let range = result!.range
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x92278f)], range: NSRange(location: range.location, length: range.length - 1))
-        }
-        
-        // value hightlight
-        let valuePatterns = try! NSRegularExpression(pattern: "(?<=: )\".*?\"", options: .caseInsensitive)
-        valuePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3ab54a)], range: result!.range)
         }
 
         // value number hightlight

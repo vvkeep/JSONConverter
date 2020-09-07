@@ -8,8 +8,9 @@
 
 import Cocoa
 
-private let CLASSES_KEY_WORDS = ["import", "part", "class", "factory", "func", "this", "self", "struct", "var", "let", "required", "init", "func", "nonatomic", "copy", "strong", "assign"]
+private let CLASSES_KEY_WORDS = ["import", "part", "class", "factory", "func", "this", "self", "struct", "var", "let", "required", "init", "func", "nonatomic", "copy", "strong", "assign", "mutating", "extends"]
 private let CLASSES_START_WAORD = ["@property", "@interface", "@end"]
+private let CLASSSES_PROPERTY_TYPES = ["NSString", "NSInteger", "NSInteger", "BOOL", "String", "Int", "Bool", "NSArray", "int", "List", "bool"]
 
 class ClassHightTextStorage: NSTextStorage {
     
@@ -83,11 +84,29 @@ extension ClassHightTextStorage {
         singleStringPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0xBC2B36)], range: result!.range)
         }
-
-
+        
+        // value type highlight
+        CLASSSES_PROPERTY_TYPES.forEach { (keyword) in
+            let nullPatterns = try! NSRegularExpression(pattern: "\\b\(keyword)\\b", options: .caseInsensitive)
+            nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+                self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3F9BBA)], range: result!.range)
+            }
+        }
+        
+        // class name hliglight
+        // start keywors highlight
+        ["class", "struct"].forEach { (keyword) in
+//            (?<=struct)\s.*?(?=:|\s)
+            let nullPatterns = try! NSRegularExpression(pattern: "(?<=\(keyword)\\s).*?(?=:|\\s)", options: .caseInsensitive)
+            nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+                self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x5CD7FF)], range: result!.range)
+            }
+        }
+        
     }
-    
 }
+
+
 
 
 
