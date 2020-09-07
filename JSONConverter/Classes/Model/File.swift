@@ -14,13 +14,17 @@ class File {
     
     var prefix: String?
     
+    var rootName: String = "RootClass"
+    
     var parentName: String?
     
-    var langStruct = LangStruct(langType: .Swift, structType: .struct)
+    var langStruct: LangStruct! {
+        didSet {
+            self.header = defaultHeaderString()
+        }
+    }
         
     var contents = [Content]()
-    
-    var rootName: String = "RootClass"
     
     init(name: String, prefix: String?, header: String, langStruct: LangStruct, parentName: String?) {
         self.rootName = name
@@ -34,7 +38,6 @@ class File {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""
         self.parentName = dic?["parentName"] ?? ""
-        self.header = StringUtils.isBlank(dic?["header"]) ? defaultHeaderString() : dic?["header"]
 
         let langIndex = Int(dic?["langType"] ?? "0")!
         let structIndex = Int(dic?["structType"] ?? "0")!

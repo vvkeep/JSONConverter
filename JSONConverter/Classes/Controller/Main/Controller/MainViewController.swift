@@ -54,7 +54,7 @@ class MainViewController: NSViewController {
     }()
     
     lazy var structTypeTitleList: [String] = {
-        let titleArr = ["struct", "class"]
+        let titleArr = ["Struct", "Class"]
         return titleArr
     }()
     
