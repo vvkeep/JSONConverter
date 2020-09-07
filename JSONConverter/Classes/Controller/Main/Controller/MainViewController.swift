@@ -120,6 +120,9 @@ class MainViewController: NSViewController {
         
         let jsonStorage = JSONHightTextStorage()
         jsonStorage.addLayoutManager(jsonTextView.layoutManager!)
+        
+        let classStorage = ClassHightTextStorage()
+        classStorage.addLayoutManager(classTextView.layoutManager!)
     }
     
     private func setupCacheConfig() {
@@ -160,8 +163,6 @@ class MainViewController: NSViewController {
     private func setupClassTextViewContent(_ content: String) {
         let attrContent = NSMutableAttributedString(string: content)
         classTextView.textStorage?.setAttributedString(attrContent)
-        classTextView.textStorage?.font = NSFont.systemFont(ofSize: 14)
-        classTextView.textStorage?.foregroundColor = NSColor.labelColor
     }
     
     private func updateConfigFile() {

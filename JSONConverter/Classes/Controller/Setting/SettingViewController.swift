@@ -36,6 +36,9 @@ class SettingViewController: NSViewController {
         parentClassKeyLab.stringValue = "parameter_parent_class_title".localized
         headerKeyLab.stringValue = "parameter_file_header_title".localized
         saveBtn.title = "parameter_save_title".localized
+        
+        headerField.textColor = NSColor.hexInt(hex: 0x3ab54a)
+        headerField.font =  NSFont(name: "Menlo", size: 14)!
     }
     
     private func setupCacheConfig() {

@@ -29,6 +29,7 @@
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
 		8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */; };
 		8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */; };
+		8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36005925060DD500625CFD /* ClassHightTextStorage.swift */; };
 		8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */; };
 		8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13922E81E6D00F52C8E /* VersionInfo.swift */; };
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
@@ -81,6 +82,7 @@
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		8E36005925060DD500625CFD /* ClassHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHightTextStorage.swift; sourceTree = "<group>"; };
 		8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeUtils.swift; sourceTree = "<group>"; };
 		8E43D13922E81E6D00F52C8E /* VersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfo.swift; sourceTree = "<group>"; };
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				7BD7FED9202AC7C10003AE80 /* Content.swift */,
 				7BD7FEDB202AC7EB0003AE80 /* Property.swift */,
 				8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */,
+				8E36005925060DD500625CFD /* ClassHightTextStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
 				8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
+				8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONParseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
