@@ -88,6 +88,7 @@ class File {
         //  Created by JSONConverter on \(Date.now(format: "yyyy/MM/dd")).
         //  Copyright © \(Date.now(format: "yyyy"))年 JSONConverter. All rights reserved.
         //
+        
         """
         return headerString
     }
