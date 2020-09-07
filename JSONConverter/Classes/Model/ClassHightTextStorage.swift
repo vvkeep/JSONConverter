@@ -94,15 +94,16 @@ extension ClassHightTextStorage {
         }
         
         // class name hliglight
-        // start keywors highlight
-        ["class", "struct"].forEach { (keyword) in
-//            (?<=struct)\s.*?(?=:|\s)
-            let nullPatterns = try! NSRegularExpression(pattern: "(?<=\(keyword)\\s).*?(?=:|\\s)", options: .caseInsensitive)
-            nullPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-                self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x5CD7FF)], range: result!.range)
-            }
+        let classNamePatterns = try! NSRegularExpression(pattern: "(?<=class\\s|struct\\s).*?(?=:|\\s)", options: .caseInsensitive)
+        classNamePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x5CD7FF)], range: result!.range)
         }
         
+        // parent class name hliglight
+        let parentNamePatterns = try! NSRegularExpression(pattern: "(?<=:\\s)[a-zA-z]+(?=\\s\\{)", options: .caseInsensitive)
+        parentNamePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x8FDA58)], range: result!.range)
+        }
     }
 }
 
