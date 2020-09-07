@@ -104,8 +104,6 @@ extension ClassHightTextStorage {
         parentNamePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x8FDA58)], range: result!.range)
         }
-
-        
     }
 }
 
