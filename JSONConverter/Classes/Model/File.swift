@@ -12,6 +12,8 @@ class File {
     
     var header: String!
     
+    var isCustomHeader: Bool = false
+    
     var prefix: String?
     
     var rootName: String = "RootClass"

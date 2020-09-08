@@ -94,7 +94,7 @@ extension ClassHightTextStorage {
         }
         
         // class name hliglight
-        let classNamePatterns = try! NSRegularExpression(pattern: "(?<=class\\s|struct\\s|@interface\\s).*?(?=:|\\s)", options: .caseInsensitive)
+        let classNamePatterns = try! NSRegularExpression(pattern: "(?<=class\\s|struct\\s|@interface\\s)[a-zA-z]+(?=:|\\s|\\s\\{)", options: .caseInsensitive)
         classNamePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x5CD7FF)], range: result!.range)
         }

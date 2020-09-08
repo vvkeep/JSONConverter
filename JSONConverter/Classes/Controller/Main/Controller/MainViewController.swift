@@ -169,7 +169,7 @@ class MainViewController: NSViewController {
         let configFile = FileConfigManager.shared.defaultConfigFile()
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
-                assert(false, "语言和结构类型组合出错")
+                assert(false, "lang or struct type error")
                 return
         }
         

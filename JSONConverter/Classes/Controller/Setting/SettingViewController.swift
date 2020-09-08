@@ -19,6 +19,9 @@ class SettingViewController: NSViewController {
     @IBOutlet weak var parentClassKeyLab: NSTextField!
     @IBOutlet weak var parentClassField: NSTextField!
     
+    @IBOutlet weak var customHeaderKeyLab: NSTextField!
+    @IBOutlet weak var customHeaderSwitch: NSSwitch!
+    
     @IBOutlet weak var headerKeyLab: NSTextField!
     @IBOutlet weak var headerField: NSTextField!
         
@@ -34,6 +37,7 @@ class SettingViewController: NSViewController {
         prefixKeyLab.stringValue = "parameter_classes_prefix".localized
         rootClassKeyLab.stringValue = "parameter_root_class_title".localized
         parentClassKeyLab.stringValue = "parameter_parent_class_title".localized
+        customHeaderKeyLab.stringValue = "parameter_custom_file_header_title".localized
         headerKeyLab.stringValue = "parameter_file_header_title".localized
         saveBtn.title = "parameter_save_title".localized
         

@@ -15,6 +15,7 @@
 "parameter_parent_class_title" = "Parent class";
 "parameter_file_header_title" = "File header";
 "parameter_save_title" = "Save";
+"parameter_custom_file_header_title" = "Cusotm header";
 
 "app_upgrade_veriosn_title" = "Version upgrade";
 "app_latest_veriosn_title" = "latest version";
