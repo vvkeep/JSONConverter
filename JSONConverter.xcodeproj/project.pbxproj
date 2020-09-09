@@ -27,6 +27,7 @@
 		7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* Content.swift */; };
 		7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* Property.swift */; };
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
+		8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1945E92508A3CE00E7CDCC /* Enums.swift */; };
 		8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */; };
 		8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */; };
 		8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36005925060DD500625CFD /* ClassHightTextStorage.swift */; };
@@ -80,6 +81,7 @@
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterUITests.swift; sourceTree = "<group>"; };
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1945E92508A3CE00E7CDCC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		8E36005925060DD500625CFD /* ClassHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHightTextStorage.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				7BF1DD2D24FBA3930090B531 /* Controller */,
 				7BD7FEDE202AC85B0003AE80 /* Model */,
+				8E1945E82508A23C00E7CDCC /* Macros */,
 				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7B95A31F24F95ECE000D141B /* Extension */,
 				8E43D13522E7E83F00F52C8E /* Utils */,
@@ -252,6 +255,14 @@
 				7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		8E1945E82508A23C00E7CDCC /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				8E1945E92508A3CE00E7CDCC /* Enums.swift */,
+			);
+			path = Macros;
 			sourceTree = "<group>";
 		};
 		8E2A9CFF24F91F8C00F03DCB /* Setting */ = {
@@ -425,6 +436,7 @@
 				7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */,
 				8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */,
 				7B45DB0F202AA572007E8D56 /* File.swift in Sources */,
+				8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */,
 				7B7D5AE424FA345C00A54D27 /* FileConfigManager.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,

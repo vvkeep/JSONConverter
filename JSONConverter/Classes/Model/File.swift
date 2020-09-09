@@ -12,20 +12,16 @@ class File {
     
     var header: String!
     
-    var isCustomHeader: Bool = false
+    var isCustomHeader: Int = 0
     
     var prefix: String?
     
-    var rootName: String = "RootClass"
+    var rootName: String = ""
     
     var parentName: String?
     
-    var langStruct: LangStruct! {
-        didSet {
-            self.header = defaultHeaderString()
-        }
-    }
-        
+    var langStruct: LangStruct!
+    
     var contents = [Content]()
     
     init(name: String, prefix: String?, header: String, langStruct: LangStruct, parentName: String?) {
@@ -40,15 +36,22 @@ class File {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""
         self.parentName = dic?["parentName"] ?? ""
-
+        
         let langIndex = Int(dic?["langType"] ?? "0")!
         let structIndex = Int(dic?["structType"] ?? "0")!
         let langType = LangType(rawValue: langIndex)!
         let structType = StructType(rawValue: structIndex)!
         let transStruct = LangStruct(langType: langType, structType: structType)
         self.langStruct = transStruct
-    }
         
+        self.isCustomHeader = Int(dic?["isCustomHeader"] ?? "0")!
+        if self.isCustomHeader == 1 {
+            self.header = dic?["header"] ?? ""
+        }else {
+            self.header = defaultHeaderString()
+        }
+    }
+    
     func content(withPropertyKey key: String) -> Content {
         let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix)
         return content
@@ -77,8 +80,11 @@ class File {
         return totalStr
     }
     
-    func toCacheConfig() -> [String: String?] {
-        return ["header": header, "rootName": rootName, "prefix": prefix, "parentName": parentName, "langType": "\(langStruct.langType.rawValue)", "structType": "\(langStruct.structType.rawValue)"]
+    func toCacheConfig() -> [String: String] {
+        return ["header": header, "isCustomHeader": "\(isCustomHeader)","rootName": rootName,
+                "prefix": prefix ?? "","parentName": parentName ?? "",
+                "langType": "\(langStruct.langType.rawValue)",
+                "structType": "\(langStruct.structType.rawValue)"]
     }
     
     func defaultHeaderString() -> String {

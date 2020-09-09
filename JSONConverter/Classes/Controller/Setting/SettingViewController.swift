@@ -26,10 +26,11 @@ class SettingViewController: NSViewController {
     @IBOutlet weak var headerField: NSTextField!
         
     @IBOutlet weak var saveBtn: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupCacheConfig()
+        updateCacheConfigUI()
     }
     
     private func setupUI() {
@@ -42,24 +43,44 @@ class SettingViewController: NSViewController {
         saveBtn.title = "parameter_save_title".localized
         
         headerField.textColor = NSColor.hexInt(hex: 0x3ab54a)
-        headerField.font =  NSFont(name: "Menlo", size: 14)!
+        headerField.font = NSFont(name: "Menlo", size: 14)!
     }
     
-    private func setupCacheConfig() {
-        let configFile = FileConfigManager.shared.defaultConfigFile()
+    private func updateCacheConfigUI() {
+        let configFile = FileConfigManager.shared.currentConfigFile()
         prefixField.stringValue = configFile.prefix ?? ""
         rootClassField.stringValue = configFile.rootName
         parentClassField.stringValue = configFile.parentName ?? ""
+        customHeaderSwitch.state = NSControl.StateValue(configFile.isCustomHeader)
+        
         headerField.stringValue = configFile.header ?? ""
+        
+        if customHeaderSwitch.state == .on {
+            headerField.isEditable = true
+            headerField.layer?.borderWidth = 1
+            headerField.layer?.borderColor = NSColor.hexInt(hex: 0x1AB6FF).cgColor
+        }else {
+            headerField.isEditable = false
+            headerField.layer?.borderWidth = 0
+            headerField.layer?.borderColor = nil
+        }
     }
-    
+        
     @IBAction func saveConfigAction(_ sender: NSButton) {
-        let configFile = FileConfigManager.shared.defaultConfigFile()
+        let configFile = FileConfigManager.shared.currentConfigFile()
         configFile.prefix = prefixField.stringValue
         configFile.rootName = rootClassField.stringValue
         configFile.parentName = parentClassField.stringValue
         configFile.header = headerField.stringValue
-        FileConfigManager.shared.updateConfigFile()
+        configFile.isCustomHeader = customHeaderSwitch.state.rawValue
+        FileConfigManager.shared.updateConfigFile(file: configFile)
         dismiss(nil)
+    }
+    
+    @IBAction func customFileHeaderSwitch(_ sender: NSSwitch) {
+        let configFile = FileConfigManager.shared.currentConfigFile()
+        configFile.isCustomHeader = customHeaderSwitch.state.rawValue
+        FileConfigManager.shared.updateConfigFile(file: configFile)
+        updateCacheConfigUI()
     }
 }

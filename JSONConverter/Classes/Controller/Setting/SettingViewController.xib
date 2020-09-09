@@ -123,6 +123,9 @@
                 </button>
                 <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="smN-MJ-qV3">
                     <rect key="frame" x="178" y="346" width="42" height="24"/>
+                    <connections>
+                        <action selector="customFileHeaderSwitch:" target="-2" id="qGY-He-0qc"/>
+                    </connections>
                 </switch>
             </subviews>
             <constraints>

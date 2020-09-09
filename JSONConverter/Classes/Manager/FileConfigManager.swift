@@ -8,22 +8,28 @@
 
 import Foundation
 
+private let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
+
 class FileConfigManager {
     
-    private var file = File(cacheConfig: UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String])
-    
+    private lazy var fileConfigDic: [String: String]? = {
+        let dic = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]
+        return dic
+    }()
+        
     static let shared: FileConfigManager = {
         let manager = FileConfigManager()
         return manager
     }()
     
-    func defaultConfigFile() -> File {
+    func currentConfigFile() -> File {
+        let file = File(cacheConfig: fileConfigDic)
         return file
     }
     
-    func updateConfigFile() {
-        let cacheDic = file.toCacheConfig()
-        UserDefaults.standard.set(cacheDic, forKey: FILE_CACHE_CONFIG_KEY)
+    func updateConfigFile(file: File) {
+        fileConfigDic = file.toCacheConfig()
+        UserDefaults.standard.set(fileConfigDic, forKey: FILE_CACHE_CONFIG_KEY)
         UserDefaults.standard.synchronize()
     }
 }

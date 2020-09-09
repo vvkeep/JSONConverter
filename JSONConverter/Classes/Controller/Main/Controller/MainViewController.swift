@@ -8,44 +8,6 @@
 
 import Cocoa
 
-enum LangType: Int {
-    case Swift = 0
-    case HandyJSON
-    case SwiftyJSON
-    case ObjectMapper
-    case ObjC
-    case Flutter
-    case Codable
-    
-    var suffix: String {
-        switch self {
-        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
-            return "swift"
-        case .ObjC:
-            return "h"
-        case .Flutter:
-            return "dart"
-        }
-    }
-}
-
-enum StructType: Int {
-    case `struct` = 0
-    case `class`
-}
-
-struct LangStruct {
-    var langType: LangType
-    var structType: StructType
-    
-    init(langType: LangType, structType: StructType) {
-        self.langType = langType
-        self.structType = structType
-    }
-}
-
-let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
-
 class MainViewController: NSViewController {
     
     lazy var transTypeTitleList: [String] = {
@@ -58,10 +20,10 @@ class MainViewController: NSViewController {
         return titleArr
     }()
     
-    // 转换模式Box 选择 语言
+    // 选择 转换语言
     @IBOutlet weak var converTypeBox: NSComboBox!
     
-    // 选择 类 或 结构体
+    // 选择 类/结构体
     @IBOutlet weak var converStructBox: NSComboBox!
     
     @IBOutlet weak var jsonSrollView: NSScrollView!
@@ -126,7 +88,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        let configFile = FileConfigManager.shared.defaultConfigFile()
+        let configFile = FileConfigManager.shared.currentConfigFile()
         converTypeBox.selectItem(at: configFile.langStruct.langType.rawValue)
         converStructBox.selectItem(at: configFile.langStruct.structType.rawValue)
     }
@@ -149,7 +111,7 @@ class MainViewController: NSViewController {
                 setupJSONTextViewContent(formatJsonStr)
             }
             
-            let configFile = FileConfigManager.shared.defaultConfigFile()
+            let configFile = FileConfigManager.shared.currentConfigFile()
             let classStr = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
             setupClassTextViewContent(classStr)
         }
@@ -166,7 +128,7 @@ class MainViewController: NSViewController {
     }
     
     private func updateConfigFile() {
-        let configFile = FileConfigManager.shared.defaultConfigFile()
+        let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                 assert(false, "lang or struct type error")
@@ -175,6 +137,7 @@ class MainViewController: NSViewController {
         
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
         configFile.langStruct = transStruct
+        FileConfigManager.shared.updateConfigFile(file: configFile)
     }
     
     private func alert(title: String, desc: String) {
@@ -187,7 +150,8 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
-        FileConfigManager.shared.updateConfigFile()
+        let currentConfigFile = FileConfigManager.shared.currentConfigFile()
+        FileConfigManager.shared.updateConfigFile(file: currentConfigFile)
     }
 }
 
@@ -203,7 +167,7 @@ extension MainViewController: NSComboBoxDelegate {
             }
         }else if comBox == converStructBox { //选择类或结构体
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
-            if langType == LangType.ObjC  || langType == LangType.Flutter { // 如果是OC Flutter  无论怎么选 都是 类
+            if langType == LangType.ObjC || langType == LangType.Flutter { // 如果是OC Flutter  无论怎么选 都是 类
                 converStructBox.selectItem(at: 1)
             } else if langType == LangType.Codable {//如果是Codable 就选择 struct
                 converStructBox.selectItem(at: 0)
