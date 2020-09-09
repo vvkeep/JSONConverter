@@ -29,7 +29,6 @@ Screenshots
 ![2.png](/Screenshots/2.png)
 ![3.png](/Screenshots/3.png)
 ![4.png](/Screenshots/4.png)
-![5.png](/Screenshots/4.png)
 
 Installation
 ============
