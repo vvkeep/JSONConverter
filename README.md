@@ -34,7 +34,7 @@ Screenshots
 Installation
 ============
 * Kindly clone the project, and build it using Xcode, then copy the app to applicaiton
-* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
+* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases), if the system reminds you of security issues, you can show info application, and click override malware protection
 
 To Do
 =====
