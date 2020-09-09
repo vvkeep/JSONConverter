@@ -85,8 +85,8 @@ class MainViewController: NSViewController {
         let classStorage = ClassHightTextStorage()
         classStorage.addLayoutManager(classTextView.layoutManager!)
         
-//        NSPanGestureRecognizer(target: self, action: #selector(<#T##@objc method#>))
-//        splitLineView.addGestureRecognizer(<#T##gestureRecognizer: NSGestureRecognizer##NSGestureRecognizer#>)
+        let pan = NSPanGestureRecognizer(target: self, action: #selector(panSplitViewAction))
+        splitLineView.addGestureRecognizer(pan)
     }
     
     private func setupCacheConfig() {
@@ -187,6 +187,17 @@ extension MainViewController: NSTextViewDelegate {
             NSWorkspace.shared.open(url)
         }
         return true
+    }
+}
+
+extension MainViewController {
+    @objc private func panSplitViewAction(pan: NSPanGestureRecognizer) {
+        let moveX = pan.location(in: self.view).x
+        pan.setTranslation(CGPoint.zero, in: self.view)
+        let raido = moveX / self.view.bounds.width
+        if raido > 0.1 && raido < 0.9 {
+            JSONScrollViewWidthCons = JSONScrollViewWidthCons.setMultiplier(multiplier: raido)
+        }
     }
 }
 

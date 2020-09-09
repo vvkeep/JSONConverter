@@ -27,6 +27,7 @@
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
 		8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1945E92508A3CE00E7CDCC /* Enums.swift */; };
 		8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */; };
+		8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */; };
 		8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */; };
 		8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */; };
 		8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36005925060DD500625CFD /* ClassHightTextStorage.swift */; };
@@ -78,6 +79,7 @@
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1945E92508A3CE00E7CDCC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+LineNumberRulerView.swift"; sourceTree = "<group>"; };
+		8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
 		8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		8E36005925060DD500625CFD /* ClassHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHightTextStorage.swift; sourceTree = "<group>"; };
@@ -175,10 +177,11 @@
 			isa = PBXGroup;
 			children = (
 				8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */,
-				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
 				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
 				7B7D5AE524FA520800A54D27 /* Date+Extension.swift */,
 				8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */,
+				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
+				8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */,
 				7B45DB01202A95BF007E8D56 /* MainViewController.swift in Sources */,
 				8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */,
+				8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
