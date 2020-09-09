@@ -7,7 +7,7 @@ JSONConverter is a desktop application for MacOS written in Swift.
 Using JSONConverter you will be able to:
 * Convert any valid JSON object to a class of one of the currently supported languages.
 * Format JSON and display JSON with rich text
-* Preview the generated content
+* Preview the generated rich content
 * Change the root class name.
 * Set a class name prefix for the generated classes.
 * Custom file header include author/date etc.
@@ -23,24 +23,24 @@ Currently supported languages
 - 2. Objective-C
 - 3. Flutter
 
-Installation
-============
-* Kindly clone the project, and build it using xCode.
-* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
-
-To Do
-=====
-* Support JAVA Models 
-* Supprot Models File export
-* Supprot display models with rich text
-
 Screenshots
 ========================
 ![1.png](/Screenshots/1.png)
 ![2.png](/Screenshots/2.png)
 ![3.png](/Screenshots/3.png)
 ![4.png](/Screenshots/4.png)
+![5.png](/Screenshots/4.png)
 
+Installation
+============
+* Kindly clone the project, and build it using Xcode, then copy the app to applicaiton
+* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
+
+To Do
+=====
+* Support JAVA Models 
+* Supprot Models File export
+* ~~Supprot display models with rich text~~
 
 Flutter model instruction links
 ========================
@@ -50,11 +50,3 @@ Flutter model instruction links
 Final Notes
 ==========
 * The application still in its early stage. Please report any issue so I can improve it.
-
-Thanks
-========================
-* [WHC_DataModelFactory](https://github.com/netyouli/WHC_DataModelFactory)
-* [HandyJSON](https://github.com/alibaba/HandyJSON)
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-* [JSONExport](https://github.com/Ahmed-Ali/JSONExport)
-* ...
