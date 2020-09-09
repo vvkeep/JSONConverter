@@ -28,6 +28,8 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
     
+    @IBOutlet weak var splitLineView: NSView!
+    
     @IBOutlet var JSONTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
@@ -82,6 +84,9 @@ class MainViewController: NSViewController {
         
         let classStorage = ClassHightTextStorage()
         classStorage.addLayoutManager(classTextView.layoutManager!)
+        
+//        NSPanGestureRecognizer(target: self, action: #selector(<#T##@objc method#>))
+//        splitLineView.addGestureRecognizer(<#T##gestureRecognizer: NSGestureRecognizer##NSGestureRecognizer#>)
     }
     
     private func setupCacheConfig() {
