@@ -7,11 +7,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="JSONConverter" customModuleProvider="target">
             <connections>
+                <outlet property="JSONScrollViewWidthCons" destination="ST4-zz-PbG" id="GtY-tm-3Bp"/>
+                <outlet property="JSONTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
                 <outlet property="classTextView" destination="9fN-8x-2aw" id="9ab-zz-YPx"/>
                 <outlet property="converStructBox" destination="3Ps-cQ-yR7" id="NNW-og-YdH"/>
                 <outlet property="converTypeBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
                 <outlet property="convertBtn" destination="zHm-8W-mp8" id="PnE-0l-3uV"/>
-                <outlet property="jsonTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -21,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="999" height="650"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-9H-OB5">
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-9H-OB5" userLabel="JSON Scroll View">
                     <rect key="frame" x="0.0" y="50" width="400" height="600"/>
                     <clipView key="contentView" drawsBackground="NO" id="1E1-08-pKY">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
@@ -47,7 +48,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-eC-QHs">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Jih-7b-sHs">
+                    <rect key="frame" x="400" y="50" width="8" height="600"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="Exf-hA-eBN"/>
+                    </constraints>
+                </customView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-eC-QHs" userLabel="Class Scroll View">
                     <rect key="frame" x="408" y="50" width="591" height="600"/>
                     <clipView key="contentView" drawsBackground="NO" id="FvW-F1-qIh">
                         <rect key="frame" x="0.0" y="0.0" width="591" height="600"/>
@@ -73,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE" userLabel="Bottom Tool Bar">
                     <rect key="frame" x="0.0" y="0.0" width="999" height="50"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zHm-8W-mp8">
@@ -84,7 +91,7 @@
                             </constraints>
                             <buttonCell key="cell" type="push" title="转换" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uWG-Sb-jzp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="converBtnAction:" target="-2" id="JJ0-CN-o34"/>
@@ -97,7 +104,7 @@
                                 <constraint firstAttribute="width" constant="100" id="jFR-VO-k9q"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="SHd-ug-r0R">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
@@ -109,7 +116,7 @@
                                 <constraint firstAttribute="width" constant="90" id="Sf6-Sn-V4v"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="b5g-Qr-2Vq">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
@@ -121,7 +128,7 @@
                             </constraints>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" inset="2" id="bJ5-2Y-TL5">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="settingAction:" target="-2" id="9y4-PN-kgw"/>
@@ -144,16 +151,19 @@
             </subviews>
             <constraints>
                 <constraint firstItem="Rs5-vR-4VE" firstAttribute="top" secondItem="aGD-eC-QHs" secondAttribute="bottom" id="Cd5-8a-64K"/>
+                <constraint firstItem="Jih-7b-sHs" firstAttribute="leading" secondItem="9hl-9H-OB5" secondAttribute="trailing" id="Exo-bD-cDy"/>
                 <constraint firstAttribute="trailing" secondItem="aGD-eC-QHs" secondAttribute="trailing" id="Ijc-Ni-8GJ"/>
                 <constraint firstItem="aGD-eC-QHs" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="RpW-Zt-sN7"/>
                 <constraint firstItem="9hl-9H-OB5" firstAttribute="width" secondItem="Hz6-mo-xeY" secondAttribute="width" multiplier="2:5" id="ST4-zz-PbG"/>
+                <constraint firstItem="Jih-7b-sHs" firstAttribute="trailing" secondItem="aGD-eC-QHs" secondAttribute="leading" id="Ux8-Ga-kMO"/>
                 <constraint firstItem="Rs5-vR-4VE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="cG2-dB-ZOt"/>
                 <constraint firstAttribute="trailing" secondItem="Rs5-vR-4VE" secondAttribute="trailing" id="cS8-B3-kxc"/>
                 <constraint firstItem="Rs5-vR-4VE" firstAttribute="top" secondItem="9hl-9H-OB5" secondAttribute="bottom" id="jHm-lF-z9c"/>
+                <constraint firstItem="Jih-7b-sHs" firstAttribute="bottom" secondItem="Rs5-vR-4VE" secondAttribute="top" id="kDJ-77-Ofm"/>
+                <constraint firstItem="Jih-7b-sHs" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="l03-oG-wCa"/>
                 <constraint firstItem="9hl-9H-OB5" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="lue-Vj-mG6"/>
                 <constraint firstAttribute="bottom" secondItem="Rs5-vR-4VE" secondAttribute="bottom" id="neR-ur-axL"/>
                 <constraint firstItem="9hl-9H-OB5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="sk6-01-Cdy"/>
-                <constraint firstItem="aGD-eC-QHs" firstAttribute="leading" secondItem="9hl-9H-OB5" secondAttribute="trailing" constant="8" id="xgk-In-BOj"/>
             </constraints>
             <point key="canvasLocation" x="225" y="7"/>
         </customView>

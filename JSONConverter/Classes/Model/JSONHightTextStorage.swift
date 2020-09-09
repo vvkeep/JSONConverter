@@ -48,10 +48,11 @@ extension JSONHightTextStorage {
         
         let paragaphRange = NSString(string: string).paragraphRange(for: editedRange)
         
-        // string hightlight
+        // value string hightlight
         let valuePatterns = try! NSRegularExpression(pattern: "\".*?\"", options: .caseInsensitive)
         valuePatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3ab54a)], range: result!.range)
+            let range = NSRange(location: result!.range.location + 1, length: result!.range.length - 2)
+            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x3ab54a)], range: range)
         }
         
         // key hightlight
@@ -60,6 +61,7 @@ extension JSONHightTextStorage {
             let range = result!.range
             self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x92278f)], range: NSRange(location: range.location, length: range.length - 1))
         }
+        
 
         // value number hightlight
         let numPatterns = try! NSRegularExpression(pattern: "(?<=: )\\d+.*", options: .caseInsensitive)
@@ -70,8 +72,6 @@ extension JSONHightTextStorage {
         // value URL highlight
         let urlPatterns = try! NSRegularExpression(pattern: "\"[a-zA-z]+://[^\\s]*\"", options: .caseInsensitive)
         urlPatterns.enumerateMatches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: paragaphRange) { (result, flags, _) in
-            self.addAttributes([.foregroundColor: NSColor.hexInt(hex: 0x61D2D6)],
-                               range: result!.range)
             let underlineRnage = NSRange(location: result!.range.location + 1, length: result!.range.length - 2)
             self.addAttributes([.underlineStyle : NSNumber(value: NSUnderlineStyle.single.rawValue)], range: underlineRnage)
             let linkString = string.subString(rang: underlineRnage)

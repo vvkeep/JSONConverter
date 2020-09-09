@@ -20,13 +20,15 @@ class MainViewController: NSViewController {
         return titleArr
     }()
     
-    // 选择 转换语言
+    // Choose Language
     @IBOutlet weak var converTypeBox: NSComboBox!
     
-    // 选择 类/结构体
+    // Choose Structure
     @IBOutlet weak var converStructBox: NSComboBox!
     
-    @IBOutlet var jsonTextView: NSTextView!
+    @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
+    
+    @IBOutlet var JSONTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
     
@@ -70,13 +72,13 @@ class MainViewController: NSViewController {
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
         
-        jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
-        jsonTextView.isContinuousSpellCheckingEnabled = false
-        jsonTextView.delegate = self
-        jsonTextView.setUpLineNumberView()
+        JSONTextView.isAutomaticQuoteSubstitutionEnabled = false
+        JSONTextView.isContinuousSpellCheckingEnabled = false
+        JSONTextView.delegate = self
+        JSONTextView.setUpLineNumberView()
         
         let jsonStorage = JSONHightTextStorage()
-        jsonStorage.addLayoutManager(jsonTextView.layoutManager!)
+        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
         
         let classStorage = ClassHightTextStorage()
         classStorage.addLayoutManager(classTextView.layoutManager!)
@@ -94,7 +96,7 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
-        if let jsonStr = jsonTextView.textStorage?.string {
+        if let jsonStr = JSONTextView.textStorage?.string {
             guard let jsonData = jsonStr.data(using: .utf8),
                 let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
                     alert(title: "app_converter_json_error_title".localized, desc: "app_converter_json_error_desc".localized)
@@ -114,7 +116,7 @@ class MainViewController: NSViewController {
     
     private func setupJSONTextViewContent(_ content: String){
         let attrContent = NSMutableAttributedString(string: content)
-        jsonTextView.textStorage?.setAttributedString(attrContent)
+        JSONTextView.textStorage?.setAttributedString(attrContent)
     }
     
     private func setupClassTextViewContent(_ content: String) {
