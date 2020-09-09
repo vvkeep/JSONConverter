@@ -77,7 +77,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="DFt-2r-OQd"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="d7f-e2-1df"/>
                     </constraints>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ABR-Eh-aVl">
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" drawsBackground="YES" id="ABR-Eh-aVl">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
