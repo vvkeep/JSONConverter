@@ -26,8 +26,6 @@ class MainViewController: NSViewController {
     // 选择 类/结构体
     @IBOutlet weak var converStructBox: NSComboBox!
     
-    @IBOutlet weak var jsonSrollView: NSScrollView!
-    
     @IBOutlet var jsonTextView: NSTextView!
     
     @IBOutlet var classTextView: NSTextView!
@@ -70,15 +68,12 @@ class MainViewController: NSViewController {
         converStructBox.delegate = self
         
         classTextView.isEditable = false
+        classTextView.setUpLineNumberView()
+        
         jsonTextView.isAutomaticQuoteSubstitutionEnabled = false
         jsonTextView.isContinuousSpellCheckingEnabled = false
         jsonTextView.delegate = self
-        
-        let lineNumberView = NoodleLineNumberView(scrollView: jsonSrollView)
-        jsonSrollView.hasVerticalRuler = true
-        jsonSrollView.hasHorizontalRuler = false
-        jsonSrollView.verticalRulerView = lineNumberView
-        jsonSrollView.rulersVisible = true
+        jsonTextView.setUpLineNumberView()
         
         let jsonStorage = JSONHightTextStorage()
         jsonStorage.addLayoutManager(jsonTextView.layoutManager!)
@@ -158,18 +153,18 @@ extension MainViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxSelectionDidChange(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        if comBox == converTypeBox { // 选择语言
+        if comBox == converTypeBox { //Choose Language
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
-            if langType == LangType.ObjC || langType == LangType.Flutter { // 如果是OC Flutter 就选择 class
+            if langType == LangType.ObjC || langType == LangType.Flutter { //if OC Flutter choose class
                 converStructBox.selectItem(at: 1)
-            } else if langType == LangType.Codable {//如果是Codable 就选择 struct
+            } else if langType == LangType.Codable {//if Codable choose struct
                 converStructBox.selectItem(at: 0)
             }
-        }else if comBox == converStructBox { //选择类或结构体
+        }else if comBox == converStructBox { //Choose Structure
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
-            if langType == LangType.ObjC || langType == LangType.Flutter { // 如果是OC Flutter  无论怎么选 都是 类
+            if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
                 converStructBox.selectItem(at: 1)
-            } else if langType == LangType.Codable {//如果是Codable 就选择 struct
+            } else if langType == LangType.Codable { //if Codable choose struct
                 converStructBox.selectItem(at: 0)
             }
         }

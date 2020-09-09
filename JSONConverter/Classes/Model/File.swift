@@ -24,14 +24,6 @@ class File {
     
     var contents = [Content]()
     
-    init(name: String, prefix: String?, header: String, langStruct: LangStruct, parentName: String?) {
-        self.rootName = name
-        self.prefix = prefix
-        self.langStruct = langStruct
-        self.parentName = parentName
-        self.header = header
-    }
-    
     init(cacheConfig dic: [String: String]?) {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""

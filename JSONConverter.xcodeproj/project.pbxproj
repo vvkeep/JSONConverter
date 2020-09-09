@@ -22,12 +22,11 @@
 		7B7D5AE424FA345C00A54D27 /* FileConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE324FA345C00A54D27 /* FileConfigManager.swift */; };
 		7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE524FA520800A54D27 /* Date+Extension.swift */; };
 		7B95A32224F95F69000D141B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B95A32424F95F69000D141B /* Localizable.strings */; };
-		7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */; };
-		7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */; };
 		7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* Content.swift */; };
 		7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* Property.swift */; };
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
 		8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1945E92508A3CE00E7CDCC /* Enums.swift */; };
+		8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */; };
 		8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */; };
 		8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */; };
 		8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36005925060DD500625CFD /* ClassHightTextStorage.swift */; };
@@ -72,16 +71,13 @@
 		7B95A32324F95F69000D141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B95A32524F95F6E000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7BD7FED2202AC1E70003AE80 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
-		7BD7FED3202AC1E80003AE80 /* NoodleLineNumberMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberMarker.h; sourceTree = "<group>"; };
-		7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberView.m; sourceTree = "<group>"; };
-		7BD7FED5202AC1E80003AE80 /* NoodleLineNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoodleLineNumberView.h; sourceTree = "<group>"; };
-		7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoodleLineNumberMarker.m; sourceTree = "<group>"; };
 		7BD7FED9202AC7C10003AE80 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		7BD7FEDB202AC7EB0003AE80 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterUITests.swift; sourceTree = "<group>"; };
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1945E92508A3CE00E7CDCC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+LineNumberRulerView.swift"; sourceTree = "<group>"; };
 		8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		8E36005925060DD500625CFD /* ClassHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHightTextStorage.swift; sourceTree = "<group>"; };
@@ -145,7 +141,6 @@
 				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7B95A31F24F95ECE000D141B /* Extension */,
 				8E43D13522E7E83F00F52C8E /* Utils */,
-				7B45DAF3202A95BE007E8D56 /* Vendor */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -156,14 +151,6 @@
 				7BD7FEE1202AD1F30003AE80 /* Controller */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		7B45DAF3202A95BE007E8D56 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				7BD7FED1202AC1B20003AE80 /* NoodleLineNumber */,
-			);
-			path = Vendor;
 			sourceTree = "<group>";
 		};
 		7B4B5EA1201B87A10098712B = {
@@ -187,23 +174,13 @@
 		7B95A31F24F95ECE000D141B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */,
 				7B45DAF4202A95BE007E8D56 /* String+Extension.swift */,
 				8E68571C22850F4800DCDF2E /* Notification+Extension.swift */,
 				7B7D5AE524FA520800A54D27 /* Date+Extension.swift */,
 				8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		7BD7FED1202AC1B20003AE80 /* NoodleLineNumber */ = {
-			isa = PBXGroup;
-			children = (
-				7BD7FED3202AC1E80003AE80 /* NoodleLineNumberMarker.h */,
-				7BD7FED6202AC1E80003AE80 /* NoodleLineNumberMarker.m */,
-				7BD7FED5202AC1E80003AE80 /* NoodleLineNumberView.h */,
-				7BD7FED4202AC1E80003AE80 /* NoodleLineNumberView.m */,
-			);
-			path = NoodleLineNumber;
 			sourceTree = "<group>";
 		};
 		7BD7FEDE202AC85B0003AE80 /* Model */ = {
@@ -431,16 +408,15 @@
 				8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
+				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
-				7BD7FED8202AC1E80003AE80 /* NoodleLineNumberMarker.m in Sources */,
 				8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */,
 				7B45DB0F202AA572007E8D56 /* File.swift in Sources */,
 				8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */,
 				7B7D5AE424FA345C00A54D27 /* FileConfigManager.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
-				7BD7FED7202AC1E80003AE80 /* NoodleLineNumberView.m in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
