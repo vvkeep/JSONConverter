@@ -36,7 +36,8 @@ JSONConverter
 安装说明
 ============
 * 使用Xcode Build，拷贝JSONConverter.app 至 Application 文件夹
-* 下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)，选择最新的版本安装包，如果系统提醒安全问题，你可以打开应用的简介，打开覆盖恶意软件保护即可
+* 下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)
+* **[关于应用因为安全原因无法安装的解决方法](https://github.com/DevYao/JSONConverter/issues/16)**
 
 开发计划
 =====
