@@ -4,12 +4,10 @@
 
 JSONConverter
 ==========
- JSONConverter是MAC上iOS/Flutter开发的辅助工具，可以快速的把JSON数据转换生成对应的模型类属性，目前支持Objective-C、Swift、Flutter以及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，借此提高开发效率。
+ JSONConverter是MAC上iOS/Flutter开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持Objective-C、Swift、Flutter以及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，借此提高开发效率。
 
 功能介绍
 ============
-JSONConverter是MAC上iOS开发的辅助工具，. 
-目前支持的主要功能如下:
 * 快速的把JSON数据转换生成对应支持的语言的模型类和属性.
 * 格式化富文本展示JSON数据
 * 预览生成的对应富文本模型类
