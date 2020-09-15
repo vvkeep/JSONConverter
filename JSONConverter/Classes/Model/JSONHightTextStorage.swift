@@ -19,13 +19,13 @@ class JSONHightTextStorage: NSTextStorage {
     }
     
     override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [NSAttributedString.Key : Any] {
-        return _string .attributes(at: location, effectiveRange: range)
+        return _string.attributes(at: location, effectiveRange: range)
     }
     
     override func replaceCharacters(in range: NSRange, with str: String) {
         beginEditing()
         _string.replaceCharacters(in: range, with: str)
-        edited([.editedCharacters, .editedAttributes], range: range, changeInLength: str.count - range.length)
+        edited([.editedCharacters, .editedAttributes], range: range, changeInLength: (str as NSString).length - range.length)
         endEditing()
     }
     
@@ -35,7 +35,7 @@ class JSONHightTextStorage: NSTextStorage {
         edited(.editedCharacters, range: range, changeInLength: 0)
         endEditing()
     }
-    
+        
     override func processEditing() {
         performReplacementsForRange(changedRange: editedRange)
         super.processEditing()
