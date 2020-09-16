@@ -21,6 +21,7 @@
 "app_latest_veriosn_title" = "最新版本";
 "app_current_veriosn_title" = "当前版本";
 "app_upgrade_version_desc" = "更新说明";
+"app_upgrade_btn_title" = "更新";
 
 "app_common_unknown_title" = "未知";
 

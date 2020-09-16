@@ -21,6 +21,7 @@
 "app_latest_veriosn_title" = "latest version";
 "app_current_veriosn_title" = "current version";
 "app_upgrade_version_desc" = "update description";
+"app_upgrade_btn_title" = "upgrade";
 
 "app_common_unknown_title" = "unknown";
 

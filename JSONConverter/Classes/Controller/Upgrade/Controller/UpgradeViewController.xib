@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -10,6 +9,7 @@
             <connections>
                 <outlet property="currentVertionLab" destination="iSn-eT-RyI" id="KBC-Dt-Olp"/>
                 <outlet property="descLab" destination="ijc-n2-YFV" id="xQ2-E2-QIp"/>
+                <outlet property="upgradeBtn" destination="hof-96-JSb" id="iBm-A3-0Tl"/>
                 <outlet property="verstionLab" destination="fcM-4r-k5B" id="T1J-Z7-DuA"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-n2-YFV">
-                    <rect key="frame" x="33" y="143" width="404" height="17"/>
+                    <rect key="frame" x="33" y="146" width="404" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="W0L-hG-yB8"/>
                     </constraints>
@@ -32,15 +32,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-4r-k5B">
-                    <rect key="frame" x="211" y="227" width="48" height="22"/>
+                    <rect key="frame" x="211" y="228" width="48" height="21"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Pao-Ga-WkP">
-                        <font key="font" size="18" name=".AppleSystemUIFont"/>
+                        <font key="font" metaFont="system" size="18"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iSn-eT-RyI">
-                    <rect key="frame" x="217" y="200" width="37" height="17"/>
+                    <rect key="frame" x="217" y="202" width="37" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="eli-t8-fUL">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -74,6 +74,7 @@
                 <constraint firstAttribute="trailing" secondItem="hof-96-JSb" secondAttribute="trailing" constant="35" id="xaR-7F-RqX"/>
                 <constraint firstItem="fcM-4r-k5B" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="23" id="zgt-5g-mfY"/>
             </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
         </customView>
     </objects>
 </document>
