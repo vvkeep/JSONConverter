@@ -127,6 +127,7 @@ class MainViewController: NSViewController {
     private func setupClassTextViewContent(_ content: String) {
         let attrContent = NSMutableAttributedString(string: content)
         classTextView.textStorage?.setAttributedString(attrContent)
+        classTextView.lineNumberView.needsDisplay = true
     }
     
     private func updateConfigFile() {
