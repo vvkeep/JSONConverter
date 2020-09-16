@@ -13,7 +13,7 @@ class File {
     var header: String!
     
     var isCustomHeader: Int = 0
-    
+        
     var prefix: String?
     
     var rootName: String = ""
@@ -56,9 +56,9 @@ class File {
     
     func toString() -> String {
         var totalStr = header ?? ""
-        if langStruct.langType == LangType.Flutter {
-            var className = rootName.className(withPrefix: prefix);
-            totalStr += "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
+        
+        if let importString = generateImportString() {
+            totalStr += importString
         }
         
         contents.forEach { (content) in
@@ -91,5 +91,31 @@ class File {
         
         """
         return headerString
+    }
+    
+    func generateImportString() -> String? {
+        switch langStruct.langType {
+        case .Swift:
+            return"\nimport Foundation\n"
+        case .HandyJSON:
+            return"\nimport Foundation\nimport HandyJSON\n"
+        case .SwiftyJSON:
+            return"\nimport Foundation\nimport SwiftyJSON\n"
+        case .ObjectMapper:
+            return"\nimport Foundation\nimport ObjectMapper\n"
+        case .ObjC:
+            var tempStr = "\n#import <Foundation/Foundation.h>\n"
+            for (i, content) in contents.enumerated() where i > 0 {
+                tempStr += "\n@class \(content.propertyKey.className(withPrefix: content.prefixStr));"
+            }
+            tempStr += "\n"
+            return tempStr
+        case .Flutter:
+            var className = rootName.className(withPrefix: prefix);
+            let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
+            return importStr
+        case .Codable:
+            return"\nimport Foundation\n"
+        }
     }
 }

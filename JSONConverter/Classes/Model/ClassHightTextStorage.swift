@@ -8,8 +8,9 @@
 
 import Cocoa
 
+
 private let CLASSES_KEY_WORDS = ["import", "part", "class", "factory", "func", "this", "self", "struct", "var", "let", "required", "init", "func", "nonatomic", "copy", "strong", "assign", "mutating", "extends"]
-private let CLASSES_START_WAORD = ["@property", "@interface", "@end"]
+private let CLASSES_START_WAORD = ["@property", "@interface", "@end", "@class", "#import"]
 private let CLASSSES_PROPERTY_TYPES = ["NSString", "NSInteger", "NSInteger", "BOOL", "String", "Int", "Bool", "NSArray", "int", "List", "bool"]
 
 class ClassHightTextStorage: NSTextStorage {
