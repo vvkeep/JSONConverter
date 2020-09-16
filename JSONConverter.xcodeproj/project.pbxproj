@@ -38,6 +38,7 @@
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 		8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
+		8EBE0D0D25120121003A4B4B /* PanGestureSpliteLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE0D0C25120121003A4B4B /* PanGestureSpliteLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHightTextStorage.swift; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
+		8EBE0D0C25120121003A4B4B /* PanGestureSpliteLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureSpliteLineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				7BF1DD2D24FBA3930090B531 /* Controller */,
 				7BD7FEDE202AC85B0003AE80 /* Model */,
+				8EBE0D08251200A7003A4B4B /* View */,
 				8E1945E82508A23C00E7CDCC /* Macros */,
 				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7B95A31F24F95ECE000D141B /* Extension */,
@@ -289,6 +292,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8EBE0D08251200A7003A4B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8EBE0D0C25120121003A4B4B /* PanGestureSpliteLineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,6 +438,7 @@
 				8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
 				8E36005A25060DD500625CFD /* ClassHightTextStorage.swift in Sources */,
+				8EBE0D0D25120121003A4B4B /* PanGestureSpliteLineView.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONParseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

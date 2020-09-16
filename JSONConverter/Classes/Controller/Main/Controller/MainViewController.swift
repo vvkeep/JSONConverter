@@ -27,12 +27,14 @@ class MainViewController: NSViewController {
     @IBOutlet weak var converStructBox: NSComboBox!
     
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
+    @IBOutlet weak var classScrollViewHeightCons: NSLayoutConstraint!
     
-    @IBOutlet weak var splitLineView: NSView!
+    @IBOutlet weak var verSplitLineView: PanGestureSpliteLineView!
+    @IBOutlet weak var horSplitLineView: NSView!
     
     @IBOutlet var JSONTextView: NSTextView!
-    
     @IBOutlet var classTextView: NSTextView!
+    @IBOutlet var classImpTextView: NSTextView!
     
     @IBOutlet weak var convertBtn: NSButton!
     
@@ -43,7 +45,7 @@ class MainViewController: NSViewController {
         checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
     }
-    
+        
     private func checkVerion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
@@ -74,6 +76,9 @@ class MainViewController: NSViewController {
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
         
+        classImpTextView.isEditable = false
+        classImpTextView.setUpLineNumberView()
+        
         JSONTextView.isAutomaticQuoteSubstitutionEnabled = false
         JSONTextView.isContinuousSpellCheckingEnabled = false
         JSONTextView.delegate = self
@@ -86,7 +91,7 @@ class MainViewController: NSViewController {
         classStorage.addLayoutManager(classTextView.layoutManager!)
         
         let pan = NSPanGestureRecognizer(target: self, action: #selector(panSplitViewAction))
-        splitLineView.addGestureRecognizer(pan)
+        verSplitLineView.addGestureRecognizer(pan)
     }
     
     private func setupCacheConfig() {
@@ -128,6 +133,12 @@ class MainViewController: NSViewController {
         let attrContent = NSMutableAttributedString(string: content)
         classTextView.textStorage?.setAttributedString(attrContent)
         classTextView.lineNumberView.needsDisplay = true
+    }
+    
+    private func setupClssImpTextViewContent(_ content: String) {
+        let attrContent = NSMutableAttributedString(string: content)
+        classImpTextView.textStorage?.setAttributedString(attrContent)
+        classImpTextView.lineNumberView.needsDisplay = true
     }
     
     private func updateConfigFile() {
