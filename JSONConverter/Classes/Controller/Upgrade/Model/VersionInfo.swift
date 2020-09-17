@@ -2,7 +2,7 @@
 //  VersionInfo.swift
 //  JSONConverter
 //
-//  Created by BOSMA on 2019/7/24.
+//  Created by DevYao on 2019/7/24.
 //  Copyright © 2019 Yao. All rights reserved.
 //
 

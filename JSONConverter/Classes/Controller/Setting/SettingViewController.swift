@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  JSONConverter
 //
-//  Created by BOSMA on 2020/8/28.
+//  Created by DevYao on 2020/8/28.
 //  Copyright © 2020 Yao. All rights reserved.
 //
 

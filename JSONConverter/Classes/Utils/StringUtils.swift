@@ -2,8 +2,8 @@
 //  StringUtils.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2020/8/29.
-//  Copyright © 2020 姚巍. All rights reserved.
+//  Created by DevYao on 2020/8/29.
+//  Copyright © 2020 DevYao. All rights reserved.
 //
 
 import Foundation

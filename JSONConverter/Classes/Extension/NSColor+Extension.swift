@@ -2,8 +2,8 @@
 //  NSColor+Extension.swift
 //  JSONConverter
 //
-//  Created by BOSMA on 2020/8/31.
-//  Copyright © 2020 姚巍. All rights reserved.
+//  Created by DevYao on 2020/8/31.
+//  Copyright © 2020 DevYao. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,8 @@
 //  ClassHightTextStorage.swift
 //  JSONConverter
 //
-//  Created by BOSMA on 2020/9/7.
-//  Copyright © 2020 姚巍. All rights reserved.
+//  Created by DevYao on 2020/9/7.
+//  Copyright © 2020 DevYao. All rights reserved.
 //
 
 import Cocoa
