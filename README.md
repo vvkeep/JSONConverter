@@ -7,7 +7,7 @@ JSONConverter is a desktop application for MacOS written in Swift.
 Using JSONConverter you will be able to:
 * Convert any valid JSON object to a class of one of the currently supported languages.
 * Format JSON and display JSON with rich text
-* Preview the generated rich content
+* Preview and export the generated rich content
 * Change the root class name.
 * Set a class name prefix for the generated classes.
 * Custom file header include author/date etc.
@@ -38,7 +38,7 @@ Installation
 To Do
 =====
 * Support JAVA Models 
-* Supprot Models File export
+* ~~Supprot Models File export~~
 * ~~Supprot display models with rich text~~
 
 Flutter model instruction links
