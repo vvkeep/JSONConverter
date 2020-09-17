@@ -171,13 +171,13 @@ class MainViewController: NSViewController {
     
     private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
-        guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
+        guard let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                 assert(false, "lang or struct type error")
                 return
         }
         
-        if langTypeType == .ObjC {
+        if langType == .ObjC {
             horSpliteLineViewHeightCons.constant = 8
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 3.0/5)
             classImpTextView.isHidden = false
@@ -189,7 +189,7 @@ class MainViewController: NSViewController {
             horSplitLineView.isHidden = true
         }
             
-        let transStruct = LangStruct(langType: langTypeType, structType: structType)
+        let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
         FileConfigManager.shared.updateConfigFile(file: configFile)
         
