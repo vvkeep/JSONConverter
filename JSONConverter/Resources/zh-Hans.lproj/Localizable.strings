@@ -29,3 +29,6 @@
 
 "main_view_convert_btn_title" = "转换";
 "main_view_reward_btn_title" = "打赏";
+"main_view_export_choose_title" = "选择";
+"main_view_export_save_success_title" = "成功！";
+"main_view_export_save_success_desc" = "模型导出成功。";

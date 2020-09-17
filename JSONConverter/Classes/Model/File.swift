@@ -40,7 +40,7 @@ class File {
         if self.isCustomHeader == 1 {
             self.header = dic?["header"] ?? ""
         }else {
-            let suffix = classSuffixString(langType: langType).0
+            let suffix = classSuffixString().0
             self.header = defaultHeaderString(suffix: suffix)
         }
     }
@@ -130,7 +130,7 @@ class File {
             if isCustomHeader == 1 {
                 tempString += header
             }else {
-                tempString += defaultHeaderString(suffix: classSuffixString(langType: .ObjC).1!)
+                tempString += defaultHeaderString(suffix: classSuffixString().1!)
             }
             
             if let content = contents.first {
@@ -148,8 +148,8 @@ class File {
     }
     
     
-    func classSuffixString(langType: LangType) -> (String, String?) {
-        switch langType {
+    func classSuffixString() -> (String, String?) {
+        switch langStruct.langType {
         case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
             return ( "swift", nil)
         case .ObjC:

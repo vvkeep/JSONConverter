@@ -17,7 +17,7 @@ class JSONParseManager {
     
     private var file: File!
     
-    func handleEngine(frome obj: Any, file: File) -> (String, String?) {
+    func parseJSONObject(_ obj: Any, file: File) -> (String, String?) {
         file.contents.removeAll()
         self.file = file
         var content : Content?

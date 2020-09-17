@@ -40,7 +40,7 @@ class MainViewController: NSViewController {
     @IBOutlet var classImpTextView: NSTextView!
     
     @IBOutlet weak var statusLab: NSTextField!
-    @IBOutlet weak var convertBtn: NSButton!
+    @IBOutlet weak var saveBtn: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupUI() {
-        convertBtn.title = "main_view_convert_btn_title".localized
+        saveBtn.title = "parameter_save_title".localized
         
         converTypeBox.addItems(withObjectValues: transTypeTitleList)
         converTypeBox.delegate = self
@@ -105,7 +105,7 @@ class MainViewController: NSViewController {
         horSplitLineView.addGestureRecognizer(horLineViewPan)
         horSplitLineView.causor = NSCursor.resizeUpDown
         
-        updateJSONStatusLab(valid: false)
+        showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
     }
     
     private func setupCacheConfig() {
@@ -123,8 +123,56 @@ class MainViewController: NSViewController {
         presentAsModalWindow(settingVC)
     }
     
-    @IBAction func converBtnAction(_ sender: NSButton) {
+    @IBAction func saveBtnAction(_ sender: NSButton) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsOtherFileTypes = false
+        openPanel.treatsFilePackagesAsDirectories = false
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.canCreateDirectories = true
+        openPanel.prompt = "main_view_export_choose_title".localized
+        openPanel.beginSheetModal(for: self.view.window!){ button in
+            if button == NSApplication.ModalResponse.OK {
+                self.saveClassesToPath(openPanel.url!.path)
+                self.showSaveSuccessAction()
+            }
+        }
+    }
+    
+    func saveClassesToPath(_ path : String) {
+        let configFile = FileConfigManager.shared.currentConfigFile()
+        let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
+        let suffix = configFile.classSuffixString()
         
+        var exprotList = [ExportClassesModel(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
+        if configFile.langStruct.langType == .ObjC {
+            exprotList.append(ExportClassesModel(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
+        }
+        
+        var error : NSError?
+        for model in exprotList {
+            do {
+                try model.content.write(toFile: model.path, atomically: true, encoding: String.Encoding.utf8)
+            } catch let error1 as NSError {
+                error = error1
+            }
+            
+            if error != nil{
+                alertError(error!)
+                break
+            }
+        }
+    }
+    
+    func showSaveSuccessAction() {
+        let notification = NSUserNotification()
+        notification.title = "main_view_export_save_success_title".localized
+        notification.informativeText = "Your model files have been generated successfully."
+        notification.deliveryDate = Date()
+        
+        let center = NSUserNotificationCenter.default
+        center.delegate = self
+        center.deliver(notification)
     }
     
     func generateClasses() {
@@ -135,23 +183,19 @@ class MainViewController: NSViewController {
             setupJSONTextViewContent(JSONString)
             
             let configFile = FileConfigManager.shared.currentConfigFile()
-            let fileString = JSONParseManager.shared.handleEngine(frome: JSONObject, file:configFile)
+            let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
             setupClassTextViewContent(fileString.0)
             setupClassImpTextViewContent(fileString.1)
-            updateJSONStatusLab(valid: true)
+            showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
         }else {
-            updateJSONStatusLab(valid: false)
+            showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
         }
     }
     
-    private func updateJSONStatusLab(valid: Bool) {
-        if valid {
-            statusLab.stringValue = "app_converter_json_success_desc".localized
-            statusLab.textColor = NSColor.systemGreen
-        }else {
-            statusLab.stringValue = "app_converter_json_error_desc".localized
-            statusLab.textColor = NSColor.systemRed
-        }
+    private func showJSONOperateResult(_ result: Bool, message: String) {
+        statusLab.stringValue = message
+        statusLab.textColor = result ? NSColor.systemGreen : NSColor.systemRed
+        saveBtn.isEnabled = result
     }
     
     private func setupJSONTextViewContent(_ content: String){
@@ -192,7 +236,7 @@ class MainViewController: NSViewController {
             classImpTextView.isHidden = true
             horSplitLineView.isHidden = true
         }
-            
+        
         let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
         FileConfigManager.shared.updateConfigFile(file: configFile)
@@ -204,6 +248,11 @@ class MainViewController: NSViewController {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = desc
+        alert.runModal()
+    }
+    
+    func alertError(_ error: NSError) {
+        let alert = NSAlert(error: error)
         alert.runModal()
     }
 }
@@ -270,6 +319,12 @@ extension MainViewController {
         if raido > 0.1 && raido < 0.9 {
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: raido)
         }
+    }
+}
+
+extension MainViewController: NSUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool  {
+        return true
     }
 }
 

@@ -29,3 +29,6 @@
 
 "main_view_convert_btn_title" = "convert";
 "main_view_reward_btn_title" = "reward";
+"main_view_export_choose_title" = "Choose";
+"main_view_export_save_success_title" = "Successful";
+"main_view_export_save_success_desc" = "Your model files have been generated successfully.";
