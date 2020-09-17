@@ -188,10 +188,12 @@ class MainViewController: NSViewController {
             classImpTextView.isHidden = true
             horSplitLineView.isHidden = true
         }
-        
+            
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
         configFile.langStruct = transStruct
         FileConfigManager.shared.updateConfigFile(file: configFile)
+        
+        generateClasses()
     }
     
     private func alert(title: String, desc: String) {
