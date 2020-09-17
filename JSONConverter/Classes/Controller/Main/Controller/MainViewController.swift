@@ -29,8 +29,8 @@ class MainViewController: NSViewController {
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
     @IBOutlet weak var classScrollViewHeightCons: NSLayoutConstraint!
     
-    @IBOutlet weak var verSplitLineView: PanGestureSpliteLineView!
-    @IBOutlet weak var horSplitLineView: NSView!
+    @IBOutlet weak var verSplitLineView: PanGestureIndicatorView!
+    @IBOutlet weak var horSplitLineView: PanGestureIndicatorView!
     
     @IBOutlet var JSONTextView: NSTextView!
     @IBOutlet var classTextView: NSTextView!

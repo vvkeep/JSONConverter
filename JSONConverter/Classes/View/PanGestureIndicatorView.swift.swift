@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PanGestureSpliteLineView: NSView {
+class PanGestureIndicatorView: NSView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,32 +18,24 @@ class PanGestureSpliteLineView: NSView {
         
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
-        print("---- mouseEntered -----")
         NSCursor.resizeLeftRight.set()
+        
         becomeFirstResponder()
     }
     
     override func mouseExited(with event: NSEvent) {
         super.mouseEntered(with: event)
-        print("********** mouseExited **********")
         NSCursor.arrow.set()
     }
     
     override func mouseMoved(with event: NSEvent) {
         super.mouseMoved(with: event)
-        print("########### mouseMoved ###########")
         NSCursor.resizeLeftRight.set()
         becomeFirstResponder()
 
     }
     
-    override func mouseDragged(with event: NSEvent) {
-        print("哈哈哈哈哈哈哈哈哈")
-
-    }
     override func cursorUpdate(with event: NSEvent) {
-        print("呵呵呵呵呵呵")
         NSCursor.resizeLeftRight.set()
-
     }
 }
