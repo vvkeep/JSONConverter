@@ -93,6 +93,9 @@ class MainViewController: NSViewController {
         let classStorage = ClassHightTextStorage()
         classStorage.addLayoutManager(classTextView.layoutManager!)
         
+        let classImpStorage = ClassHightTextStorage()
+        classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
+        
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
         verSplitLineView.causor = NSCursor.resizeLeftRight
@@ -128,8 +131,9 @@ class MainViewController: NSViewController {
             }
             
             let configFile = FileConfigManager.shared.currentConfigFile()
-            let classStr = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
-            setupClassTextViewContent(classStr)
+            let fileString = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
+            setupClassTextViewContent(fileString.0)
+            setupClassImpTextViewContent(fileString.1)
         }
     }
     
@@ -144,12 +148,14 @@ class MainViewController: NSViewController {
         classTextView.lineNumberView.needsDisplay = true
     }
     
-    private func setupClssImpTextViewContent(_ content: String) {
-        let attrContent = NSMutableAttributedString(string: content)
-        classImpTextView.textStorage?.setAttributedString(attrContent)
-        classImpTextView.lineNumberView.needsDisplay = true
+    private func setupClassImpTextViewContent(_ content: String?) {
+        if let content = content {
+            let attrContent = NSMutableAttributedString(string: content)
+            classImpTextView.textStorage?.setAttributedString(attrContent)
+            classImpTextView.lineNumberView.needsDisplay = true
+        }
     }
-        
+    
     private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
@@ -161,7 +167,6 @@ class MainViewController: NSViewController {
         if langTypeType == .ObjC {
             horSpliteLineViewHeightCons.constant = 8
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 3.0/5)
-            NSLayoutConstraint.activate([])
             classImpTextView.isHidden = false
             horSplitLineView.isHidden = false
         }else {
@@ -220,6 +225,7 @@ extension MainViewController: NSTextViewDelegate {
             let url = URL(string: value) {
             NSWorkspace.shared.open(url)
         }
+        
         return true
     }
 }

@@ -17,7 +17,7 @@ class JSONParseManager {
     
     private var file: File!
     
-    func handleEngine(frome obj: Any, file: File) -> String {
+    func handleEngine(frome obj: Any, file: File) -> (String, String?) {
         file.contents.removeAll()
         self.file = file
         var content : Content?
@@ -25,9 +25,9 @@ class JSONParseManager {
         
         switch obj {
         case let dic as [String: Any]:
-            content = handleDic(propertyKey: propertyKey, dic: dic)
+            content = handleDictionary(propertyKey: propertyKey, dic: dic)
         case let arr as [Any]:
-            _ = handleArr(itemKey: propertyKey, arr: arr) 
+            _ = handleArrary(itemKey: propertyKey, arr: arr)
         default:
             assertionFailure("parse object type error")
         }
@@ -39,7 +39,8 @@ class JSONParseManager {
         return file.toString()
     }
     
-    private func handleDic(propertyKey: String, dic: [String: Any]) -> Content {
+    
+    private func handleDictionary(propertyKey: String, dic: [String: Any]) -> Content {
         let content = file.content(withPropertyKey: propertyKey)
         
         dic.forEach { (item) in
@@ -53,10 +54,10 @@ class JSONParseManager {
                 propertyModel = file.property(withPropertykey: itemKey, type: num.valueType())
             case let dic as [String: Any]:
                 propertyModel = file.property(withPropertykey: itemKey, type: .Dictionary)
-                let content = handleDic(propertyKey: itemKey, dic: dic)
+                let content = handleDictionary(propertyKey: itemKey, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                propertyModel = handleArr(itemKey: itemKey, arr: arr)
+                propertyModel = handleArrary(itemKey: itemKey, arr: arr)
             case  _ as NSNull:
                 propertyModel = file.property(withPropertykey: itemKey, type: .nil)
             default:
@@ -71,7 +72,7 @@ class JSONParseManager {
         return content
     }
     
-    private func handleArr(itemKey: String, arr: [Any]) -> Property? {
+    private func handleArrary(itemKey: String, arr: [Any]) -> Property? {
         if let first = arr.first {
             var propertyModel: Property?
             switch first {
@@ -82,7 +83,7 @@ class JSONParseManager {
                 propertyModel = file.property(withPropertykey: itemKey, type: type)
             case let dic as [String: Any]:
                 propertyModel = file.property(withPropertykey: itemKey, type: .ArrayDictionary)
-                let content = handleDic(propertyKey: itemKey, dic: dic)
+                let content = handleDictionary(propertyKey: itemKey, dic: dic)
                 file.contents.insert(content, at: 0)
             default:
                 assertionFailure("parse object type error")

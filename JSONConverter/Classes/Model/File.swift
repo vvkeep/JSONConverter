@@ -13,7 +13,7 @@ class File {
     var header: String!
     
     var isCustomHeader: Int = 0
-        
+    
     var prefix: String?
     
     var rootName: String = ""
@@ -54,32 +54,18 @@ class File {
         return property
     }
     
-    func toString() -> String {
-        var totalStr = header ?? ""
-        
-        if let importString = generateImportString() {
-            totalStr += importString
-        }
-        
-        contents.forEach { (content) in
-            totalStr += content.toString()
-        }
-        
-        if StringUtils.isBlank(header) {
-            totalStr.removeFistChar()
-        }
-        
-        return totalStr
+    func toString() -> (String, String?) {
+        return (generateClassString(), generateClassImpString())
     }
     
     func toCacheConfig() -> [String: String] {
         return ["header": header, "isCustomHeader": "\(isCustomHeader)","rootName": rootName,
                 "prefix": prefix ?? "","parentName": parentName ?? "",
                 "langType": "\(langStruct.langType.rawValue)",
-                "structType": "\(langStruct.structType.rawValue)"]
+            "structType": "\(langStruct.structType.rawValue)"]
     }
     
-    func defaultHeaderString() -> String {
+    private func defaultHeaderString() -> String {
         let headerString = """
         //
         //  \(rootName).\(langStruct.langType.suffix)
@@ -93,7 +79,7 @@ class File {
         return headerString
     }
     
-    func generateImportString() -> String? {
+    private func generateImportString() -> String? {
         switch langStruct.langType {
         case .Swift:
             return"\nimport Foundation\n"
@@ -116,6 +102,41 @@ class File {
             return importStr
         case .Codable:
             return"\nimport Foundation\n"
+        }
+    }
+    
+    private func generateClassString() -> String {
+        var classString = header ?? ""
+        if let importString = generateImportString() {
+            classString += importString
+        }
+        
+        contents.forEach { (content) in
+            classString += content.toString()
+        }
+        
+        if StringUtils.isBlank(header) {
+            classString.removeFistChar()
+        }
+        
+        return classString
+    }
+    
+    private func generateClassImpString() -> String? {
+        switch langStruct.langType {
+        case .ObjC:
+            var tempString = header ?? ""
+            if let content = contents.first {
+                tempString += "\n#import \"\(content.propertyKey.className(withPrefix: prefix)).h\"\n"
+            }
+            
+            for content in contents {
+                tempString += "\n@implementation \(content.propertyKey.className(withPrefix: content.prefixStr))\n\n@end\n"
+            }
+            
+            return tempString
+        default:
+            return nil
         }
     }
 }
