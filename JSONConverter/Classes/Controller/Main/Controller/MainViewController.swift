@@ -167,7 +167,7 @@ class MainViewController: NSViewController {
     func showSaveSuccessAction() {
         let notification = NSUserNotification()
         notification.title = "main_view_export_save_success_title".localized
-        notification.informativeText = "Your model files have been generated successfully."
+        notification.informativeText = "main_view_export_save_success_desc".localized
         notification.deliveryDate = Date()
         
         let center = NSUserNotificationCenter.default
