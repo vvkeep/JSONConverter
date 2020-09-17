@@ -7,7 +7,9 @@
 */
 
 "app_converter_json_error_title" = "转换内容JSON出错";
-"app_converter_json_error_desc" = "未知数据格式无法解析,请提供正确的JSON字符串";
+
+"app_converter_json_error_desc" = "无效的JSON数据!";
+"app_converter_json_success_desc" = "正确的JSON数据";
 
 "parameter_setting_title" = "参数设置";
 "parameter_classes_prefix" = "类前缀";

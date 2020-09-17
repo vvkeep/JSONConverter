@@ -7,7 +7,9 @@
 */
 
 "app_converter_json_error_title" = "converter error";
-"app_converter_json_error_desc" = "the date is not correct format json, plase check origin data";
+
+"app_converter_json_error_desc" = "JSON object is not valid!";
+"app_converter_json_success_desc" = "Valid JSON structure";
 
 "parameter_setting_title" = "Parameter setting";
 "parameter_classes_prefix" = "Classes prefix";

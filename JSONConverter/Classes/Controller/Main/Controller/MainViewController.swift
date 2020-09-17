@@ -39,6 +39,7 @@ class MainViewController: NSViewController {
     @IBOutlet var classTextView: NSTextView!
     @IBOutlet var classImpTextView: NSTextView!
     
+    @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var convertBtn: NSButton!
     
     override func viewDidLoad() {
@@ -103,8 +104,9 @@ class MainViewController: NSViewController {
         let horLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(horLineViewPanSplitViewAction))
         horSplitLineView.addGestureRecognizer(horLineViewPan)
         horSplitLineView.causor = NSCursor.resizeUpDown
+        
+        updateJSONStatusLab(valid: false)
     }
-    
     
     private func setupCacheConfig() {
         let configFile = FileConfigManager.shared.currentConfigFile()
@@ -118,22 +120,33 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func converBtnAction(_ sender: NSButton) {
-        if let jsonStr = JSONTextView.textStorage?.string {
-            guard let jsonData = jsonStr.data(using: .utf8),
-                let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)else{
-                    alert(title: "app_converter_json_error_title".localized, desc: "app_converter_json_error_desc".localized)
-                    return
-            }
-            
-            if let formatJosnData = try? JSONSerialization.data(withJSONObject: json as AnyObject, options: .prettyPrinted),
-                let formatJsonStr = String(data: formatJosnData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
-                setupJSONTextViewContent(formatJsonStr)
-            }
+        
+    }
+    
+    func generateClasses() {
+        if let data = JSONTextView.textStorage?.string.data(using: .utf8),
+            let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
+            let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
+            let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
+            setupJSONTextViewContent(JSONString)
             
             let configFile = FileConfigManager.shared.currentConfigFile()
-            let fileString = JSONParseManager.shared.handleEngine(frome: json, file:configFile)
+            let fileString = JSONParseManager.shared.handleEngine(frome: JSONObject, file:configFile)
             setupClassTextViewContent(fileString.0)
             setupClassImpTextViewContent(fileString.1)
+            updateJSONStatusLab(valid: true)
+        }else {
+            updateJSONStatusLab(valid: false)
+        }
+    }
+    
+    private func updateJSONStatusLab(valid: Bool) {
+        if valid {
+            statusLab.stringValue = "app_converter_json_success_desc".localized
+            statusLab.textColor = NSColor.systemGreen
+        }else {
+            statusLab.stringValue = "app_converter_json_error_desc".localized
+            statusLab.textColor = NSColor.systemRed
         }
     }
     
@@ -227,6 +240,10 @@ extension MainViewController: NSTextViewDelegate {
         }
         
         return true
+    }
+    
+    func textDidChange(_ notification: Notification) {
+        generateClasses()
     }
 }
 

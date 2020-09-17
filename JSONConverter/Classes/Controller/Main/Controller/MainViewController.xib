@@ -18,6 +18,7 @@
                 <outlet property="convertBtn" destination="zHm-8W-mp8" id="PnE-0l-3uV"/>
                 <outlet property="horSplitLineView" destination="pJl-yO-yNu" id="d5u-NS-nQH"/>
                 <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
+                <outlet property="statusLab" destination="N2j-s3-kwM" id="rfL-un-tza"/>
                 <outlet property="verSplitLineView" destination="Jih-7b-sHs" id="OHM-CU-tEK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -190,9 +191,19 @@
                                 <action selector="settingAction:" target="-2" id="9y4-PN-kgw"/>
                             </connections>
                         </button>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N2j-s3-kwM">
+                            <rect key="frame" x="48" y="18" width="41" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Uby-ZI-aFh">
+                                <font key="font" size="12" name="Monaco"/>
+                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
+                        <constraint firstItem="N2j-s3-kwM" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="6AU-2K-3Pi"/>
+                        <constraint firstItem="N2j-s3-kwM" firstAttribute="leading" secondItem="zBe-Rp-cI7" secondAttribute="trailing" id="70Q-zi-LUf"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="L68-oy-Lfw"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
                         <constraint firstItem="3Ps-cQ-yR7" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="TEL-yx-wep"/>
