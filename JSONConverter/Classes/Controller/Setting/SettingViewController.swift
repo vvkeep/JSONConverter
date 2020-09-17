@@ -27,6 +27,8 @@ class SettingViewController: NSViewController {
         
     @IBOutlet weak var saveBtn: NSButton!
     
+    var changeFileConfigClosure:(() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -74,6 +76,7 @@ class SettingViewController: NSViewController {
         configFile.header = headerField.stringValue
         configFile.isCustomHeader = customHeaderSwitch.state.rawValue
         FileConfigManager.shared.updateConfigFile(file: configFile)
+        changeFileConfigClosure?()
         dismiss(nil)
     }
     

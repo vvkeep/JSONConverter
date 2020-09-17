@@ -116,6 +116,10 @@ class MainViewController: NSViewController {
     
     @IBAction func settingAction(_ sender: NSButton) {
         let settingVC = SettingViewController()
+        settingVC.changeFileConfigClosure = { [weak self] in
+            self?.generateClasses()
+        }
+        
         presentAsModalWindow(settingVC)
     }
     
