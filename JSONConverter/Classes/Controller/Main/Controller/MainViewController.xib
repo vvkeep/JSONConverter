@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="JSONScrollViewWidthCons" destination="ST4-zz-PbG" id="GtY-tm-3Bp"/>
                 <outlet property="JSONTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
+                <outlet property="classContainerView" destination="VOt-ZW-E3V" id="uhe-Cs-Yba"/>
                 <outlet property="classImpTextView" destination="qu2-d0-ZZk" id="E5L-ip-pSi"/>
                 <outlet property="classScrollViewHeightCons" destination="Jye-DN-yss" id="shm-yr-RvK"/>
                 <outlet property="classTextView" destination="9fN-8x-2aw" id="9ab-zz-YPx"/>
@@ -16,6 +17,7 @@
                 <outlet property="converTypeBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
                 <outlet property="convertBtn" destination="zHm-8W-mp8" id="PnE-0l-3uV"/>
                 <outlet property="horSplitLineView" destination="pJl-yO-yNu" id="d5u-NS-nQH"/>
+                <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
                 <outlet property="verSplitLineView" destination="Jih-7b-sHs" id="OHM-CU-tEK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -152,10 +154,10 @@
                             </connections>
                         </button>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acr-Rb-HpB">
-                            <rect key="frame" x="795" y="11" width="103" height="26"/>
+                            <rect key="frame" x="775" y="11" width="123" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="T2a-pv-BJe"/>
-                                <constraint firstAttribute="width" constant="100" id="jFR-VO-k9q"/>
+                                <constraint firstAttribute="width" constant="120" id="jFR-VO-k9q"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="SHd-ug-r0R">
                                 <font key="font" metaFont="system"/>
@@ -164,7 +166,7 @@
                             </comboBoxCell>
                         </comboBox>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-cQ-yR7">
-                            <rect key="frame" x="685" y="11" width="93" height="26"/>
+                            <rect key="frame" x="665" y="11" width="93" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Fah-te-PL1"/>
                                 <constraint firstAttribute="width" constant="90" id="Sf6-Sn-V4v"/>

@@ -28,9 +28,12 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
     @IBOutlet weak var classScrollViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var horSpliteLineViewHeightCons: NSLayoutConstraint!
     
     @IBOutlet weak var verSplitLineView: PanGestureIndicatorView!
     @IBOutlet weak var horSplitLineView: PanGestureIndicatorView!
+    
+    @IBOutlet weak var classContainerView: NSView!
     
     @IBOutlet var JSONTextView: NSTextView!
     @IBOutlet var classTextView: NSTextView!
@@ -45,7 +48,7 @@ class MainViewController: NSViewController {
         checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
     }
-        
+    
     private func checkVerion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
@@ -90,9 +93,15 @@ class MainViewController: NSViewController {
         let classStorage = ClassHightTextStorage()
         classStorage.addLayoutManager(classTextView.layoutManager!)
         
-        let pan = NSPanGestureRecognizer(target: self, action: #selector(panSplitViewAction))
-        verSplitLineView.addGestureRecognizer(pan)
+        let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
+        verSplitLineView.addGestureRecognizer(verLineViewPan)
+        verSplitLineView.causor = NSCursor.resizeLeftRight
+        
+        let horLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(horLineViewPanSplitViewAction))
+        horSplitLineView.addGestureRecognizer(horLineViewPan)
+        horSplitLineView.causor = NSCursor.resizeUpDown
     }
+    
     
     private func setupCacheConfig() {
         let configFile = FileConfigManager.shared.currentConfigFile()
@@ -140,13 +149,26 @@ class MainViewController: NSViewController {
         classImpTextView.textStorage?.setAttributedString(attrContent)
         classImpTextView.lineNumberView.needsDisplay = true
     }
-    
-    private func updateConfigFile() {
+        
+    private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langTypeType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
             let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
                 assert(false, "lang or struct type error")
                 return
+        }
+        
+        if langTypeType == .ObjC {
+            horSpliteLineViewHeightCons.constant = 8
+            classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 3.0/5)
+            NSLayoutConstraint.activate([])
+            classImpTextView.isHidden = false
+            horSplitLineView.isHidden = false
+        }else {
+            horSpliteLineViewHeightCons.constant = 0
+            classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 1)
+            classImpTextView.isHidden = true
+            horSplitLineView.isHidden = true
         }
         
         let transStruct = LangStruct(langType: langTypeType, structType: structType)
@@ -188,7 +210,7 @@ extension MainViewController: NSComboBoxDelegate {
             }
         }
         
-        updateConfigFile()
+        updateUIAndConfigFile()
     }
 }
 
@@ -203,12 +225,21 @@ extension MainViewController: NSTextViewDelegate {
 }
 
 extension MainViewController {
-    @objc private func panSplitViewAction(pan: NSPanGestureRecognizer) {
+    @objc private func verLineViewPanSplitViewAction(pan: NSPanGestureRecognizer) {
         let moveX = pan.location(in: self.view).x
         pan.setTranslation(CGPoint.zero, in: self.view)
         let raido = moveX / self.view.bounds.width
         if raido > 0.1 && raido < 0.9 {
             JSONScrollViewWidthCons = JSONScrollViewWidthCons.setMultiplier(multiplier: raido)
+        }
+    }
+    
+    @objc private func horLineViewPanSplitViewAction(pan: NSPanGestureRecognizer) {
+        let moveY = pan.location(in: self.classContainerView).y
+        pan.setTranslation(CGPoint.zero, in: self.classContainerView)
+        let raido = (1 - moveY / self.classContainerView.bounds.height)
+        if raido > 0.1 && raido < 0.9 {
+            classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: raido)
         }
     }
 }
