@@ -40,7 +40,8 @@ class File {
         if self.isCustomHeader == 1 {
             self.header = dic?["header"] ?? ""
         }else {
-            self.header = defaultHeaderString()
+            let suffix = classSuffixString(langType: langType).0
+            self.header = defaultHeaderString(suffix: suffix)
         }
     }
     
@@ -65,10 +66,10 @@ class File {
             "structType": "\(langStruct.structType.rawValue)"]
     }
     
-    private func defaultHeaderString() -> String {
+    private func defaultHeaderString(suffix: String) -> String {
         let headerString = """
         //
-        //  \(rootName).\(langStruct.langType.suffix)
+        //  \(rootName.className(withPrefix: prefix)).\(suffix)
         //
         //
         //  Created by JSONConverter on \(Date.now(format: "yyyy/MM/dd")).
@@ -125,7 +126,13 @@ class File {
     private func generateClassImpString() -> String? {
         switch langStruct.langType {
         case .ObjC:
-            var tempString = header ?? ""
+            var tempString =  ""
+            if isCustomHeader == 1 {
+                tempString += header
+            }else {
+                tempString += defaultHeaderString(suffix: classSuffixString(langType: .ObjC).1!)
+            }
+            
             if let content = contents.first {
                 tempString += "\n#import \"\(content.propertyKey.className(withPrefix: prefix)).h\"\n"
             }
@@ -137,6 +144,18 @@ class File {
             return tempString
         default:
             return nil
+        }
+    }
+    
+    
+    func classSuffixString(langType: LangType) -> (String, String?) {
+        switch langType {
+        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
+            return ( "swift", nil)
+        case .ObjC:
+            return ("h", "m")
+        case .Flutter:
+            return ("dart", nil)
         }
     }
 }
