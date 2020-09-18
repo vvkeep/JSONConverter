@@ -30,6 +30,8 @@ enum PropertyType: Int {
 
 class Property {
     
+    var humpPropertyKey: String
+    
     var propertyKey: String
     
     var type: PropertyType
@@ -39,6 +41,7 @@ class Property {
     var prefixStr: String?
     
     init(propertyKey: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?) {
+        self.humpPropertyKey = propertyKey.convertFromSnakeCase()
         self.propertyKey = propertyKey
         self.type = type
         self.langStruct = langStruct
@@ -52,213 +55,212 @@ class Property {
         case .String:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, copy) NSString *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, copy) NSString *\(humpPropertyKey);\n"
             case .Swift,.HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): String?\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): String?\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): String?\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .Int:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, assign) NSInteger \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, assign) NSInteger \(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): Int = 0\n"
+                propertyStr = "\tvar \(humpPropertyKey): Int = 0\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): Int = 0\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].intValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): Int = 0\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].intValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): Int = 0\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): Int = 0\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tint \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tint \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .Float:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, assign) Float \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, assign) Float \(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
+                propertyStr = "\tvar \(humpPropertyKey): Float = 0.0\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].floatValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): Float = 0.0\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].floatValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): Float = 0.0\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): Float = 0.0\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .Double:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, assign) Double \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, assign) Double \(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
+                propertyStr = "\tvar \(humpPropertyKey): Double = 0.0\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].doubleValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): Double = 0.0\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].doubleValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): Double = 0.0\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): Double = 0.0\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tdouble \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .Bool:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, assign) BOOL \(propertyKey);\n"
+                propertyStr = "@property (nonatomic, assign) BOOL \(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): Bool = false\n"
+                propertyStr = "\tvar \(humpPropertyKey): Bool = false\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): Bool = false\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].boolValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): Bool = false\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].boolValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): Bool = false\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): Bool = false\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tbool \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tbool \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .Dictionary:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) \(propertyKey.className(withPrefix: prefixStr)) *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) \(humpPropertyKey.className(withPrefix: prefixStr)) *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
+                propertyStr = "\tvar \(humpPropertyKey): \(humpPropertyKey.className(withPrefix: prefixStr))?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
-                initStr = "\t\t\(propertyKey) = \(propertyKey.className(withPrefix: prefixStr))(json: json[\"\(propertyKey)\"])\n"
+                propertyStr = "\tvar \(humpPropertyKey): \(humpPropertyKey.className(withPrefix: prefixStr))?\n"
+                initStr = "\t\t\(humpPropertyKey) = \(humpPropertyKey.className(withPrefix: prefixStr))(json: json[\"\(propertyKey)\"])\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): \(propertyKey.className(withPrefix: prefixStr))?\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): \(humpPropertyKey.className(withPrefix: prefixStr))?\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tMap<String,dynamic> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tMap<String,dynamic> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayString:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<NSString *> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<NSString *> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [String]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [String]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [String]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<String> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<String> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayInt:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<Int> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<Int> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [Int]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [Int]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [Int]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<int> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<int> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayFloat:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<Float> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<Float> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [Float]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [Float]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [Float]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayDouble:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<Double> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<Double> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [Double]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [Double]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [Double]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<double> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayBool:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<Bool> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<Bool> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [Bool]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<bool> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<bool> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .ArrayDictionary:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<\(propertyKey.className(withPrefix: prefixStr)) *> *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<\(humpPropertyKey.className(withPrefix: prefixStr)) *> *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(propertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(humpPropertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey) = [\(propertyKey.className(withPrefix: prefixStr))]()\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<\(propertyKey.className(withPrefix: prefixStr))> \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tList<\(humpPropertyKey.className(withPrefix: prefixStr))> \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         case .nil:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, copy) NSString *\(propertyKey);\n"
+                propertyStr = "@property (nonatomic, copy) NSString *\(humpPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(propertyKey): String?\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(propertyKey): String?\n"
-                initStr = "\t\t\(propertyKey) = json[\"\(propertyKey)\"].stringValue\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(propertyKey): String?\n"
-                initStr = "\t\t\(propertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
+                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(propertyKey);\n"
-                initStr = "this.\(propertyKey),"
+                propertyStr = "\n\t@JsonKey(name: '\(propertyKey)')\n\tString \(humpPropertyKey);\n"
+                initStr = "this.\(humpPropertyKey),"
             }
         }
-        
         return (propertyStr, initStr)
     }
 }
