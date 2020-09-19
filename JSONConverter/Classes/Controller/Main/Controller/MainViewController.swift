@@ -88,14 +88,14 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-//        let jsonStorage = JSONHightTextStorage()
-//        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
-//
-//        let classStorage = ClassHightTextStorage()
-//        classStorage.addLayoutManager(classTextView.layoutManager!)
-//
-//        let classImpStorage = ClassHightTextStorage()
-//        classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
+        let jsonStorage = JSONHightTextStorage()
+        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
+
+        let classStorage = ClassHightTextStorage()
+        classStorage.addLayoutManager(classTextView.layoutManager!)
+
+        let classImpStorage = ClassHightTextStorage()
+        classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
         
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
@@ -177,7 +177,6 @@ class MainViewController: NSViewController {
     
     func generateClasses() {
         let startTime = CFAbsoluteTimeGetCurrent()
-        
         let JSONTextViewString = JSONTextView.textStorage?.string
         DispatchQueue.global().async {
             if let data = JSONTextViewString?.data(using: .utf8),
@@ -186,14 +185,19 @@ class MainViewController: NSViewController {
                 let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
                 let configFile = FileConfigManager.shared.currentConfigFile()
                 let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
+                
+                let endTime1 = CFAbsoluteTimeGetCurrent()
+                let offsetTime1 = Int((endTime1 - startTime) * 1000)
+                print("json convert duration: \(offsetTime1)ms")
+
                 DispatchQueue.main.async {
                     self.setupJSONTextViewContent(JSONString)
                     self.setupClassTextViewContent(fileString.0)
                     self.setupClassImpTextViewContent(fileString.1)
                     self.showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
-                    let endTime = CFAbsoluteTimeGetCurrent()
-                    let offsetTime = Int((endTime - startTime) * 1000)
-                    print("code excute duration: \(offsetTime)ms")
+                    let endTime2 = CFAbsoluteTimeGetCurrent()
+                    let offsetTime2 = Int((endTime2 - endTime1) * 1000)
+                    print("json display duration: \(offsetTime2)ms")
                 }
             }else {
                 DispatchQueue.main.sync {
@@ -210,24 +214,20 @@ class MainViewController: NSViewController {
     }
     
     private func setupJSONTextViewContent(_ content: String){
-        JSONTextView.string = content
-//        let attrContent = NSMutableAttributedString(string: content)
-//        JSONTextView.textStorage?.setAttributedString(attrContent)
+        let attrContent = NSAttributedString(string: content)
+        JSONTextView.textStorage?.setAttributedString(attrContent)
     }
     
     private func setupClassTextViewContent(_ content: String) {
-        classTextView.string = content
-//        let attrContent = NSMutableAttributedString(string: content)
-//        classTextView.textStorage?.setAttributedString(attrContent)
+        let attrContent = NSAttributedString(string: content)
+        classTextView.textStorage?.setAttributedString(attrContent)
         classTextView.lineNumberView.needsDisplay = true
     }
     
     private func setupClassImpTextViewContent(_ content: String?) {
         if let content = content {
-            classImpTextView.string = content
-
-//            let attrContent = NSMutableAttributedString(string: content)
-//            classImpTextView.textStorage?.setAttributedString(attrContent)
+            let attrContent = NSAttributedString(string: content)
+            classImpTextView.textStorage?.setAttributedString(attrContent)
             classImpTextView.lineNumberView.needsDisplay = true
         }
     }
