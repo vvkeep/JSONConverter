@@ -88,14 +88,14 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-        let jsonStorage = JSONHightTextStorage()
-        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
-        
-        let classStorage = ClassHightTextStorage()
-        classStorage.addLayoutManager(classTextView.layoutManager!)
-        
-        let classImpStorage = ClassHightTextStorage()
-        classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
+//        let jsonStorage = JSONHightTextStorage()
+//        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
+//
+//        let classStorage = ClassHightTextStorage()
+//        classStorage.addLayoutManager(classTextView.layoutManager!)
+//
+//        let classImpStorage = ClassHightTextStorage()
+//        classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
         
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
@@ -176,6 +176,8 @@ class MainViewController: NSViewController {
     }
     
     func generateClasses() {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
         let JSONTextViewString = JSONTextView.textStorage?.string
         DispatchQueue.global().async {
             if let data = JSONTextViewString?.data(using: .utf8),
@@ -189,6 +191,9 @@ class MainViewController: NSViewController {
                     self.setupClassTextViewContent(fileString.0)
                     self.setupClassImpTextViewContent(fileString.1)
                     self.showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
+                    let endTime = CFAbsoluteTimeGetCurrent()
+                    let offsetTime = Int((endTime - startTime) * 1000)
+                    print("code excute duration: \(offsetTime)ms")
                 }
             }else {
                 DispatchQueue.main.sync {
@@ -205,20 +210,24 @@ class MainViewController: NSViewController {
     }
     
     private func setupJSONTextViewContent(_ content: String){
-        let attrContent = NSMutableAttributedString(string: content)
-        JSONTextView.textStorage?.setAttributedString(attrContent)
+        JSONTextView.string = content
+//        let attrContent = NSMutableAttributedString(string: content)
+//        JSONTextView.textStorage?.setAttributedString(attrContent)
     }
     
     private func setupClassTextViewContent(_ content: String) {
-        let attrContent = NSMutableAttributedString(string: content)
-        classTextView.textStorage?.setAttributedString(attrContent)
+        classTextView.string = content
+//        let attrContent = NSMutableAttributedString(string: content)
+//        classTextView.textStorage?.setAttributedString(attrContent)
         classTextView.lineNumberView.needsDisplay = true
     }
     
     private func setupClassImpTextViewContent(_ content: String?) {
         if let content = content {
-            let attrContent = NSMutableAttributedString(string: content)
-            classImpTextView.textStorage?.setAttributedString(attrContent)
+            classImpTextView.string = content
+
+//            let attrContent = NSMutableAttributedString(string: content)
+//            classImpTextView.textStorage?.setAttributedString(attrContent)
             classImpTextView.lineNumberView.needsDisplay = true
         }
     }

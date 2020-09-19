@@ -28,7 +28,7 @@ class ClassHightTextStorage: NSTextStorage {
     override func replaceCharacters(in range: NSRange, with str: String) {
         beginEditing()
         _string.replaceCharacters(in: range, with: str)
-        edited([.editedCharacters, .editedAttributes], range: range, changeInLength: str.count - range.length)
+        edited([.editedCharacters, .editedAttributes], range: range, changeInLength: (str as NSString).length - range.length)
         endEditing()
     }
     
