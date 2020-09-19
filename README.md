@@ -49,3 +49,7 @@ Flutter model instruction links
 Final Notes
 ==========
 * The application still in its early stage. Please report any issue so I can improve it.
+
+License
+========================
+JSONConverter is available under custom version of **MIT** license.

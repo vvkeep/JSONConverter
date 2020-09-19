@@ -176,19 +176,25 @@ class MainViewController: NSViewController {
     }
     
     func generateClasses() {
-        if let data = JSONTextView.textStorage?.string.data(using: .utf8),
-            let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
-            let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
-            let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
-            setupJSONTextViewContent(JSONString)
-            
-            let configFile = FileConfigManager.shared.currentConfigFile()
-            let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
-            setupClassTextViewContent(fileString.0)
-            setupClassImpTextViewContent(fileString.1)
-            showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
-        }else {
-            showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
+        let JSONTextViewString = JSONTextView.textStorage?.string
+        DispatchQueue.global().async {
+            if let data = JSONTextViewString?.data(using: .utf8),
+                let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
+                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
+                let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
+                let configFile = FileConfigManager.shared.currentConfigFile()
+                let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
+                DispatchQueue.main.async {
+                    self.setupJSONTextViewContent(JSONString)
+                    self.setupClassTextViewContent(fileString.0)
+                    self.setupClassImpTextViewContent(fileString.1)
+                    self.showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
+                }
+            }else {
+                DispatchQueue.main.sync {
+                    self.showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
+                }
+            }
         }
     }
     
