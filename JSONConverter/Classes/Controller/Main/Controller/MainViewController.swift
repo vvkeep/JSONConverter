@@ -73,10 +73,14 @@ class MainViewController: NSViewController {
         
         converTypeBox.addItems(withObjectValues: transTypeTitleList)
         converTypeBox.delegate = self
+        converTypeBox.isEditable = false
+        converTypeBox.isSelectable = false
         
         converStructBox.addItems(withObjectValues: structTypeTitleList)
         converStructBox.delegate = self
-        
+        converStructBox.isEditable = false
+        converStructBox.isSelectable = false
+
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
         
@@ -280,7 +284,7 @@ extension MainViewController {
 }
 
 extension MainViewController: NSComboBoxDelegate {
-    func comboBoxSelectionDidChange(_ notification: Notification) {
+    func comboBoxWillDismiss(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
         if comBox == converTypeBox { //Choose Language
             let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
