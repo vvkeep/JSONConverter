@@ -2,9 +2,15 @@
 简体中文 | [English](./README.md)
 
 
+
 JSONConverter
 ==========
  JSONConverter是MAC上iOS/Flutter开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持Objective-C、Swift、Flutter以及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，借此提高开发效率。
+
+重要提醒
+=======
+因为没有付费apple id,所以目前的安装包因为证书问题，会直接崩溃；建议各位下载代码，更改一下bundle id，编译一下，在Products目录找到APP,拖至Applicaiton中，即可使用。另求助各江湖好汉有付费账号的，求一个打包坑位😃。
+![0.png](/Screenshots/0.png)
 
 功能介绍
 ============
@@ -36,8 +42,8 @@ JSONConverter
 安装说明
 ============
 * 使用Xcode Build，拷贝JSONConverter.app 至 Application 文件夹
-* 下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)
-* **[关于应用因为安全原因无法安装的解决方法](https://github.com/DevYao/JSONConverter/issues/16)**
+* ~~下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)~~
+* ~~[关于应用因为安全原因无法安装的解决方法](https://github.com/DevYao/JSONConverter/issues/16)~~
 
 开发计划
 =====
