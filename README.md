@@ -16,6 +16,7 @@ Using JSONConverter you will be able to:
 Important reminder
 ==================
 Because there is no paid app ID, the current installation package will crash directly due to certificate problems. It is recommended that you download the code, change the bundle ID, compile it, find the app in the products directory and drag it to applicaiton. 
+
 ![0.png](/Screenshots/0.png)
 
 Currently supported languages

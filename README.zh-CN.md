@@ -10,6 +10,7 @@ JSONConverter
 重要提醒
 =======
 因为没有付费apple id,所以目前的安装包因为证书问题，会直接崩溃；建议各位下载代码，更改一下bundle id，编译一下，在Products目录找到APP,拖至Applicaiton中，即可使用。另求助各江湖好汉有付费账号的，求一个打包坑位😃。
+
 ![0.png](/Screenshots/0.png)
 
 功能介绍
