@@ -156,7 +156,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.stringValue})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({$0.stringValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [String]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
@@ -172,7 +172,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.intValue})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({$0.intValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [Int]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
@@ -188,7 +188,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.floatValue})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({$0.floatValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [Float]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
@@ -204,7 +204,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.doubleValue})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({$0.doubleValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [Double]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
@@ -220,7 +220,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({$0.boolValue})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({$0.boolValue})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [Bool]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
@@ -236,7 +236,7 @@ class Property {
                 propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
-                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.flatMap({ \(humpPropertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
+                initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].arrayValue.compactMap({ \(humpPropertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey) = [\(humpPropertyKey.className(withPrefix: prefixStr))]()\n"
                 initStr = "\t\t\(humpPropertyKey)\(currentMapperSpace)<- map[\"\(propertyKey)\"]\n"
