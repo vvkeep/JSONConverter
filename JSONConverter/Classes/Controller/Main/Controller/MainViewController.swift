@@ -48,6 +48,7 @@ class MainViewController: NSViewController {
         setupCacheConfig()
         checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
+        updateUIAndConfigFile()
     }
     
     private func checkVerion() {
