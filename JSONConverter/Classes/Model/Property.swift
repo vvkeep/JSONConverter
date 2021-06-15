@@ -59,7 +59,7 @@ class Property {
             case .Swift,.HandyJSON, .Codable:
                 propertyStr = "\tvar \(humpPropertyKey): String?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                propertyStr = "\tvar \(humpPropertyKey): String\n"
                 initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey): String?\n"
@@ -251,7 +251,7 @@ class Property {
             case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(humpPropertyKey): String?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(humpPropertyKey): String?\n"
+                propertyStr = "\tvar \(humpPropertyKey): String\n"
                 initStr = "\t\t\(humpPropertyKey) = json[\"\(propertyKey)\"].stringValue\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(humpPropertyKey): String?\n"
