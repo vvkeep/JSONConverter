@@ -54,10 +54,10 @@ class MainViewController: NSViewController {
     private func checkVerion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
-                let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
-                let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
-                    return
+                  let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                  let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
+                  let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
+                return
             }
             
             if newVersion > currentVeriosn {
@@ -81,7 +81,7 @@ class MainViewController: NSViewController {
         converStructBox.delegate = self
         converStructBox.isEditable = false
         converStructBox.isSelectable = false
-
+        
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
         
@@ -98,16 +98,16 @@ class MainViewController: NSViewController {
         let languages = highlightr.supportedLanguages()
         let themes = highlightr.availableThemes()
         print("languages: \(languages)\n themes:\(themes)")
-
-//        let jsonStorage = JSONHightTextStorage()
+        
+        //        let jsonStorage = JSONHightTextStorage()
         let jsonStorage = CodeAttributedString()
         jsonStorage.highlightr.setTheme(to: "tomorrow-night-bright")
         jsonStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
         jsonStorage.language = "json"
         jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
-
         
-//        let classStorage = ClassHightTextStorage()
+        
+        //        let classStorage = ClassHightTextStorage()
         let classStorage = CodeAttributedString()
         classStorage.highlightr.setTheme(to: "tomorrow-night-bright")
         classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
@@ -115,7 +115,7 @@ class MainViewController: NSViewController {
         classStorage.addLayoutManager(classTextView.layoutManager!)
         classTextView.textColor = NSColor.labelColor
         
-//        let classImpStorage = ClassHightTextStorage()
+        //        let classImpStorage = ClassHightTextStorage()
         let classImpStorage = CodeAttributedString()
         classImpStorage.highlightr.setTheme(to: "tomorrow-night-bright")
         classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
@@ -206,16 +206,16 @@ class MainViewController: NSViewController {
         let JSONTextViewString = JSONTextView.textStorage?.string
         DispatchQueue.global().async {
             if let data = JSONTextViewString?.data(using: .utf8),
-                let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
-                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
-                let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
+               let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
+               let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
+               let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
                 let configFile = FileConfigManager.shared.currentConfigFile()
                 let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
                 
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
                 print("json convert duration: \(offsetTime1)ms")
-
+                
                 DispatchQueue.main.async {
                     self.setupJSONTextViewContent(JSONString)
                     self.setupClassTextViewContent(fileString.0)
@@ -262,9 +262,9 @@ class MainViewController: NSViewController {
     private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
-            let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
-                assert(false, "lang or struct type error")
-                return
+              let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
+            assert(false, "lang or struct type error")
+            return
         }
         
         if langType == .ObjC {
@@ -332,7 +332,7 @@ extension MainViewController: NSComboBoxDelegate {
 extension MainViewController: NSTextViewDelegate {
     func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
         if let value = link as? String,
-            let url = URL(string: value) {
+           let url = URL(string: value) {
             NSWorkspace.shared.open(url)
         }
         
