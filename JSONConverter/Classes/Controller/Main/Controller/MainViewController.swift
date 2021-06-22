@@ -210,12 +210,15 @@ class MainViewController: NSViewController {
     
     func generateClasses() {
         let startTime = CFAbsoluteTimeGetCurrent()
-        let JSONTextViewString = JSONTextView.textStorage?.string
+        guard let JSONTextViewString = JSONTextView.textStorage?.string as NSString? else {
+            return
+        }
+        
         DispatchQueue.global().async {
-            if let data = JSONTextViewString?.data(using: .utf8),
-               let JSONObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject,
-               let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.prettyPrinted, .sortedKeys]),
-               let JSONString = String(data: JSONData, encoding: .utf8)?.replacingOccurrences(of: "\\/", with: "/") {
+            let JSONString = JSONTextViewString.yy_modelToJSONString()
+            let JSONObject = JSONTextViewString.yy_modelToJSONObject()
+            if let JSONString = JSONTextViewString.yy_modelToJSONString(),
+               let JSONObject = JSONTextViewString.yy_modelToJSONObject() {
                 let configFile = FileConfigManager.shared.currentConfigFile()
                 let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
                 
