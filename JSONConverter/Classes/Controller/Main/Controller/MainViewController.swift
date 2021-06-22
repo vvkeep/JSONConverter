@@ -72,10 +72,10 @@ class MainViewController: NSViewController {
     private func checkVerion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
-                  let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                  let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
-                  let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
-                return
+                let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
+                let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
+                    return
             }
             
             if newVersion > currentVeriosn {
@@ -116,17 +116,17 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-        let languages = highlightr.supportedLanguages()
-        let themes = highlightr.availableThemes()
-        print("languages: \(languages)\n themes:\(themes)")
+//        let languages = highlightr.supportedLanguages()
+//        let themes = highlightr.availableThemes()
+//        print("languages: \(languages)\n themes:\(themes)")
         
         JSONStorage.addLayoutManager(JSONTextView.layoutManager!)
         classStorage.addLayoutManager(classTextView.layoutManager!)
         classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
-
+        
         classImpTextView.textColor = NSColor.labelColor
         classTextView.textColor = NSColor.labelColor
-
+        
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
         verSplitLineView.causor = NSCursor.resizeLeftRight
@@ -209,19 +209,19 @@ class MainViewController: NSViewController {
     }
     
     func generateClasses() {
-        let startTime = CFAbsoluteTimeGetCurrent()
-        guard let JSONTextViewString = JSONTextView.textStorage?.string as NSString? else {
+        guard let JSONTextViewString = JSONTextView.textStorage?.string else {
             return
         }
         
+        let startTime = CFAbsoluteTimeGetCurrent()
         DispatchQueue.global().async {
-            let JSONString = JSONTextViewString.yy_modelToJSONString()
-            let JSONObject = JSONTextViewString.yy_modelToJSONObject()
-            if let JSONString = JSONTextViewString.yy_modelToJSONString(),
-               let JSONObject = JSONTextViewString.yy_modelToJSONObject() {
+            if let JSONTextViewData = JSONTextViewString.data(using: .utf8),
+                let JSONObject = try? JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves]),
+                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
+                let JSONString = String(data: JSONData, encoding: .utf8) {
+                
                 let configFile = FileConfigManager.shared.currentConfigFile()
                 let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
-                
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
                 print("json convert duration: \(offsetTime1)ms")
@@ -272,10 +272,10 @@ class MainViewController: NSViewController {
     private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
-              let structType = StructType(rawValue: converStructBox.indexOfSelectedItem)
-              else {
-            assert(false, "lang or struct type error")
-            return
+            let structType = StructType(rawValue: converStructBox.indexOfSelectedItem)
+            else {
+                assert(false, "lang or struct type error")
+                return
         }
         
         classImpStorage.language = langType.language
@@ -357,7 +357,7 @@ extension MainViewController: NSComboBoxDelegate {
 extension MainViewController: NSTextViewDelegate {
     func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
         if let value = link as? String,
-           let url = URL(string: value) {
+            let url = URL(string: value) {
             NSWorkspace.shared.open(url)
         }
         
