@@ -48,6 +48,7 @@ class MainViewController: NSViewController {
         setupCacheConfig()
         checkVerion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
+        updateUIAndConfigFile()
     }
     
     private func checkVerion() {
@@ -92,14 +93,35 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-        let jsonStorage = JSONHightTextStorage()
+        
+        let highlightr = Highlightr()!
+        let languages = highlightr.supportedLanguages()
+        let themes = highlightr.availableThemes()
+        print("languages: \(languages)\n themes:\(themes)")
+
+//        let jsonStorage = JSONHightTextStorage()
+        let jsonStorage = CodeAttributedString()
+        jsonStorage.highlightr.setTheme(to: "tomorrow-night-bright")
+        jsonStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        jsonStorage.language = "json"
         jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
 
-        let classStorage = ClassHightTextStorage()
+        
+//        let classStorage = ClassHightTextStorage()
+        let classStorage = CodeAttributedString()
+        classStorage.highlightr.setTheme(to: "tomorrow-night-bright")
+        classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        classStorage.language = "Swift"
         classStorage.addLayoutManager(classTextView.layoutManager!)
-
-        let classImpStorage = ClassHightTextStorage()
+        classTextView.textColor = NSColor.labelColor
+        
+//        let classImpStorage = ClassHightTextStorage()
+        let classImpStorage = CodeAttributedString()
+        classImpStorage.highlightr.setTheme(to: "tomorrow-night-bright")
+        classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        classImpStorage.language = "Swift"
         classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
+        
         
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
@@ -217,7 +239,8 @@ class MainViewController: NSViewController {
         saveBtn.isEnabled = result
     }
     
-    private func setupJSONTextViewContent(_ content: String){
+    private func setupJSONTextViewContent(_ content: String) {
+        
         let attrContent = NSAttributedString(string: content)
         JSONTextView.textStorage?.setAttributedString(attrContent)
     }

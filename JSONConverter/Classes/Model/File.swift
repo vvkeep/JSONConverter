@@ -93,7 +93,7 @@ class File {
         case .ObjC:
             var tempStr = "\n#import <Foundation/Foundation.h>\n"
             for (i, content) in contents.enumerated() where i > 0 {
-                tempStr += "\n@class \(content.propertyKey.className(withPrefix: content.prefixStr));"
+                tempStr += "\n@class \(content.propertyKey.convertFromSnakeCase().className(withPrefix: content.prefixStr));"
             }
             tempStr += "\n"
             return tempStr
@@ -138,7 +138,7 @@ class File {
             }
             
             for content in contents {
-                tempString += "\n@implementation \(content.propertyKey.className(withPrefix: content.prefixStr))\n\n@end\n"
+                tempString += "\n@implementation \(content.propertyKey.convertFromSnakeCase().className(withPrefix: content.prefixStr))\n\n@end\n"
             }
             
             return tempString

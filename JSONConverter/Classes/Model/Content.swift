@@ -27,7 +27,7 @@ class Content {
     }
     
     func toString() -> String {
-        let className = propertyKey.className(withPrefix: prefixStr)
+        let className = propertyKey.convertFromSnakeCase().className(withPrefix: prefixStr)
         var contentStr = ""
         
         let result = propertyAndInitPart()
