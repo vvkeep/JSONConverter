@@ -35,7 +35,7 @@
 		8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13922E81E6D00F52C8E /* VersionInfo.swift */; };
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
 		8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */; };
-		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift.swift */; };
+		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */; };
 		8E542C31251350080053C1E0 /* ExportClassesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C30251350080053C1E0 /* ExportClassesModel.swift */; };
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 		8EB0531224FCCE0F00B96D79 /* JSONHightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */; };
@@ -168,7 +168,6 @@
 		7B95A31E24F95EA1000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		7B95A32324F95F69000D141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B95A32524F95F6E000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7BD7FED2202AC1E70003AE80 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		7BD7FED9202AC7C10003AE80 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		7BD7FEDB202AC7EB0003AE80 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,7 +183,7 @@
 		8E43D13922E81E6D00F52C8E /* VersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfo.swift; sourceTree = "<group>"; };
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeViewController.xib; sourceTree = "<group>"; };
-		8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureIndicatorView.swift.swift; sourceTree = "<group>"; };
+		8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureIndicatorView.swift; sourceTree = "<group>"; };
 		8E542C30251350080053C1E0 /* ExportClassesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportClassesModel.swift; sourceTree = "<group>"; };
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8EB0531124FCCE0F00B96D79 /* JSONHightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHightTextStorage.swift; sourceTree = "<group>"; };
@@ -320,7 +319,6 @@
 				7B2D34F122E603C7009D2ED2 /* Resources */,
 				8EEE5B7225184E8C00004C58 /* Vendor */,
 				7B45DAF5202A95BE007E8D56 /* JSONConverter.entitlements */,
-				7BD7FED2202AC1E70003AE80 /* JSONConverter-Bridging-Header.h */,
 				7B45DAF6202A95BE007E8D56 /* Assets.xcassets */,
 				7B45DAF7202A95BE007E8D56 /* MainMenu.xib */,
 				7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */,
@@ -489,7 +487,7 @@
 		8EBE0D08251200A7003A4B4B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift.swift */,
+				8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -854,7 +852,7 @@
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				8EEE5BDA25184E9800004C58 /* CodeAttributedString.swift in Sources */,
 				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
-				8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift.swift in Sources */,
+				8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
 				8EEE5BDD25184E9800004C58 /* Theme.swift in Sources */,
@@ -1046,7 +1044,7 @@
 				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devyao.JSONConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JSONConverter/JSONConverter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1069,7 +1067,7 @@
 				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devyao.JSONConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JSONConverter/JSONConverter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

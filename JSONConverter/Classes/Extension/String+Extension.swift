@@ -61,7 +61,7 @@ extension String {
         return space
     }
     
-    /// 驼峰转为下划线
+    /// hump to underline
     mutating func underline() -> String {
         self = lowercaseFirstChar()
         var result = [String]();
@@ -74,7 +74,8 @@ extension String {
         }
         return result.joined()
     }
-    ///转化为驼峰
+    
+    /// underline to hump
     func convertFromSnakeCase() -> String {
         let stringKey = self
         guard !stringKey.isEmpty else { return stringKey }
@@ -118,10 +119,9 @@ extension String {
             // Just trailing
             result = joinedString + String(stringKey[trailingUnderscoreRange])
         }
+        
         return result
     }
-
-    
 }
 
 extension NSNumber {
