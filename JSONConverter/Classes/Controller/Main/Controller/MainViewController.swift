@@ -10,17 +10,6 @@ import Cocoa
 
 class MainViewController: NSViewController {
     
-    lazy var transTypeTitleList: [String] = {
-        let titleArr = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
-        return titleArr
-    }()
-    
-    lazy var structTypeTitleList: [String] = {
-        let titleArr = ["Struct", "Class"]
-        return titleArr
-    }()
-    
-
     // Choose Language
     @IBOutlet weak var converTypeBox: NSComboBox!
     
@@ -45,8 +34,9 @@ class MainViewController: NSViewController {
     @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var saveBtn: NSButton!
     
+    let transTypeTitleList = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
+    let structTypeTitleList = ["Struct", "Class"]
     let highlightr = Highlightr()!
-    
     
     private lazy var JSONStorage: CodeAttributedString = {
         let storage = CodeAttributedString()
