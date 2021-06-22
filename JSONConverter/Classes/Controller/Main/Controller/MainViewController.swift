@@ -20,11 +20,14 @@ class MainViewController: NSViewController {
         return titleArr
     }()
     
+
     // Choose Language
     @IBOutlet weak var converTypeBox: NSComboBox!
     
     // Choose Structure
     @IBOutlet weak var converStructBox: NSComboBox!
+    
+    @IBOutlet weak var styleBox: NSComboBox!
     
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
     @IBOutlet weak var classScrollViewHeightCons: NSLayoutConstraint!
@@ -41,6 +44,31 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var saveBtn: NSButton!
+    
+    let highlightr = Highlightr()!
+    
+    
+    private lazy var JSONStorage: CodeAttributedString = {
+        let storage = CodeAttributedString()
+        storage.highlightr.setTheme(to: "tomorrow-night-bright")
+        storage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        storage.language = "json"
+        return storage
+    }()
+    
+    private lazy var classStorage: CodeAttributedString = {
+        let storage = CodeAttributedString()
+        storage.highlightr.setTheme(to: "tomorrow-night-bright")
+        storage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        return storage
+    }()
+    
+    private lazy var classImpStorage: CodeAttributedString = {
+        let storage = CodeAttributedString()
+        storage.highlightr.setTheme(to: "tomorrow-night-bright")
+        storage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        return storage
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +110,11 @@ class MainViewController: NSViewController {
         converStructBox.isEditable = false
         converStructBox.isSelectable = false
         
+        styleBox.addItems(withObjectValues: highlightr.availableThemes())
+        styleBox.delegate = self
+        styleBox.isEditable = false
+        styleBox.isSelectable = false
+        
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
         
@@ -93,36 +126,17 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-        
-        let highlightr = Highlightr()!
         let languages = highlightr.supportedLanguages()
         let themes = highlightr.availableThemes()
         print("languages: \(languages)\n themes:\(themes)")
         
-        //        let jsonStorage = JSONHightTextStorage()
-        let jsonStorage = CodeAttributedString()
-        jsonStorage.highlightr.setTheme(to: "tomorrow-night-bright")
-        jsonStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
-        jsonStorage.language = "json"
-        jsonStorage.addLayoutManager(JSONTextView.layoutManager!)
-        
-        
-        //        let classStorage = ClassHightTextStorage()
-        let classStorage = CodeAttributedString()
-        classStorage.highlightr.setTheme(to: "tomorrow-night-bright")
-        classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
-        classStorage.language = "Swift"
+        JSONStorage.addLayoutManager(JSONTextView.layoutManager!)
         classStorage.addLayoutManager(classTextView.layoutManager!)
-        classTextView.textColor = NSColor.labelColor
-        
-        //        let classImpStorage = ClassHightTextStorage()
-        let classImpStorage = CodeAttributedString()
-        classImpStorage.highlightr.setTheme(to: "tomorrow-night-bright")
-        classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
-        classImpStorage.language = "Swift"
         classImpStorage.addLayoutManager(classImpTextView.layoutManager!)
-        
-        
+
+        classImpTextView.textColor = NSColor.labelColor
+        classTextView.textColor = NSColor.labelColor
+
         let verLineViewPan = NSPanGestureRecognizer(target: self, action: #selector(verLineViewPanSplitViewAction))
         verSplitLineView.addGestureRecognizer(verLineViewPan)
         verSplitLineView.causor = NSCursor.resizeLeftRight
@@ -138,6 +152,9 @@ class MainViewController: NSViewController {
         let configFile = FileConfigManager.shared.currentConfigFile()
         converTypeBox.selectItem(at: configFile.langStruct.langType.rawValue)
         converStructBox.selectItem(at: configFile.langStruct.structType.rawValue)
+        if let themeIndex = highlightr.availableThemes().firstIndex(where: {configFile.theme == $0}) {
+            styleBox.selectItem(at: themeIndex)
+        }
     }
     
     @IBAction func settingAction(_ sender: NSButton) {
@@ -262,10 +279,14 @@ class MainViewController: NSViewController {
     private func updateUIAndConfigFile() {
         let configFile = FileConfigManager.shared.currentConfigFile()
         guard let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
-              let structType = StructType(rawValue: converStructBox.indexOfSelectedItem) else {
+              let structType = StructType(rawValue: converStructBox.indexOfSelectedItem)
+              else {
             assert(false, "lang or struct type error")
             return
         }
+        
+        classImpStorage.language = langType.language
+        classStorage.language = langType.language
         
         if langType == .ObjC {
             horSpliteLineViewHeightCons.constant = 8
@@ -281,8 +302,10 @@ class MainViewController: NSViewController {
         
         let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
-        FileConfigManager.shared.updateConfigFile(file: configFile)
         
+        let theme =  highlightr.availableThemes()[converStructBox.indexOfSelectedItem]
+        configFile.theme = theme
+        FileConfigManager.shared.updateConfigFile(file: configFile)
         generateClasses()
     }
     
@@ -323,6 +346,15 @@ extension MainViewController: NSComboBoxDelegate {
             } else if langType == LangType.Codable { //if Codable choose struct
                 converStructBox.selectItem(at: 0)
             }
+        }else if comBox == styleBox {
+            let theme = highlightr.availableThemes()[styleBox.indexOfSelectedItem]
+            classStorage.highlightr.setTheme(to:theme)
+            classImpStorage.highlightr.setTheme(to: theme)
+            JSONStorage.highlightr.setTheme(to: theme)
+            
+            classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+            classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+            JSONStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
         }
         
         updateUIAndConfigFile()

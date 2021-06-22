@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,6 +20,7 @@
                 <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
                 <outlet property="saveBtn" destination="zHm-8W-mp8" id="QTa-Vt-8ik"/>
                 <outlet property="statusLab" destination="N2j-s3-kwM" id="rfL-un-tza"/>
+                <outlet property="styleBox" destination="rK9-Oe-Z2V" id="XmH-oe-o6z"/>
                 <outlet property="verSplitLineView" destination="Jih-7b-sHs" id="OHM-CU-tEK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -167,10 +169,10 @@
                             </comboBoxCell>
                         </comboBox>
                         <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-cQ-yR7">
-                            <rect key="frame" x="665" y="11" width="93" height="26"/>
+                            <rect key="frame" x="655" y="11" width="103" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Fah-te-PL1"/>
-                                <constraint firstAttribute="width" constant="90" id="Sf6-Sn-V4v"/>
+                                <constraint firstAttribute="width" constant="100" id="Sf6-Sn-V4v"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="b5g-Qr-2Vq">
                                 <font key="font" metaFont="system"/>
@@ -199,6 +201,18 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-Oe-Z2V">
+                            <rect key="frame" x="508" y="11" width="123" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="C6Y-TL-YZl"/>
+                                <constraint firstAttribute="height" constant="20" id="NPl-KI-ad3"/>
+                            </constraints>
+                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="VvY-w6-qw9">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </comboBoxCell>
+                        </comboBox>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
@@ -206,12 +220,14 @@
                         <constraint firstItem="N2j-s3-kwM" firstAttribute="leading" secondItem="zBe-Rp-cI7" secondAttribute="trailing" id="70Q-zi-LUf"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="L68-oy-Lfw"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
+                        <constraint firstItem="3Ps-cQ-yR7" firstAttribute="leading" secondItem="rK9-Oe-Z2V" secondAttribute="trailing" constant="27" id="SaO-t0-9J8"/>
                         <constraint firstItem="3Ps-cQ-yR7" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="TEL-yx-wep"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="XLk-k6-FyG"/>
                         <constraint firstItem="acr-Rb-HpB" firstAttribute="leading" secondItem="3Ps-cQ-yR7" secondAttribute="trailing" constant="20" id="YfS-lM-89F"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="top" secondItem="Rs5-vR-4VE" secondAttribute="top" id="ZAf-f1-Ce1"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="leading" secondItem="Rs5-vR-4VE" secondAttribute="leading" id="ftP-av-yKY"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="gEI-lV-qMU"/>
+                        <constraint firstItem="rK9-Oe-Z2V" firstAttribute="centerY" secondItem="3Ps-cQ-yR7" secondAttribute="centerY" id="lhQ-7U-4HV"/>
                         <constraint firstAttribute="trailing" secondItem="zHm-8W-mp8" secondAttribute="trailing" constant="14" id="mrc-wa-6Xw"/>
                     </constraints>
                 </customView>

@@ -24,6 +24,8 @@ class File {
     
     var contents = [Content]()
     
+    var theme = "tomorrow-night-bright"
+    
     init(cacheConfig dic: [String: String]?) {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""
@@ -35,6 +37,7 @@ class File {
         let structType = StructType(rawValue: structIndex)!
         let transStruct = LangStruct(langType: langType, structType: structType)
         self.langStruct = transStruct
+        self.theme = dic?["theme"] ?? "tomorrow-night-bright"
         
         self.isCustomHeader = Int(dic?["isCustomHeader"] ?? "0")!
         if self.isCustomHeader == 1 {
@@ -63,7 +66,7 @@ class File {
         return ["header": header, "isCustomHeader": "\(isCustomHeader)","rootName": rootName,
                 "prefix": prefix ?? "","parentName": parentName ?? "",
                 "langType": "\(langStruct.langType.rawValue)",
-            "structType": "\(langStruct.structType.rawValue)"]
+                "structType": "\(langStruct.structType.rawValue)", "theme": theme]
     }
     
     private func defaultHeaderString(suffix: String) -> String {
