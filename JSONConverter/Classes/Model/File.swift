@@ -26,6 +26,8 @@ class File {
     
     var theme = "tomorrow-night-bright"
     
+    var autoCaseUnder: Int = 0
+    
     init(cacheConfig dic: [String: String]?) {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""

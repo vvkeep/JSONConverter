@@ -25,6 +25,10 @@ class SettingViewController: NSViewController {
     @IBOutlet weak var headerKeyLab: NSTextField!
     @IBOutlet weak var headerField: NSTextField!
         
+    @IBOutlet weak var underCaseCamelKeyLab: NSTextField!
+    @IBOutlet weak var underCaseCamelBtn: NSSwitch!
+    
+    
     @IBOutlet weak var saveBtn: NSButton!
     
     var changeFileConfigClosure:(() -> ())?
@@ -78,6 +82,9 @@ class SettingViewController: NSViewController {
         FileConfigManager.shared.updateConfigFile(file: configFile)
         changeFileConfigClosure?()
         dismiss(nil)
+    }
+    
+    @IBAction func underCaseCamelSwitch(_ sender: NSSwitch) {
     }
     
     @IBAction func customFileHeaderSwitch(_ sender: NSSwitch) {
