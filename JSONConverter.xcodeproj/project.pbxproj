@@ -37,8 +37,6 @@
 		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */; };
 		8E542C31251350080053C1E0 /* ExportClassesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C30251350080053C1E0 /* ExportClassesModel.swift */; };
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
-		8E9E8D162682030700F778D0 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E8D132682030700F778D0 /* NSObject+YYModel.m */; };
-		8E9E8D172682030700F778D0 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E8D142682030700F778D0 /* YYClassInfo.m */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
 		8EEE5BDA25184E9800004C58 /* CodeAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE5B7625184E9800004C58 /* CodeAttributedString.swift */; };
 		8EEE5BDB25184E9800004C58 /* Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE5B7725184E9800004C58 /* Highlightr.swift */; };
@@ -186,11 +184,6 @@
 		8E542C30251350080053C1E0 /* ExportClassesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportClassesModel.swift; sourceTree = "<group>"; };
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8E9E8D09268202C300F778D0 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
-		8E9E8D112682030700F778D0 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
-		8E9E8D122682030700F778D0 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
-		8E9E8D132682030700F778D0 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
-		8E9E8D142682030700F778D0 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
-		8E9E8D152682030700F778D0 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		8EEE5B7625184E9800004C58 /* CodeAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeAttributedString.swift; sourceTree = "<group>"; };
 		8EEE5B7725184E9800004C58 /* Highlightr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlightr.swift; sourceTree = "<group>"; };
@@ -487,18 +480,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8E9E8D102682030700F778D0 /* YYModel */ = {
-			isa = PBXGroup;
-			children = (
-				8E9E8D122682030700F778D0 /* YYModel.h */,
-				8E9E8D152682030700F778D0 /* NSObject+YYModel.h */,
-				8E9E8D132682030700F778D0 /* NSObject+YYModel.m */,
-				8E9E8D112682030700F778D0 /* YYClassInfo.h */,
-				8E9E8D142682030700F778D0 /* YYClassInfo.m */,
-			);
-			path = YYModel;
-			sourceTree = "<group>";
-		};
 		8EBE0D08251200A7003A4B4B /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +491,6 @@
 		8EEE5B7225184E8C00004C58 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				8E9E8D102682030700F778D0 /* YYModel */,
 				8EEE5B7325184E9800004C58 /* Highlightr_2.1.0 */,
 			);
 			path = Vendor;
@@ -865,7 +845,6 @@
 				8EEE5BDC25184E9800004C58 /* HTMLUtils.swift in Sources */,
 				8E542C31251350080053C1E0 /* ExportClassesModel.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
-				8E9E8D172682030700F778D0 /* YYClassInfo.m in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				8EEE5BDA25184E9800004C58 /* CodeAttributedString.swift in Sources */,
 				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
@@ -881,7 +860,6 @@
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
-				8E9E8D162682030700F778D0 /* NSObject+YYModel.m in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
 				8EEE5BDB25184E9800004C58 /* Highlightr.swift in Sources */,

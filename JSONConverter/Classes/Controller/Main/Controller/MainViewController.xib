@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,13 +13,13 @@
                 <outlet property="classImpTextView" destination="qu2-d0-ZZk" id="E5L-ip-pSi"/>
                 <outlet property="classScrollViewHeightCons" destination="Jye-DN-yss" id="shm-yr-RvK"/>
                 <outlet property="classTextView" destination="9fN-8x-2aw" id="9ab-zz-YPx"/>
-                <outlet property="converStructBox" destination="3Ps-cQ-yR7" id="NNW-og-YdH"/>
-                <outlet property="converTypeBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
                 <outlet property="horSplitLineView" destination="pJl-yO-yNu" id="d5u-NS-nQH"/>
                 <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
+                <outlet property="languageBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
                 <outlet property="saveBtn" destination="zHm-8W-mp8" id="QTa-Vt-8ik"/>
                 <outlet property="statusLab" destination="N2j-s3-kwM" id="rfL-un-tza"/>
-                <outlet property="styleBox" destination="rK9-Oe-Z2V" id="XmH-oe-o6z"/>
+                <outlet property="structureBox" destination="3Ps-cQ-yR7" id="NNW-og-YdH"/>
+                <outlet property="themeBox" destination="rK9-Oe-Z2V" id="XmH-oe-o6z"/>
                 <outlet property="verSplitLineView" destination="Jih-7b-sHs" id="OHM-CU-tEK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -150,7 +149,7 @@
                             </constraints>
                             <buttonCell key="cell" type="push" title="转换" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="uWG-Sb-jzp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="saveBtnAction:" target="-2" id="cXI-8X-NTi"/>
@@ -163,7 +162,7 @@
                                 <constraint firstAttribute="width" constant="120" id="jFR-VO-k9q"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="SHd-ug-r0R">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
@@ -175,7 +174,7 @@
                                 <constraint firstAttribute="width" constant="100" id="Sf6-Sn-V4v"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="b5g-Qr-2Vq">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>
@@ -187,7 +186,7 @@
                             </constraints>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" inset="2" id="bJ5-2Y-TL5">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                             </buttonCell>
                             <connections>
                                 <action selector="settingAction:" target="-2" id="9y4-PN-kgw"/>
@@ -208,7 +207,7 @@
                                 <constraint firstAttribute="height" constant="20" id="NPl-KI-ad3"/>
                             </constraints>
                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="VvY-w6-qw9">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="label" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </comboBoxCell>

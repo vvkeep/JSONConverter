@@ -12,7 +12,7 @@ class File {
     
     var header: String!
     
-    var isCustomHeader: Int = 0
+    var isCustomHeader: Bool = false
     
     var prefix: String?
     
@@ -26,7 +26,7 @@ class File {
     
     var theme = "tomorrow-night-bright"
     
-    var autoCaseUnder: Int = 0
+    var autoCaseUnderline: Bool = false
     
     init(cacheConfig dic: [String: String]?) {
         self.rootName = dic?["rootName"] ?? "RootClass"
@@ -40,9 +40,10 @@ class File {
         let transStruct = LangStruct(langType: langType, structType: structType)
         self.langStruct = transStruct
         self.theme = dic?["theme"] ?? "tomorrow-night-bright"
+        self.autoCaseUnderline = (dic?["autoCaseUnderline"] ?? "0").toBool()
         
-        self.isCustomHeader = Int(dic?["isCustomHeader"] ?? "0")!
-        if self.isCustomHeader == 1 {
+        self.isCustomHeader = (dic?["isCustomHeader"] ?? "0").toBool()
+        if self.isCustomHeader {
             self.header = dic?["header"] ?? ""
         }else {
             let suffix = classSuffixString().0
@@ -51,12 +52,12 @@ class File {
     }
     
     func content(withPropertyKey key: String) -> Content {
-        let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix)
+        let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return content
     }
     
     func property(withPropertykey key: String, type: PropertyType) -> Property {
-        let property = Property(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix)
+        let property = Property(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
     
@@ -65,8 +66,8 @@ class File {
     }
     
     func toCacheConfig() -> [String: String] {
-        return ["header": header, "isCustomHeader": "\(isCustomHeader)","rootName": rootName,
-                "prefix": prefix ?? "","parentName": parentName ?? "",
+        return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)","rootName": rootName,
+                "prefix": prefix ?? "","parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
                 "langType": "\(langStruct.langType.rawValue)",
                 "structType": "\(langStruct.structType.rawValue)", "theme": theme]
     }
@@ -98,13 +99,14 @@ class File {
         case .ObjC:
             var tempStr = "\n#import <Foundation/Foundation.h>\n"
             for (i, content) in contents.enumerated() where i > 0 {
-                tempStr += "\n@class \(content.propertyKey.convertFromSnakeCase().className(withPrefix: content.prefixStr));"
+                let propertyKey = autoCaseUnderline ? content.propertyKey.underlineToHump() : content.propertyKey
+                tempStr += "\n@class \(propertyKey.className(withPrefix: content.prefixStr));"
             }
             tempStr += "\n"
             return tempStr
         case .Flutter:
             var className = rootName.className(withPrefix: prefix);
-            let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.underline()).g.dart';\n"
+            let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.humpToUnderline()).g.dart';\n"
             return importStr
         case .Codable:
             return"\nimport Foundation\n"
@@ -132,7 +134,7 @@ class File {
         switch langStruct.langType {
         case .ObjC:
             var tempString =  ""
-            if isCustomHeader == 1 {
+            if isCustomHeader {
                 tempString += header
             }else {
                 tempString += defaultHeaderString(suffix: classSuffixString().1!)
@@ -143,7 +145,8 @@ class File {
             }
             
             for content in contents {
-                tempString += "\n@implementation \(content.propertyKey.convertFromSnakeCase().className(withPrefix: content.prefixStr))\n\n@end\n"
+                let propertyKey = autoCaseUnderline ? content.propertyKey.underlineToHump() : content.propertyKey
+                tempString += "\n@implementation \(propertyKey.className(withPrefix: content.prefixStr))\n\n@end\n"
             }
             
             return tempString

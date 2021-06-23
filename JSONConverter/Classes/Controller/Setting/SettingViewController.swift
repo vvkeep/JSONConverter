@@ -25,13 +25,13 @@ class SettingViewController: NSViewController {
     @IBOutlet weak var headerKeyLab: NSTextField!
     @IBOutlet weak var headerField: NSTextField!
         
-    @IBOutlet weak var underCaseCamelKeyLab: NSTextField!
-    @IBOutlet weak var underCaseCamelBtn: NSSwitch!
+    @IBOutlet weak var autoHumpKeyLab: NSTextField!
+    @IBOutlet weak var autoHumpSwitch: NSSwitch!
     
     
     @IBOutlet weak var saveBtn: NSButton!
     
-    var changeFileConfigClosure:(() -> ())?
+    var fileConfigChangedClosure:(() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,7 @@ class SettingViewController: NSViewController {
         rootClassKeyLab.stringValue = "parameter_root_class_title".localized
         parentClassKeyLab.stringValue = "parameter_parent_class_title".localized
         customHeaderKeyLab.stringValue = "parameter_custom_file_header_title".localized
+        autoHumpKeyLab.stringValue = "parameter_auto_case_underline_hump".localized
         headerKeyLab.stringValue = "parameter_file_header_title".localized
         saveBtn.title = "parameter_save_title".localized
         
@@ -57,19 +58,10 @@ class SettingViewController: NSViewController {
         prefixField.stringValue = configFile.prefix ?? ""
         rootClassField.stringValue = configFile.rootName
         parentClassField.stringValue = configFile.parentName ?? ""
-        customHeaderSwitch.state = NSControl.StateValue(configFile.isCustomHeader)
-        
+        autoHumpSwitch.state =  configFile.autoCaseUnderline ? .on : .off
+        customHeaderSwitch.state = configFile.isCustomHeader ? .on : .off
+        headerField.isEditable = customHeaderSwitch.state == .on
         headerField.stringValue = configFile.header ?? ""
-        
-        if customHeaderSwitch.state == .on {
-            headerField.isEditable = true
-            headerField.layer?.borderWidth = 1
-            headerField.layer?.borderColor = NSColor.hexInt(hex: 0x1AB6FF).cgColor
-        }else {
-            headerField.isEditable = false
-            headerField.layer?.borderWidth = 0
-            headerField.layer?.borderColor = nil
-        }
     }
         
     @IBAction func saveConfigAction(_ sender: NSButton) {
@@ -78,19 +70,18 @@ class SettingViewController: NSViewController {
         configFile.rootName = rootClassField.stringValue
         configFile.parentName = parentClassField.stringValue
         configFile.header = headerField.stringValue
-        configFile.isCustomHeader = customHeaderSwitch.state.rawValue
-        FileConfigManager.shared.updateConfigFile(file: configFile)
-        changeFileConfigClosure?()
+        configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1
+        configFile.autoCaseUnderline = autoHumpSwitch.state.rawValue == 1
+        FileConfigManager.shared.updateConfigWithFile(configFile)
+        fileConfigChangedClosure?()
         dismiss(nil)
-    }
-    
-    @IBAction func underCaseCamelSwitch(_ sender: NSSwitch) {
     }
     
     @IBAction func customFileHeaderSwitch(_ sender: NSSwitch) {
         let configFile = FileConfigManager.shared.currentConfigFile()
-        configFile.isCustomHeader = customHeaderSwitch.state.rawValue
-        FileConfigManager.shared.updateConfigFile(file: configFile)
+        configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1
+        configFile.autoCaseUnderline = autoHumpSwitch.state.rawValue == 1
+        FileConfigManager.shared.updateConfigWithFile(configFile)
         updateCacheConfigUI()
     }
 }

@@ -10,13 +10,9 @@ import Cocoa
 
 class MainViewController: NSViewController {
     
-    // Choose Language
-    @IBOutlet weak var converTypeBox: NSComboBox!
-    
-    // Choose Structure
-    @IBOutlet weak var converStructBox: NSComboBox!
-    
-    @IBOutlet weak var styleBox: NSComboBox!
+    @IBOutlet weak var languageBox: NSComboBox!
+    @IBOutlet weak var structureBox: NSComboBox!
+    @IBOutlet weak var themeBox: NSComboBox!
     
     @IBOutlet weak var JSONScrollViewWidthCons: NSLayoutConstraint!
     @IBOutlet weak var classScrollViewHeightCons: NSLayoutConstraint!
@@ -34,9 +30,9 @@ class MainViewController: NSViewController {
     @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var saveBtn: NSButton!
     
-    let transTypeTitleList = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
-    let structTypeTitleList = ["Struct", "Class"]
-    let highlightr = Highlightr()!
+    private let transTypeTitleList = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
+    private let structTypeTitleList = ["Struct", "Class"]
+    private let highlightr = Highlightr()!
     
     private lazy var JSONStorage: CodeAttributedString = {
         let storage = CodeAttributedString()
@@ -64,12 +60,12 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
         setupUI()
         setupCacheConfig()
-        checkVerion()
+        checkVersion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
-        updateUIAndConfigFile()
+        updateCacheConfigAndUI()
     }
     
-    private func checkVerion() {
+    private func checkVersion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
                 let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
@@ -90,20 +86,20 @@ class MainViewController: NSViewController {
     private func setupUI() {
         saveBtn.title = "parameter_save_title".localized
         
-        converTypeBox.addItems(withObjectValues: transTypeTitleList)
-        converTypeBox.delegate = self
-        converTypeBox.isEditable = false
-        converTypeBox.isSelectable = false
+        languageBox.addItems(withObjectValues: transTypeTitleList)
+        languageBox.delegate = self
+        languageBox.isEditable = false
+        languageBox.isSelectable = false
         
-        converStructBox.addItems(withObjectValues: structTypeTitleList)
-        converStructBox.delegate = self
-        converStructBox.isEditable = false
-        converStructBox.isSelectable = false
+        structureBox.addItems(withObjectValues: structTypeTitleList)
+        structureBox.delegate = self
+        structureBox.isEditable = false
+        structureBox.isSelectable = false
         
-        styleBox.addItems(withObjectValues: highlightr.availableThemes())
-        styleBox.delegate = self
-        styleBox.isEditable = false
-        styleBox.isSelectable = false
+        themeBox.addItems(withObjectValues: highlightr.availableThemes())
+        themeBox.delegate = self
+        themeBox.isEditable = false
+        themeBox.isSelectable = false
         
         classTextView.isEditable = false
         classTextView.setUpLineNumberView()
@@ -116,9 +112,9 @@ class MainViewController: NSViewController {
         JSONTextView.delegate = self
         JSONTextView.setUpLineNumberView()
         
-//        let languages = highlightr.supportedLanguages()
-//        let themes = highlightr.availableThemes()
-//        print("languages: \(languages)\n themes:\(themes)")
+        //        let languages = highlightr.supportedLanguages()
+        //        let themes = highlightr.availableThemes()
+        //        print("languages: \(languages)\n themes:\(themes)")
         
         JSONStorage.addLayoutManager(JSONTextView.layoutManager!)
         classStorage.addLayoutManager(classTextView.layoutManager!)
@@ -140,16 +136,16 @@ class MainViewController: NSViewController {
     
     private func setupCacheConfig() {
         let configFile = FileConfigManager.shared.currentConfigFile()
-        converTypeBox.selectItem(at: configFile.langStruct.langType.rawValue)
-        converStructBox.selectItem(at: configFile.langStruct.structType.rawValue)
+        languageBox.selectItem(at: configFile.langStruct.langType.rawValue)
+        structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: {configFile.theme == $0}) {
-            styleBox.selectItem(at: themeIndex)
+            themeBox.selectItem(at: themeIndex)
         }
     }
     
     @IBAction func settingAction(_ sender: NSButton) {
         let settingVC = SettingViewController()
-        settingVC.changeFileConfigClosure = { [weak self] in
+        settingVC.fileConfigChangedClosure = { [weak self] in
             self?.generateClasses()
         }
         
@@ -166,13 +162,13 @@ class MainViewController: NSViewController {
         openPanel.prompt = "main_view_export_choose_title".localized
         openPanel.beginSheetModal(for: self.view.window!){ button in
             if button == NSApplication.ModalResponse.OK {
-                self.saveClassesToPath(openPanel.url!.path)
+                self.exportClassesFileWithPath(openPanel.url!.path)
                 self.showSaveSuccessAction()
             }
         }
     }
     
-    func saveClassesToPath(_ path : String) {
+    func exportClassesFileWithPath(_ path : String) {
         let configFile = FileConfigManager.shared.currentConfigFile()
         let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
         let suffix = configFile.classSuffixString()
@@ -190,7 +186,7 @@ class MainViewController: NSViewController {
                 error = error1
             }
             
-            if error != nil{
+            if error != nil {
                 alertError(error!)
                 break
             }
@@ -224,7 +220,6 @@ class MainViewController: NSViewController {
                 let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
-                print("json convert duration: \(offsetTime1)ms")
                 
                 DispatchQueue.main.async {
                     self.setupJSONTextViewContent(JSONString)
@@ -233,7 +228,7 @@ class MainViewController: NSViewController {
                     self.showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
                     let endTime2 = CFAbsoluteTimeGetCurrent()
                     let offsetTime2 = Int((endTime2 - endTime1) * 1000)
-                    print("json display duration: \(offsetTime2)ms")
+                    print("JSON convert duration: \(offsetTime1)ms, display duration: \(offsetTime2)ms")
                 }
             }else {
                 DispatchQueue.main.sync {
@@ -269,10 +264,10 @@ class MainViewController: NSViewController {
         }
     }
     
-    private func updateUIAndConfigFile() {
+    private func updateCacheConfigAndUI() {
         let configFile = FileConfigManager.shared.currentConfigFile()
-        guard let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem),
-            let structType = StructType(rawValue: converStructBox.indexOfSelectedItem)
+        guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
+            let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
             else {
                 assert(false, "lang or struct type error")
                 return
@@ -296,9 +291,9 @@ class MainViewController: NSViewController {
         let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
         
-        let theme =  highlightr.availableThemes()[converStructBox.indexOfSelectedItem]
+        let theme =  highlightr.availableThemes()[structureBox.indexOfSelectedItem]
         configFile.theme = theme
-        FileConfigManager.shared.updateConfigFile(file: configFile)
+        FileConfigManager.shared.updateConfigWithFile(configFile)
         generateClasses()
     }
     
@@ -318,29 +313,29 @@ class MainViewController: NSViewController {
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
         let currentConfigFile = FileConfigManager.shared.currentConfigFile()
-        FileConfigManager.shared.updateConfigFile(file: currentConfigFile)
+        FileConfigManager.shared.updateConfigWithFile(currentConfigFile)
     }
 }
 
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxWillDismiss(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        if comBox == converTypeBox { //Choose Language
-            let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
+        if comBox == languageBox { //Choose Language
+            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
             if langType == LangType.ObjC || langType == LangType.Flutter { //if OC Flutter choose class
-                converStructBox.selectItem(at: 1)
+                structureBox.selectItem(at: 1)
             } else if langType == LangType.Codable {//if Codable choose struct
-                converStructBox.selectItem(at: 0)
+                structureBox.selectItem(at: 0)
             }
-        }else if comBox == converStructBox { //Choose Structure
-            let langType = LangType(rawValue: converTypeBox.indexOfSelectedItem)
+        }else if comBox == structureBox { //Choose Structure
+            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
             if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
-                converStructBox.selectItem(at: 1)
+                structureBox.selectItem(at: 1)
             } else if langType == LangType.Codable { //if Codable choose struct
-                converStructBox.selectItem(at: 0)
+                structureBox.selectItem(at: 0)
             }
-        }else if comBox == styleBox {
-            let theme = highlightr.availableThemes()[styleBox.indexOfSelectedItem]
+        }else if comBox == themeBox {
+            let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
             classStorage.highlightr.setTheme(to:theme)
             classImpStorage.highlightr.setTheme(to: theme)
             JSONStorage.highlightr.setTheme(to: theme)
@@ -350,7 +345,7 @@ extension MainViewController: NSComboBoxDelegate {
             JSONStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
         }
         
-        updateUIAndConfigFile()
+        updateCacheConfigAndUI()
     }
 }
 

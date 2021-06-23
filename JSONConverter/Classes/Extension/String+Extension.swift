@@ -62,7 +62,7 @@ extension String {
     }
     
     /// hump to underline
-    mutating func underline() -> String {
+    mutating func humpToUnderline() -> String {
         self = lowercaseFirstChar()
         var result = [String]();
         for item in self {
@@ -76,7 +76,7 @@ extension String {
     }
     
     /// underline to hump
-    func convertFromSnakeCase() -> String {
+    func underlineToHump() -> String {
         let stringKey = self
         guard !stringKey.isEmpty else { return stringKey }
     
@@ -189,5 +189,19 @@ extension String{
             string = String(subString)
         }
         return string
+    }
+}
+
+extension String {
+    
+    func toBool() -> Bool {
+        switch self {
+        case "True", "true", "yes", "1":
+            return true
+        case "False", "false", "no", "0":
+            return false
+        default:
+            return false
+        }
     }
 }

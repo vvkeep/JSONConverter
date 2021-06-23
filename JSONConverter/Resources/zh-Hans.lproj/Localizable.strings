@@ -18,6 +18,7 @@
 "parameter_file_header_title" = "文件头";
 "parameter_save_title" = "保存";
 "parameter_custom_file_header_title" = "自定义头";
+"parameter_auto_case_underline_hump" = "自动驼峰";
 
 "app_upgrade_veriosn_title" = "版本更新";
 "app_latest_veriosn_title" = "最新版本";

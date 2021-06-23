@@ -27,7 +27,7 @@ class FileConfigManager {
         return file
     }
     
-    func updateConfigFile(file: File) {
+    func updateConfigWithFile(_ file: File) {
         fileConfigDic = file.toCacheConfig()
         UserDefaults.standard.set(fileConfigDic, forKey: FILE_CACHE_CONFIG_KEY)
         UserDefaults.standard.synchronize()
