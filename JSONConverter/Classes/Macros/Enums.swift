@@ -16,6 +16,17 @@ enum LangType: Int {
     case ObjC
     case Flutter
     case Codable
+    
+    var language: String! {
+        switch self {
+        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
+            return "swift"
+        case .ObjC:
+            return "objectivec"
+        case .Flutter:
+            return "dart"
+        }
+    }
 }
 
 enum StructType: Int {

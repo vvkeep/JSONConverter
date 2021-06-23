@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingViewController" customModule="JSONConverter" customModuleProvider="target">
             <connections>
+                <outlet property="autoHumpKeyLab" destination="tl1-1E-CMt" id="sLy-7b-VnA"/>
+                <outlet property="autoHumpSwitch" destination="Zzf-oj-my4" id="j7s-NV-gQC"/>
                 <outlet property="customHeaderKeyLab" destination="Fxj-jI-BgK" id="niA-B3-uJz"/>
                 <outlet property="customHeaderSwitch" destination="smN-MJ-qV3" id="6gf-ic-3M8"/>
                 <outlet property="headerField" destination="HoE-d7-MFG" id="tOR-Tg-cy0"/>
@@ -127,11 +129,24 @@
                         <action selector="customFileHeaderSwitch:" target="-2" id="qGY-He-0qc"/>
                     </connections>
                 </switch>
+                <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="Zzf-oj-my4">
+                    <rect key="frame" x="468" y="346" width="42" height="24"/>
+                </switch>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tl1-1E-CMt">
+                    <rect key="frame" x="329" y="349" width="128" height="19"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Under case camel" id="gLN-bF-Jv0">
+                        <font key="font" metaFont="system" size="15"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="Zzf-oj-my4" firstAttribute="leading" secondItem="tl1-1E-CMt" secondAttribute="trailing" constant="15" id="7J3-do-vaO"/>
                 <constraint firstItem="Fxj-jI-BgK" firstAttribute="top" secondItem="Zm4-zI-OvN" secondAttribute="bottom" constant="25" id="7Ko-eB-0Kk"/>
                 <constraint firstItem="Zm4-zI-OvN" firstAttribute="leading" secondItem="zPf-iD-emB" secondAttribute="leading" id="9M3-uI-dGy"/>
                 <constraint firstItem="Fxj-jI-BgK" firstAttribute="leading" secondItem="Zm4-zI-OvN" secondAttribute="leading" id="9kk-g5-oi5"/>
+                <constraint firstItem="Zzf-oj-my4" firstAttribute="centerY" secondItem="tl1-1E-CMt" secondAttribute="centerY" id="AAC-jp-75r"/>
                 <constraint firstItem="z3q-hA-Di9" firstAttribute="centerY" secondItem="Zm4-zI-OvN" secondAttribute="centerY" id="AzK-mu-618"/>
                 <constraint firstItem="z3q-hA-Di9" firstAttribute="width" secondItem="uT0-wp-2Rx" secondAttribute="width" id="Bwb-5L-1cd"/>
                 <constraint firstItem="z3q-hA-Di9" firstAttribute="leading" secondItem="Zm4-zI-OvN" secondAttribute="trailing" constant="15" id="FPq-Ha-mle"/>
@@ -141,6 +156,7 @@
                 <constraint firstItem="JCW-KS-pZR" firstAttribute="top" secondItem="Fxj-jI-BgK" secondAttribute="bottom" constant="25" id="JWc-kd-NON"/>
                 <constraint firstItem="HoE-d7-MFG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="35" id="MCC-Ke-KI6"/>
                 <constraint firstItem="smN-MJ-qV3" firstAttribute="leading" secondItem="Fxj-jI-BgK" secondAttribute="trailing" constant="15" id="MZy-Il-fPB"/>
+                <constraint firstItem="tl1-1E-CMt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="McZ-Gm-caX"/>
                 <constraint firstItem="S4V-bE-2DN" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="30" id="OpI-Fa-EIC"/>
                 <constraint firstItem="uT0-wp-2Rx" firstAttribute="leading" secondItem="zPf-iD-emB" secondAttribute="trailing" constant="15" id="PnR-5T-lOT"/>
                 <constraint firstItem="Pj9-J8-pkg" firstAttribute="centerY" secondItem="S4V-bE-2DN" secondAttribute="centerY" id="Q32-ze-JfX"/>
@@ -155,6 +171,7 @@
                 <constraint firstItem="Pj9-J8-pkg" firstAttribute="leading" secondItem="S4V-bE-2DN" secondAttribute="trailing" constant="15" id="php-TD-hMj"/>
                 <constraint firstAttribute="bottom" secondItem="8r7-oV-iPX" secondAttribute="bottom" constant="35" id="qFB-Xk-wZa"/>
                 <constraint firstItem="uT0-wp-2Rx" firstAttribute="centerY" secondItem="zPf-iD-emB" secondAttribute="centerY" id="uQY-sm-BxY"/>
+                <constraint firstItem="tl1-1E-CMt" firstAttribute="centerY" secondItem="Fxj-jI-BgK" secondAttribute="centerY" id="xky-Go-dM3"/>
                 <constraint firstItem="smN-MJ-qV3" firstAttribute="centerY" secondItem="Fxj-jI-BgK" secondAttribute="centerY" id="zCU-Uk-B3v"/>
                 <constraint firstItem="8r7-oV-iPX" firstAttribute="top" secondItem="HoE-d7-MFG" secondAttribute="bottom" constant="65" id="zLu-Pn-yZE"/>
             </constraints>

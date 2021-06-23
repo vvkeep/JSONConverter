@@ -19,15 +19,19 @@ class Content {
     
     var prefixStr: String?
     
-    init(propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?) {
+    var autoCaseUnderline: Bool
+    
+    init(propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?, autoCaseUnderline: Bool) {
         self.propertyKey = propertyKey
         self.langStruct = langStruct
         self.parentClsName = parentClsName
         self.prefixStr = prefixStr
+        self.autoCaseUnderline = autoCaseUnderline
     }
     
     func toString() -> String {
-        let className = propertyKey.convertFromSnakeCase().className(withPrefix: prefixStr)
+        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
+        let className = tempPropertyKey.className(withPrefix: prefixStr)
         var contentStr = ""
         
         let result = propertyAndInitPart()
