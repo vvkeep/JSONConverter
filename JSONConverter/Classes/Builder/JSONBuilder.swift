@@ -44,27 +44,27 @@ class JSONBuilder {
         let content = file.contentWithKeyName(keyName)
         
         dic.forEach { (item) in
-            let itemKey = item.key
-            var propertyModel: Property?
+            let keyName = item.key
+            var property: Property?
             
             switch item.value {
             case _ as String:
-                propertyModel = file.propertyWithKeyName(itemKey, type: .String)
+                property = file.propertyWithKeyName(keyName, type: .String)
             case let num as NSNumber:
-                propertyModel = file.propertyWithKeyName(itemKey, type: num.valueType())
+                property = file.propertyWithKeyName(keyName, type: num.valueType())
             case let dic as [String: Any]:
-                propertyModel = file.propertyWithKeyName(itemKey, type: .Dictionary)
-                let content = addDictionaryWithKeyName(itemKey, dic: dic)
+                property = file.propertyWithKeyName(keyName, type: .Dictionary)
+                let content = addDictionaryWithKeyName(keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                propertyModel = addArraryWithKeyName(itemKey, valueArrary: arr)
+                property = addArraryWithKeyName(keyName, valueArrary: arr)
             case  _ as NSNull:
-                propertyModel = file.propertyWithKeyName(itemKey, type: .nil)
+                property = file.propertyWithKeyName(keyName, type: .nil)
             default:
-                assertionFailure("parse object type error")
+                assertionFailure("build JSON object type error")
             }
             
-            if let propertyModel = propertyModel {
+            if let propertyModel = property {
                 content.properties.append(propertyModel)
             }
         }
@@ -73,13 +73,16 @@ class JSONBuilder {
     }
     
     private func addArraryWithKeyName(_ keyName: String, valueArrary: [Any]) -> Property? {
-        if valueArrary.count == 0 {
-            return nil
+        var item = valueArrary.first
+        if valueArrary.first is Dictionary<String, Any> {
+            var temp = [String: Any]()
+            valueArrary.forEach { temp.merge($0 as! [String: Any]) { $1 } }
+            item = temp
         }
         
-        if let first = valueArrary.first {
+        if let item = item {
             var propertyModel: Property?
-            switch first {
+            switch item {
             case _ as String:
                 propertyModel = file.propertyWithKeyName(keyName, type: .ArrayString)
             case let num as NSNumber:
@@ -90,14 +93,14 @@ class JSONBuilder {
                 let content = addDictionaryWithKeyName(keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             default:
-                assertionFailure("parse object type error")
+                assertionFailure("build JSON object type error")
                 break
             }
             
             return propertyModel
+        }else {
+            return nil
         }
-        
-        return nil
     }
 }
     
