@@ -135,7 +135,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        let configFile = FileConfigManager.shared.currentConfigFile()
+        let configFile = FileConfigBuilder.shared.currentConfigFile()
         languageBox.selectItem(at: configFile.langStruct.langType.rawValue)
         structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: {configFile.theme == $0}) {
@@ -169,7 +169,7 @@ class MainViewController: NSViewController {
     }
     
     func exportClassesFileWithPath(_ path : String) {
-        let configFile = FileConfigManager.shared.currentConfigFile()
+        let configFile = FileConfigBuilder.shared.currentConfigFile()
         let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
         let suffix = configFile.classSuffixString()
         
@@ -216,8 +216,8 @@ class MainViewController: NSViewController {
                 let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
                 let JSONString = String(data: JSONData, encoding: .utf8) {
                 
-                let configFile = FileConfigManager.shared.currentConfigFile()
-                let fileString = JSONParseManager.shared.parseJSONObject(JSONObject, file:configFile)
+                let configFile = FileConfigBuilder.shared.currentConfigFile()
+                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
                 
@@ -265,7 +265,7 @@ class MainViewController: NSViewController {
     }
     
     private func updateCacheConfigAndUI() {
-        let configFile = FileConfigManager.shared.currentConfigFile()
+        let configFile = FileConfigBuilder.shared.currentConfigFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
             let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
             else {
@@ -293,7 +293,7 @@ class MainViewController: NSViewController {
         
         let theme =  highlightr.availableThemes()[structureBox.indexOfSelectedItem]
         configFile.theme = theme
-        FileConfigManager.shared.updateConfigWithFile(configFile)
+        FileConfigBuilder.shared.updateConfigWithFile(configFile)
         generateClasses()
     }
     
@@ -312,8 +312,8 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
-        let currentConfigFile = FileConfigManager.shared.currentConfigFile()
-        FileConfigManager.shared.updateConfigWithFile(currentConfigFile)
+        let currentConfigFile = FileConfigBuilder.shared.currentConfigFile()
+        FileConfigBuilder.shared.updateConfigWithFile(currentConfigFile)
     }
 }
 

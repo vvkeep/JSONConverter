@@ -8,10 +8,10 @@
 
 import Foundation
 
-class JSONParseManager {
+class JSONBuilder {
     
-    static let shared: JSONParseManager = {
-        let manager = JSONParseManager()
+    static let shared: JSONBuilder = {
+        let manager = JSONBuilder()
         return manager
     }()
     
@@ -25,9 +25,9 @@ class JSONParseManager {
         
         switch obj {
         case let dic as [String: Any]:
-            content = handleDictionary(propertyKey: propertyKey, dic: dic)
+            content = addDictionaryWithKeyName(propertyKey, dic: dic)
         case let arr as [Any]:
-            _ = handleArrary(itemKey: propertyKey, arr: arr)
+            _ = addArraryWithKeyName(propertyKey, valueArrary: arr)
         default:
             assertionFailure("parse object type error")
         }
@@ -40,8 +40,8 @@ class JSONParseManager {
     }
     
     
-    private func handleDictionary(propertyKey: String, dic: [String: Any]) -> Content {
-        let content = file.content(withPropertyKey: propertyKey)
+    private func addDictionaryWithKeyName(_ keyName: String, dic: [String: Any]) -> Content {
+        let content = file.contentWithKeyName(keyName)
         
         dic.forEach { (item) in
             let itemKey = item.key
@@ -49,17 +49,17 @@ class JSONParseManager {
             
             switch item.value {
             case _ as String:
-                propertyModel = file.property(withPropertykey: itemKey, type: .String)
+                propertyModel = file.propertyWithKeyName(itemKey, type: .String)
             case let num as NSNumber:
-                propertyModel = file.property(withPropertykey: itemKey, type: num.valueType())
+                propertyModel = file.propertyWithKeyName(itemKey, type: num.valueType())
             case let dic as [String: Any]:
-                propertyModel = file.property(withPropertykey: itemKey, type: .Dictionary)
-                let content = handleDictionary(propertyKey: itemKey, dic: dic)
+                propertyModel = file.propertyWithKeyName(itemKey, type: .Dictionary)
+                let content = addDictionaryWithKeyName(itemKey, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                propertyModel = handleArrary(itemKey: itemKey, arr: arr)
+                propertyModel = addArraryWithKeyName(itemKey, valueArrary: arr)
             case  _ as NSNull:
-                propertyModel = file.property(withPropertykey: itemKey, type: .nil)
+                propertyModel = file.propertyWithKeyName(itemKey, type: .nil)
             default:
                 assertionFailure("parse object type error")
             }
@@ -72,18 +72,22 @@ class JSONParseManager {
         return content
     }
     
-    private func handleArrary(itemKey: String, arr: [Any]) -> Property? {
-        if let first = arr.first {
+    private func addArraryWithKeyName(_ keyName: String, valueArrary: [Any]) -> Property? {
+        if valueArrary.count == 0 {
+            return nil
+        }
+        
+        if let first = valueArrary.first {
             var propertyModel: Property?
             switch first {
             case _ as String:
-                propertyModel = file.property(withPropertykey: itemKey, type: .ArrayString)
+                propertyModel = file.propertyWithKeyName(keyName, type: .ArrayString)
             case let num as NSNumber:
                 let type = PropertyType(rawValue: num.valueType().rawValue + 6)!
-                propertyModel = file.property(withPropertykey: itemKey, type: type)
+                propertyModel = file.propertyWithKeyName(keyName, type: type)
             case let dic as [String: Any]:
-                propertyModel = file.property(withPropertykey: itemKey, type: .ArrayDictionary)
-                let content = handleDictionary(propertyKey: itemKey, dic: dic)
+                propertyModel = file.propertyWithKeyName(keyName, type: .ArrayDictionary)
+                let content = addDictionaryWithKeyName(keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             default:
                 assertionFailure("parse object type error")

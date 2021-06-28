@@ -10,15 +10,15 @@ import Foundation
 
 private let FILE_CACHE_CONFIG_KEY = "FILE_CACHE_CONFIG_KEY"
 
-class FileConfigManager {
+class FileConfigBuilder {
     
     private lazy var fileConfigDic: [String: String]? = {
         let dic = UserDefaults.standard.object(forKey: FILE_CACHE_CONFIG_KEY) as? [String: String]
         return dic
     }()
         
-    static let shared: FileConfigManager = {
-        let manager = FileConfigManager()
+    static let shared: FileConfigBuilder = {
+        let manager = FileConfigBuilder()
         return manager
     }()
     
