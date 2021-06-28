@@ -51,13 +51,13 @@ class File {
         }
     }
     
-    func content(withPropertyKey key: String) -> Content {
-        let content = Content(propertyKey: key, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func contentWithKeyName(_ keyName: String) -> Content {
+        let content = Content(propertyKey: keyName, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return content
     }
     
-    func property(withPropertykey key: String, type: PropertyType) -> Property {
-        let property = Property(propertyKey: key, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func propertyWithKeyName(_ keyName: String, type: PropertyType) -> Property {
+        let property = Property(propertyKey: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
     
@@ -71,6 +71,20 @@ class File {
                 "langType": "\(langStruct.langType.rawValue)",
                 "structType": "\(langStruct.structType.rawValue)", "theme": theme]
     }
+    
+    func classSuffixString() -> (String, String?) {
+        switch langStruct.langType {
+        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
+            return ( "swift", nil)
+        case .ObjC:
+            return ("h", "m")
+        case .Flutter:
+            return ("dart", nil)
+        }
+    }
+}
+
+extension File {
     
     private func defaultHeaderString(suffix: String) -> String {
         let headerString = """
@@ -152,18 +166,6 @@ class File {
             return tempString
         default:
             return nil
-        }
-    }
-    
-    
-    func classSuffixString() -> (String, String?) {
-        switch langStruct.langType {
-        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
-            return ( "swift", nil)
-        case .ObjC:
-            return ("h", "m")
-        case .Flutter:
-            return ("dart", nil)
         }
     }
 }
