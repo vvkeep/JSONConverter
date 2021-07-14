@@ -19,6 +19,13 @@ class PanGestureIndicatorView: NSView {
         let area = NSTrackingArea(rect: self.bounds, options: [.enabledDuringMouseDrag, .mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow, .inVisibleRect], owner: self, userInfo: nil)
         addTrackingArea(area)
     }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        let color = NSColor(named: "LineColor")
+        color?.setFill()
+        bounds.fill()
+    }
         
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)

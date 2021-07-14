@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -138,18 +139,18 @@
                         <constraint firstItem="xE3-MR-b0j" firstAttribute="leading" secondItem="VOt-ZW-E3V" secondAttribute="leading" id="vvm-1c-L9w"/>
                     </constraints>
                 </customView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE" userLabel="Bottom Tool Bar">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE" userLabel="Bottom Tool Bar" customClass="CustomBackgroundView" customModule="JSONConverter" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="999" height="50"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zHm-8W-mp8">
-                            <rect key="frame" x="909" y="6" width="82" height="36"/>
+                            <rect key="frame" x="908" y="6" width="84" height="37"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="KHU-BC-zzf"/>
                                 <constraint firstAttribute="height" constant="25" id="Ks7-GQ-6N8"/>
                             </constraints>
                             <buttonCell key="cell" type="push" title="转换" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="uWG-Sb-jzp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="label" size="13"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
                                 <action selector="saveBtnAction:" target="-2" id="cXI-8X-NTi"/>
@@ -186,7 +187,7 @@
                             </constraints>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" inset="2" id="bJ5-2Y-TL5">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="label" size="13"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
                                 <action selector="settingAction:" target="-2" id="9y4-PN-kgw"/>

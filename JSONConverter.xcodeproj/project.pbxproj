@@ -134,6 +134,7 @@
 		8EC079DC268993D400000F68 /* an-old-hope.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07979268993D400000F68 /* an-old-hope.min.css */; };
 		8EC079DD268993D400000F68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797B268993D400000F68 /* LICENSE */; };
 		8EC079DE268993D400000F68 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797C268993D400000F68 /* highlight.min.js */; };
+		8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,7 @@
 		8EC07979268993D400000F68 /* an-old-hope.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "an-old-hope.min.css"; sourceTree = "<group>"; };
 		8EC0797B268993D400000F68 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8EC0797C268993D400000F68 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
+		8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */,
+				8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONBuilder.swift in Sources */,
 				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
+				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,10 +1035,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1042,6 +1046,7 @@
 				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.devyao.JSONConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JSONConverter/JSONConverter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1054,17 +1059,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JSONConverter/JSONConverter.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				DEVELOPMENT_TEAM = 897BNGH9W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devyao.JSONConverter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devyaochen.JSONConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JSONConverter_mac_appstore_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "JSONConverter/JSONConverter-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
