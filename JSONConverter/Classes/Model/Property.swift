@@ -35,6 +35,10 @@ enum PropertyType: Int {
 
 class Property {
         
+    var previousNodeName: String
+
+    var className: String
+
     var keyName: String
     
     var type: PropertyType
@@ -47,13 +51,21 @@ class Property {
     
     var typeName: String
     
-    init(propertyKey: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool, typeName: String? = nil) {
+    init(previousNodeName: String,  propertyKey: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool, typeName: String? = nil) {
+        self.previousNodeName = previousNodeName
         self.keyName = propertyKey
         self.type = type
         self.langStruct = langStruct
         self.prefixStr = prefixStr
         self.autoCaseUnderline = autoCaseUnderline
         self.typeName = typeName ?? type.typeName(langStruct)
+        
+        
+        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
+        className = tempPropertyKey.className(withPrefix: prefixStr)
+        if !previousNodeName.isEmpty {
+            className = "\(previousNodeName)\(tempPropertyKey.uppercaseFirstChar())"
+        }
     }
     
     func toString() -> (String, String){
@@ -145,14 +157,14 @@ class Property {
         case .Dictionary:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) \(tempPropertyKey.className(withPrefix: prefixStr)) *\(tempPropertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) \(className) *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(tempPropertyKey): \(tempPropertyKey.className(withPrefix: prefixStr))?\n"
+                propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(tempPropertyKey): \(tempPropertyKey.className(withPrefix: prefixStr))?\n"
-                initStr = "\t\t\(tempPropertyKey) = \(tempPropertyKey.className(withPrefix: prefixStr))(json: json[\"\(keyName)\"])\n"
+                propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
+                initStr = "\t\t\(tempPropertyKey) = \(className)(json: json[\"\(keyName)\"])\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(tempPropertyKey): \(tempPropertyKey.className(withPrefix: prefixStr))?\n"
+                propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
                 initStr = "\t\t\(tempPropertyKey)\(currentMapperSpace)<- map[\"\(keyName)\"]\n"
             case .Flutter:
                 propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tMap<String,dynamic>? \(tempPropertyKey);\n"
@@ -241,17 +253,17 @@ class Property {
         case .ArrayDictionary:
             switch langStruct.langType{
             case .ObjC:
-                propertyStr = "@property (nonatomic, strong) NSArray<\(tempPropertyKey.className(withPrefix: prefixStr)) *> *\(tempPropertyKey);\n"
+                propertyStr = "@property (nonatomic, strong) NSArray<\(className) *> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(tempPropertyKey) = [\(tempPropertyKey.className(withPrefix: prefixStr))]()\n"
+                propertyStr = "\tvar \(tempPropertyKey) = [\(className)]()\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(tempPropertyKey) = [\(tempPropertyKey.className(withPrefix: prefixStr))]()\n"
-                initStr = "\t\t\(tempPropertyKey) = json[\"\(keyName)\"].arrayValue.compactMap({ \(tempPropertyKey.className(withPrefix: prefixStr))(json: $0)})\n"
+                propertyStr = "\tvar \(tempPropertyKey) = [\(className)]()\n"
+                initStr = "\t\t\(tempPropertyKey) = json[\"\(keyName)\"].arrayValue.compactMap({ \(className)(json: $0)})\n"
             case .ObjectMapper:
-                propertyStr = "\tvar \(tempPropertyKey) = [\(tempPropertyKey.className(withPrefix: prefixStr))]()\n"
+                propertyStr = "\tvar \(tempPropertyKey) = [\(className)]()\n"
                 initStr = "\t\t\(tempPropertyKey)\(currentMapperSpace)<- map[\"\(keyName)\"]\n"
             case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tList<\(tempPropertyKey.className(withPrefix: prefixStr))>? \(tempPropertyKey);\n"
+                propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tList<\(className)>? \(tempPropertyKey);\n"
                 initStr = "this.\(tempPropertyKey),"
             }
         case .nil:
