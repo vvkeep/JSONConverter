@@ -161,7 +161,7 @@ class Property {
             case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
             case .SwiftyJSON:
-                propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
+                propertyStr = "\tvar \(tempPropertyKey): \(className)\n"
                 initStr = "\t\t\(tempPropertyKey) = \(className)(json: json[\"\(keyName)\"])\n"
             case .ObjectMapper:
                 propertyStr = "\tvar \(tempPropertyKey): \(className)?\n"
