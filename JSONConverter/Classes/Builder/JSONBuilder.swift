@@ -92,6 +92,9 @@ class JSONBuilder {
                 propertyModel = file.propertyWithPreviousNodeName(previousNodeName, keyName: keyName, type: .ArrayDictionary)
                 let content = addDictionaryWithPreviousNodeName(previousNodeName, keyName: keyName, dic: dic)
                 file.contents.insert(content, at: 0)
+            case let arr as [Any]:
+                propertyModel = addArraryWithPreviousNodeName(previousNodeName, keyName: keyName, valueArrary: arr)
+                break
             default:
                 assertionFailure("build JSON object type error")
                 break
