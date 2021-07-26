@@ -11,6 +11,10 @@ import Foundation
 class Content {
     var properties = [Property]()
     
+    var previousNodeName: String
+    
+    var className: String
+    
     var propertyKey: String
     
     var langStruct: LangStruct
@@ -21,17 +25,22 @@ class Content {
     
     var autoCaseUnderline: Bool
     
-    init(propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?, autoCaseUnderline: Bool) {
+    init(previousNodeName: String, propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?, autoCaseUnderline: Bool) {
+        self.previousNodeName = previousNodeName
         self.propertyKey = propertyKey
         self.langStruct = langStruct
         self.parentClsName = parentClsName
         self.prefixStr = prefixStr
         self.autoCaseUnderline = autoCaseUnderline
+        
+        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
+        className = tempPropertyKey.className(withPrefix: prefixStr)
+        if !previousNodeName.isEmpty {
+            className = "\(previousNodeName)\(tempPropertyKey.uppercaseFirstChar())"
+        }
     }
     
     func toString() -> String {
-        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
-        let className = tempPropertyKey.className(withPrefix: prefixStr)
         var contentStr = ""
         
         let result = constructPropertyAndSetup()

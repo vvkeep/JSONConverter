@@ -51,13 +51,13 @@ class File {
         }
     }
     
-    func contentWithKeyName(_ keyName: String) -> Content {
-        let content = Content(propertyKey: keyName, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func contentWithPreviousNodeName(_ previousNodeName: String, keyName: String) -> Content {
+        let content = Content(previousNodeName: previousNodeName, propertyKey: keyName, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return content
     }
     
-    func propertyWithKeyName(_ keyName: String, type: PropertyType) -> Property {
-        let property = Property(propertyKey: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func propertyWithPreviousNodeName(_ previousNodeName: String, keyName: String, type: PropertyType) -> Property {
+        let property = Property(previousNodeName: previousNodeName, propertyKey: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
     

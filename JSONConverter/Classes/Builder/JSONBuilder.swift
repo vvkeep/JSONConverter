@@ -25,9 +25,9 @@ class JSONBuilder {
         
         switch obj {
         case let dic as [String: Any]:
-            content = addDictionaryWithKeyName(propertyKey, dic: dic)
+            content = addDictionaryWithPreviousNodeName("", keyName: propertyKey, dic: dic)
         case let arr as [Any]:
-            _ = addArraryWithKeyName(propertyKey, valueArrary: arr)
+            _ = addArraryWithPreviousNodeName("", keyName: propertyKey, valueArrary: arr)
         default:
             assertionFailure("parse object type error")
         }
@@ -40,8 +40,8 @@ class JSONBuilder {
     }
     
     
-    private func addDictionaryWithKeyName(_ keyName: String, dic: [String: Any]) -> Content {
-        let content = file.contentWithKeyName(keyName)
+    private func addDictionaryWithPreviousNodeName(_ rootClassName: String, keyName: String, dic: [String: Any]) -> Content {
+        let content = file.contentWithPreviousNodeName(rootClassName, keyName: keyName)
         
         dic.forEach { (item) in
             let keyName = item.key
@@ -49,17 +49,17 @@ class JSONBuilder {
             
             switch item.value {
             case _ as String:
-                property = file.propertyWithKeyName(keyName, type: .String)
+                property = file.propertyWithPreviousNodeName(content.className, keyName: keyName, type: .String)
             case let num as NSNumber:
-                property = file.propertyWithKeyName(keyName, type: num.valueType())
+                property = file.propertyWithPreviousNodeName(content.className, keyName: keyName, type: num.valueType())
             case let dic as [String: Any]:
-                property = file.propertyWithKeyName(keyName, type: .Dictionary)
-                let content = addDictionaryWithKeyName(keyName, dic: dic)
+                property = file.propertyWithPreviousNodeName(content.className, keyName: keyName, type: .Dictionary)
+                let content = addDictionaryWithPreviousNodeName(content.className, keyName: keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                property = addArraryWithKeyName(keyName, valueArrary: arr)
+                property = addArraryWithPreviousNodeName(content.className, keyName: keyName, valueArrary: arr)
             case  _ as NSNull:
-                property = file.propertyWithKeyName(keyName, type: .nil)
+                property = file.propertyWithPreviousNodeName(content.className, keyName: keyName, type: .nil)
             default:
                 assertionFailure("build JSON object type error")
             }
@@ -72,7 +72,7 @@ class JSONBuilder {
         return content
     }
     
-    private func addArraryWithKeyName(_ keyName: String, valueArrary: [Any]) -> Property? {
+    private func addArraryWithPreviousNodeName(_ previousNodeName: String, keyName: String, valueArrary: [Any]) -> Property? {
         var item = valueArrary.first
         if valueArrary.first is Dictionary<String, Any> {
             var temp = [String: Any]()
@@ -84,14 +84,17 @@ class JSONBuilder {
             var propertyModel: Property?
             switch item {
             case _ as String:
-                propertyModel = file.propertyWithKeyName(keyName, type: .ArrayString)
+                propertyModel = file.propertyWithPreviousNodeName(previousNodeName, keyName: keyName, type: .ArrayString)
             case let num as NSNumber:
                 let type = PropertyType(rawValue: num.valueType().rawValue + 6)!
-                propertyModel = file.propertyWithKeyName(keyName, type: type)
+                propertyModel = file.propertyWithPreviousNodeName(previousNodeName, keyName: keyName, type: type)
             case let dic as [String: Any]:
-                propertyModel = file.propertyWithKeyName(keyName, type: .ArrayDictionary)
-                let content = addDictionaryWithKeyName(keyName, dic: dic)
+                propertyModel = file.propertyWithPreviousNodeName(previousNodeName, keyName: keyName, type: .ArrayDictionary)
+                let content = addDictionaryWithPreviousNodeName(previousNodeName, keyName: keyName, dic: dic)
                 file.contents.insert(content, at: 0)
+            case let arr as [Any]:
+                propertyModel = addArraryWithPreviousNodeName(previousNodeName, keyName: keyName, valueArrary: arr)
+                break
             default:
                 assertionFailure("build JSON object type error")
                 break
