@@ -6,18 +6,14 @@ JSONConverter
 JSONConverter is a desktop application for MacOS written in Swift. 
 Using JSONConverter you will be able to:
 * Convert any valid JSON object to a class of one of the currently supported languages.
-* Format JSON and display JSON with rich text
+* Format JSON and display JSON with rich text, user can custom choose style by Highlightr, supports [185 languages and comes with 89 styles](https://highlightjs.org/static/demo/) 
 * Preview and export the generated rich content
 * Change the root class name.
 * Set a class name prefix for the generated classes.
 * Custom file header include author/date etc.
 * Support i18n(English/Chinese)
-
-Important reminder
-==================
-Because there is no paid app ID, the current installation package will crash directly due to certificate problems. It is recommended that you download the code, change the bundle ID, compile it, find the app in the products directory and drag it to applicaiton. 
-
-![0.png](/Screenshots/0.png)
+* more smart and safe
+...
 
 Currently supported languages
 =============================
@@ -28,18 +24,20 @@ Currently supported languages
     - 1.4 Codable
 - 2. Objective-C
 - 3. Flutter
+- if you have other needs, you can let us know by [issues](https://github.com/DevYao/JSONConverter/issues)
 
 Screenshots
 ========================
-![1.png](/Screenshots/1.png)
-![2.png](/Screenshots/2.png)
-![3.png](/Screenshots/3.png)
-![4.png](/Screenshots/4.png)
+![1.png](/Screenshots/01.png)
+![2.png](/Screenshots/02.png)
+![3.png](/Screenshots/03.png)
+![4.png](/Screenshots/04.png)
+![5.png](/Screenshots/05.png)
 
 Installation
 ============
-* Kindly clone the project, and build it using Xcode, then copy the app to applicaiton
-* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases), if the system reminds you of security issues, you can show info application, and click override malware protection
+* clone the project, and build it using Xcode, then copy the app to applicaiton
+* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
 
 To Do
 =====
