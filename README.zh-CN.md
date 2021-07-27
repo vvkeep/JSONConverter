@@ -34,6 +34,7 @@ JSONConverter
 ![3.png](/Screenshots/03.png)
 ![4.png](/Screenshots/04.png)
 ![5.png](/Screenshots/05.png)
+![6.png](/Screenshots/06.png)
 
 安装说明
 ============
