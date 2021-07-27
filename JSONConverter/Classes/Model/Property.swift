@@ -35,7 +35,7 @@ enum PropertyType: Int {
 
 class Property {
         
-    var previousNodeName: String
+    var parentNodeName: String
 
     var className: String
 
@@ -51,9 +51,9 @@ class Property {
     
     var typeName: String
     
-    init(previousNodeName: String,  propertyKey: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool, typeName: String? = nil) {
-        self.previousNodeName = previousNodeName
-        self.keyName = propertyKey
+    init(parentNodeName: String,  keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool, typeName: String? = nil) {
+        self.parentNodeName = parentNodeName
+        self.keyName = keyName
         self.type = type
         self.langStruct = langStruct
         self.prefixStr = prefixStr
@@ -61,10 +61,10 @@ class Property {
         self.typeName = typeName ?? type.typeName(langStruct)
         
         
-        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
+        let tempPropertyKey = autoCaseUnderline ? keyName.underlineToHump() : keyName
         className = tempPropertyKey.className(withPrefix: prefixStr)
-        if !previousNodeName.isEmpty {
-            className = "\(previousNodeName)\(tempPropertyKey.uppercaseFirstChar())"
+        if !parentNodeName.isEmpty {
+            className = "\(parentNodeName)\(tempPropertyKey.uppercaseFirstChar())"
         }
     }
     

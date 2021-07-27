@@ -51,13 +51,13 @@ class File {
         }
     }
     
-    func contentWithPreviousNodeName(_ previousNodeName: String, keyName: String) -> Content {
-        let content = Content(previousNodeName: previousNodeName, propertyKey: keyName, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func contentWithParentNodeName(_ parentNodeName: String, keyName: String) -> Content {
+        let content = Content(parentNodeName: parentNodeName, keyName: keyName, langStruct: langStruct, parentClsName: parentName, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return content
     }
     
-    func propertyWithPreviousNodeName(_ previousNodeName: String, keyName: String, type: PropertyType) -> Property {
-        let property = Property(previousNodeName: previousNodeName, propertyKey: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
+    func propertyWithParentNodeName(_ parentNodeName: String, keyName: String, type: PropertyType) -> Property {
+        let property = Property(parentNodeName: parentNodeName, keyName: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
     
@@ -113,8 +113,8 @@ extension File {
         case .ObjC:
             var tempStr = "\n#import <Foundation/Foundation.h>\n"
             for (i, content) in contents.enumerated() where i > 0 {
-                let propertyKey = autoCaseUnderline ? content.propertyKey.underlineToHump() : content.propertyKey
-                tempStr += "\n@class \(propertyKey.className(withPrefix: content.prefixStr));"
+                let keyName = autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
+                tempStr += "\n@class \(keyName.className(withPrefix: content.prefixStr));"
             }
             tempStr += "\n"
             return tempStr
@@ -155,12 +155,12 @@ extension File {
             }
             
             if let content = contents.first {
-                tempString += "\n#import \"\(content.propertyKey.className(withPrefix: prefix)).h\"\n"
+                tempString += "\n#import \"\(content.keyName.className(withPrefix: prefix)).h\"\n"
             }
             
             for content in contents {
-                let propertyKey = autoCaseUnderline ? content.propertyKey.underlineToHump() : content.propertyKey
-                tempString += "\n@implementation \(propertyKey.className(withPrefix: content.prefixStr))\n\n@end\n"
+                let keyName = autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
+                tempString += "\n@implementation \(keyName.className(withPrefix: content.prefixStr))\n\n@end\n"
             }
             
             return tempString

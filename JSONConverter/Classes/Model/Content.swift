@@ -11,11 +11,11 @@ import Foundation
 class Content {
     var properties = [Property]()
     
-    var previousNodeName: String
+    var parentNodeName: String
     
     var className: String
     
-    var propertyKey: String
+    var keyName: String
     
     var langStruct: LangStruct
     
@@ -25,18 +25,18 @@ class Content {
     
     var autoCaseUnderline: Bool
     
-    init(previousNodeName: String, propertyKey: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?, autoCaseUnderline: Bool) {
-        self.previousNodeName = previousNodeName
-        self.propertyKey = propertyKey
+    init(parentNodeName: String, keyName: String, langStruct: LangStruct, parentClsName: String?, prefixStr: String?, autoCaseUnderline: Bool) {
+        self.parentNodeName = parentNodeName
+        self.keyName = keyName
         self.langStruct = langStruct
         self.parentClsName = parentClsName
         self.prefixStr = prefixStr
         self.autoCaseUnderline = autoCaseUnderline
         
-        let tempPropertyKey = autoCaseUnderline ? propertyKey.underlineToHump() : propertyKey
+        let tempPropertyKey = autoCaseUnderline ? keyName.underlineToHump() : keyName
         className = tempPropertyKey.className(withPrefix: prefixStr)
-        if !previousNodeName.isEmpty {
-            className = "\(previousNodeName)\(tempPropertyKey.uppercaseFirstChar())"
+        if !parentNodeName.isEmpty {
+            className = "\(parentNodeName)\(tempPropertyKey.uppercaseFirstChar())"
         }
     }
     
@@ -124,7 +124,7 @@ class Content {
 extension Content: Hashable, Equatable {
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(propertyKey)
+        hasher.combine(keyName)
         hasher.combine(parentClsName)
         hasher.combine(properties)
     }
