@@ -290,8 +290,8 @@ class MainViewController: NSViewController {
         
         let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
-        
-        let theme =  highlightr.availableThemes()[structureBox.indexOfSelectedItem]
+
+        let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
         configFile.theme = theme
         FileConfigBuilder.shared.updateConfigWithFile(configFile)
         generateClasses()
