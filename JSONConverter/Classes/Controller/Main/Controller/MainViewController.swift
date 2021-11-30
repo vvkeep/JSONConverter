@@ -68,10 +68,10 @@ class MainViewController: NSViewController {
     private func checkVersion() {
         UpgradeUtils.newestVersion { (version) in
             guard let tagName = version?.tag_name,
-                let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
-                let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
-                    return
+                  let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                  let newVersion = Int(tagName.replacingOccurrences(of: ".", with: "")),
+                  let currentVeriosn = Int(bundleVersion.replacingOccurrences(of: ".", with: "")) else {
+                return
             }
             
             if newVersion > currentVeriosn {
@@ -131,7 +131,7 @@ class MainViewController: NSViewController {
         horSplitLineView.addGestureRecognizer(horLineViewPan)
         horSplitLineView.causor = NSCursor.resizeUpDown
         
-        showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
+        showJSONOperateResult(false, content: nil)
     }
     
     private func setupCacheConfig() {
@@ -205,47 +205,63 @@ class MainViewController: NSViewController {
     }
     
     func generateClasses() {
-        guard let JSONTextViewString = JSONTextView.textStorage?.string else {
+        guard var JSONTextViewString = JSONTextView.textStorage?.string else {
+            showJSONOperateResult(false, content: nil)
             return
         }
         
-        let startTime = CFAbsoluteTimeGetCurrent()
-        DispatchQueue.global().async {
-            if let JSONTextViewData = JSONTextViewString.data(using: .utf8),
-                let JSONObject = try? JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves]),
-                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
-                let JSONString = String(data: JSONData, encoding: .utf8) {
-                
-                let configFile = FileConfigBuilder.shared.currentConfigFile()
-                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
-                let endTime1 = CFAbsoluteTimeGetCurrent()
-                let offsetTime1 = Int((endTime1 - startTime) * 1000)
-                
-                DispatchQueue.main.async {
-                    self.setupJSONTextViewContent(JSONString)
-                    self.setupClassTextViewContent(fileString.0)
-                    self.setupClassImpTextViewContent(fileString.1)
-                    self.showJSONOperateResult(true, message: "app_converter_json_success_desc".localized)
-                    let endTime2 = CFAbsoluteTimeGetCurrent()
-                    let offsetTime2 = Int((endTime2 - endTime1) * 1000)
-                    print("JSON convert duration: \(offsetTime1)ms, display duration: \(offsetTime2)ms")
-                }
-            }else {
-                DispatchQueue.main.sync {
-                    self.showJSONOperateResult(false, message: "app_converter_json_error_desc".localized)
+        if StringUtils.isNotBlank(JSONTextViewString) {
+            JSONTextViewString = JSONTextViewString.components(separatedBy: CharacterSet.whitespacesAndNewlines).joined(separator: "")
+        } else {
+            showJSONOperateResult(false, content: JSONTextViewString)
+            return
+        }
+        
+        guard let JSONTextViewData = JSONTextViewString.data(using: .utf8) else {
+            showJSONOperateResult(false, content: JSONTextViewString)
+            return
+        }
+        
+        do {
+            let startTime = CFAbsoluteTimeGetCurrent()
+            let JSONObject = try JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves])
+            let JSONData = try JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted])
+            DispatchQueue.global().async {
+                if let JSONString = String(data: JSONData, encoding: .utf8) {
+                    let configFile = FileConfigBuilder.shared.currentConfigFile()
+                    let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
+                    let endTime1 = CFAbsoluteTimeGetCurrent()
+                    let offsetTime1 = Int((endTime1 - startTime) * 1000)
+                    
+                    DispatchQueue.main.async {
+                        self.setupJSONTextViewContent(JSONString)
+                        self.setupClassTextViewContent(fileString.0)
+                        self.setupClassImpTextViewContent(fileString.1)
+                        self.showJSONOperateResult(true, content: JSONTextViewString)
+                        let endTime2 = CFAbsoluteTimeGetCurrent()
+                        let offsetTime2 = Int((endTime2 - endTime1) * 1000)
+                        print("convert duration: \(offsetTime1)ms, display duration: \(offsetTime2)ms")
+                    }
+                } else {
+                    DispatchQueue.main.sync {
+                        self.showJSONOperateResult(false, content: JSONTextViewString)
+                    }
                 }
             }
+        } catch {
+            self.showJSONOperateResult(false, content: JSONTextViewString, errorMeg: error.localizedDescription)
         }
     }
     
-    private func showJSONOperateResult(_ result: Bool, message: String) {
-        statusLab.stringValue = message
+    private func showJSONOperateResult(_ result: Bool, content: String?, errorMeg: String? = nil) {
+        statusLab.stringValue = result ? "app_converter_json_success_desc".localized : "app_converter_json_error_desc".localized
         statusLab.textColor = result ? NSColor.systemGreen : NSColor.systemRed
         saveBtn.isEnabled = result
+        
+        print("JSONString: \(content ?? ""), error: \(errorMeg ?? "")")
     }
     
     private func setupJSONTextViewContent(_ content: String) {
-        
         let attrContent = NSAttributedString(string: content)
         JSONTextView.textStorage?.setAttributedString(attrContent)
     }
@@ -267,10 +283,10 @@ class MainViewController: NSViewController {
     private func updateCacheConfigAndUI() {
         let configFile = FileConfigBuilder.shared.currentConfigFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
-            let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
-            else {
-                assert(false, "lang or struct type error")
-                return
+              let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
+        else {
+            assert(false, "lang or struct type error")
+            return
         }
         
         classImpStorage.language = langType.language
@@ -290,7 +306,7 @@ class MainViewController: NSViewController {
         
         let transStruct = LangStruct(langType: langType, structType: structType)
         configFile.langStruct = transStruct
-
+        
         let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
         configFile.theme = theme
         FileConfigBuilder.shared.updateConfigWithFile(configFile)
@@ -352,7 +368,7 @@ extension MainViewController: NSComboBoxDelegate {
 extension MainViewController: NSTextViewDelegate {
     func textView(_ textView: NSTextView, clickedOnLink link: Any, at charIndex: Int) -> Bool {
         if let value = link as? String,
-            let url = URL(string: value) {
+           let url = URL(string: value) {
             NSWorkspace.shared.open(url)
         }
         

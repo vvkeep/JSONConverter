@@ -47,6 +47,16 @@
                ReferencedContainer = "container:JSONConverter.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8ED4E1122755B81F004A682A"
+               BuildableName = "JSONConverterTests.xctest"
+               BlueprintName = "JSONConverterTests"
+               ReferencedContainer = "container:JSONConverter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -135,10 +135,18 @@
 		8EC079DD268993D400000F68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797B268993D400000F68 /* LICENSE */; };
 		8EC079DE268993D400000F68 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797C268993D400000F68 /* highlight.min.js */; };
 		8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */; };
+		8ED4E1162755B81F004A682A /* JSONConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4E1152755B81F004A682A /* JSONConverterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		7BDF2974202BDB7D00B7E2F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B4B5EA2201B87A10098712B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B4B5EA9201B87A10098712B;
+			remoteInfo = JSONConverter;
+		};
+		8ED4E1182755B81F004A682A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7B4B5EA2201B87A10098712B /* Project object */;
 			proxyType = 1;
@@ -284,6 +292,9 @@
 		8EC0797B268993D400000F68 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8EC0797C268993D400000F68 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
+		8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ED4E1152755B81F004A682A /* JSONConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterTests.swift; sourceTree = "<group>"; };
+		8ED4E1172755B81F004A682A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +306,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7BDF296C202BDB7C00B7E2F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ED4E1102755B81F004A682A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,6 +374,7 @@
 			children = (
 				7B45DAE9202A95BE007E8D56 /* JSONConverter */,
 				7BDF2970202BDB7D00B7E2F5 /* JSONConverterUITests */,
+				8ED4E1142755B81F004A682A /* JSONConverterTests */,
 				7B4B5EAB201B87A10098712B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -365,6 +384,7 @@
 			children = (
 				7B4B5EAA201B87A10098712B /* JSONConverter.app */,
 				7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */,
+				8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -628,6 +648,15 @@
 			path = Highlighter;
 			sourceTree = "<group>";
 		};
+		8ED4E1142755B81F004A682A /* JSONConverterTests */ = {
+			isa = PBXGroup;
+			children = (
+				8ED4E1152755B81F004A682A /* JSONConverterTests.swift */,
+				8ED4E1172755B81F004A682A /* Info.plist */,
+			);
+			path = JSONConverterTests;
+			sourceTree = "<group>";
+		};
 		8EEE5B7225184E8C00004C58 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +703,24 @@
 			productReference = 7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8ED4E1122755B81F004A682A /* JSONConverterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8ED4E11C2755B81F004A682A /* Build configuration list for PBXNativeTarget "JSONConverterTests" */;
+			buildPhases = (
+				8ED4E10F2755B81F004A682A /* Sources */,
+				8ED4E1102755B81F004A682A /* Frameworks */,
+				8ED4E1112755B81F004A682A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8ED4E1192755B81F004A682A /* PBXTargetDependency */,
+			);
+			name = JSONConverterTests;
+			productName = JSONConverterTests;
+			productReference = 8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -681,7 +728,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "";
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "姚巍";
 				TargetAttributes = {
@@ -698,6 +745,11 @@
 					7BDF296E202BDB7C00B7E2F5 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1160;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7B4B5EA9201B87A10098712B;
+					};
+					8ED4E1122755B81F004A682A = {
+						CreatedOnToolsVersion = 12.5.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7B4B5EA9201B87A10098712B;
 					};
@@ -719,6 +771,7 @@
 			targets = (
 				7B4B5EA9201B87A10098712B /* JSONConverter */,
 				7BDF296E202BDB7C00B7E2F5 /* JSONConverterUITests */,
+				8ED4E1122755B81F004A682A /* JSONConverterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -837,6 +890,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8ED4E1112755B81F004A682A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -883,6 +943,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8ED4E10F2755B81F004A682A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ED4E1162755B81F004A682A /* JSONConverterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -890,6 +958,11 @@
 			isa = PBXTargetDependency;
 			target = 7B4B5EA9201B87A10098712B /* JSONConverter */;
 			targetProxy = 7BDF2974202BDB7D00B7E2F5 /* PBXContainerItemProxy */;
+		};
+		8ED4E1192755B81F004A682A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B4B5EA9201B87A10098712B /* JSONConverter */;
+			targetProxy = 8ED4E1182755B81F004A682A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1106,6 +1179,45 @@
 			};
 			name = Release;
 		};
+		8ED4E11A2755B81F004A682A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WYH624WR9E;
+				INFOPLIST_FILE = JSONConverterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosma.JSONConverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSONConverter.app/Contents/MacOS/JSONConverter";
+			};
+			name = Debug;
+		};
+		8ED4E11B2755B81F004A682A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WYH624WR9E;
+				INFOPLIST_FILE = JSONConverterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosma.JSONConverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSONConverter.app/Contents/MacOS/JSONConverter";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1132,6 +1244,15 @@
 			buildConfigurations = (
 				7BDF2976202BDB7D00B7E2F5 /* Debug */,
 				7BDF2977202BDB7D00B7E2F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8ED4E11C2755B81F004A682A /* Build configuration list for PBXNativeTarget "JSONConverterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ED4E11A2755B81F004A682A /* Debug */,
+				8ED4E11B2755B81F004A682A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
