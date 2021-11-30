@@ -205,60 +205,47 @@ class MainViewController: NSViewController {
     }
     
     func generateClasses() {
-        guard var JSONTextViewString = JSONTextView.textStorage?.string else {
-            showJSONOperateResult(false, content: nil)
+        guard let JSONTextViewString = JSONTextView.textStorage?
+                .string.components(separatedBy: CharacterSet.whitespacesAndNewlines).joined(separator: ""),
+              JSONTextViewString.count > 0 else {
+            setupClassTextViewContent("")
+            setupClassImpTextViewContent(nil)
             return
         }
         
-        if StringUtils.isNotBlank(JSONTextViewString) {
-            JSONTextViewString = JSONTextViewString.components(separatedBy: CharacterSet.whitespacesAndNewlines).joined(separator: "")
-        } else {
-            showJSONOperateResult(false, content: JSONTextViewString)
-            return
-        }
-        
-        guard let JSONTextViewData = JSONTextViewString.data(using: .utf8) else {
-            showJSONOperateResult(false, content: JSONTextViewString)
-            return
-        }
-        
-        do {
-            let startTime = CFAbsoluteTimeGetCurrent()
-            let JSONObject = try JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves])
-            let JSONData = try JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted])
-            DispatchQueue.global().async {
-                if let JSONString = String(data: JSONData, encoding: .utf8) {
-                    let configFile = FileConfigBuilder.shared.currentConfigFile()
-                    let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
-                    let endTime1 = CFAbsoluteTimeGetCurrent()
-                    let offsetTime1 = Int((endTime1 - startTime) * 1000)
-                    
-                    DispatchQueue.main.async {
-                        self.setupJSONTextViewContent(JSONString)
-                        self.setupClassTextViewContent(fileString.0)
-                        self.setupClassImpTextViewContent(fileString.1)
-                        self.showJSONOperateResult(true, content: JSONTextViewString)
-                        let endTime2 = CFAbsoluteTimeGetCurrent()
-                        let offsetTime2 = Int((endTime2 - endTime1) * 1000)
-                        print("convert duration: \(offsetTime1)ms, display duration: \(offsetTime2)ms")
-                    }
-                } else {
-                    DispatchQueue.main.sync {
-                        self.showJSONOperateResult(false, content: JSONTextViewString)
-                    }
+        let startTime = CFAbsoluteTimeGetCurrent()
+        DispatchQueue.global().async {
+            if let JSONTextViewData = JSONTextViewString.data(using: .utf8),
+               let JSONObject = try? JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves]),
+               let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
+               let JSONString = String(data: JSONData, encoding: .utf8) {
+                let configFile = FileConfigBuilder.shared.currentConfigFile()
+                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
+                let endTime1 = CFAbsoluteTimeGetCurrent()
+                let offsetTime1 = Int((endTime1 - startTime) * 1000)
+                
+                DispatchQueue.main.async {
+                    self.setupJSONTextViewContent(JSONString)
+                    self.setupClassTextViewContent(fileString.0)
+                    self.setupClassImpTextViewContent(fileString.1)
+                    self.showJSONOperateResult(true, content: JSONTextViewString)
+                    let endTime2 = CFAbsoluteTimeGetCurrent()
+                    let offsetTime2 = Int((endTime2 - endTime1) * 1000)
+                    print("convert duration: \(offsetTime1)ms, display duration: \(offsetTime2)ms")
+                }
+            } else {
+                DispatchQueue.main.sync {
+                    self.showJSONOperateResult(false, content: JSONTextViewString)
                 }
             }
-        } catch {
-            self.showJSONOperateResult(false, content: JSONTextViewString, errorMeg: error.localizedDescription)
         }
     }
     
-    private func showJSONOperateResult(_ result: Bool, content: String?, errorMeg: String? = nil) {
+    private func showJSONOperateResult(_ result: Bool, content: String?) {
         statusLab.stringValue = result ? "app_converter_json_success_desc".localized : "app_converter_json_error_desc".localized
         statusLab.textColor = result ? NSColor.systemGreen : NSColor.systemRed
         saveBtn.isEnabled = result
-        
-        print("JSONString: \(content ?? ""), error: \(errorMeg ?? "")")
+        print("JSON Convert:\(result ? "true" : "fasle"), JSONString: \(content ?? "")")
     }
     
     private func setupJSONTextViewContent(_ content: String) {
