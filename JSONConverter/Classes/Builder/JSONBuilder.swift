@@ -72,13 +72,7 @@ class JSONBuilder {
     }
     
     private func addArraryWithParentNodeName(_ parentNodeName: String, keyName: String, valueArrary: [Any]) -> Property? {
-        var item = valueArrary.first
-        if valueArrary.first is Dictionary<String, Any> {
-            var temp = [String: Any]()
-            valueArrary.forEach { temp.merge($0 as! [String: Any]) { $1 } }
-            item = temp
-        }
-        
+        let item = valueArrary.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArrary as! [[String : Any]]) : valueArrary.first
         if let item = item {
             var propertyModel: Property?
             switch item {
@@ -102,6 +96,27 @@ class JSONBuilder {
         }else {
             return nil
         }
+    }
+    
+    private func buildPrefectDictionary(arrary: [[String: Any]]) -> [String: Any] {
+        var temp = [String: Any]()
+        arrary.forEach {
+            temp.merge($0) { (current, new) in
+                if current is NSNull {
+                    return new
+                } else if ((current as? NSNumber)?.valueType()) == .Int {
+                    if let newNumType = (new as? NSNumber)?.valueType() {
+                        return (newNumType == .Float || newNumType == .Double) ? new : current
+                    } else {
+                        return new is NSNull ? current : new
+                    }
+                } else {
+                    return current
+                }
+            }
+        }
+        
+        return temp
     }
 }
 
