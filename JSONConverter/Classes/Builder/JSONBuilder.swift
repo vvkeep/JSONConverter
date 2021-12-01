@@ -27,7 +27,7 @@ class JSONBuilder {
         case let dic as [String: Any]:
             content = addDictionaryWithParentNodeName("", keyName: keyName, dic: dic)
         case let arr as [Any]:
-            _ = addArraryWithParentNodeName("", keyName: keyName, valueArrary: arr)
+            _ = addArrayWithParentNodeName("", keyName: keyName, valueArray: arr)
         default:
             assertionFailure("parse object type error")
         }
@@ -56,7 +56,7 @@ class JSONBuilder {
                 let content = addDictionaryWithParentNodeName(content.className, keyName: keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                property = addArraryWithParentNodeName(content.className, keyName: keyName, valueArrary: arr)
+                property = addArrayWithParentNodeName(content.className, keyName: keyName, valueArray: arr)
             case  _ as NSNull:
                 property = file.propertyWithParentNodeName(content.className, keyName: keyName, type: .nil)
             default:
@@ -71,8 +71,8 @@ class JSONBuilder {
         return content
     }
     
-    private func addArraryWithParentNodeName(_ parentNodeName: String, keyName: String, valueArrary: [Any]) -> Property? {
-        let item = valueArrary.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArrary as! [[String : Any]]) : valueArrary.first
+    private func addArrayWithParentNodeName(_ parentNodeName: String, keyName: String, valueArray: [Any]) -> Property? {
+        let item = valueArray.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArray as! [[String : Any]]) : valueArray.first
         if let item = item {
             var propertyModel: Property?
             switch item {
@@ -86,7 +86,7 @@ class JSONBuilder {
                 let content = addDictionaryWithParentNodeName(parentNodeName, keyName: keyName, dic: dic)
                 file.contents.insert(content, at: 0)
             case let arr as [Any]:
-                propertyModel = addArraryWithParentNodeName(parentNodeName, keyName: keyName, valueArrary: arr)
+                propertyModel = addArrayWithParentNodeName(parentNodeName, keyName: keyName, valueArray: arr)
             default:
                 assertionFailure("build JSON object type error")
                 break
