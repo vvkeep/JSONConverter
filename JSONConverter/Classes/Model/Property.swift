@@ -24,11 +24,15 @@ enum PropertyType: Int {
     case ArrayDouble
     case ArrayBool
     case ArrayDictionary
-    case `nil` //  nil use string instead
+    case ArrayNull // array no element, use ArrayString instead
+    case null //  nil use `String` instead
     
-    func typeName(_ langStruct: LangStruct) -> String {
-        // TODO
-        return ""
+    func arrayWrapperType() -> PropertyType {
+        if self.rawValue >= 0 && self.rawValue <= 5 {
+            return PropertyType(rawValue: self.rawValue + 6)!
+        } else {
+            return .null
+        }
     }
 }
 
@@ -48,18 +52,14 @@ class Property {
     var prefixStr: String?
     
     var autoCaseUnderline: Bool
-    
-    var typeName: String
-    
-    init(parentNodeName: String,  keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool, typeName: String? = nil) {
+        
+    init(parentNodeName: String,  keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool) {
         self.parentNodeName = parentNodeName
         self.keyName = keyName
         self.type = type
         self.langStruct = langStruct
         self.prefixStr = prefixStr
         self.autoCaseUnderline = autoCaseUnderline
-        self.typeName = typeName ?? type.typeName(langStruct)
-        
         
         let tempPropertyKey = autoCaseUnderline ? keyName.underlineToHump() : keyName
         className = tempPropertyKey.className(withPrefix: prefixStr)
@@ -74,7 +74,7 @@ class Property {
         var initStr = ""
         
         switch type {
-        case .String:
+        case .String, .null:
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, copy) NSString *\(tempPropertyKey);\n"
@@ -170,7 +170,7 @@ class Property {
                 propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tMap<String,dynamic>? \(tempPropertyKey);\n"
                 initStr = "this.\(tempPropertyKey),"
             }
-        case .ArrayString:
+        case .ArrayString, .ArrayNull:
             switch langStruct.langType{
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<NSString *> *\(tempPropertyKey);\n"
@@ -264,22 +264,6 @@ class Property {
                 initStr = "\t\t\(tempPropertyKey)\(currentMapperSpace)<- map[\"\(keyName)\"]\n"
             case .Flutter:
                 propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tList<\(className)>? \(tempPropertyKey);\n"
-                initStr = "this.\(tempPropertyKey),"
-            }
-        case .nil:
-            switch langStruct.langType{
-            case .ObjC:
-                propertyStr = "@property (nonatomic, copy) NSString *\(tempPropertyKey);\n"
-            case .Swift, .HandyJSON, .Codable:
-                propertyStr = "\tvar \(tempPropertyKey): String?\n"
-            case .SwiftyJSON:
-                propertyStr = "\tvar \(tempPropertyKey): String\n"
-                initStr = "\t\t\(tempPropertyKey) = json[\"\(keyName)\"].stringValue\n"
-            case .ObjectMapper:
-                propertyStr = "\tvar \(tempPropertyKey): String?\n"
-                initStr = "\t\t\(tempPropertyKey)\(currentMapperSpace)<- map[\"\(keyName)\"]\n"
-            case .Flutter:
-                propertyStr = "\n\t@JsonKey(name: '\(keyName)')\n\tString? \(tempPropertyKey);\n"
                 initStr = "this.\(tempPropertyKey),"
             }
         }

@@ -178,16 +178,11 @@ class MainViewController: NSViewController {
             exprotList.append(ExportClassesModel(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
         }
         
-        var error : NSError?
         for model in exprotList {
             do {
                 try model.content.write(toFile: model.path, atomically: true, encoding: String.Encoding.utf8)
-            } catch let error1 as NSError {
-                error = error1
-            }
-            
-            if error != nil {
-                alertError(error!)
+            } catch let error as NSError {
+                alertError(error)
                 break
             }
         }
@@ -209,7 +204,7 @@ class MainViewController: NSViewController {
                 .string.components(separatedBy: CharacterSet.whitespacesAndNewlines).joined(separator: ""),
               JSONTextViewString.count > 0 else {
             setupClassTextViewContent("")
-            setupClassImpTextViewContent(nil)
+            setupClassImpTextViewContent("")
             return
         }
         

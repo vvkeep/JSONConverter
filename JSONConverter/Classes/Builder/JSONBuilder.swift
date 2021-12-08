@@ -58,7 +58,7 @@ class JSONBuilder {
             case let arr as [Any]:
                 property = addArrayWithParentNodeName(content.className, keyName: keyName, valueArray: arr)
             case  _ as NSNull:
-                property = file.propertyWithParentNodeName(content.className, keyName: keyName, type: .nil)
+                property = file.propertyWithParentNodeName(content.className, keyName: keyName, type: .null)
             default:
                 assertionFailure("build JSON object type error")
             }
@@ -73,14 +73,13 @@ class JSONBuilder {
     
     private func addArrayWithParentNodeName(_ parentNodeName: String, keyName: String, valueArray: [Any]) -> Property? {
         let item = valueArray.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArray as! [[String : Any]]) : valueArray.first
+        var propertyModel: Property?
         if let item = item {
-            var propertyModel: Property?
             switch item {
             case _ as String:
                 propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: .ArrayString)
             case let num as NSNumber:
-                let type = PropertyType(rawValue: num.valueType().rawValue + 6)!
-                propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: type)
+                propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: num.valueType().arrayWrapperType())
             case let dic as [String: Any]:
                 propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: .ArrayDictionary)
                 let content = addDictionaryWithParentNodeName(parentNodeName, keyName: keyName, dic: dic)
@@ -91,11 +90,11 @@ class JSONBuilder {
                 assertionFailure("build JSON object type error")
                 break
             }
-            
-            return propertyModel
-        }else {
-            return nil
+        } else {
+            propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: .ArrayNull)
         }
+        
+        return propertyModel
     }
     
     private func buildPrefectDictionary(arrary: [[String: Any]]) -> [String: Any] {
