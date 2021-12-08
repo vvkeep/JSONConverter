@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34F822E6072A009D2ED2 /* wechat.jpeg */; };
+		7B2E9EEB2760F3B000151B99 /* PropertyBuildProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */; };
+		7B2E9EED2760FA3300151B99 /* ObjCPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */; };
+		7B2E9EF02761062D00151B99 /* SwiftPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */; };
 		7B45DAFE202A95BF007E8D56 /* JSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEC202A95BE007E8D56 /* JSONBuilder.swift */; };
 		7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAED202A95BE007E8D56 /* MainViewController.xib */; };
 		7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */; };
@@ -157,6 +160,9 @@
 
 /* Begin PBXFileReference section */
 		7B2D34F822E6072A009D2ED2 /* wechat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpeg; sourceTree = "<group>"; };
+		7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyBuildProtocol.swift; sourceTree = "<group>"; };
+		7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCPropertyBuilder.swift; sourceTree = "<group>"; };
+		7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPropertyBuilder.swift; sourceTree = "<group>"; };
 		7B45DAEC202A95BE007E8D56 /* JSONBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONBuilder.swift; sourceTree = "<group>"; };
 		7B45DAED202A95BE007E8D56 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -331,6 +337,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		7B2E9EE92760F2AE00151B99 /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */,
+				7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */,
+				7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */,
+			);
+			path = Processor;
+			sourceTree = "<group>";
+		};
 		7B45DAE9202A95BE007E8D56 /* JSONConverter */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +366,7 @@
 		7B45DAEA202A95BE007E8D56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7B2E9EE92760F2AE00151B99 /* Processor */,
 				7BF1DD2D24FBA3930090B531 /* Controller */,
 				7BD7FEDE202AC85B0003AE80 /* Model */,
 				8EBE0D08251200A7003A4B4B /* View */,
@@ -675,6 +692,7 @@
 				7B4B5EA6201B87A10098712B /* Sources */,
 				7B4B5EA7201B87A10098712B /* Frameworks */,
 				7B4B5EA8201B87A10098712B /* Resources */,
+				7B2E9EEE276104AB00151B99 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -899,6 +917,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B2E9EEE276104AB00151B99 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# \"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7B4B5EA6201B87A10098712B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -914,6 +952,7 @@
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
 				8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */,
+				7B2E9EEB2760F3B000151B99 /* PropertyBuildProtocol.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
 				8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */,
@@ -929,6 +968,8 @@
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
+				7B2E9EF02761062D00151B99 /* SwiftPropertyBuilder.swift in Sources */,
+				7B2E9EED2760FA3300151B99 /* ObjCPropertyBuilder.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONBuilder.swift in Sources */,
 				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
 				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
