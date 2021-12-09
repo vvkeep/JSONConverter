@@ -9,18 +9,16 @@
 import Foundation
 
 class StringUtils {
-    class func isBlank(_ string: String?) -> Bool{
+    class func isBlank(_ string: String?) -> Bool {
         if let string = string,
             string.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
             return false
-        }else {
+        } else {
             return true
         }
     }
     
-    class func isNotBlank(_ string: String?) -> Bool{
+    class func isNotBlank(_ string: String?) -> Bool {
         return !isBlank(string)
     }
 }
-
-

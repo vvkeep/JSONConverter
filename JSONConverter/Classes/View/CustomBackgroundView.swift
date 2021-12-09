@@ -9,7 +9,6 @@
 import Cocoa
 
 class CustomBackgroundView: NSView {
-    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         let color = NSColor(named: "LineColor")

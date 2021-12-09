@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExportClassesModel {
+struct ExportModel {
     var path: String
     var content: String
 }

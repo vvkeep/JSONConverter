@@ -9,7 +9,6 @@
 import Foundation
 
 class JSONBuilder {
-    
     static let shared: JSONBuilder = {
         let manager = JSONBuilder()
         return manager
@@ -20,7 +19,7 @@ class JSONBuilder {
     func buildWithJSONObject(_ obj: Any, file: File) -> (String, String?) {
         file.contents.removeAll()
         self.file = file
-        var content : Content?
+        var content: Content?
         let keyName = file.rootName.propertyName()
         
         switch obj {
@@ -58,7 +57,7 @@ class JSONBuilder {
             case let arr as [Any]:
                 property = addArrayWithParentNodeName(content.className, keyName: keyName, valueArray: arr)
             case  _ as NSNull:
-                property = file.propertyWithParentNodeName(content.className, keyName: keyName, type: .null)
+                property = file.propertyWithParentNodeName(content.className, keyName: keyName, type: .Null)
             default:
                 assertionFailure("build JSON object type error")
             }
@@ -72,7 +71,7 @@ class JSONBuilder {
     }
     
     private func addArrayWithParentNodeName(_ parentNodeName: String, keyName: String, valueArray: [Any]) -> Property? {
-        let item = valueArray.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArray as! [[String : Any]]) : valueArray.first
+        let item = valueArray.first is Dictionary<String, Any> ? buildPrefectDictionary(arrary: valueArray as! [[String: Any]]) : valueArray.first
         var propertyModel: Property?
         if let item = item {
             switch item {
@@ -88,7 +87,6 @@ class JSONBuilder {
                 propertyModel = addArrayWithParentNodeName(parentNodeName, keyName: keyName, valueArray: arr)
             default:
                 assertionFailure("build JSON object type error")
-                break
             }
         } else {
             propertyModel = file.propertyWithParentNodeName(parentNodeName, keyName: keyName, type: .ArrayNull)
@@ -118,10 +116,3 @@ class JSONBuilder {
         return temp
     }
 }
-
-
-
-
-
-
-

@@ -29,6 +29,7 @@ opt_in_rules: # 启用默认关闭的规则
 
 excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
   - Pods # 忽略通过CocoaPods 导入的第三方库
+  - JSONConverter/Vendor
 
 line_length: # 单行代码长度,默认error 120
   warning: 600 # 表示单行字符数超过 300 时抛出警告

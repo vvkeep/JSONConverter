@@ -9,7 +9,6 @@
 import Foundation
 
 extension Date {
-    
     static func now(format: String) -> String {
         let date = Date()
         let fmt = DateFormatter()
@@ -17,5 +16,4 @@ extension Date {
         let dateString = fmt.string(from: date)
         return dateString
     }
-    
 }

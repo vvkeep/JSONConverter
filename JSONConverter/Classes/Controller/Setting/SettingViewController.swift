@@ -9,7 +9,6 @@
 import Cocoa
 
 class SettingViewController: NSViewController {
-    
     @IBOutlet weak var prefixKeyLab: NSTextField!
     @IBOutlet weak var prefixField: NSTextField!
     
@@ -27,7 +26,6 @@ class SettingViewController: NSViewController {
         
     @IBOutlet weak var autoHumpKeyLab: NSTextField!
     @IBOutlet weak var autoHumpSwitch: NSSwitch!
-    
     
     @IBOutlet weak var saveBtn: NSButton!
     

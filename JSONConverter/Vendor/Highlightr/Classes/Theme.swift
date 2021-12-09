@@ -24,59 +24,52 @@ import Foundation
 #endif
 
 private typealias RPThemeDict = [String: [AnyHashable: AnyObject]]
-private typealias RPThemeStringDict = [String:[String:String]]
+private typealias RPThemeStringDict = [String: [String: String]]
 
 /// Theme parser, can be used to configure the theme parameters. 
 open class Theme {
-    internal let theme : String
-    internal var lightTheme : String!
+    internal let theme: String
+    internal var lightTheme: String!
     
     /// Regular font to be used by this theme
-    open var codeFont : RPFont!
+    open var codeFont: RPFont!
     /// Bold font to be used by this theme
-    open var boldCodeFont : RPFont!
+    open var boldCodeFont: RPFont!
     /// Italic font to be used by this theme
-    open var italicCodeFont : RPFont!
+    open var italicCodeFont: RPFont!
     
-    private var themeDict : RPThemeDict!
-    private var strippedTheme : RPThemeStringDict!
+    private var themeDict: RPThemeDict!
+    private var strippedTheme: RPThemeStringDict!
     
     /// Default background color for the current theme.
-    open var themeBackgroundColor : RPColor!
+    open var themeBackgroundColor: RPColor!
     
     /**
      Initialize the theme with the given theme name.
      
      - parameter themeString: Theme to use.
      */
-    init(themeString: String)
-    {
+    init(themeString: String) {
         theme = themeString
         setCodeFont(RPFont(name: "Courier", size: 14)!)
         strippedTheme = stripTheme(themeString)
         lightTheme = strippedThemeToString(strippedTheme)
         themeDict = strippedThemeToTheme(strippedTheme)
         var bkgColorHex = strippedTheme[".hljs"]?["background"]
-        if(bkgColorHex == nil)
-        {
+        if bkgColorHex == nil {
             bkgColorHex = strippedTheme[".hljs"]?["background-color"]
         }
-        if let bkgColorHex = bkgColorHex
-        {
-            if(bkgColorHex == "white")
-            {
+        if let bkgColorHex = bkgColorHex {
+            if bkgColorHex == "white" {
                 themeBackgroundColor = RPColor(white: 1, alpha: 1)
-            }else if(bkgColorHex == "black")
-            {
+            } else if bkgColorHex == "black" {
                 themeBackgroundColor = RPColor(white: 0, alpha: 1)
-            }else
-            {
+            } else {
                 let range = bkgColorHex.range(of: "#")
                 let str = String(bkgColorHex[(range?.lowerBound)!...])
                 themeBackgroundColor = colorWithHexString(str)
             }
-        }else
-        {
+        } else {
             themeBackgroundColor = RPColor.white
         }
     }
@@ -86,125 +79,105 @@ open class Theme {
      
      - parameter font: UIFont (iOS or tvOS) or NSFont (OSX)
      */
-    open func setCodeFont(_ font: RPFont)
-    {
+    open func setCodeFont(_ font: RPFont) {
         codeFont = font
         
         #if os(iOS) || os(tvOS)
-        let boldDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family:font.familyName,
-                                                                UIFontDescriptor.AttributeName.face:"Bold"])
-        let italicDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family:font.familyName,
-                                                                 UIFontDescriptor.AttributeName.face:"Italic"])
-        let obliqueDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family:font.familyName,
-                                                                  UIFontDescriptor.AttributeName.face:"Oblique"])
+        let boldDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family: font.familyName,
+                                                                UIFontDescriptor.AttributeName.face: "Bold"])
+        let italicDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family: font.familyName,
+                                                                 UIFontDescriptor.AttributeName.face: "Italic"])
+        let obliqueDescriptor = UIFontDescriptor(fontAttributes: [UIFontDescriptor.AttributeName.family: font.familyName,
+                                                                  UIFontDescriptor.AttributeName.face: "Oblique"])
         #else
-        let boldDescriptor = NSFontDescriptor(fontAttributes: [.family:font.familyName!,
-                                                                   .face:"Bold"])
-        let italicDescriptor = NSFontDescriptor(fontAttributes: [.family:font.familyName!,
-                                                                     .face:"Italic"])
-        let obliqueDescriptor = NSFontDescriptor(fontAttributes: [.family:font.familyName!,
-                                                                      .face:"Oblique"])
+        let boldDescriptor = NSFontDescriptor(fontAttributes: [.family: font.familyName!,
+                                                                   .face: "Bold"])
+        let italicDescriptor = NSFontDescriptor(fontAttributes: [.family: font.familyName!,
+                                                                     .face: "Italic"])
+        let obliqueDescriptor = NSFontDescriptor(fontAttributes: [.family: font.familyName!,
+                                                                      .face: "Oblique"])
         #endif
         
         boldCodeFont = RPFont(descriptor: boldDescriptor, size: font.pointSize)
         italicCodeFont = RPFont(descriptor: italicDescriptor, size: font.pointSize)
         
-        if(italicCodeFont == nil || italicCodeFont.familyName != font.familyName)
+        if italicCodeFont == nil || italicCodeFont.familyName != font.familyName 
         {
             italicCodeFont = RPFont(descriptor: obliqueDescriptor, size: font.pointSize)
         }
-        if(italicCodeFont == nil)
-        {
+        if italicCodeFont == nil {
             italicCodeFont = font
         }
         
-        if(boldCodeFont == nil)
-        {
+        if boldCodeFont == nil {
             boldCodeFont = font
         }
 
-        if(themeDict != nil)
-        {
+        if themeDict != nil {
             themeDict = strippedThemeToTheme(strippedTheme)
         }
     }
     
-    internal func applyStyleToString(_ string: String, styleList: [String]) -> NSAttributedString
-    {
-        let returnString : NSAttributedString
+    internal func applyStyleToString(_ string: String, styleList: [String]) -> NSAttributedString {
+        let returnString: NSAttributedString
         
-        if styleList.count > 0
-        {
+        if styleList.count > 0 {
             var attrs = [AttributedStringKey: Any]()
             attrs[.font] = codeFont
-            for style in styleList
-            {
-                if let themeStyle = themeDict[style] as? [AttributedStringKey: Any]
-                {
-                    for (attrName, attrValue) in themeStyle
-                    {
+            for style in styleList {
+                if let themeStyle = themeDict[style] as? [AttributedStringKey: Any] {
+                    for (attrName, attrValue) in themeStyle {
                         attrs.updateValue(attrValue, forKey: attrName)
                     }
                 }
             }
             
-            returnString = NSAttributedString(string: string, attributes:attrs )
-        }
-        else
-        {
-			returnString = NSAttributedString(string: string, attributes:[AttributedStringKey.font:codeFont as Any] )
+            returnString = NSAttributedString(string: string, attributes: attrs )
+        } else {
+			returnString = NSAttributedString(string: string, attributes: [AttributedStringKey.font: codeFont as Any] )
         }
 
         return returnString
     }
     
-    private func stripTheme(_ themeString : String) -> [String:[String:String]]
-    {
+    private func stripTheme(_ themeString: String) -> [String: [String: String]] {
         let objcString = (themeString as NSString)
-        let cssRegex = try! NSRegularExpression(pattern: "(?:(\\.[a-zA-Z0-9\\-_]*(?:[, ]\\.[a-zA-Z0-9\\-_]*)*)\\{([^\\}]*?)\\})", options:[.caseInsensitive])
+        let cssRegex = try! NSRegularExpression(pattern: "(?:(\\.[a-zA-Z0-9\\-_]*(?:[, ]\\.[a-zA-Z0-9\\-_]*)*)\\{([^\\}]*?)\\})", options: [.caseInsensitive])
         
         let results = cssRegex.matches(in: themeString,
                                                options: [.reportCompletion],
-                                               range: NSMakeRange(0, objcString.length))
+                                               range: NSRange(location: 0, length: objcString.length))
         
-        var resultDict = [String:[String:String]]()
+        var resultDict = [String: [String: String]]()
         
         for result in results {
-            if(result.numberOfRanges == 3)
-            {
-                var attributes = [String:String]()
+            if result.numberOfRanges == 3 {
+                var attributes = [String: String]()
                 let cssPairs = objcString.substring(with: result.range(at: 2)).components(separatedBy: ";")
                 for pair in cssPairs {
                     let cssPropComp = pair.components(separatedBy: ":")
-                    if(cssPropComp.count == 2)
-                    {
+                    if cssPropComp.count == 2 {
                         attributes[cssPropComp[0]] = cssPropComp[1]
                     }
-
                 }
-                if attributes.count > 0
-                {
+                if attributes.count > 0 {
                     resultDict[objcString.substring(with: result.range(at: 1))] = attributes
                 }
-                
             }
-            
         }
         
-        var returnDict = [String:[String:String]]()
+        var returnDict = [String: [String: String]]()
         
-        for (keys,result) in resultDict
-        {
+        for (keys, result) in resultDict {
             let keyArray = keys.replacingOccurrences(of: " ", with: ",").components(separatedBy: ",")
             for key in keyArray {
-                var props : [String:String]?
+                var props: [String: String]?
                 props = returnDict[key]
                 if props == nil {
-                    props = [String:String]()
+                    props = [String: String]()
                 }
                 
-                for (pName, pValue) in result
-                {
+                for (pName, pValue) in result {
                     props!.updateValue(pValue, forKey: pName)
                 }
                 returnDict[key] = props!
@@ -214,15 +187,12 @@ open class Theme {
         return returnDict
     }
     
-    private func strippedThemeToString(_ theme: RPThemeStringDict) -> String
-    {
+    private func strippedThemeToString(_ theme: RPThemeStringDict) -> String {
         var resultString = ""
         for (key, props) in theme {
             resultString += key+"{"
-            for (cssProp, val) in props
-            {
-                if(key != ".hljs" || (cssProp.lowercased() != "background-color" && cssProp.lowercased() != "background"))
-                {
+            for (cssProp, val) in props {
+                if key != ".hljs" || (cssProp.lowercased() != "background-color" && cssProp.lowercased() != "background") {
                     resultString += "\(cssProp):\(val);"
                 }
             }
@@ -231,16 +201,12 @@ open class Theme {
         return resultString
     }
     
-    private func strippedThemeToTheme(_ theme: RPThemeStringDict) -> RPThemeDict
-    {
+    private func strippedThemeToTheme(_ theme: RPThemeStringDict) -> RPThemeDict {
         var returnTheme = RPThemeDict()
-        for (className, props) in theme
-        {
+        for (className, props) in theme {
             var keyProps = [AttributedStringKey: AnyObject]()
-            for (key, prop) in props
-            {
-                switch key
-                {
+            for (key, prop) in props {
+                switch key {
                 case "color":
                     keyProps[attributeForCSSKey(key)] = colorWithHexString(prop)
                     break
@@ -257,8 +223,7 @@ open class Theme {
                     break
                 }
             }
-            if keyProps.count > 0
-            {
+            if keyProps.count > 0 {
                 let key = className.replacingOccurrences(of: ".", with: "")
                 returnTheme[key] = keyProps
             }
@@ -266,10 +231,8 @@ open class Theme {
         return returnTheme
     }
     
-    private func fontForCSSStyle(_ fontStyle:String) -> RPFont
-    {
-        switch fontStyle
-        {
+    private func fontForCSSStyle(_ fontStyle: String) -> RPFont {
+        switch fontStyle {
             case "bold", "bolder", "600", "700", "800", "900":
                 return boldCodeFont
             case "italic", "oblique":
@@ -279,8 +242,7 @@ open class Theme {
         }
     }
     
-    private func attributeForCSSKey(_ key: String) -> AttributedStringKey
-    {
+    private func attributeForCSSKey(_ key: String) -> AttributedStringKey {
         switch key {
         case "color":
             return .foregroundColor
@@ -295,17 +257,12 @@ open class Theme {
         }
     }
     
-    private func colorWithHexString (_ hex:String) -> RPColor
-    {
+    private func colorWithHexString (_ hex: String) -> RPColor {
+        var cString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 
-        var cString:String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-
-        if (cString.hasPrefix("#"))
-        {
+        if cString.hasPrefix("#") {
             cString = (cString as NSString).substring(from: 1)
-        }
-        else
-        {
+        } else {
             switch cString {
             case "white":
                 return RPColor(white: 1, alpha: 1)
@@ -322,18 +279,14 @@ open class Theme {
             }
         }
         
-        if (cString.count != 6 && cString.count != 3 )
-        {
+        if cString.count != 6 && cString.count != 3 {
             return RPColor.gray
         }
         
+        var r: UInt64 = 0, g: UInt64 = 0, b: UInt64 = 0
+        var divisor: CGFloat
         
-        var r:UInt64 = 0, g:UInt64 = 0, b:UInt64 = 0;
-        var divisor : CGFloat
-        
-        if (cString.count == 6 )
-        {
-        
+        if cString.count == 6 {
             let rString = (cString as NSString).substring(to: 2)
             let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
             let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
@@ -343,9 +296,7 @@ open class Theme {
             Scanner(string: bString).scanHexInt64(&b)
             
             divisor = 255.0
-            
-        }else
-        {
+        } else {
             let rString = (cString as NSString).substring(to: 1)
             let gString = ((cString as NSString).substring(from: 1) as NSString).substring(to: 1)
             let bString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 1)
@@ -358,8 +309,5 @@ open class Theme {
         }
         
         return RPColor(red: CGFloat(r) / divisor, green: CGFloat(g) / divisor, blue: CGFloat(b) / divisor, alpha: CGFloat(1))        
-        
     }
-    
-
 }

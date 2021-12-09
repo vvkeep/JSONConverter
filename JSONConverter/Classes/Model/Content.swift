@@ -55,26 +55,26 @@ class Content {
             propertyTotalPart.removeLastChar()
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n}\n"
-            }else if langStruct.structType == .struct {
+            } else if langStruct.structType == .struct {
                 contentStr = "\nstruct \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n}\n"
             }
         case .HandyJSON, .Codable:
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n\trequired init() {}\n}\n"
-            }else if langStruct.structType == .struct {
+            } else if langStruct.structType == .struct {
                 propertyTotalPart.removeLastChar()
                 contentStr = "\nstruct \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n}\n"
             }
         case .SwiftyJSON:
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
-            }else if langStruct.structType == .struct {
+            } else if langStruct.structType == .struct {
                 contentStr = "\nstruct \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n\tinit(json: JSON) {\n\(initTotalPart)\t}\n}\n"
             }
         case .ObjectMapper:
             if langStruct.structType == .class {
                 contentStr = "\nclass \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
-            }else if langStruct.structType == .struct {
+            } else if langStruct.structType == .struct {
                 contentStr = "\nstruct \(className)\(constructParentClassName()) {\n\(propertyTotalPart)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(initTotalPart)\t}\n}\n"
             }
         case .Flutter:
@@ -88,7 +88,7 @@ class Content {
         var propertyStr = ""
         var setupStr = ""
         
-        properties.sort{ $0 < $1 }
+        properties.sort { $0 < $1 }
         properties.forEach({ (property) in
             let result = property.toString()
             propertyStr += result.0
@@ -118,26 +118,21 @@ class Content {
         
         return parentClsNamePart
     }
-    
 }
 
 extension Content: Hashable, Equatable {
-    
     func hash(into hasher: inout Hasher) {
         hasher.combine(keyName)
         hasher.combine(parentClsName)
         hasher.combine(properties)
     }
 
-    static func == (lhs: Content, rhs:Content) -> Bool {
+    static func == (lhs: Content, rhs: Content) -> Bool {
         if lhs.properties.count == rhs.properties.count {
             let result = Set(arrayLiteral: lhs.properties).symmetricDifference(Set(arrayLiteral: rhs.properties))
             return result.count == 0
-        }else {
+        } else {
             return false
         }
     }
 }
-
-
-

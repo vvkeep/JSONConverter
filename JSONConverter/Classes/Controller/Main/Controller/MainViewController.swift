@@ -9,7 +9,6 @@
 import Cocoa
 
 class MainViewController: NSViewController {
-    
     @IBOutlet weak var languageBox: NSComboBox!
     @IBOutlet weak var structureBox: NSComboBox!
     @IBOutlet weak var themeBox: NSComboBox!
@@ -138,7 +137,7 @@ class MainViewController: NSViewController {
         let configFile = FileConfigBuilder.shared.currentConfigFile()
         languageBox.selectItem(at: configFile.langStruct.langType.rawValue)
         structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
-        if let themeIndex = highlightr.availableThemes().firstIndex(where: {configFile.theme == $0}) {
+        if let themeIndex = highlightr.availableThemes().firstIndex(where: { configFile.theme == $0 }) {
             themeBox.selectItem(at: themeIndex)
         }
     }
@@ -160,7 +159,7 @@ class MainViewController: NSViewController {
         openPanel.canChooseDirectories = true
         openPanel.canCreateDirectories = true
         openPanel.prompt = "main_view_export_choose_title".localized
-        openPanel.beginSheetModal(for: self.view.window!){ button in
+        openPanel.beginSheetModal(for: self.view.window!) { button in
             if button == NSApplication.ModalResponse.OK {
                 self.exportClassesFileWithPath(openPanel.url!.path)
                 self.showSaveSuccessAction()
@@ -168,14 +167,14 @@ class MainViewController: NSViewController {
         }
     }
     
-    func exportClassesFileWithPath(_ path : String) {
+    func exportClassesFileWithPath(_ path: String) {
         let configFile = FileConfigBuilder.shared.currentConfigFile()
         let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
         let suffix = configFile.classSuffixString()
         
-        var exprotList = [ExportClassesModel(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
+        var exprotList = [ExportModel(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
         if configFile.langStruct.langType == .ObjC {
-            exprotList.append(ExportClassesModel(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
+            exprotList.append(ExportModel(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
         }
         
         for model in exprotList {
@@ -183,7 +182,6 @@ class MainViewController: NSViewController {
                 try model.content.write(toFile: model.path, atomically: true, encoding: String.Encoding.utf8)
             } catch let error as NSError {
                 alertError(error)
-                break
             }
         }
     }
@@ -215,7 +213,7 @@ class MainViewController: NSViewController {
                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
                let JSONString = String(data: JSONData, encoding: .utf8) {
                 let configFile = FileConfigBuilder.shared.currentConfigFile()
-                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file:configFile)
+                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file: configFile)
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
                 
@@ -279,7 +277,7 @@ class MainViewController: NSViewController {
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 3.0/5)
             classImpTextView.isHidden = false
             horSplitLineView.isHidden = false
-        }else {
+        } else {
             horSpliteLineViewHeightCons.constant = 0
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 1)
             classImpTextView.isHidden = true
@@ -318,23 +316,23 @@ extension MainViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxWillDismiss(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        if comBox == languageBox { //Choose Language
-            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
-            if langType == LangType.ObjC || langType == LangType.Flutter { //if OC Flutter choose class
-                structureBox.selectItem(at: 1)
-            } else if langType == LangType.Codable {//if Codable choose struct
-                structureBox.selectItem(at: 0)
-            }
-        }else if comBox == structureBox { //Choose Structure
+        if comBox == languageBox { // Choose Language
             let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
             if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
                 structureBox.selectItem(at: 1)
-            } else if langType == LangType.Codable { //if Codable choose struct
+            } else if langType == LangType.Codable {// if Codable choose struct
                 structureBox.selectItem(at: 0)
             }
-        }else if comBox == themeBox {
+        } else if comBox == structureBox { // Choose Structure
+            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
+            if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
+                structureBox.selectItem(at: 1)
+            } else if langType == LangType.Codable { // if Codable choose struct
+                structureBox.selectItem(at: 0)
+            }
+        } else if comBox == themeBox {
             let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
-            classStorage.highlightr.setTheme(to:theme)
+            classStorage.highlightr.setTheme(to: theme)
             classImpStorage.highlightr.setTheme(to: theme)
             JSONStorage.highlightr.setTheme(to: theme)
             
@@ -383,8 +381,7 @@ extension MainViewController {
 }
 
 extension MainViewController: NSUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool  {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 }
-

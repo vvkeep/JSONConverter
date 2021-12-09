@@ -11,34 +11,7 @@ import Foundation
 /// count = 3
 let currentMapperSpace = "   "
 
-enum PropertyType: Int {
-    case `String` = 0
-    case `Int`
-    case `Float`
-    case `Double`
-    case `Bool`
-    case `Dictionary`
-    case ArrayString
-    case ArrayInt
-    case ArrayFloat
-    case ArrayDouble
-    case ArrayBool
-    case ArrayDictionary
-    case ArrayNull // array no element, use ArrayString instead
-    case null //  nil use `String` instead
-    
-    func arrayWrapperType() -> PropertyType {
-        if self.rawValue >= 0 && self.rawValue <= 5 {
-            return PropertyType(rawValue: self.rawValue + 6)!
-        } else {
-            return .null
-        }
-    }
-}
-
-
 class Property {
-        
     var parentNodeName: String
 
     var className: String
@@ -53,7 +26,7 @@ class Property {
     
     var autoCaseUnderline: Bool
         
-    init(parentNodeName: String,  keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool) {
+    init(parentNodeName: String, keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool) {
         self.parentNodeName = parentNodeName
         self.keyName = keyName
         self.type = type
@@ -68,17 +41,17 @@ class Property {
         }
     }
     
-    func toString() -> (String, String){
+    func toString() -> (String, String) {
         let tempPropertyKey = autoCaseUnderline ? keyName.underlineToHump() : keyName
         var propertyStr = ""
         var initStr = ""
         
         switch type {
-        case .String, .null:
-            switch langStruct.langType{
+        case .String, .Null:
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, copy) NSString *\(tempPropertyKey);\n"
-            case .Swift,.HandyJSON, .Codable:
+            case .Swift, .HandyJSON, .Codable:
                 propertyStr = "\tvar \(tempPropertyKey): String?\n"
             case .SwiftyJSON:
                 propertyStr = "\tvar \(tempPropertyKey): String\n"
@@ -91,7 +64,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .Int:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) NSInteger \(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -107,7 +80,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .Float:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) Float \(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -123,7 +96,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .Double:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) Double \(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -139,7 +112,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .Bool:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, assign) BOOL \(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -155,7 +128,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .Dictionary:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) \(className) *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -171,7 +144,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayString, .ArrayNull:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<NSString *> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -187,7 +160,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayInt:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Int> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -203,7 +176,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayFloat:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Float> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -219,7 +192,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayDouble:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Double> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -235,7 +208,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayBool:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<Bool> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -251,7 +224,7 @@ class Property {
                 initStr = "this.\(tempPropertyKey),"
             }
         case .ArrayDictionary:
-            switch langStruct.langType{
+            switch langStruct.langType {
             case .ObjC:
                 propertyStr = "@property (nonatomic, strong) NSArray<\(className) *> *\(tempPropertyKey);\n"
             case .Swift, .HandyJSON, .Codable:
@@ -269,21 +242,19 @@ class Property {
         }
         return (propertyStr, initStr)
     }
-    
 }
 
 extension Property: Hashable, Equatable {
-    
     func hash(into hasher: inout Hasher) {
         hasher.combine(keyName)
         hasher.combine(type)
     }
     
-    static func < (lhs: Property, rhs:Property) -> Bool {
+    static func < (lhs: Property, rhs: Property) -> Bool {
         return lhs.keyName.localizedStandardCompare(rhs.keyName) == .orderedAscending
     }
 
-    static func == (lhs: Property, rhs:Property) -> Bool {
+    static func == (lhs: Property, rhs: Property) -> Bool {
         return lhs.keyName == rhs.keyName && lhs.type == rhs.type
     }
 }

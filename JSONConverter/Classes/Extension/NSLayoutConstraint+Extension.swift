@@ -16,8 +16,7 @@ extension NSLayoutConstraint {
      - parameter multiplier: CGFloat
      - returns: NSLayoutConstraint
     */
-    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
-
+    func setMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
         NSLayoutConstraint.deactivate([self])
 
         let newConstraint = NSLayoutConstraint(item: firstItem!, attribute: firstAttribute, relatedBy: relation, toItem: secondItem, attribute: secondAttribute, multiplier: multiplier, constant: constant)

@@ -9,7 +9,6 @@
 import Cocoa
 
 class PanGestureIndicatorView: NSView {
-    
     var causor: NSCursor = NSCursor.resizeLeftRight
     
     var dragging: Bool = false
@@ -37,7 +36,7 @@ class PanGestureIndicatorView: NSView {
         super.mouseEntered(with: event)
         if dragging {
             causor.set()
-        }else {
+        } else {
             NSCursor.arrow.set()
         }
     }

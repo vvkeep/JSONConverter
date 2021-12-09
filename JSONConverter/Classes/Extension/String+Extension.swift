@@ -8,7 +8,6 @@
 
 import Foundation
 extension String {
-    
     func propertyName() -> String {
         return lowercaseFirstChar()
     }
@@ -18,21 +17,21 @@ extension String {
     }
     
     func lowercaseFirstChar() -> String {
-        if count > 0{
+        if count > 0 {
             let range = startIndex..<index(startIndex, offsetBy: 1)
             let firstLowerChar = self[range].lowercased()
             return replacingCharacters(in: range, with: firstLowerChar)
-        }else {
+        } else {
             return self
         }
     }
     
     func uppercaseFirstChar() -> String {
-        if count > 0{
+        if count > 0 {
             let range = startIndex..<index(startIndex, offsetBy: 1)
             let firstLowerChar = self[range].uppercased()
             return replacingCharacters(in: range, with: firstLowerChar)
-        }else {
+        } else {
             return self
         }
     }
@@ -51,7 +50,6 @@ extension String {
         }
     }
     
-    
     static func numSpace(count: Int) -> String {
         var space = ""
         for _ in 0..<count {
@@ -64,11 +62,11 @@ extension String {
     /// hump to underline
     mutating func humpToUnderline() -> String {
         self = lowercaseFirstChar()
-        var result = [String]();
+        var result = [String]()
         for item in self {
             if item >= "A" && item <= "Z" {
                 result.append("_\(item.lowercased())")
-            }else {
+            } else {
                 result.append(String(item))
             }
         }
@@ -97,7 +95,7 @@ extension String {
         let trailingUnderscoreRange = stringKey.index(after: lastNonUnderscore)..<stringKey.endIndex
     
         let components = stringKey[keyRange].split(separator: "_")
-        let joinedString : String
+        let joinedString: String
         if components.count == 1 {
             // No underscores in key, leave the word as is - maybe already camel cased
             joinedString = String(stringKey[keyRange])
@@ -106,13 +104,13 @@ extension String {
         }
     
         // Do a cheap isEmpty check before creating and appending potentially empty strings
-        let result : String
-        if (leadingUnderscoreRange.isEmpty && trailingUnderscoreRange.isEmpty) {
+        let result: String
+        if leadingUnderscoreRange.isEmpty && trailingUnderscoreRange.isEmpty {
             result = joinedString
-        } else if (!leadingUnderscoreRange.isEmpty && !trailingUnderscoreRange.isEmpty) {
+        } else if !leadingUnderscoreRange.isEmpty && !trailingUnderscoreRange.isEmpty {
             // Both leading and trailing underscores
             result = String(stringKey[leadingUnderscoreRange]) + joinedString + String(stringKey[trailingUnderscoreRange])
-        } else if (!leadingUnderscoreRange.isEmpty) {
+        } else if !leadingUnderscoreRange.isEmpty {
             // Just leading
             result = String(stringKey[leadingUnderscoreRange]) + joinedString
         } else {
@@ -125,15 +123,14 @@ extension String {
 }
 
 extension NSNumber {
-    
     func valueType() -> PropertyType {
         let numberType = CFNumberGetType(self as CFNumber)
         var type: PropertyType = .Int
-        switch numberType{
+        switch numberType {
         case .charType:
-            if (self.int32Value == 0 || self.int32Value == 1){
+            if self.int32Value == 0 || self.int32Value == 1 {
                 type = .Bool
-            }else{
+            } else {
                 assert(true, "遇见Character类型")
             }
         case .shortType, .intType, .sInt64Type:
@@ -150,41 +147,39 @@ extension NSNumber {
     }
 }
 
-
-// MARK:-  i18n
+// MARK: - i18n
 extension String {
     public var localized: String {
         return NSLocalizedString(self, comment: "")
     }
 }
 
-extension String{
-    
+extension String {
     public func substring(from index: Int) -> String {
-        if(self.count > index){
-            let startIndex = self.index(self.startIndex,offsetBy: index)
-            let subString = self[startIndex..<self.endIndex];
-            return String(subString);
-        }else{
+        if self.count > index {
+            let startIndex = self.index(self.startIndex, offsetBy: index)
+            let subString = self[startIndex..<self.endIndex]
+            return String(subString)
+        } else {
             return ""
         }
     }
     
     public func substring(to index: Int) -> String {
-        if(self.count > index){
+        if self.count > index {
             let endindex = self.index(self.startIndex, offsetBy: index)
             let subString = self[self.startIndex..<endindex]
             return String(subString)
-        }else{
+        } else {
             return self
         }
     }
     
-    public func subString(rang rangs:NSRange) -> String{
+    public func subString(rang rangs: NSRange) -> String {
         var string = String()
-        if(rangs.location >= 0) && (self.count > (rangs.location + rangs.length)){
-            let startIndex = self.index(self.startIndex,offsetBy: rangs.location)
-            let endIndex = self.index(self.startIndex,offsetBy: (rangs.location + rangs.length))
+        if(rangs.location >= 0) && (self.count > (rangs.location + rangs.length)) {
+            let startIndex = self.index(self.startIndex, offsetBy: rangs.location)
+            let endIndex = self.index(self.startIndex, offsetBy: (rangs.location + rangs.length))
             let subString = self[startIndex..<endIndex]
             string = String(subString)
         }
@@ -193,7 +188,6 @@ extension String{
 }
 
 extension String {
-    
     func toBool() -> Bool {
         switch self {
         case "True", "true", "yes", "1":

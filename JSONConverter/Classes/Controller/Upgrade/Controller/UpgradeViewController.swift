@@ -9,7 +9,6 @@
 import Cocoa
 
 class UpgradeViewController: NSViewController {
-    
     @IBOutlet weak var verstionLab: NSTextField!
     @IBOutlet weak var currentVertionLab: NSTextField!
     @IBOutlet weak var descLab: NSTextField!

@@ -9,7 +9,6 @@
 import Cocoa
 
 class MainWindowController: NSWindowController {
-    
     lazy var mainViewController: MainViewController = {
         let mainVc = MainViewController()
         return mainVc
@@ -28,6 +27,6 @@ class MainWindowController: NSWindowController {
 
 extension MainWindowController: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        return true;
+        return true
     }
 }

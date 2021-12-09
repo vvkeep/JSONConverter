@@ -7,39 +7,39 @@
 //
 
 import Foundation
-class ObjCPropertyBuilder: PropertyBuildProtocol {
-    
+class ObjCPropertyBuilder: PropertyBuildProtocol {    
     func isMatchLang(_ lang: LangType) -> Bool {
         return lang == .ObjC
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, typeName: String?) -> String {
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
         assert((type == .Dictionary || type == .ArrayDictionary) && typeName != nil, " Dictonary type the typeName can not be nil")
+        let tempKeyName = strategy.processed(keyName)
         switch type {
-        case .String, .null:
-            return "@property (nonatomic, copy) NSString *\(keyName);\n"
+        case .String, .Null:
+            return "@property (nonatomic, copy) NSString *\(tempKeyName);\n"
         case .Int:
-            return "@property (nonatomic, assign) NSInteger \(keyName);\n"
+            return "@property (nonatomic, assign) NSInteger \(tempKeyName);\n"
         case .Float:
-            return "@property (nonatomic, assign) Float \(keyName);\n"
+            return "@property (nonatomic, assign) Float \(tempKeyName);\n"
         case .Double:
-            return "@property (nonatomic, assign) Double \(keyName);\n"
+            return "@property (nonatomic, assign) Double \(tempKeyName);\n"
         case .Bool:
-            return "@property (nonatomic, assign) BOOL \(keyName);\n"
+            return "@property (nonatomic, assign) BOOL \(tempKeyName);\n"
         case .Dictionary:
-            return "@property (nonatomic, strong) \(typeName!) *\(keyName);\n"
+            return "@property (nonatomic, strong) \(typeName!) *\(tempKeyName);\n"
         case .ArrayString, .ArrayNull:
-            return "@property (nonatomic, strong) NSArray<NSString *> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<NSString *> *\(tempKeyName);\n"
         case .ArrayInt:
-            return "@property (nonatomic, strong) NSArray<Int> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<Int> *\(tempKeyName);\n"
         case .ArrayFloat:
-            return "@property (nonatomic, strong) NSArray<Float> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<Float> *\(tempKeyName);\n"
         case .ArrayDouble:
-            return "@property (nonatomic, strong) NSArray<Double> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<Double> *\(tempKeyName);\n"
         case .ArrayBool:
-            return "@property (nonatomic, strong) NSArray<Bool> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<Bool> *\(tempKeyName);\n"
         case .ArrayDictionary:
-            return "@property (nonatomic, strong) NSArray<\(typeName!) *> *\(keyName);\n"
+            return "@property (nonatomic, strong) NSArray<\(typeName!) *> *\(tempKeyName);\n"
         }
     }
 }

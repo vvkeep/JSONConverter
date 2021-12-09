@@ -29,7 +29,6 @@ extension NSTextView {
     }
     
     func setUpLineNumberView() {
-        
         if let scrollView = enclosingScrollView {
             lineNumberView = LineNumberRulerView(textView: self)
             
@@ -65,7 +64,6 @@ extension NSTextView {
 }
 
 class LineNumberRulerView: NSRulerView {
-    
     var font: NSFont! {
         return (self.clientView! as! NSTextView).font
     }
@@ -102,12 +100,12 @@ class LineNumberRulerView: NSRulerView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func drawLineNumber(_ lineNumberString: String, at y: CGFloat) -> Void {
+    private func drawLineNumber(_ lineNumberString: String, at y: CGFloat) {
         guard let textView = clientView as? NSTextView else {
             return
         }
         
-        let relativePoint = convert(NSZeroPoint, to: textView)
+        let relativePoint = convert(NSPoint.zero, to: textView)
         let lineNumberAttributes: [NSAttributedString.Key: Any] = [
             .font: font!,
             .foregroundColor: foregroundColor
@@ -144,17 +142,16 @@ class LineNumberRulerView: NSRulerView {
         var lineNumber = newLineRegex.numberOfMatches(
             in: textView.string,
             options: [],
-            range: NSMakeRange(0, firstVisibleGlyphCharacterIndex)
+            range: NSRange(location: 0, length: firstVisibleGlyphCharacterIndex)
         ) + 1
         
         var glyphIndexForStringLine = visibleGlyphRange.location
         
         // Go through each line in the string.
         while glyphIndexForStringLine < NSMaxRange(visibleGlyphRange) {
-            
             // Range of current line in the string.
             let characterRangeForStringLine = (textView.string as NSString).lineRange(
-                for: NSMakeRange(layoutManager.characterIndexForGlyph(at: glyphIndexForStringLine), 0)
+                for: NSRange(location: layoutManager.characterIndexForGlyph(at: glyphIndexForStringLine), length: 0)
             )
             let glyphRangeForStringLine = layoutManager.glyphRange(
                 forCharacterRange: characterRangeForStringLine,
@@ -165,10 +162,9 @@ class LineNumberRulerView: NSRulerView {
             var glyphLineCount = 0
             
             while glyphIndexForGlyphLine < NSMaxRange(glyphRangeForStringLine) {
-                
                 // See if the current line in the string spread across
                 // several lines of glyphs
-                var effectiveRange = NSMakeRange(0, 0)
+                var effectiveRange = NSRange(location: 0, length: 0)
                 
                 // Range of current "line of glyphs". If a line is wrapped,
                 // then it will have more than one "line of glyphs"

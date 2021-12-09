@@ -6,6 +6,7 @@ target 'JSONConverter' do
   use_frameworks!
 
   # Pods for JSONConverter
+  pod 'SwiftLint', '~> 0.43.1'
 
   target 'JSONConverterTests' do
     inherit! :search_paths

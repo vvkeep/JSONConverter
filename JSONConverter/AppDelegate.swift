@@ -10,7 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     lazy var mainWindowController: MainWindowController = {
         let mainWin = MainWindowController()
         return mainWin
@@ -27,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if !flag{
+        if !flag {
             mainWindowController.window?.makeKeyAndOrderFront(self)
         }
         return true
@@ -37,5 +36,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 }
-
-

@@ -25,5 +25,4 @@ class VersionInfo: Codable {
     var tarball_url: String?
     var created_at: String?
     var id: Int = 0
-
 }

@@ -43,3 +43,37 @@ struct LangStruct {
         self.structType = structType
     }
 }
+
+enum PropertyType: Int {
+    case `String` = 0
+    case `Int`
+    case `Float`
+    case `Double`
+    case `Bool`
+    case `Dictionary`
+    case ArrayString
+    case ArrayInt
+    case ArrayFloat
+    case ArrayDouble
+    case ArrayBool
+    case ArrayDictionary
+    case ArrayNull // array no element, use ArrayString instead
+    case Null //  nil use `String` instead
+    
+    func arrayWrapperType() -> PropertyType {
+        if self.rawValue >= 0 && self.rawValue <= 5 {
+            return PropertyType(rawValue: self.rawValue + 6)!
+        } else {
+            return .Null
+        }
+    }
+}
+
+enum PropertyStrategy {
+    case origin
+    case underlineToHump
+    
+    func processed(_ keyName: String) -> String {
+        return self == .origin ? keyName : keyName.underlineToHump()
+    }
+}

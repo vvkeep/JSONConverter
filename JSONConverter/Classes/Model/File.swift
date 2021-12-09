@@ -9,7 +9,6 @@
 import Foundation
 
 class File {
-    
     var header: String!
     
     var isCustomHeader: Bool = false
@@ -45,7 +44,7 @@ class File {
         self.isCustomHeader = (dic?["isCustomHeader"] ?? "0").toBool()
         if self.isCustomHeader {
             self.header = dic?["header"] ?? ""
-        }else {
+        } else {
             let suffix = classSuffixString().0
             self.header = defaultHeaderString(suffix: suffix)
         }
@@ -66,8 +65,8 @@ class File {
     }
     
     func toCacheConfig() -> [String: String] {
-        return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)","rootName": rootName,
-                "prefix": prefix ?? "","parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
+        return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)", "rootName": rootName,
+                "prefix": prefix ?? "", "parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
                 "langType": "\(langStruct.langType.rawValue)",
                 "structType": "\(langStruct.structType.rawValue)", "theme": theme]
     }
@@ -85,7 +84,6 @@ class File {
 }
 
 extension File {
-    
     private func defaultHeaderString(suffix: String) -> String {
         let headerString = """
         //
@@ -119,7 +117,7 @@ extension File {
             tempStr += "\n"
             return tempStr
         case .Flutter:
-            var className = rootName.className(withPrefix: prefix);
+            var className = rootName.className(withPrefix: prefix)
             let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.humpToUnderline()).g.dart';\n"
             return importStr
         case .Codable:
@@ -150,7 +148,7 @@ extension File {
             var tempString =  ""
             if isCustomHeader {
                 tempString += header
-            }else {
+            } else {
                 tempString += defaultHeaderString(suffix: classSuffixString().1!)
             }
             
