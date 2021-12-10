@@ -1,14 +1,14 @@
 //
-//  FlutterPropertyBuilder.swift
+//  FlutterBuilder.swift
 //  JSONConverter
 //
 //  Created by DevYao on 2021/12/9.
-//  Copyright © 2021 姚巍. All rights reserved.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Foundation
 
-class FlutterPropertyBuilder: PropertyBuildProtocol {
+class FlutterBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
         return lang == .Flutter
     }

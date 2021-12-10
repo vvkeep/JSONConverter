@@ -14,11 +14,11 @@ class JSONProcesser {
         return manager
     }()
     
-    private let builders: [PropertyBuildProtocol] = [ObjCPropertyBuilder(), SwiftPropertyBuilder(), SwiftyJSONPropertyBuilder(), ObjectMapperPropertyBuilder(), FlutterPropertyBuilder()]
+    private let builders: [BuilderProtocol] = [ObjCBuilder(), SwiftBuilder(), SwiftyJSONBuilder(), ObjectMapperBuilder(), FlutterBuilder()]
     
     private var file: File!
     
-    func builder(lang: LangType) -> PropertyBuildProtocol {
+    func builder(lang: LangType) -> BuilderProtocol {
         return builders.first(where: { $0.isMatchLang(lang) })!
     }
     

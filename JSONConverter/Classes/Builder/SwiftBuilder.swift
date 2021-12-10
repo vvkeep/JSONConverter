@@ -1,17 +1,15 @@
 //
-//  ObjectMapperPropertyBuilder.swift
+//  SwiftBuilder.swift
 //  JSONConverter
 //
-//  Created by DevYao on 2021/12/9.
-//  Copyright © 2021 姚巍. All rights reserved.
+//  Created by Yao on 2021/12/8.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Foundation
-
-private let MAPPER_SPACE = "   "
-class ObjectMapperPropertyBuilder: PropertyBuildProtocol {
+class SwiftBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
-        return lang == .ObjectMapper
+        return lang == .Swift || lang == .HandyJSON || lang == .Codable
     }
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
@@ -43,10 +41,5 @@ class ObjectMapperPropertyBuilder: PropertyBuildProtocol {
         case .ArrayDictionary:
             return "\tvar \(tempKeyName) = [\(typeName!)]()\n"
         }
-    }
-    
-    func initText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
-        let tempKeyName = strategy.processed(keyName)
-        return "\t\t\(tempKeyName)\(MAPPER_SPACE)<- map[\"\(keyName)\"]\n"
     }
 }

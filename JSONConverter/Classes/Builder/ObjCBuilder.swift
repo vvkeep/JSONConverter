@@ -1,13 +1,13 @@
 //
-//  ObjCPropertyBuilder.swift
+//  ObjCBuilder.swift
 //  JSONConverter
 //
-//  Created by 姚巍 on 2021/12/8.
-//  Copyright © 2021 姚巍. All rights reserved.
+//  Created by Yao on 2021/12/8.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Foundation
-class ObjCPropertyBuilder: PropertyBuildProtocol {    
+class ObjCBuilder: BuilderProtocol {    
     func isMatchLang(_ lang: LangType) -> Bool {
         return lang == .ObjC
     }

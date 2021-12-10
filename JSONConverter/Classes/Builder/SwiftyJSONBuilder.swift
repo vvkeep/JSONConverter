@@ -1,14 +1,14 @@
 //
-//  SwiftyJSONPropertyBuilder.swift
+//  SwiftyJSONBuilder.swift
 //  JSONConverter
 //
 //  Created by DevYao on 2021/12/9.
-//  Copyright © 2021 姚巍. All rights reserved.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Foundation
 
-class SwiftyJSONPropertyBuilder: PropertyBuildProtocol {
+class SwiftyJSONBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
         return lang == .SwiftyJSON
     }

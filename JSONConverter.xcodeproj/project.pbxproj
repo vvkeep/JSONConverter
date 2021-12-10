@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		72F882CB3902A83D2B2B87B7 /* Pods_JSONConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1B06A2A6658E22A04ECD66 /* Pods_JSONConverter.framework */; };
 		7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34F822E6072A009D2ED2 /* wechat.jpeg */; };
-		7B2E9EEB2760F3B000151B99 /* PropertyBuildProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */; };
-		7B2E9EED2760FA3300151B99 /* ObjCPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */; };
-		7B2E9EF02761062D00151B99 /* SwiftPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */; };
+		7B2E9EEB2760F3B000151B99 /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */; };
+		7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */; };
+		7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */; };
 		7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */; };
 		7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAED202A95BE007E8D56 /* MainViewController.xib */; };
 		7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */; };
@@ -34,9 +34,9 @@
 		8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */; };
 		8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */; };
 		8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */; };
-		8E2EE4132761A4F800FABCA0 /* SwiftyJSONPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4122761A4F800FABCA0 /* SwiftyJSONPropertyBuilder.swift */; };
-		8E2EE4152761AF8800FABCA0 /* ObjectMapperPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4142761AF8800FABCA0 /* ObjectMapperPropertyBuilder.swift */; };
-		8E2EE4172761B1D600FABCA0 /* FlutterPropertyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4162761B1D600FABCA0 /* FlutterPropertyBuilder.swift */; };
+		8E2EE4132761A4F800FABCA0 /* SwiftyJSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4122761A4F800FABCA0 /* SwiftyJSONBuilder.swift */; };
+		8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */; };
+		8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */; };
 		8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */; };
 		8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13922E81E6D00F52C8E /* VersionInfo.swift */; };
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
@@ -172,9 +172,9 @@
 		534B6E6532347C4C75A6C372 /* Pods-JSONConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverter/Pods-JSONConverter.debug.xcconfig"; sourceTree = "<group>"; };
 		7812C44FB05AF4F67F19D831 /* Pods-JSONConverter-JSONConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7B2D34F822E6072A009D2ED2 /* wechat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpeg; sourceTree = "<group>"; };
-		7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyBuildProtocol.swift; sourceTree = "<group>"; };
-		7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCPropertyBuilder.swift; sourceTree = "<group>"; };
-		7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPropertyBuilder.swift; sourceTree = "<group>"; };
+		7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
+		7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCBuilder.swift; sourceTree = "<group>"; };
+		7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBuilder.swift; sourceTree = "<group>"; };
 		7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONProcesser.swift; sourceTree = "<group>"; };
 		7B45DAED202A95BE007E8D56 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -205,9 +205,9 @@
 		8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
 		8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		8E2EE4122761A4F800FABCA0 /* SwiftyJSONPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPropertyBuilder.swift; sourceTree = "<group>"; };
-		8E2EE4142761AF8800FABCA0 /* ObjectMapperPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectMapperPropertyBuilder.swift; sourceTree = "<group>"; };
-		8E2EE4162761B1D600FABCA0 /* FlutterPropertyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterPropertyBuilder.swift; sourceTree = "<group>"; };
+		8E2EE4122761A4F800FABCA0 /* SwiftyJSONBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONBuilder.swift; sourceTree = "<group>"; };
+		8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectMapperBuilder.swift; sourceTree = "<group>"; };
+		8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterBuilder.swift; sourceTree = "<group>"; };
 		8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeUtils.swift; sourceTree = "<group>"; };
 		8E43D13922E81E6D00F52C8E /* VersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfo.swift; sourceTree = "<group>"; };
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
@@ -374,12 +374,12 @@
 		7B2E9EE92760F2AE00151B99 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				7B2E9EEA2760F3B000151B99 /* PropertyBuildProtocol.swift */,
-				7B2E9EEC2760FA3300151B99 /* ObjCPropertyBuilder.swift */,
-				7B2E9EEF2761062D00151B99 /* SwiftPropertyBuilder.swift */,
-				8E2EE4122761A4F800FABCA0 /* SwiftyJSONPropertyBuilder.swift */,
-				8E2EE4142761AF8800FABCA0 /* ObjectMapperPropertyBuilder.swift */,
-				8E2EE4162761B1D600FABCA0 /* FlutterPropertyBuilder.swift */,
+				7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */,
+				7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */,
+				7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */,
+				8E2EE4122761A4F800FABCA0 /* SwiftyJSONBuilder.swift */,
+				8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */,
+				8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1066,12 +1066,12 @@
 				8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				8E542C31251350080053C1E0 /* ExportModel.swift in Sources */,
 				8EC0797E268993D400000F68 /* Highlightr.swift in Sources */,
-				8E2EE4132761A4F800FABCA0 /* SwiftyJSONPropertyBuilder.swift in Sources */,
+				8E2EE4132761A4F800FABCA0 /* SwiftyJSONBuilder.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
 				8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */,
 				8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */,
-				7B2E9EEB2760F3B000151B99 /* PropertyBuildProtocol.swift in Sources */,
+				7B2E9EEB2760F3B000151B99 /* BuilderProtocol.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
 				8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */,
@@ -1082,16 +1082,16 @@
 				7B7D5AE424FA345C00A54D27 /* CacheManager.swift in Sources */,
 				8EC07981268993D400000F68 /* Theme.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
-				8E2EE4152761AF8800FABCA0 /* ObjectMapperPropertyBuilder.swift in Sources */,
+				8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
 				8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */,
 				7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */,
-				7B2E9EF02761062D00151B99 /* SwiftPropertyBuilder.swift in Sources */,
-				7B2E9EED2760FA3300151B99 /* ObjCPropertyBuilder.swift in Sources */,
+				7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */,
+				7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */,
-				8E2EE4172761B1D600FABCA0 /* FlutterPropertyBuilder.swift in Sources */,
+				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
 				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
 				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
 			);

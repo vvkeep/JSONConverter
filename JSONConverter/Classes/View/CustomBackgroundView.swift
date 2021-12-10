@@ -3,7 +3,7 @@
 //  JSONConverter
 //
 //  Created by DevYao on 2021/7/14.
-//  Copyright © 2021 姚巍. All rights reserved.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Cocoa
