@@ -45,7 +45,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         }
     }
     
-    func initText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
+    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
         let tempKeyName = strategy.processed(keyName)
         return "\t\t\(tempKeyName)\(MAPPER_SPACE)<- map[\"\(keyName)\"]\n"
     }

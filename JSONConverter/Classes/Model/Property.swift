@@ -8,8 +8,6 @@
 
 import Foundation
 
-/// count = 3
-
 class Property {
     var parentNodeName: String
 
@@ -44,7 +42,7 @@ class Property {
         let builder = JSONProcesser.shared.builder(lang: langStruct.langType)
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, typeName: className)
-        let initStr = builder.initText(type, keyName: keyName, strategy: strategy, typeName: className)
+        let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, typeName: className)
         return (propertyStr, initStr)
     }
 }
