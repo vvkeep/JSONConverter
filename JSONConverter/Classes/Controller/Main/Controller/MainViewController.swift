@@ -172,9 +172,9 @@ class MainViewController: NSViewController {
         let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
         let suffix = configFile.classSuffixString()
         
-        var exprotList = [ExportModel(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
+        var exprotList = [Export(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
         if configFile.langStruct.langType == .ObjC {
-            exprotList.append(ExportModel(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
+            exprotList.append(Export(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
         }
         
         for model in exprotList {

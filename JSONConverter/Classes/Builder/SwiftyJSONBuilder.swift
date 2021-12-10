@@ -74,4 +74,16 @@ class SwiftyJSONBuilder: BuilderProtocol {
             return "\t\t\(tempKeyName) = json[\"\(keyName)\"].arrayValue.compactMap({ \(typeName!)(json: $0)})\n"
         }
     }
+    
+    func contentParentClassText(_ clsText: String?) -> String {
+        return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
+    }
+    
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+        if structType == .class {
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit(json: JSON) {\n\(propertiesInitText!)\t}\n}\n"
+        } else {
+            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit(json: JSON) {\n\(propertiesInitText!)\t}\n}\n"
+        }
+    }
 }

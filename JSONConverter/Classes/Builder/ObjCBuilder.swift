@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class ObjCBuilder: BuilderProtocol {    
+class ObjCBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
         return lang == .ObjC
     }
@@ -41,5 +41,14 @@ class ObjCBuilder: BuilderProtocol {
         case .ArrayDictionary:
             return "@property (nonatomic, strong) NSArray<\(typeName!) *> *\(tempKeyName);\n"
         }
+    }
+    
+    func contentParentClassText(_ clsText: String?) -> String {
+       return StringUtils.isEmpty(clsText) ? ": NSObject" : ": \(clsText!)"
+    }
+    
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+        propertiesText.removeLastChar()
+        return "\n@interface \(clsName)\(parentClsName)\n\(propertiesText)\n@end\n"
     }
 }

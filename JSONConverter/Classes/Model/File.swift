@@ -135,7 +135,7 @@ extension File {
             classString += content.toString()
         }
         
-        if StringUtils.isBlank(header) {
+        if StringUtils.isEmpty(header) {
             classString.removeFistChar()
         }
         

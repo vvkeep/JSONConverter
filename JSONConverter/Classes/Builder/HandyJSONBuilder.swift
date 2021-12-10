@@ -1,17 +1,16 @@
 //
-//  ObjectMapperBuilder.swift
+//  HandyJSONBuilder.swift
 //  JSONConverter
 //
-//  Created by DevYao on 2021/12/9.
-//  Copyright © 2021 Yao. All rights reserved.
+//  Created by DevYao on 2021/12/10.
+//  Copyright © 2021 . All rights reserved.
 //
 
 import Foundation
 
-private let MAPPER_SPACE = "   "
-class ObjectMapperBuilder: BuilderProtocol {
+class HandyJSONBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
-        return lang == .ObjectMapper
+        return  lang == .HandyJSON
     }
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
@@ -45,20 +44,16 @@ class ObjectMapperBuilder: BuilderProtocol {
         }
     }
     
-    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
-        let tempKeyName = strategy.processed(keyName)
-        return "\t\t\(tempKeyName)\(MAPPER_SPACE)<- map[\"\(keyName)\"]\n"
-    }
-    
     func contentParentClassText(_ clsText: String?) -> String {
-        return StringUtils.isEmpty(clsText) ? ": Mappable" : ": \(clsText!)"
+        return StringUtils.isEmpty(clsText) ? ": HandyJSON" : ": \(clsText!)"
     }
     
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
         if structType == .class {
-            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
         } else {
-            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
+            propertiesText.removeLastChar()
+            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
         }
     }
 }

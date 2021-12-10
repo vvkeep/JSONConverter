@@ -42,7 +42,7 @@
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
 		8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */; };
 		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */; };
-		8E542C31251350080053C1E0 /* ExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C30251350080053C1E0 /* ExportModel.swift */; };
+		8E542C31251350080053C1E0 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C30251350080053C1E0 /* Export.swift */; };
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
 		8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC07918268993D400000F68 /* CodeAttributedString.swift */; };
@@ -143,6 +143,8 @@
 		8EC079DE268993D400000F68 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797C268993D400000F68 /* highlight.min.js */; };
 		8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */; };
 		8ED4E1162755B81F004A682A /* JSONConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4E1152755B81F004A682A /* JSONConverterTests.swift */; };
+		8EE44C73276301FE0024D730 /* HandyJSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */; };
+		8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE44C742763024D0024D730 /* CodableBuilder.swift */; };
 		C456BF34489448A596582A22 /* Pods_JSONConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9D7C2DF5479CDC7B89A152 /* Pods_JSONConverterTests.framework */; };
 		E6BC523AD970DF582B685B5A /* Pods_JSONConverter_JSONConverterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D44DED0DB8DD93A1422B237 /* Pods_JSONConverter_JSONConverterUITests.framework */; };
 /* End PBXBuildFile section */
@@ -213,7 +215,7 @@
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeViewController.xib; sourceTree = "<group>"; };
 		8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureIndicatorView.swift; sourceTree = "<group>"; };
-		8E542C30251350080053C1E0 /* ExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModel.swift; sourceTree = "<group>"; };
+		8E542C30251350080053C1E0 /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8E9E8D09268202C300F778D0 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
@@ -317,6 +319,8 @@
 		8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED4E1152755B81F004A682A /* JSONConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterTests.swift; sourceTree = "<group>"; };
 		8ED4E1172755B81F004A682A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyJSONBuilder.swift; sourceTree = "<group>"; };
+		8EE44C742763024D0024D730 /* CodableBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBuilder.swift; sourceTree = "<group>"; };
 		A5616FC0D45A20ACDD4996AD /* Pods-JSONConverterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverterTests.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverterTests/Pods-JSONConverterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF634CD0F54405DD58FAB7E4 /* Pods-JSONConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverterTests.release.xcconfig"; path = "Target Support Files/Pods-JSONConverterTests/Pods-JSONConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -380,6 +384,8 @@
 				8E2EE4122761A4F800FABCA0 /* SwiftyJSONBuilder.swift */,
 				8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */,
 				8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */,
+				8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */,
+				8EE44C742763024D0024D730 /* CodableBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -464,7 +470,7 @@
 				7B45DB0E202AA572007E8D56 /* File.swift */,
 				7BD7FED9202AC7C10003AE80 /* Content.swift */,
 				7BD7FEDB202AC7EB0003AE80 /* Property.swift */,
-				8E542C30251350080053C1E0 /* ExportModel.swift */,
+				8E542C30251350080053C1E0 /* Export.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1061,10 +1067,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */,
+				8EE44C73276301FE0024D730 /* HandyJSONBuilder.swift in Sources */,
 				7B45DB01202A95BF007E8D56 /* MainViewController.swift in Sources */,
 				8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */,
 				8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */,
-				8E542C31251350080053C1E0 /* ExportModel.swift in Sources */,
+				8E542C31251350080053C1E0 /* Export.swift in Sources */,
 				8EC0797E268993D400000F68 /* Highlightr.swift in Sources */,
 				8E2EE4132761A4F800FABCA0 /* SwiftyJSONBuilder.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
@@ -1091,6 +1098,7 @@
 				7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */,
 				7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */,
+				8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */,
 				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
 				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
 				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,

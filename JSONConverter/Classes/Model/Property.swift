@@ -22,7 +22,9 @@ class Property {
     var prefixStr: String?
     
     var autoCaseUnderline: Bool
-        
+    
+    private var builder: BuilderProtocol!
+
     init(parentNodeName: String, keyName: String, type: PropertyType, langStruct: LangStruct, prefixStr: String?, autoCaseUnderline: Bool) {
         self.parentNodeName = parentNodeName
         self.keyName = keyName
@@ -36,14 +38,20 @@ class Property {
         if !parentNodeName.isEmpty {
             className = "\(parentNodeName)\(tempPropertyKey.uppercaseFirstChar())"
         }
+        
+        builder = JSONProcesser.shared.builder(lang: langStruct.langType)
     }
-    
-    func toString() -> (String, String) {        
-        let builder = JSONProcesser.shared.builder(lang: langStruct.langType)
+        
+    func propertyString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, typeName: className)
+        return propertyStr
+    }
+    
+    func initString() -> String {
+        let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, typeName: className)
-        return (propertyStr, initStr)
+        return initStr
     }
 }
 

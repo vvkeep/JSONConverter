@@ -9,7 +9,7 @@
 import Foundation
 class SwiftBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
-        return lang == .Swift || lang == .HandyJSON || lang == .Codable
+        return lang == .Swift
     }
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
@@ -40,6 +40,19 @@ class SwiftBuilder: BuilderProtocol {
             return "\tvar \(tempKeyName) = [Bool]()\n"
         case .ArrayDictionary:
             return "\tvar \(tempKeyName) = [\(typeName!)]()\n"
+        }
+    }
+    
+    func contentParentClassText(_ clsText: String?) -> String {
+        return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
+    }
+    
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+        propertiesText.removeLastChar()
+        if structType == .class {
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+        } else {
+            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
         }
     }
 }

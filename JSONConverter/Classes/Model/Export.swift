@@ -1,5 +1,5 @@
 //
-//  ExportClassesModel.swift
+//  Export.swift
 //  JSONConverter
 //
 //  Created by DevYao on 2020/9/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExportModel {
+struct Export {
     var path: String
     var content: String
 }
