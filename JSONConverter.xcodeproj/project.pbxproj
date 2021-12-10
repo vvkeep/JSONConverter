@@ -409,14 +409,11 @@
 		7B45DAEA202A95BE007E8D56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7B2E9EE92760F2AE00151B99 /* Builder */,
+				8EE44C762763312A0024D730 /* Common */,
+				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7BF1DD2D24FBA3930090B531 /* Controller */,
 				7BD7FEDE202AC85B0003AE80 /* Model */,
 				8EBE0D08251200A7003A4B4B /* View */,
-				8E1945E82508A23C00E7CDCC /* Macros */,
-				7BF1DD2E24FBA3B70090B531 /* Manager */,
-				7B95A31F24F95ECE000D141B /* Extension */,
-				8E43D13522E7E83F00F52C8E /* Utils */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -510,6 +507,7 @@
 			children = (
 				7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */,
 				7B7D5AE324FA345C00A54D27 /* CacheManager.swift */,
+				7B2E9EE92760F2AE00151B99 /* Builder */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -717,6 +715,16 @@
 				8ED4E1172755B81F004A682A /* Info.plist */,
 			);
 			path = JSONConverterTests;
+			sourceTree = "<group>";
+		};
+		8EE44C762763312A0024D730 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8E1945E82508A23C00E7CDCC /* Macros */,
+				7B95A31F24F95ECE000D141B /* Extension */,
+				8E43D13522E7E83F00F52C8E /* Utils */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8EEE5B7225184E8C00004C58 /* Vendor */ = {
