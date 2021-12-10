@@ -56,4 +56,8 @@ class HandyJSONBuilder: BuilderProtocol {
             return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
         }
     }
+    
+    func fileExtension() -> String {
+        return "swift"
+    }
 }

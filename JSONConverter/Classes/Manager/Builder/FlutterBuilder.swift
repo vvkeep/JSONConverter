@@ -56,4 +56,8 @@ class FlutterBuilder: BuilderProtocol {
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
         return "\n@JsonSerializable()\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\t\(clsName)(\(propertiesInitText!));\n\n\tfactory \(clsName).fromJson(Map<String, dynamic> srcJson) => _$\(clsName)FromJson(srcJson);\n\n\tMap<String, dynamic> toJson() => _$\(clsName)ToJson(this);\n\n}\n"
     }
+    
+    func fileExtension() -> String {
+        return "dart"
+    }
 }

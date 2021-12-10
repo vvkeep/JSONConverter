@@ -27,6 +27,8 @@ class File {
     
     var autoCaseUnderline: Bool = false
     
+    private var builder: BuilderProtocol!
+    
     init(cacheConfig dic: [String: String]?) {
         self.rootName = dic?["rootName"] ?? "RootClass"
         self.prefix = dic?["prefix"] ?? ""
@@ -40,12 +42,13 @@ class File {
         self.langStruct = transStruct
         self.theme = dic?["theme"] ?? "tomorrow-night-bright"
         self.autoCaseUnderline = (dic?["autoCaseUnderline"] ?? "0").toBool()
-        
+        self.builder = JSONProcesser.shared.builder(lang: langStruct.langType)
+
         self.isCustomHeader = (dic?["isCustomHeader"] ?? "0").toBool()
         if self.isCustomHeader {
             self.header = dic?["header"] ?? ""
         } else {
-            let suffix = classSuffixString().0
+            let suffix = builder.fileExtension()
             self.header = defaultHeaderString(suffix: suffix)
         }
     }
@@ -69,17 +72,6 @@ class File {
                 "prefix": prefix ?? "", "parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
                 "langType": "\(langStruct.langType.rawValue)",
                 "structType": "\(langStruct.structType.rawValue)", "theme": theme]
-    }
-    
-    func classSuffixString() -> (String, String?) {
-        switch langStruct.langType {
-        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
-            return ( "swift", nil)
-        case .ObjC:
-            return ("h", "m")
-        case .Flutter:
-            return ("dart", nil)
-        }
     }
 }
 
@@ -149,7 +141,8 @@ extension File {
             if isCustomHeader {
                 tempString += header
             } else {
-                tempString += defaultHeaderString(suffix: classSuffixString().1!)
+              let suffix = builder.fileImplExtension()
+                tempString += defaultHeaderString(suffix: suffix)
             }
             
             if let content = contents.first {

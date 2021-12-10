@@ -51,4 +51,12 @@ class ObjCBuilder: BuilderProtocol {
         propertiesText.removeLastChar()
         return "\n@interface \(clsName)\(parentClsName)\n\(propertiesText)\n@end\n"
     }
+    
+    func fileExtension() -> String {
+        return "h"
+    }
+    
+    func fileImplExtension() -> String {
+        return "m"
+    }
 }

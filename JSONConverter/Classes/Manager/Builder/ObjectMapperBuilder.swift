@@ -61,4 +61,8 @@ class ObjectMapperBuilder: BuilderProtocol {
             return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
         }
     }
+    
+    func fileExtension() -> String {
+        return "swift"
+    }
 }

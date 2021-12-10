@@ -18,6 +18,9 @@ protocol BuilderProtocol {
     
     func contentParentClassText(_ clsText: String?) -> String
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String
+    
+    func fileExtension() -> String
+    func fileImplExtension() -> String
 }
 
 extension BuilderProtocol {
@@ -30,6 +33,10 @@ extension BuilderProtocol {
     }
     
     func propertySetterText(_ type: PropertyType) -> String {
+        return ""
+    }
+    
+    func fileImplExtension() -> String {
         return ""
     }
 }

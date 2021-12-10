@@ -168,13 +168,15 @@ class MainViewController: NSViewController {
     }
     
     func exportClassesFileWithPath(_ path: String) {
-        let configFile = CacheManager.shared.currentConfigFile()
-        let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
-        let suffix = configFile.classSuffixString()
+        let file = CacheManager.shared.currentConfigFile()
+        let classfilePath = "\(path)/\(file.rootName.className(withPrefix: file.prefix))"
         
-        var exprotList = [Export(path: "\(classfilePath).\(suffix.0)", content: classTextView.textStorage!.string)]
-        if configFile.langStruct.langType == .ObjC {
-            exprotList.append(Export(path: "\(classfilePath).\(suffix.1!)", content: classImpTextView.textStorage!.string))
+        let builder = JSONProcesser.shared.builder(lang: file.langStruct.langType)
+        let fileExtension = builder.fileExtension()
+        var exprotList = [Export(path: "\(classfilePath).\(fileExtension)", content: classTextView.textStorage!.string)]
+        if file.langStruct.langType == .ObjC {
+            let fileImplExtension = builder.fileImplExtension()
+            exprotList.append(Export(path: "\(classfilePath).\(fileImplExtension)", content: classImpTextView.textStorage!.string))
         }
         
         for model in exprotList {

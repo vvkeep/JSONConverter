@@ -86,4 +86,8 @@ class SwiftyJSONBuilder: BuilderProtocol {
             return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit(json: JSON) {\n\(propertiesInitText!)\t}\n}\n"
         }
     }
+    
+    func fileExtension() -> String {
+        return "swift"
+    }
 }
