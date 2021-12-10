@@ -1,60 +1,60 @@
-disabled_rules: # 执行时排除掉的规则
-  - identifier_name # 命名规则必须按照驼峰原则，与后台传的Json字段命名冲突，建议排除掉
-  - trailing_whitespace # 每一个空行不能有空格，会与Xcode换行后自动对齐生成的空格冲突，建议排除掉
-  - force_cast # 允许强制转换
-  - force_unwrapping # 允许强解，程序员自己负责
-  - force_try # 允许强解对会抛出异常(throws)的方法，程序员自己负责
-  - shorthand_operator # 使用+= ， -=， *=， /=  代替 a = a + 1
-  - syntactic_sugar # 语法糖[Int] 代替Array
-  - function_parameter_count #函数参数个数 默认 5warning 8error
-  - weak_delegate # delegate强制weak
-  - multiple_closures_with_trailing_closure # 多个闭包的使用尾随闭包
-  - compiler_protocol_init # 编译器协议（如ExpressibleByArrayLiteral）中声明的初始值设定项不应直接调用。
-  - unused_optional_binding # 在使用if判断某变量是否为nil的时候, 不建议使用下划线(_)
-  - cyclomatic_complexity # 代码复杂度,默认为10
-  - redundant_string_enum_value # 字符串枚举值一样时，要简写方式
-  - switch_case_alignment # 虽然Xcode默认的格式化风格与此一致，但case有缩进更容易观看
-  - void_return # 空返回值建议使用Void
-  - notification_center_detachment # 对象移除通知只能在deinit移除self
-  - block_based_kvo # 首选系统的KVO 的API和keypath
-  - for_where # 在for循环中,不建议使用单个if语句或者只使用一次循环变量,可使用where或者if{}else{}语句
-  - class_delegate_protocol # 委托协议应该仅是class，可以被弱引用
-  - inert_defer # 允许函数最后使用 defer，因为执行顺序不一样，是在函数执行完之后才会调用
+disabled_rules:
+  - identifier_name
+  - trailing_whitespace
+  - force_cast
+  - force_unwrapping
+  - force_try
+  - shorthand_operator
+  - syntactic_sugar
+  - function_parameter_count
+  - weak_delegate
+  - multiple_closures_with_trailing_closure
+  - compiler_protocol_init
+  - unused_optional_binding
+  - cyclomatic_complexity
+  - redundant_string_enum_value
+  - switch_case_alignment
+  - void_return
+  - notification_center_detachment
+  - block_based_kvo
+  - for_where
+  - class_delegate_protocol
+  - inert_defer
   
-opt_in_rules: # 启用默认关闭的规则
-  - vertical_whitespace_opening_braces # 开始大括号后包含垂直空格（空行）
-  - vertical_whitespace_closing_braces # 结束大括号之前后包含垂直空格（空行）
+opt_in_rules:
+  - vertical_whitespace_opening_braces
+  - vertical_whitespace_closing_braces
   - closure_end_indentation
   - closure_spacing
 
-excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
-  - Pods # 忽略通过CocoaPods 导入的第三方库
+excluded:
+  - Pods
   - JSONConverter/Vendor
 
-line_length: # 单行代码长度,默认error 120
-  warning: 600 # 表示单行字符数超过 300 时抛出警告
-  error: 900 # 表示单行字符数超过 500 时抛出错误
-  ignores_comments: true # 设置是否忽略检查注释的长度
+line_length:
+  warning: 600
+  error: 900
+  ignores_comments: true
 
-file_length: # 文件长度
+file_length:
   warning: 2000
   error: 3000
   
-type_name: # 类名
- min_length: 4 # 只是警告
- max_length: # 警告和错误
+type_name:
+ min_length: 4
+ max_length:
   warning: 60
   error: 80
 
-type_body_length: # 类/结构体体长度
+type_body_length:
   - 1200
   - 1600
 
-function_body_length: # 函数体长度
+function_body_length:
   warning: 400
   error: 600
 
-large_tuple: # 元组成员长度
+large_tuple:
   warning: 6
   error: 8
   
@@ -62,40 +62,40 @@ computed_accessors_order:
   order: get_set
   severity: error
   
-vertical_whitespace: # 垂直方向上的空格行，限制为一行（注释除外）
+vertical_whitespace:
   max_empty_lines: 1
   severity: error
   
-statement_position: # 这里主要指的是 else 和 catch 前面要加一个空格，也不能大于1个空格
+statement_position:
   statement_mode: default
   severity: error
   
-colon: # 指定类型时，冒号应位于标识符旁边，并位于字典文本中的键旁边，冒号右侧有且只有一个空格
+colon:
   flexible_right_spacing: false
   apply_to_dictionaries: true
   severity: error
   
-opening_brace: # 大括号前应加一个空格，并与声明位于同一行
+opening_brace:
   severity: error
   
-trailing_semicolon: error # 行不应有尾随分号
-comma: error # 逗号 [a, b, c, d] 后面必须有一个空格, 前面不要空格
-return_arrow_whitespace: error # -> 前后要有空格
-no_space_in_method_call: error # 不要在方法名称和括号之间添加空格
-mark: error # 标准样式 eg: //MARK: -
-operator_whitespace: error # 当定义空格操作符的时候，被定义的名字或类型两边应该各有一个单行空格操作符
-closure_parameter_position: error # 闭包参数位置，闭包参数应该和大括号左边在同一行
-unused_capture_list: error # 没有被使用的参数应该删除
-unused_closure_parameter: error # 函数的参数必须被使用
-trailing_newline: error # 文件末尾空行
-control_statement: error # if while 等判断条件不要用括号 括起来
-leading_whitespace: error # 文件开始不应该有空格或者换行
-orphaned_doc_comment: error # 注释要写在声明中
-unneeded_break_in_switch: error # 在switch-case语句中, 有方法调用或操作时,避免使用break语句
-closure_end_indentation: error # 闭合端应具有与起始线相同的缩进
-closure_spacing: error # 闭包表达式在每个大括号内应有一个空格
-redundant_optional_initialization: error # 初始化nil变量时,不建议赋值nil
-unused_enumerated: error # 没有使用枚举器
-duplicate_imports: error # 重复引入
-vertical_parameter_alignment: error # 如果函数参数在一个声明中有多行，则它们应该垂直对齐
-comment_spacing: error #在斜杠后至少选择一个空格作为注释
+trailing_semicolon: error
+comma: error
+return_arrow_whitespace: error
+no_space_in_method_call: error
+mark: error
+operator_whitespace: error
+closure_parameter_position: error
+unused_capture_list: error
+unused_closure_parameter: error
+trailing_newline: error
+control_statement: error
+leading_whitespace: error
+orphaned_doc_comment: error
+unneeded_break_in_switch: error
+closure_end_indentation: error
+closure_spacing: error
+redundant_optional_initialization: error
+unused_enumerated: error
+duplicate_imports: error
+vertical_parameter_alignment: error
+comment_spacing: error

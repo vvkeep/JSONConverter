@@ -8,13 +8,19 @@
 
 import Foundation
 
-class JSONBuilder {
-    static let shared: JSONBuilder = {
-        let manager = JSONBuilder()
+class JSONProcesser {
+    static let shared: JSONProcesser = {
+        let manager = JSONProcesser()
         return manager
     }()
     
+    private let builders: [PropertyBuildProtocol] = [ObjCPropertyBuilder(), SwiftPropertyBuilder(), SwiftyJSONPropertyBuilder(), ObjectMapperPropertyBuilder(), FlutterPropertyBuilder()]
+    
     private var file: File!
+    
+    func builder(lang: LangType) -> PropertyBuildProtocol {
+        return builders.first(where: { $0.isMatchLang(lang) })!
+    }
     
     func buildWithJSONObject(_ obj: Any, file: File) -> (String, String?) {
         file.contents.removeAll()

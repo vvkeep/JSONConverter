@@ -134,7 +134,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        let configFile = FileConfigBuilder.shared.currentConfigFile()
+        let configFile = CacheManager.shared.currentConfigFile()
         languageBox.selectItem(at: configFile.langStruct.langType.rawValue)
         structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: { configFile.theme == $0 }) {
@@ -168,7 +168,7 @@ class MainViewController: NSViewController {
     }
     
     func exportClassesFileWithPath(_ path: String) {
-        let configFile = FileConfigBuilder.shared.currentConfigFile()
+        let configFile = CacheManager.shared.currentConfigFile()
         let classfilePath = "\(path)/\(configFile.rootName.className(withPrefix: configFile.prefix))"
         let suffix = configFile.classSuffixString()
         
@@ -212,8 +212,8 @@ class MainViewController: NSViewController {
                let JSONObject = try? JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves]),
                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
                let JSONString = String(data: JSONData, encoding: .utf8) {
-                let configFile = FileConfigBuilder.shared.currentConfigFile()
-                let fileString = JSONBuilder.shared.buildWithJSONObject(JSONObject, file: configFile)
+                let configFile = CacheManager.shared.currentConfigFile()
+                let fileString = JSONProcesser.shared.buildWithJSONObject(JSONObject, file: configFile)
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
                 
@@ -261,7 +261,7 @@ class MainViewController: NSViewController {
     }
     
     private func updateCacheConfigAndUI() {
-        let configFile = FileConfigBuilder.shared.currentConfigFile()
+        let configFile = CacheManager.shared.currentConfigFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
               let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
         else {
@@ -289,7 +289,7 @@ class MainViewController: NSViewController {
         
         let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
         configFile.theme = theme
-        FileConfigBuilder.shared.updateConfigWithFile(configFile)
+        CacheManager.shared.updateConfigWithFile(configFile)
         generateClasses()
     }
     
@@ -308,8 +308,8 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
-        let currentConfigFile = FileConfigBuilder.shared.currentConfigFile()
-        FileConfigBuilder.shared.updateConfigWithFile(currentConfigFile)
+        let currentConfigFile = CacheManager.shared.currentConfigFile()
+        CacheManager.shared.updateConfigWithFile(currentConfigFile)
     }
 }
 
