@@ -62,67 +62,11 @@ class File {
         let property = Property(parentNodeName: parentNodeName, keyName: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
-    
-    func toString() -> (String, String?) {
-        return (generateClassString(), generateClassImpString())
-    }
-    
-    func toCacheConfig() -> [String: String] {
-        return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)", "rootName": rootName,
-                "prefix": prefix ?? "", "parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
-                "langType": "\(langStruct.langType.rawValue)",
-                "structType": "\(langStruct.structType.rawValue)", "theme": theme]
-    }
-}
-
-extension File {
-    private func defaultHeaderString(suffix: String) -> String {
-        let headerString = """
-        //
-        //  \(rootName.className(withPrefix: prefix)).\(suffix)
-        //
-        //
-        //  Created by JSONConverter on \(Date.now(format: "yyyy/MM/dd")).
-        //  Copyright © \(Date.now(format: "yyyy"))年 JSONConverter. All rights reserved.
-        //
         
-        """
-        return headerString
-    }
-    
-    private func generateImportString() -> String? {
-        switch langStruct.langType {
-        case .Swift:
-            return"\nimport Foundation\n"
-        case .HandyJSON:
-            return"\nimport Foundation\nimport HandyJSON\n"
-        case .SwiftyJSON:
-            return"\nimport Foundation\nimport SwiftyJSON\n"
-        case .ObjectMapper:
-            return"\nimport Foundation\nimport ObjectMapper\n"
-        case .ObjC:
-            var tempStr = "\n#import <Foundation/Foundation.h>\n"
-            for (i, content) in contents.enumerated() where i > 0 {
-                let keyName = autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
-                tempStr += "\n@class \(keyName.className(withPrefix: content.prefixStr));"
-            }
-            tempStr += "\n"
-            return tempStr
-        case .Flutter:
-            var className = rootName.className(withPrefix: prefix)
-            let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.humpToUnderline()).g.dart';\n"
-            return importStr
-        case .Codable:
-            return"\nimport Foundation\n"
-        }
-    }
-    
-    private func generateClassString() -> String {
-        var classString = header ?? ""
-        if let importString = generateImportString() {
-            classString += importString
-        }
-        
+    func toClassesString() -> String {
+        let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
+        let importStr = builder.fileImportText(rootName, contents: contents, strategy: strategy, prefix: prefix)
+        var classString = header ?? "" + importStr
         contents.forEach { (content) in
             classString += content.toString()
         }
@@ -134,7 +78,7 @@ extension File {
         return classString
     }
     
-    private func generateClassImpString() -> String? {
+    func toClassesImplString() -> String? {
         switch langStruct.langType {
         case .ObjC:
             var tempString =  ""
@@ -158,5 +102,28 @@ extension File {
         default:
             return nil
         }
+    }
+    
+    func toCacheConfig() -> [String: String] {
+        return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)", "rootName": rootName,
+                "prefix": prefix ?? "", "parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
+                "langType": "\(langStruct.langType.rawValue)",
+                "structType": "\(langStruct.structType.rawValue)", "theme": theme]
+    }
+}
+
+extension File {
+    private func defaultHeaderString(suffix: String) -> String {
+        let headerString = """
+        //
+        //  \(rootName.className(withPrefix: prefix)).\(suffix)
+        //
+        //
+        //  Created by JSONConverter on \(Date.now(format: "yyyy/MM/dd")).
+        //  Copyright © \(Date.now(format: "yyyy"))年 JSONConverter. All rights reserved.
+        //
+        
+        """
+        return headerString
     }
 }

@@ -41,7 +41,7 @@ class JSONProcesser {
             file.contents.insert(content, at: 0)
         }
         
-        return file.toString()
+        return (file.toClassesString(), file.toClassesImplString())
     }
     
     private func addDictionaryWithParentNodeName(_ parentNodeName: String, keyName: String, dic: [String: Any]) -> Content {

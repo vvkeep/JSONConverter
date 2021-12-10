@@ -409,6 +409,7 @@
 		7B45DAEA202A95BE007E8D56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7B2E9EE92760F2AE00151B99 /* Builder */,
 				8EE44C762763312A0024D730 /* Common */,
 				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7BF1DD2D24FBA3930090B531 /* Controller */,
@@ -494,7 +495,6 @@
 			children = (
 				7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */,
 				7B7D5AE324FA345C00A54D27 /* CacheManager.swift */,
-				7B2E9EE92760F2AE00151B99 /* Builder */,
 			);
 			path = Manager;
 			sourceTree = "<group>";

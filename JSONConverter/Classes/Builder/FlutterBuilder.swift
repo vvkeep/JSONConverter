@@ -60,4 +60,10 @@ class FlutterBuilder: BuilderProtocol {
     func fileExtension() -> String {
         return "dart"
     }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        var className = rootName.className(withPrefix: prefix)
+        let importStr = "\nimport 'package:json_annotation/json_annotation.dart';\n\npart '\(className.humpToUnderline()).g.dart';\n"
+        return importStr
+    }
 }

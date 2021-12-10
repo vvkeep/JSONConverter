@@ -59,4 +59,15 @@ class ObjCBuilder: BuilderProtocol {
     func fileImplExtension() -> String {
         return "m"
     }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        var tempStr = "\n#import <Foundation/Foundation.h>\n"
+        for (i, content) in contents.enumerated() where i > 0 {
+            let keyName = strategy.processed(content.keyName)
+            tempStr += "\n@class \(keyName.className(withPrefix: content.prefixStr));"
+        }
+        
+        tempStr += "\n"
+        return tempStr
+    }
 }

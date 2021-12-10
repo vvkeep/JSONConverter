@@ -1,15 +1,16 @@
 //
-//  SwiftBuilder.swift
+//  CodableBuilder.swift
 //  JSONConverter
 //
-//  Created by Yao on 2021/12/8.
-//  Copyright © 2021 Yao. All rights reserved.
+//  Created by DevYao on 2021/12/10.
+//  Copyright © 2021 . All rights reserved.
 //
 
 import Foundation
-class SwiftBuilder: BuilderProtocol {
+
+class CodableBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
-        return lang == .Swift
+        return  lang == .Codable
     }
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
@@ -44,19 +45,23 @@ class SwiftBuilder: BuilderProtocol {
     }
     
     func contentParentClassText(_ clsText: String?) -> String {
-        return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
+       return StringUtils.isEmpty(clsText) ? ": Codable" : ": \(clsText!)"
     }
     
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
-        propertiesText.removeLastChar()
         if structType == .class {
-            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
         } else {
+            propertiesText.removeLastChar()
             return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
         }
     }
     
     func fileExtension() -> String {
         return "swift"
+    }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        return"\nimport Foundation\n"
     }
 }

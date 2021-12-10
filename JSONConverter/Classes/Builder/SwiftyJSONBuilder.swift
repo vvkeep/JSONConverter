@@ -90,4 +90,8 @@ class SwiftyJSONBuilder: BuilderProtocol {
     func fileExtension() -> String {
         return "swift"
     }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        return"\nimport Foundation\nimport SwiftyJSON\n"
+    }
 }

@@ -1,16 +1,17 @@
 //
-//  CodableBuilder.swift
+//  ObjectMapperBuilder.swift
 //  JSONConverter
 //
-//  Created by DevYao on 2021/12/10.
-//  Copyright © 2021 . All rights reserved.
+//  Created by DevYao on 2021/12/9.
+//  Copyright © 2021 Yao. All rights reserved.
 //
 
 import Foundation
 
-class CodableBuilder: BuilderProtocol {
+private let MAPPER_SPACE = "   "
+class ObjectMapperBuilder: BuilderProtocol {
     func isMatchLang(_ lang: LangType) -> Bool {
-        return  lang == .Codable
+        return lang == .ObjectMapper
     }
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
@@ -44,20 +45,28 @@ class CodableBuilder: BuilderProtocol {
         }
     }
     
+    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
+        let tempKeyName = strategy.processed(keyName)
+        return "\t\t\(tempKeyName)\(MAPPER_SPACE)<- map[\"\(keyName)\"]\n"
+    }
+    
     func contentParentClassText(_ clsText: String?) -> String {
-       return StringUtils.isEmpty(clsText) ? ": Codable" : ": \(clsText!)"
+        return StringUtils.isEmpty(clsText) ? ": Mappable" : ": \(clsText!)"
     }
     
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
         if structType == .class {
-            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
         } else {
-            propertiesText.removeLastChar()
-            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit?(map: Map) {}\n\n\tmutating func mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
         }
     }
     
     func fileExtension() -> String {
         return "swift"
+    }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        return"\nimport Foundation\nimport ObjectMapper\n"
     }
 }

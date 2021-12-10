@@ -21,6 +21,7 @@ protocol BuilderProtocol {
     
     func fileExtension() -> String
     func fileImplExtension() -> String
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String
 }
 
 extension BuilderProtocol {
