@@ -14,7 +14,7 @@ class UpgradeViewController: NSViewController {
     @IBOutlet weak var descLab: NSTextField!
     @IBOutlet weak var upgradeBtn: NSButton!
     
-    var versionInfo: VersionInfo?
+    var versionInfo: Version?
     var currentVer: String?
     
     override func viewDidLoad() {

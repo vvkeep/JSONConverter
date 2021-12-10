@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class VersionInfo: Codable {
+class Version: Codable {
     var zipball_url: String?
     var assets_url: String?
     var html_url: String?

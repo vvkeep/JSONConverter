@@ -38,7 +38,7 @@
 		8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */; };
 		8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */; };
 		8E43D13722E7E85600F52C8E /* UpgradeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */; };
-		8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13922E81E6D00F52C8E /* VersionInfo.swift */; };
+		8E43D13A22E81E6D00F52C8E /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13922E81E6D00F52C8E /* Version.swift */; };
 		8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */; };
 		8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */; };
 		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */; };
@@ -211,7 +211,7 @@
 		8E2EE4142761AF8800FABCA0 /* ObjectMapperBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectMapperBuilder.swift; sourceTree = "<group>"; };
 		8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterBuilder.swift; sourceTree = "<group>"; };
 		8E43D13622E7E85600F52C8E /* UpgradeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeUtils.swift; sourceTree = "<group>"; };
-		8E43D13922E81E6D00F52C8E /* VersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfo.swift; sourceTree = "<group>"; };
+		8E43D13922E81E6D00F52C8E /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeViewController.xib; sourceTree = "<group>"; };
 		8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureIndicatorView.swift; sourceTree = "<group>"; };
@@ -418,14 +418,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		7B45DAEB202A95BE007E8D56 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				7BD7FEE1202AD1F30003AE80 /* Controller */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		7B4B5EA1201B87A10098712B = {
 			isa = PBXGroup;
 			children = (
@@ -464,23 +456,13 @@
 		7BD7FEDE202AC85B0003AE80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E43D13922E81E6D00F52C8E /* Version.swift */,
 				7B45DB0E202AA572007E8D56 /* File.swift */,
 				7BD7FED9202AC7C10003AE80 /* Content.swift */,
 				7BD7FEDB202AC7EB0003AE80 /* Property.swift */,
 				8E542C30251350080053C1E0 /* Export.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		7BD7FEE1202AD1F30003AE80 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */,
-				7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */,
-				7B45DAEF202A95BE007E8D56 /* MainViewController.swift */,
-				7B45DAED202A95BE007E8D56 /* MainViewController.xib */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		7BDF2970202BDB7D00B7E2F5 /* JSONConverterUITests */ = {
@@ -495,9 +477,14 @@
 		7BF1DD2D24FBA3930090B531 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8E2A9CFF24F91F8C00F03DCB /* Setting */,
-				8E43D13822E801FC00F52C8E /* Upgrade */,
-				7B45DAEB202A95BE007E8D56 /* Main */,
+				7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */,
+				7B45DAF2202A95BE007E8D56 /* MainWindowController.xib */,
+				7B45DAEF202A95BE007E8D56 /* MainViewController.swift */,
+				7B45DAED202A95BE007E8D56 /* MainViewController.xib */,
+				8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */,
+				8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */,
+				8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */,
+				8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -520,15 +507,6 @@
 			path = Macros;
 			sourceTree = "<group>";
 		};
-		8E2A9CFF24F91F8C00F03DCB /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				8E2A9D0024F9201F00F03DCB /* SettingViewController.swift */,
-				8E2A9D0124F9201F00F03DCB /* SettingViewController.xib */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
 		8E43D13522E7E83F00F52C8E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,32 +514,6 @@
 				7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		8E43D13822E801FC00F52C8E /* Upgrade */ = {
-			isa = PBXGroup;
-			children = (
-				8E43D13F22E8236A00F52C8E /* Controller */,
-				8E43D14022E8237400F52C8E /* Model */,
-			);
-			path = Upgrade;
-			sourceTree = "<group>";
-		};
-		8E43D13F22E8236A00F52C8E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8E43D13B22E8235A00F52C8E /* UpgradeViewController.swift */,
-				8E43D13C22E8235A00F52C8E /* UpgradeViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		8E43D14022E8237400F52C8E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8E43D13922E81E6D00F52C8E /* VersionInfo.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8EBE0D08251200A7003A4B4B /* View */ = {
@@ -1090,7 +1042,7 @@
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
 				8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */,
-				8E43D13A22E81E6D00F52C8E /* VersionInfo.swift in Sources */,
+				8E43D13A22E81E6D00F52C8E /* Version.swift in Sources */,
 				7B45DB0F202AA572007E8D56 /* File.swift in Sources */,
 				8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */,
 				8EC07982268993D400000F68 /* Shims.swift in Sources */,

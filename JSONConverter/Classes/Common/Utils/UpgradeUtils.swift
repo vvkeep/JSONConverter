@@ -11,11 +11,11 @@ import Cocoa
 class UpgradeUtils {
     static let GITHUB_RELEASES_URL = "https://api.github.com/repositories/120407973/releases"
     
-    class func newestVersion(completion:@escaping ((VersionInfo?) -> ())) {
+    class func newestVersion(completion:@escaping ((Version?) -> ())) {
         DispatchQueue.global().async {
             guard let infoURL = URL(string: GITHUB_RELEASES_URL),
                 let infoData = try? Data(contentsOf: infoURL),
-                let list = try? JSONDecoder().decode([VersionInfo].self, from: infoData) else {
+                let list = try? JSONDecoder().decode([Version].self, from: infoData) else {
                     DispatchQueue.main.async {
                         completion(nil)
                     }
