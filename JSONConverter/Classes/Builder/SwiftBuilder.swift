@@ -47,7 +47,7 @@ class SwiftBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
         propertiesText.removeLastChar()
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"

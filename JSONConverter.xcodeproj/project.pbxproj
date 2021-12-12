@@ -26,6 +26,7 @@
 		7B7D5AE424FA345C00A54D27 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE324FA345C00A54D27 /* CacheManager.swift */; };
 		7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE524FA520800A54D27 /* Date+Extension.swift */; };
 		7B95A32224F95F69000D141B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B95A32424F95F69000D141B /* Localizable.strings */; };
+		7B9FD5E62764FAA200CFD0A0 /* JavaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FD5E52764FAA200CFD0A0 /* JavaBuilder.swift */; };
 		7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* Content.swift */; };
 		7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* Property.swift */; };
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
@@ -196,6 +197,7 @@
 		7B95A31E24F95EA1000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		7B95A32324F95F69000D141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B95A32524F95F6E000D141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7B9FD5E52764FAA200CFD0A0 /* JavaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaBuilder.swift; sourceTree = "<group>"; };
 		7BD7FED9202AC7C10003AE80 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		7BD7FEDB202AC7EB0003AE80 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +388,7 @@
 				8E2EE4162761B1D600FABCA0 /* FlutterBuilder.swift */,
 				8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */,
 				8EE44C742763024D0024D730 /* CodableBuilder.swift */,
+				7B9FD5E52764FAA200CFD0A0 /* JavaBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */,
 				7B2E9EEB2760F3B000151B99 /* BuilderProtocol.swift in Sources */,
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
+				7B9FD5E62764FAA200CFD0A0 /* JavaBuilder.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
 				8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */,
 				8E43D13A22E81E6D00F52C8E /* Version.swift in Sources */,

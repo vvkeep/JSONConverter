@@ -16,6 +16,7 @@ enum LangType: Int {
     case ObjC
     case Flutter
     case Codable
+    case Java
     
     var language: String! {
         switch self {
@@ -25,13 +26,23 @@ enum LangType: Int {
             return "objectivec"
         case .Flutter:
             return "dart"
+        case .Java:
+            return "java"
         }
+    }
+    
+    static func languages() -> [String] {
+        return ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "ObjC", "Flutter", "Codable", "Java"]
     }
 }
 
 enum StructType: Int {
     case `struct` = 0
     case `class`
+    
+    static func strusts() -> [String] {
+        return ["Struct", "Class"]
+    }
 }
 
 struct LangStruct {

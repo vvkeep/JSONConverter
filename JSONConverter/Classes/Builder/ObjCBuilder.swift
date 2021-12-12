@@ -47,7 +47,7 @@ class ObjCBuilder: BuilderProtocol {
        return StringUtils.isEmpty(clsText) ? ": NSObject" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
         propertiesText.removeLastChar()
         return "\n@interface \(clsName)\(parentClsName)\n\(propertiesText)\n@end\n"
     }

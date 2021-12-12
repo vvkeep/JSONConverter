@@ -48,7 +48,7 @@ class CodableBuilder: BuilderProtocol {
        return StringUtils.isEmpty(clsText) ? ": Codable" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
         } else {

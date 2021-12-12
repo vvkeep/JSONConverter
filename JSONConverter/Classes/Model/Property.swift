@@ -47,11 +47,23 @@ class Property {
         let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, typeName: className)
         return propertyStr
     }
-    
+        
     func initString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, typeName: className)
         return initStr
+    }
+    
+    func getterString() -> String {
+        let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
+        let getterStr = builder.propertyGetterText(type, keyName: keyName, strategy: strategy, typeName: className)
+        return getterStr
+    }
+    
+    func setterString() -> String {
+        let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
+        let setterStr = builder.propertySetterText(type, keyName: keyName, strategy: strategy, typeName: className)
+        return setterStr
     }
 }
 

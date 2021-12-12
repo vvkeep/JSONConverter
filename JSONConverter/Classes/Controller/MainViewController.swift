@@ -29,8 +29,6 @@ class MainViewController: NSViewController {
     @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var saveBtn: NSButton!
     
-    private let transTypeTitleList = ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "Objective-C", "Flutter", "Codable"]
-    private let structTypeTitleList = ["Struct", "Class"]
     private let highlightr = Highlightr()!
     
     private lazy var JSONStorage: CodeAttributedString = {
@@ -85,12 +83,12 @@ class MainViewController: NSViewController {
     private func setupUI() {
         saveBtn.title = "parameter_save_title".localized
         
-        languageBox.addItems(withObjectValues: transTypeTitleList)
+        languageBox.addItems(withObjectValues: LangType.languages())
         languageBox.delegate = self
         languageBox.isEditable = false
         languageBox.isSelectable = false
         
-        structureBox.addItems(withObjectValues: structTypeTitleList)
+        structureBox.addItems(withObjectValues: StructType.strusts())
         structureBox.delegate = self
         structureBox.isEditable = false
         structureBox.isSelectable = false

@@ -49,8 +49,9 @@ class Content {
         var propertiesText = allPropertyString()
         var propertiesInitText: String? = allPropertyInitString()
         let parentClsName = builder.contentParentClassText(parentClsName)
+        var propertiesGetterSetterText: String? = allGetterSetterString()
         
-        let contentText = builder.contentText(langStruct.structType, clsName: className, parentClsName: parentClsName, propertiesText: &propertiesText, propertiesInitText: &propertiesInitText)
+        let contentText = builder.contentText(langStruct.structType, clsName: className, parentClsName: parentClsName, propertiesText: &propertiesText, propertiesInitText: &propertiesInitText, propertiesGetterSetterText: &propertiesGetterSetterText)
         return contentText
     }
 }
@@ -70,6 +71,15 @@ extension Content {
             initStr += property.initString()
         }
         return initStr
+    }
+    
+    private func allGetterSetterString() -> String {
+        var str = ""
+        properties.forEach { property in
+            str += property.getterString()
+            str += property.setterString()
+        }
+        return str
     }
 }
 

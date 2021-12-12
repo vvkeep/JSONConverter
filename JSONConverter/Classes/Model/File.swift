@@ -66,7 +66,7 @@ class File {
     func toClassesString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let importStr = builder.fileImportText(rootName, contents: contents, strategy: strategy, prefix: prefix)
-        var classString = header ?? "" + importStr
+        var classString = (header ?? "") + importStr
         contents.forEach { (content) in
             classString += content.toString()
         }

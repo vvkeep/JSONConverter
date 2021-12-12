@@ -54,7 +54,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? ": Mappable" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
         } else {

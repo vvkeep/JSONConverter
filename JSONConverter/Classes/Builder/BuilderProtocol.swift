@@ -13,11 +13,11 @@ protocol BuilderProtocol {
     
     func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String
     func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String
-    func propertyGetterText(_ type: PropertyType) -> String
-    func propertySetterText(_ type: PropertyType) -> String
-    
+    func propertyGetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String
+    func propertySetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String
+
     func contentParentClassText(_ clsText: String?) -> String
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?) -> String
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String
     
     func fileExtension() -> String
     func fileImplExtension() -> String
@@ -29,12 +29,11 @@ extension BuilderProtocol {
         return ""
     }
 
-    func propertyGetterText(_ type: PropertyType) -> String {
+    func propertyGetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
         return ""
     }
-    
-    func propertySetterText(_ type: PropertyType) -> String {
-        return ""
+
+    func propertySetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {        return ""
     }
     
     func fileImplExtension() -> String {
