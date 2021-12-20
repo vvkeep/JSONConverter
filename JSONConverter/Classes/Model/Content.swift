@@ -48,7 +48,7 @@ class Content {
         properties.sort { $0 < $1 }
         var propertiesText = allPropertyString()
         var propertiesInitText: String? = allPropertyInitString()
-        let parentClsName = builder.contentParentClassText(parentClsName)
+        let parentClsName = builder.contentParentClassText(self.parentClsName)
         var propertiesGetterSetterText: String? = allGetterSetterString()
         
         let contentText = builder.contentText(langStruct.structType, clsName: className, parentClsName: parentClsName, propertiesText: &propertiesText, propertiesInitText: &propertiesInitText, propertiesGetterSetterText: &propertiesGetterSetterText)
