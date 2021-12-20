@@ -12,6 +12,7 @@ Using JSONConverter you will be able to:
 * Change the root class name.
 * Set a class name prefix for the generated classes.
 * Custom file header include author/date etc.
+* automatic hump conversion
 * Support i18n(English/Chinese)
 * more smart and safe
 ...
@@ -25,6 +26,7 @@ Currently supported languages
     - 1.4 Codable
 - 2. Objective-C
 - 3. Flutter
+- 4. Java
 - if you have other needs, you can let us know by [issues](https://github.com/DevYao/JSONConverter/issues)
 
 Screenshots
@@ -43,16 +45,15 @@ Installation
 
 To Do
 =====
-* Support JAVA Models 
-* ~~Supprot Models File export~~
-* ~~Supprot display models with rich text~~
+* Support C Struct
+* Support C++ Class/Struct
+* Support Kotlin Class/Struct
 
 Flutter model instruction links
 ========================
 * [json_serializable](https://github.com/dart-lang/json_serializable)
-* [Flutter JSON](https://flutterchina.club/json/)
 
-Final Notes
+Final
 ==========
 * The application still in its early stage. Please report any issue so I can improve it.
 

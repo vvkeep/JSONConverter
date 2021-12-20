@@ -4,7 +4,7 @@
 
 JSONConverter
 ==========
- JSONConverter是MAC上iOS/Flutter开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持Objective-C、Swift、Flutter以及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，借此提高开发效率。
+ JSONConverter是MAC上iOS/Flutter开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持/Java/Objective-C/Flutter/Swift及目前流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建class/struct，并支持配置类名前缀等,省去手敲模型的麻烦，极大提高开发效率。
 
 
 功能介绍
@@ -15,7 +15,8 @@ JSONConverter
 * 配置根类名
 * 配置类前缀
 * 自定义类文件前缀
-* 支持国际化
+* 下划线驼峰自动转换
+* 国际化
 
 当前支持的语言
 ============
@@ -26,7 +27,8 @@ JSONConverter
     - 1.4 Codable
 - 2. Objective-C
 - 3. Flutter
-- 如果你还有其他需要，可以通过提[issues](https://github.com/DevYao/JSONConverter/issues)告诉我
+- 4. Java
+- 如果你还有其他需要，可以通过[issues](https://github.com/DevYao/JSONConverter/issues)告诉我
 
 应用截图
 ========================
@@ -43,10 +45,10 @@ JSONConverter
 * 直接下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)
 
 开发计划
-=====
-* 支持Java 模型转换
-* ~~支持模型文件导出~~
-* ~~富文本展示模型~~
+==================
+* 支持 C Struct 转换
+* 支持 C++ Struct/Class 转换
+* 支持 Kotlin 转换
 
 Flutter 模型使用说明
 ========================
