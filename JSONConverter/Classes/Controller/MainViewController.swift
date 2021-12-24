@@ -137,6 +137,8 @@ class MainViewController: NSViewController {
         structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: { configFile.theme == $0 }) {
             themeBox.selectItem(at: themeIndex)
+            let theme = highlightr.availableThemes()[themeIndex]
+            upateTextThemeUI(theme)
         }
     }
     
@@ -260,6 +262,16 @@ class MainViewController: NSViewController {
         }
     }
     
+    private func upateTextThemeUI(_ theme: String) {
+        classStorage.highlightr.setTheme(to: theme)
+        classImpStorage.highlightr.setTheme(to: theme)
+        JSONStorage.highlightr.setTheme(to: theme)
+        
+        classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+        JSONStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+    }
+    
     private func updateCacheConfigAndUI() {
         let configFile = CacheManager.shared.currentConfigFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
@@ -332,13 +344,7 @@ extension MainViewController: NSComboBoxDelegate {
             }
         } else if comBox == themeBox {
             let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
-            classStorage.highlightr.setTheme(to: theme)
-            classImpStorage.highlightr.setTheme(to: theme)
-            JSONStorage.highlightr.setTheme(to: theme)
-            
-            classStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
-            classImpStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
-            JSONStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
+            upateTextThemeUI(theme)
         }
         
         updateCacheConfigAndUI()
