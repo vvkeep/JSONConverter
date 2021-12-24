@@ -59,16 +59,18 @@ class Content {
 extension Content {
     private func allPropertyString() -> String {
         var propertyStr = ""
+        let max = properties.map({ $0.type.isDictionaryType() ? $0.className.count : $0.keyName.count }).max() ?? 0
         properties.forEach { property in
-            propertyStr += property.propertyString()
+            propertyStr += property.propertyString(max)
         }
         return propertyStr
     }
     
     private func allPropertyInitString() -> String {
         var initStr = ""
+        let max = properties.map({ $0.keyName.count }).max() ?? 0
         properties.forEach { property in
-            initStr += property.initString()
+            initStr += property.initString(max)
         }
         return initStr
     }

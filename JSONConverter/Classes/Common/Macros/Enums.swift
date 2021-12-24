@@ -17,6 +17,7 @@ enum LangType: Int {
     case Flutter
     case Codable
     case Java
+    case Golang
     
     var language: String! {
         switch self {
@@ -28,12 +29,14 @@ enum LangType: Int {
             return "dart"
         case .Java:
             return "java"
+        case .Golang:
+            return "golang"
         }
     }
     
     static func languages() -> [String] {
-        return ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "ObjC", "Flutter", "Codable", "Java"]
-    }
+        return ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "ObjC", "Flutter", "Codable", "Java", "golang"]
+    }    
 }
 
 enum StructType: Int {
@@ -77,6 +80,10 @@ enum PropertyType: Int {
         } else {
             return .Null
         }
+    }
+    
+    func isDictionaryType() -> Bool {
+        return self == .Dictionary || self == .ArrayDictionary
     }
 }
 

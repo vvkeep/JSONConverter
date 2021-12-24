@@ -42,15 +42,15 @@ class Property {
         builder = JSONProcesser.shared.builder(lang: langStruct.langType)
     }
         
-    func propertyString() -> String {
+    func propertyString(_ maxKeyNameLength: Int) -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, typeName: className)
+        let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, typeName: className)
         return propertyStr
     }
         
-    func initString() -> String {
+    func initString(_ maxKeyNameLength: Int) -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, typeName: className)
+        let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, typeName: className)
         return initStr
     }
     

@@ -328,18 +328,11 @@ extension MainViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxWillDismiss(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        if comBox == languageBox { // Choose Language
+        if comBox == languageBox || comBox == structureBox { // Choose Language
             let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
             if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
                 structureBox.selectItem(at: 1)
-            } else if langType == LangType.Codable {// if Codable choose struct
-                structureBox.selectItem(at: 0)
-            }
-        } else if comBox == structureBox { // Choose Structure
-            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
-            if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
-                structureBox.selectItem(at: 1)
-            } else if langType == LangType.Codable { // if Codable choose struct
+            } else if langType == LangType.Codable || langType == LangType.Golang {// if Codable Golang choose struct
                 structureBox.selectItem(at: 0)
             }
         } else if comBox == themeBox {

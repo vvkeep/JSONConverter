@@ -14,7 +14,7 @@ class JSONProcesser {
         return manager
     }()
     
-    private let builders: [BuilderProtocol] = [ObjCBuilder(), SwiftBuilder(), SwiftyJSONBuilder(), ObjectMapperBuilder(), FlutterBuilder(), HandyJSONBuilder(), CodableBuilder(), JavaBuilder()]
+    private let builders: [BuilderProtocol] = [ObjCBuilder(), SwiftBuilder(), SwiftyJSONBuilder(), ObjectMapperBuilder(), FlutterBuilder(), HandyJSONBuilder(), CodableBuilder(), JavaBuilder(), GolangBuilder()]
     
     private var file: File!
     

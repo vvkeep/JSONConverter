@@ -14,7 +14,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         return lang == .ObjectMapper
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
         assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
@@ -45,9 +45,10 @@ class ObjectMapperBuilder: BuilderProtocol {
         }
     }
     
-    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
+    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
         let tempKeyName = strategy.processed(keyName)
-        return "\t\t\(tempKeyName)\(MAPPER_SPACE)<- map[\"\(keyName)\"]\n"
+        let spaceText = String.numSpace(count: maxKeyNameLength - tempKeyName.count)
+        return "\t\t\(tempKeyName)\(spaceText) <- map[\"\(keyName)\"]\n"
     }
     
     func contentParentClassText(_ clsText: String?) -> String {

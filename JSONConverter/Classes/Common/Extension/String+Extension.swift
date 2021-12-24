@@ -53,7 +53,16 @@ extension String {
     static func numSpace(count: Int) -> String {
         var space = ""
         for _ in 0..<count {
-            space += "a"
+            space += " "
+        }
+        
+        return space
+    }
+    
+    static func numTab(count: Int) -> String {
+        var space = ""
+        for _ in 0..<count {
+            space += "\t"
         }
         
         return space

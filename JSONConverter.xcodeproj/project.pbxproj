@@ -45,6 +45,7 @@
 		8E542C2F25130C160053C1E0 /* PanGestureIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */; };
 		8E542C31251350080053C1E0 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E542C30251350080053C1E0 /* Export.swift */; };
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
+		8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
 		8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC07918268993D400000F68 /* CodeAttributedString.swift */; };
 		8EC0797E268993D400000F68 /* Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC07919268993D400000F68 /* Highlightr.swift */; };
@@ -219,6 +220,7 @@
 		8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureIndicatorView.swift; sourceTree = "<group>"; };
 		8E542C30251350080053C1E0 /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 		8E68571C22850F4800DCDF2E /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolangBuilder.swift; sourceTree = "<group>"; };
 		8E9E8D09268202C300F778D0 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		8EC07918268993D400000F68 /* CodeAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeAttributedString.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */,
 				8EE44C742763024D0024D730 /* CodableBuilder.swift */,
 				7B9FD5E52764FAA200CFD0A0 /* JavaBuilder.swift */,
+				8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 				7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */,
 				7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */,
 				7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */,
+				8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */,
 				8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */,
 				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
 				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
