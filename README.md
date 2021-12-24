@@ -4,7 +4,7 @@ English | [简体中文](./README.zh-CN.md)
 
 JSONConverter
 ============
-JSONConverter is an auxiliary tool developed for iOS/Flutter/Android/Server on MAC. It can quickly format JSON data and convert and generate corresponding model class attributes. It currently supports Java/Objective-C/Dart/Golang/Swift and popular first Three-party libraries: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), [HandyJSON](https://github.com/alibaba/HandyJSON), [ObjectMapper](https://github.com/Hearst -DD/ObjectMapper), you can flexibly choose to build Class/Struct, save the trouble of typing the model by hand, and greatly improve the development efficiency.
+JSONConverter is an auxiliary tool developed for iOS/Flutter/Android/Server on MAC. It can quickly format JSON data and convert and generate corresponding model class attributes. It currently supports Java/Objective-C/Dart/Golang/Swift and popular libraries: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), [HandyJSON](https://github.com/alibaba/HandyJSON), [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper), you can flexibly choose to build Class/Struct, save the trouble of typing the model by hand, and greatly improve the development efficiency.
 
 Why use JSONConverter
 ======
