@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Highlightr
 
 class MainViewController: NSViewController {
     @IBOutlet weak var languageBox: NSComboBox!

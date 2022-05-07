@@ -47,102 +47,6 @@
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 		8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
-		8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC07918268993D400000F68 /* CodeAttributedString.swift */; };
-		8EC0797E268993D400000F68 /* Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC07919268993D400000F68 /* Highlightr.swift */; };
-		8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0791B268993D400000F68 /* HTMLUtils.swift */; };
-		8EC07981268993D400000F68 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0791C268993D400000F68 /* Theme.swift */; };
-		8EC07982268993D400000F68 /* Shims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0791D268993D400000F68 /* Shims.swift */; };
-		8EC07984268993D400000F68 /* vs.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07921268993D400000F68 /* vs.min.css */; };
-		8EC07985268993D400000F68 /* atelier-seaside-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07922268993D400000F68 /* atelier-seaside-dark.min.css */; };
-		8EC07986268993D400000F68 /* isbl-editor-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07923268993D400000F68 /* isbl-editor-dark.min.css */; };
-		8EC07987268993D400000F68 /* brown-paper.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07924268993D400000F68 /* brown-paper.min.css */; };
-		8EC07988268993D400000F68 /* atelier-plateau-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07925268993D400000F68 /* atelier-plateau-light.min.css */; };
-		8EC07989268993D400000F68 /* school-book.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07926268993D400000F68 /* school-book.min.css */; };
-		8EC0798A268993D400000F68 /* xcode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07927268993D400000F68 /* xcode.min.css */; };
-		8EC0798B268993D400000F68 /* atelier-sulphurpool-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07928268993D400000F68 /* atelier-sulphurpool-dark.min.css */; };
-		8EC0798C268993D400000F68 /* tomorrow-night-blue.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07929268993D400000F68 /* tomorrow-night-blue.min.css */; };
-		8EC0798D268993D400000F68 /* vs2015.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792A268993D400000F68 /* vs2015.min.css */; };
-		8EC0798E268993D400000F68 /* atelier-heath-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792B268993D400000F68 /* atelier-heath-dark.min.css */; };
-		8EC0798F268993D400000F68 /* paraiso-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792C268993D400000F68 /* paraiso-light.min.css */; };
-		8EC07990268993D400000F68 /* rainbow.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792D268993D400000F68 /* rainbow.min.css */; };
-		8EC07991268993D400000F68 /* qtcreator_light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792E268993D400000F68 /* qtcreator_light.min.css */; };
-		8EC07992268993D400000F68 /* a11y-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0792F268993D400000F68 /* a11y-light.min.css */; };
-		8EC07993268993D400000F68 /* kimbie.dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07930268993D400000F68 /* kimbie.dark.min.css */; };
-		8EC07994268993D400000F68 /* atelier-heath-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07931268993D400000F68 /* atelier-heath-light.min.css */; };
-		8EC07995268993D400000F68 /* far.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07932268993D400000F68 /* far.min.css */; };
-		8EC07996268993D400000F68 /* atelier-dune-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07933268993D400000F68 /* atelier-dune-dark.min.css */; };
-		8EC07997268993D400000F68 /* shades-of-purple.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07934268993D400000F68 /* shades-of-purple.min.css */; };
-		8EC07998268993D400000F68 /* kimbie.light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07935268993D400000F68 /* kimbie.light.min.css */; };
-		8EC07999268993D400000F68 /* railscasts.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07936268993D400000F68 /* railscasts.min.css */; };
-		8EC0799A268993D400000F68 /* solarized-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07937268993D400000F68 /* solarized-dark.min.css */; };
-		8EC0799B268993D400000F68 /* atelier-estuary-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07938268993D400000F68 /* atelier-estuary-light.min.css */; };
-		8EC0799C268993D400000F68 /* xt256.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07939268993D400000F68 /* xt256.min.css */; };
-		8EC0799D268993D400000F68 /* mono-blue.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793A268993D400000F68 /* mono-blue.min.css */; };
-		8EC0799E268993D400000F68 /* ocean.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793B268993D400000F68 /* ocean.min.css */; };
-		8EC0799F268993D400000F68 /* github-gist.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793C268993D400000F68 /* github-gist.min.css */; };
-		8EC079A0268993D400000F68 /* atelier-seaside-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793D268993D400000F68 /* atelier-seaside-light.min.css */; };
-		8EC079A1268993D400000F68 /* tomorrow-night-eighties.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793E268993D400000F68 /* tomorrow-night-eighties.min.css */; };
-		8EC079A2268993D400000F68 /* atom-one-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0793F268993D400000F68 /* atom-one-dark.min.css */; };
-		8EC079A3268993D400000F68 /* qtcreator_dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07940268993D400000F68 /* qtcreator_dark.min.css */; };
-		8EC079A4268993D400000F68 /* atelier-savanna-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07941268993D400000F68 /* atelier-savanna-dark.min.css */; };
-		8EC079A5268993D400000F68 /* color-brewer.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07942268993D400000F68 /* color-brewer.min.css */; };
-		8EC079A6268993D400000F68 /* pojoaque.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07943268993D400000F68 /* pojoaque.min.css */; };
-		8EC079A7268993D400000F68 /* routeros.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07944268993D400000F68 /* routeros.min.css */; };
-		8EC079A8268993D400000F68 /* atelier-forest-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07945268993D400000F68 /* atelier-forest-dark.min.css */; };
-		8EC079A9268993D400000F68 /* gml.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07946268993D400000F68 /* gml.min.css */; };
-		8EC079AA268993D400000F68 /* tomorrow-night.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07947268993D400000F68 /* tomorrow-night.min.css */; };
-		8EC079AB268993D400000F68 /* obsidian.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07948268993D400000F68 /* obsidian.min.css */; };
-		8EC079AC268993D400000F68 /* lightfair.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07949268993D400000F68 /* lightfair.min.css */; };
-		8EC079AD268993D400000F68 /* atelier-lakeside-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794A268993D400000F68 /* atelier-lakeside-dark.min.css */; };
-		8EC079AE268993D400000F68 /* gruvbox-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794B268993D400000F68 /* gruvbox-light.min.css */; };
-		8EC079AF268993D400000F68 /* idea.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794C268993D400000F68 /* idea.min.css */; };
-		8EC079B0268993D400000F68 /* tomorrow.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794D268993D400000F68 /* tomorrow.min.css */; };
-		8EC079B1268993D400000F68 /* atelier-forest-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794E268993D400000F68 /* atelier-forest-light.min.css */; };
-		8EC079B2268993D400000F68 /* arduino-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0794F268993D400000F68 /* arduino-light.min.css */; };
-		8EC079B3268993D400000F68 /* gruvbox-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07950268993D400000F68 /* gruvbox-dark.min.css */; };
-		8EC079B4268993D400000F68 /* dracula.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07951268993D400000F68 /* dracula.min.css */; };
-		8EC079B5268993D400000F68 /* magula.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07952268993D400000F68 /* magula.min.css */; };
-		8EC079B6268993D400000F68 /* arta.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07953268993D400000F68 /* arta.min.css */; };
-		8EC079B7268993D400000F68 /* purebasic.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07954268993D400000F68 /* purebasic.min.css */; };
-		8EC079B8268993D400000F68 /* hopscotch.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07955268993D400000F68 /* hopscotch.min.css */; };
-		8EC079B9268993D400000F68 /* github.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07956268993D400000F68 /* github.min.css */; };
-		8EC079BA268993D400000F68 /* nord.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07957268993D400000F68 /* nord.min.css */; };
-		8EC079BB268993D400000F68 /* dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07958268993D400000F68 /* dark.min.css */; };
-		8EC079BC268993D400000F68 /* atom-one-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07959268993D400000F68 /* atom-one-light.min.css */; };
-		8EC079BD268993D400000F68 /* monokai.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795A268993D400000F68 /* monokai.min.css */; };
-		8EC079BE268993D400000F68 /* docco.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795B268993D400000F68 /* docco.min.css */; };
-		8EC079BF268993D400000F68 /* default.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795C268993D400000F68 /* default.min.css */; };
-		8EC079C0268993D400000F68 /* ascetic.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795D268993D400000F68 /* ascetic.min.css */; };
-		8EC079C1268993D400000F68 /* isbl-editor-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795E268993D400000F68 /* isbl-editor-light.min.css */; };
-		8EC079C2268993D400000F68 /* atelier-cave-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0795F268993D400000F68 /* atelier-cave-light.min.css */; };
-		8EC079C3268993D400000F68 /* a11y-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07960268993D400000F68 /* a11y-dark.min.css */; };
-		8EC079C4268993D400000F68 /* atelier-sulphurpool-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07961268993D400000F68 /* atelier-sulphurpool-light.min.css */; };
-		8EC079C5268993D400000F68 /* atelier-plateau-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07962268993D400000F68 /* atelier-plateau-dark.min.css */; };
-		8EC079C6268993D400000F68 /* darkula.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07963268993D400000F68 /* darkula.min.css */; };
-		8EC079C7268993D400000F68 /* atelier-cave-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07964268993D400000F68 /* atelier-cave-dark.min.css */; };
-		8EC079C8268993D400000F68 /* ir-black.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07965268993D400000F68 /* ir-black.min.css */; };
-		8EC079C9268993D400000F68 /* solarized-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07966268993D400000F68 /* solarized-light.min.css */; };
-		8EC079CA268993D400000F68 /* tomorrow-night-bright.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07967268993D400000F68 /* tomorrow-night-bright.min.css */; };
-		8EC079CB268993D400000F68 /* atelier-savanna-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07968268993D400000F68 /* atelier-savanna-light.min.css */; };
-		8EC079CC268993D400000F68 /* foundation.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07969268993D400000F68 /* foundation.min.css */; };
-		8EC079CD268993D400000F68 /* codepen-embed.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796A268993D400000F68 /* codepen-embed.min.css */; };
-		8EC079CE268993D400000F68 /* atelier-estuary-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796B268993D400000F68 /* atelier-estuary-dark.min.css */; };
-		8EC079CF268993D400000F68 /* googlecode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796C268993D400000F68 /* googlecode.min.css */; };
-		8EC079D0268993D400000F68 /* atom-one-dark-reasonable.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796D268993D400000F68 /* atom-one-dark-reasonable.min.css */; };
-		8EC079D1268993D400000F68 /* atelier-dune-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796E268993D400000F68 /* atelier-dune-light.min.css */; };
-		8EC079D2268993D400000F68 /* paraiso-dark.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0796F268993D400000F68 /* paraiso-dark.min.css */; };
-		8EC079D3268993D400000F68 /* zenburn.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07970268993D400000F68 /* zenburn.min.css */; };
-		8EC079D4268993D400000F68 /* androidstudio.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07971268993D400000F68 /* androidstudio.min.css */; };
-		8EC079D5268993D400000F68 /* grayscale.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07972268993D400000F68 /* grayscale.min.css */; };
-		8EC079D6268993D400000F68 /* sunburst.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07973268993D400000F68 /* sunburst.min.css */; };
-		8EC079D7268993D400000F68 /* agate.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07974268993D400000F68 /* agate.min.css */; };
-		8EC079D8268993D400000F68 /* hybrid.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07975268993D400000F68 /* hybrid.min.css */; };
-		8EC079D9268993D400000F68 /* darcula.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07976268993D400000F68 /* darcula.min.css */; };
-		8EC079DA268993D400000F68 /* atelier-lakeside-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07977268993D400000F68 /* atelier-lakeside-light.min.css */; };
-		8EC079DB268993D400000F68 /* monokai-sublime.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07978268993D400000F68 /* monokai-sublime.min.css */; };
-		8EC079DC268993D400000F68 /* an-old-hope.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 8EC07979268993D400000F68 /* an-old-hope.min.css */; };
-		8EC079DD268993D400000F68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797B268993D400000F68 /* LICENSE */; };
-		8EC079DE268993D400000F68 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0797C268993D400000F68 /* highlight.min.js */; };
 		8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */; };
 		8ED4E1162755B81F004A682A /* JSONConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4E1152755B81F004A682A /* JSONConverterTests.swift */; };
 		8EE44C73276301FE0024D730 /* HandyJSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */; };
@@ -223,102 +127,6 @@
 		8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolangBuilder.swift; sourceTree = "<group>"; };
 		8E9E8D09268202C300F778D0 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
-		8EC07918268993D400000F68 /* CodeAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeAttributedString.swift; sourceTree = "<group>"; };
-		8EC07919268993D400000F68 /* Highlightr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlightr.swift; sourceTree = "<group>"; };
-		8EC0791B268993D400000F68 /* HTMLUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLUtils.swift; sourceTree = "<group>"; };
-		8EC0791C268993D400000F68 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		8EC0791D268993D400000F68 /* Shims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shims.swift; sourceTree = "<group>"; };
-		8EC07921268993D400000F68 /* vs.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = vs.min.css; sourceTree = "<group>"; };
-		8EC07922268993D400000F68 /* atelier-seaside-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-seaside-dark.min.css"; sourceTree = "<group>"; };
-		8EC07923268993D400000F68 /* isbl-editor-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "isbl-editor-dark.min.css"; sourceTree = "<group>"; };
-		8EC07924268993D400000F68 /* brown-paper.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "brown-paper.min.css"; sourceTree = "<group>"; };
-		8EC07925268993D400000F68 /* atelier-plateau-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-plateau-light.min.css"; sourceTree = "<group>"; };
-		8EC07926268993D400000F68 /* school-book.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "school-book.min.css"; sourceTree = "<group>"; };
-		8EC07927268993D400000F68 /* xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.min.css; sourceTree = "<group>"; };
-		8EC07928268993D400000F68 /* atelier-sulphurpool-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-sulphurpool-dark.min.css"; sourceTree = "<group>"; };
-		8EC07929268993D400000F68 /* tomorrow-night-blue.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "tomorrow-night-blue.min.css"; sourceTree = "<group>"; };
-		8EC0792A268993D400000F68 /* vs2015.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = vs2015.min.css; sourceTree = "<group>"; };
-		8EC0792B268993D400000F68 /* atelier-heath-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-heath-dark.min.css"; sourceTree = "<group>"; };
-		8EC0792C268993D400000F68 /* paraiso-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "paraiso-light.min.css"; sourceTree = "<group>"; };
-		8EC0792D268993D400000F68 /* rainbow.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = rainbow.min.css; sourceTree = "<group>"; };
-		8EC0792E268993D400000F68 /* qtcreator_light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = qtcreator_light.min.css; sourceTree = "<group>"; };
-		8EC0792F268993D400000F68 /* a11y-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "a11y-light.min.css"; sourceTree = "<group>"; };
-		8EC07930268993D400000F68 /* kimbie.dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = kimbie.dark.min.css; sourceTree = "<group>"; };
-		8EC07931268993D400000F68 /* atelier-heath-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-heath-light.min.css"; sourceTree = "<group>"; };
-		8EC07932268993D400000F68 /* far.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = far.min.css; sourceTree = "<group>"; };
-		8EC07933268993D400000F68 /* atelier-dune-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-dune-dark.min.css"; sourceTree = "<group>"; };
-		8EC07934268993D400000F68 /* shades-of-purple.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "shades-of-purple.min.css"; sourceTree = "<group>"; };
-		8EC07935268993D400000F68 /* kimbie.light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = kimbie.light.min.css; sourceTree = "<group>"; };
-		8EC07936268993D400000F68 /* railscasts.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = railscasts.min.css; sourceTree = "<group>"; };
-		8EC07937268993D400000F68 /* solarized-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-dark.min.css"; sourceTree = "<group>"; };
-		8EC07938268993D400000F68 /* atelier-estuary-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-estuary-light.min.css"; sourceTree = "<group>"; };
-		8EC07939268993D400000F68 /* xt256.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xt256.min.css; sourceTree = "<group>"; };
-		8EC0793A268993D400000F68 /* mono-blue.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "mono-blue.min.css"; sourceTree = "<group>"; };
-		8EC0793B268993D400000F68 /* ocean.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ocean.min.css; sourceTree = "<group>"; };
-		8EC0793C268993D400000F68 /* github-gist.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-gist.min.css"; sourceTree = "<group>"; };
-		8EC0793D268993D400000F68 /* atelier-seaside-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-seaside-light.min.css"; sourceTree = "<group>"; };
-		8EC0793E268993D400000F68 /* tomorrow-night-eighties.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "tomorrow-night-eighties.min.css"; sourceTree = "<group>"; };
-		8EC0793F268993D400000F68 /* atom-one-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atom-one-dark.min.css"; sourceTree = "<group>"; };
-		8EC07940268993D400000F68 /* qtcreator_dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = qtcreator_dark.min.css; sourceTree = "<group>"; };
-		8EC07941268993D400000F68 /* atelier-savanna-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-savanna-dark.min.css"; sourceTree = "<group>"; };
-		8EC07942268993D400000F68 /* color-brewer.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "color-brewer.min.css"; sourceTree = "<group>"; };
-		8EC07943268993D400000F68 /* pojoaque.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = pojoaque.min.css; sourceTree = "<group>"; };
-		8EC07944268993D400000F68 /* routeros.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = routeros.min.css; sourceTree = "<group>"; };
-		8EC07945268993D400000F68 /* atelier-forest-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-forest-dark.min.css"; sourceTree = "<group>"; };
-		8EC07946268993D400000F68 /* gml.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = gml.min.css; sourceTree = "<group>"; };
-		8EC07947268993D400000F68 /* tomorrow-night.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "tomorrow-night.min.css"; sourceTree = "<group>"; };
-		8EC07948268993D400000F68 /* obsidian.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = obsidian.min.css; sourceTree = "<group>"; };
-		8EC07949268993D400000F68 /* lightfair.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = lightfair.min.css; sourceTree = "<group>"; };
-		8EC0794A268993D400000F68 /* atelier-lakeside-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-lakeside-dark.min.css"; sourceTree = "<group>"; };
-		8EC0794B268993D400000F68 /* gruvbox-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "gruvbox-light.min.css"; sourceTree = "<group>"; };
-		8EC0794C268993D400000F68 /* idea.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = idea.min.css; sourceTree = "<group>"; };
-		8EC0794D268993D400000F68 /* tomorrow.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tomorrow.min.css; sourceTree = "<group>"; };
-		8EC0794E268993D400000F68 /* atelier-forest-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-forest-light.min.css"; sourceTree = "<group>"; };
-		8EC0794F268993D400000F68 /* arduino-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "arduino-light.min.css"; sourceTree = "<group>"; };
-		8EC07950268993D400000F68 /* gruvbox-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "gruvbox-dark.min.css"; sourceTree = "<group>"; };
-		8EC07951268993D400000F68 /* dracula.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = dracula.min.css; sourceTree = "<group>"; };
-		8EC07952268993D400000F68 /* magula.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = magula.min.css; sourceTree = "<group>"; };
-		8EC07953268993D400000F68 /* arta.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = arta.min.css; sourceTree = "<group>"; };
-		8EC07954268993D400000F68 /* purebasic.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = purebasic.min.css; sourceTree = "<group>"; };
-		8EC07955268993D400000F68 /* hopscotch.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = hopscotch.min.css; sourceTree = "<group>"; };
-		8EC07956268993D400000F68 /* github.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.min.css; sourceTree = "<group>"; };
-		8EC07957268993D400000F68 /* nord.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = nord.min.css; sourceTree = "<group>"; };
-		8EC07958268993D400000F68 /* dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = dark.min.css; sourceTree = "<group>"; };
-		8EC07959268993D400000F68 /* atom-one-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atom-one-light.min.css"; sourceTree = "<group>"; };
-		8EC0795A268993D400000F68 /* monokai.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = monokai.min.css; sourceTree = "<group>"; };
-		8EC0795B268993D400000F68 /* docco.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = docco.min.css; sourceTree = "<group>"; };
-		8EC0795C268993D400000F68 /* default.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.min.css; sourceTree = "<group>"; };
-		8EC0795D268993D400000F68 /* ascetic.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ascetic.min.css; sourceTree = "<group>"; };
-		8EC0795E268993D400000F68 /* isbl-editor-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "isbl-editor-light.min.css"; sourceTree = "<group>"; };
-		8EC0795F268993D400000F68 /* atelier-cave-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-cave-light.min.css"; sourceTree = "<group>"; };
-		8EC07960268993D400000F68 /* a11y-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "a11y-dark.min.css"; sourceTree = "<group>"; };
-		8EC07961268993D400000F68 /* atelier-sulphurpool-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-sulphurpool-light.min.css"; sourceTree = "<group>"; };
-		8EC07962268993D400000F68 /* atelier-plateau-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-plateau-dark.min.css"; sourceTree = "<group>"; };
-		8EC07963268993D400000F68 /* darkula.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darkula.min.css; sourceTree = "<group>"; };
-		8EC07964268993D400000F68 /* atelier-cave-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-cave-dark.min.css"; sourceTree = "<group>"; };
-		8EC07965268993D400000F68 /* ir-black.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "ir-black.min.css"; sourceTree = "<group>"; };
-		8EC07966268993D400000F68 /* solarized-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "solarized-light.min.css"; sourceTree = "<group>"; };
-		8EC07967268993D400000F68 /* tomorrow-night-bright.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "tomorrow-night-bright.min.css"; sourceTree = "<group>"; };
-		8EC07968268993D400000F68 /* atelier-savanna-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-savanna-light.min.css"; sourceTree = "<group>"; };
-		8EC07969268993D400000F68 /* foundation.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = foundation.min.css; sourceTree = "<group>"; };
-		8EC0796A268993D400000F68 /* codepen-embed.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "codepen-embed.min.css"; sourceTree = "<group>"; };
-		8EC0796B268993D400000F68 /* atelier-estuary-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-estuary-dark.min.css"; sourceTree = "<group>"; };
-		8EC0796C268993D400000F68 /* googlecode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = googlecode.min.css; sourceTree = "<group>"; };
-		8EC0796D268993D400000F68 /* atom-one-dark-reasonable.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atom-one-dark-reasonable.min.css"; sourceTree = "<group>"; };
-		8EC0796E268993D400000F68 /* atelier-dune-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-dune-light.min.css"; sourceTree = "<group>"; };
-		8EC0796F268993D400000F68 /* paraiso-dark.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "paraiso-dark.min.css"; sourceTree = "<group>"; };
-		8EC07970268993D400000F68 /* zenburn.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zenburn.min.css; sourceTree = "<group>"; };
-		8EC07971268993D400000F68 /* androidstudio.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = androidstudio.min.css; sourceTree = "<group>"; };
-		8EC07972268993D400000F68 /* grayscale.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = grayscale.min.css; sourceTree = "<group>"; };
-		8EC07973268993D400000F68 /* sunburst.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.min.css; sourceTree = "<group>"; };
-		8EC07974268993D400000F68 /* agate.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = agate.min.css; sourceTree = "<group>"; };
-		8EC07975268993D400000F68 /* hybrid.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = hybrid.min.css; sourceTree = "<group>"; };
-		8EC07976268993D400000F68 /* darcula.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = darcula.min.css; sourceTree = "<group>"; };
-		8EC07977268993D400000F68 /* atelier-lakeside-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "atelier-lakeside-light.min.css"; sourceTree = "<group>"; };
-		8EC07978268993D400000F68 /* monokai-sublime.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "monokai-sublime.min.css"; sourceTree = "<group>"; };
-		8EC07979268993D400000F68 /* an-old-hope.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "an-old-hope.min.css"; sourceTree = "<group>"; };
-		8EC0797B268993D400000F68 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		8EC0797C268993D400000F68 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED4E1152755B81F004A682A /* JSONConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterTests.swift; sourceTree = "<group>"; };
@@ -401,7 +209,6 @@
 			children = (
 				7B45DAEA202A95BE007E8D56 /* Classes */,
 				7B2D34F122E603C7009D2ED2 /* Resources */,
-				8EEE5B7225184E8C00004C58 /* Vendor */,
 				7B45DAF5202A95BE007E8D56 /* JSONConverter.entitlements */,
 				7B45DAF6202A95BE007E8D56 /* Assets.xcassets */,
 				7B45DAF7202A95BE007E8D56 /* MainMenu.xib */,
@@ -417,7 +224,6 @@
 			children = (
 				7B2E9EE92760F2AE00151B99 /* Builder */,
 				8EE44C762763312A0024D730 /* Common */,
-				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				7BF1DD2D24FBA3930090B531 /* Controller */,
 				7BD7FEDE202AC85B0003AE80 /* Model */,
 				8EBE0D08251200A7003A4B4B /* View */,
@@ -531,141 +337,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8EC07916268993D400000F68 /* Highlightr */ = {
-			isa = PBXGroup;
-			children = (
-				8EC07917268993D400000F68 /* Classes */,
-				8EC0791E268993D400000F68 /* Assets */,
-			);
-			path = Highlightr;
-			sourceTree = "<group>";
-		};
-		8EC07917268993D400000F68 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8EC07918268993D400000F68 /* CodeAttributedString.swift */,
-				8EC07919268993D400000F68 /* Highlightr.swift */,
-				8EC0791B268993D400000F68 /* HTMLUtils.swift */,
-				8EC0791C268993D400000F68 /* Theme.swift */,
-				8EC0791D268993D400000F68 /* Shims.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		8EC0791E268993D400000F68 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				8EC07920268993D400000F68 /* styles */,
-				8EC0797A268993D400000F68 /* Highlighter */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		8EC07920268993D400000F68 /* styles */ = {
-			isa = PBXGroup;
-			children = (
-				8EC07921268993D400000F68 /* vs.min.css */,
-				8EC07922268993D400000F68 /* atelier-seaside-dark.min.css */,
-				8EC07923268993D400000F68 /* isbl-editor-dark.min.css */,
-				8EC07924268993D400000F68 /* brown-paper.min.css */,
-				8EC07925268993D400000F68 /* atelier-plateau-light.min.css */,
-				8EC07926268993D400000F68 /* school-book.min.css */,
-				8EC07927268993D400000F68 /* xcode.min.css */,
-				8EC07928268993D400000F68 /* atelier-sulphurpool-dark.min.css */,
-				8EC07929268993D400000F68 /* tomorrow-night-blue.min.css */,
-				8EC0792A268993D400000F68 /* vs2015.min.css */,
-				8EC0792B268993D400000F68 /* atelier-heath-dark.min.css */,
-				8EC0792C268993D400000F68 /* paraiso-light.min.css */,
-				8EC0792D268993D400000F68 /* rainbow.min.css */,
-				8EC0792E268993D400000F68 /* qtcreator_light.min.css */,
-				8EC0792F268993D400000F68 /* a11y-light.min.css */,
-				8EC07930268993D400000F68 /* kimbie.dark.min.css */,
-				8EC07931268993D400000F68 /* atelier-heath-light.min.css */,
-				8EC07932268993D400000F68 /* far.min.css */,
-				8EC07933268993D400000F68 /* atelier-dune-dark.min.css */,
-				8EC07934268993D400000F68 /* shades-of-purple.min.css */,
-				8EC07935268993D400000F68 /* kimbie.light.min.css */,
-				8EC07936268993D400000F68 /* railscasts.min.css */,
-				8EC07937268993D400000F68 /* solarized-dark.min.css */,
-				8EC07938268993D400000F68 /* atelier-estuary-light.min.css */,
-				8EC07939268993D400000F68 /* xt256.min.css */,
-				8EC0793A268993D400000F68 /* mono-blue.min.css */,
-				8EC0793B268993D400000F68 /* ocean.min.css */,
-				8EC0793C268993D400000F68 /* github-gist.min.css */,
-				8EC0793D268993D400000F68 /* atelier-seaside-light.min.css */,
-				8EC0793E268993D400000F68 /* tomorrow-night-eighties.min.css */,
-				8EC0793F268993D400000F68 /* atom-one-dark.min.css */,
-				8EC07940268993D400000F68 /* qtcreator_dark.min.css */,
-				8EC07941268993D400000F68 /* atelier-savanna-dark.min.css */,
-				8EC07942268993D400000F68 /* color-brewer.min.css */,
-				8EC07943268993D400000F68 /* pojoaque.min.css */,
-				8EC07944268993D400000F68 /* routeros.min.css */,
-				8EC07945268993D400000F68 /* atelier-forest-dark.min.css */,
-				8EC07946268993D400000F68 /* gml.min.css */,
-				8EC07947268993D400000F68 /* tomorrow-night.min.css */,
-				8EC07948268993D400000F68 /* obsidian.min.css */,
-				8EC07949268993D400000F68 /* lightfair.min.css */,
-				8EC0794A268993D400000F68 /* atelier-lakeside-dark.min.css */,
-				8EC0794B268993D400000F68 /* gruvbox-light.min.css */,
-				8EC0794C268993D400000F68 /* idea.min.css */,
-				8EC0794D268993D400000F68 /* tomorrow.min.css */,
-				8EC0794E268993D400000F68 /* atelier-forest-light.min.css */,
-				8EC0794F268993D400000F68 /* arduino-light.min.css */,
-				8EC07950268993D400000F68 /* gruvbox-dark.min.css */,
-				8EC07951268993D400000F68 /* dracula.min.css */,
-				8EC07952268993D400000F68 /* magula.min.css */,
-				8EC07953268993D400000F68 /* arta.min.css */,
-				8EC07954268993D400000F68 /* purebasic.min.css */,
-				8EC07955268993D400000F68 /* hopscotch.min.css */,
-				8EC07956268993D400000F68 /* github.min.css */,
-				8EC07957268993D400000F68 /* nord.min.css */,
-				8EC07958268993D400000F68 /* dark.min.css */,
-				8EC07959268993D400000F68 /* atom-one-light.min.css */,
-				8EC0795A268993D400000F68 /* monokai.min.css */,
-				8EC0795B268993D400000F68 /* docco.min.css */,
-				8EC0795C268993D400000F68 /* default.min.css */,
-				8EC0795D268993D400000F68 /* ascetic.min.css */,
-				8EC0795E268993D400000F68 /* isbl-editor-light.min.css */,
-				8EC0795F268993D400000F68 /* atelier-cave-light.min.css */,
-				8EC07960268993D400000F68 /* a11y-dark.min.css */,
-				8EC07961268993D400000F68 /* atelier-sulphurpool-light.min.css */,
-				8EC07962268993D400000F68 /* atelier-plateau-dark.min.css */,
-				8EC07963268993D400000F68 /* darkula.min.css */,
-				8EC07964268993D400000F68 /* atelier-cave-dark.min.css */,
-				8EC07965268993D400000F68 /* ir-black.min.css */,
-				8EC07966268993D400000F68 /* solarized-light.min.css */,
-				8EC07967268993D400000F68 /* tomorrow-night-bright.min.css */,
-				8EC07968268993D400000F68 /* atelier-savanna-light.min.css */,
-				8EC07969268993D400000F68 /* foundation.min.css */,
-				8EC0796A268993D400000F68 /* codepen-embed.min.css */,
-				8EC0796B268993D400000F68 /* atelier-estuary-dark.min.css */,
-				8EC0796C268993D400000F68 /* googlecode.min.css */,
-				8EC0796D268993D400000F68 /* atom-one-dark-reasonable.min.css */,
-				8EC0796E268993D400000F68 /* atelier-dune-light.min.css */,
-				8EC0796F268993D400000F68 /* paraiso-dark.min.css */,
-				8EC07970268993D400000F68 /* zenburn.min.css */,
-				8EC07971268993D400000F68 /* androidstudio.min.css */,
-				8EC07972268993D400000F68 /* grayscale.min.css */,
-				8EC07973268993D400000F68 /* sunburst.min.css */,
-				8EC07974268993D400000F68 /* agate.min.css */,
-				8EC07975268993D400000F68 /* hybrid.min.css */,
-				8EC07976268993D400000F68 /* darcula.min.css */,
-				8EC07977268993D400000F68 /* atelier-lakeside-light.min.css */,
-				8EC07978268993D400000F68 /* monokai-sublime.min.css */,
-				8EC07979268993D400000F68 /* an-old-hope.min.css */,
-			);
-			path = styles;
-			sourceTree = "<group>";
-		};
-		8EC0797A268993D400000F68 /* Highlighter */ = {
-			isa = PBXGroup;
-			children = (
-				8EC0797B268993D400000F68 /* LICENSE */,
-				8EC0797C268993D400000F68 /* highlight.min.js */,
-			);
-			path = Highlighter;
-			sourceTree = "<group>";
-		};
 		8ED4E1142755B81F004A682A /* JSONConverterTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,19 +349,12 @@
 		8EE44C762763312A0024D730 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7BF1DD2E24FBA3B70090B531 /* Manager */,
 				8E1945E82508A23C00E7CDCC /* Macros */,
 				7B95A31F24F95ECE000D141B /* Extension */,
 				8E43D13522E7E83F00F52C8E /* Utils */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		8EEE5B7225184E8C00004C58 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				8EC07916268993D400000F68 /* Highlightr */,
-			);
-			path = Vendor;
 			sourceTree = "<group>";
 		};
 		B286FCCA305CDB4D252943BF /* Frameworks */ = {
@@ -715,6 +379,7 @@
 				7B4B5EA7201B87A10098712B /* Frameworks */,
 				7B4B5EA8201B87A10098712B /* Resources */,
 				7B2E9EEE276104AB00151B99 /* ShellScript */,
+				0F67CD6899394647EB5E6708 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -733,6 +398,7 @@
 				7BDF296B202BDB7C00B7E2F5 /* Sources */,
 				7BDF296C202BDB7C00B7E2F5 /* Frameworks */,
 				7BDF296D202BDB7C00B7E2F5 /* Resources */,
+				BEBF0BDE365263175A5FECDD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -823,105 +489,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC07996268993D400000F68 /* atelier-dune-dark.min.css in Resources */,
-				8EC079C4268993D400000F68 /* atelier-sulphurpool-light.min.css in Resources */,
-				8EC079C9268993D400000F68 /* solarized-light.min.css in Resources */,
-				8EC0799F268993D400000F68 /* github-gist.min.css in Resources */,
-				8EC07990268993D400000F68 /* rainbow.min.css in Resources */,
-				8EC079BA268993D400000F68 /* nord.min.css in Resources */,
-				8EC0798D268993D400000F68 /* vs2015.min.css in Resources */,
-				8EC07988268993D400000F68 /* atelier-plateau-light.min.css in Resources */,
-				8EC07993268993D400000F68 /* kimbie.dark.min.css in Resources */,
-				8EC079AC268993D400000F68 /* lightfair.min.css in Resources */,
 				7B45DB04202A95BF007E8D56 /* MainWindowController.xib in Resources */,
-				8EC0799E268993D400000F68 /* ocean.min.css in Resources */,
 				8E2A9D0324F9201F00F03DCB /* SettingViewController.xib in Resources */,
-				8EC079A3268993D400000F68 /* qtcreator_dark.min.css in Resources */,
-				8EC079D7268993D400000F68 /* agate.min.css in Resources */,
-				8EC079C2268993D400000F68 /* atelier-cave-light.min.css in Resources */,
-				8EC0799B268993D400000F68 /* atelier-estuary-light.min.css in Resources */,
-				8EC079DE268993D400000F68 /* highlight.min.js in Resources */,
-				8EC079A2268993D400000F68 /* atom-one-dark.min.css in Resources */,
-				8EC079D5268993D400000F68 /* grayscale.min.css in Resources */,
-				8EC079AA268993D400000F68 /* tomorrow-night.min.css in Resources */,
-				8EC079AF268993D400000F68 /* idea.min.css in Resources */,
-				8EC079A7268993D400000F68 /* routeros.min.css in Resources */,
-				8EC0799D268993D400000F68 /* mono-blue.min.css in Resources */,
-				8EC079A8268993D400000F68 /* atelier-forest-dark.min.css in Resources */,
-				8EC079D3268993D400000F68 /* zenburn.min.css in Resources */,
-				8EC079AE268993D400000F68 /* gruvbox-light.min.css in Resources */,
-				8EC079D2268993D400000F68 /* paraiso-dark.min.css in Resources */,
 				8E43D13E22E8235A00F52C8E /* UpgradeViewController.xib in Resources */,
-				8EC0798E268993D400000F68 /* atelier-heath-dark.min.css in Resources */,
-				8EC079C3268993D400000F68 /* a11y-dark.min.css in Resources */,
-				8EC079CD268993D400000F68 /* codepen-embed.min.css in Resources */,
-				8EC079B2268993D400000F68 /* arduino-light.min.css in Resources */,
-				8EC079B7268993D400000F68 /* purebasic.min.css in Resources */,
-				8EC0798F268993D400000F68 /* paraiso-light.min.css in Resources */,
-				8EC079DD268993D400000F68 /* LICENSE in Resources */,
-				8EC079CE268993D400000F68 /* atelier-estuary-dark.min.css in Resources */,
-				8EC079DA268993D400000F68 /* atelier-lakeside-light.min.css in Resources */,
-				8EC079BB268993D400000F68 /* dark.min.css in Resources */,
-				8EC079B4268993D400000F68 /* dracula.min.css in Resources */,
-				8EC079A5268993D400000F68 /* color-brewer.min.css in Resources */,
-				8EC0798C268993D400000F68 /* tomorrow-night-blue.min.css in Resources */,
-				8EC079C1268993D400000F68 /* isbl-editor-light.min.css in Resources */,
-				8EC079B0268993D400000F68 /* tomorrow.min.css in Resources */,
-				8EC079DB268993D400000F68 /* monokai-sublime.min.css in Resources */,
-				8EC079A9268993D400000F68 /* gml.min.css in Resources */,
-				8EC079C5268993D400000F68 /* atelier-plateau-dark.min.css in Resources */,
-				8EC079D1268993D400000F68 /* atelier-dune-light.min.css in Resources */,
-				8EC079C6268993D400000F68 /* darkula.min.css in Resources */,
-				8EC07994268993D400000F68 /* atelier-heath-light.min.css in Resources */,
-				8EC07997268993D400000F68 /* shades-of-purple.min.css in Resources */,
-				8EC0799C268993D400000F68 /* xt256.min.css in Resources */,
-				8EC079BE268993D400000F68 /* docco.min.css in Resources */,
-				8EC0798A268993D400000F68 /* xcode.min.css in Resources */,
-				8EC07995268993D400000F68 /* far.min.css in Resources */,
-				8EC079B3268993D400000F68 /* gruvbox-dark.min.css in Resources */,
-				8EC079B6268993D400000F68 /* arta.min.css in Resources */,
-				8EC079C8268993D400000F68 /* ir-black.min.css in Resources */,
-				8EC079B8268993D400000F68 /* hopscotch.min.css in Resources */,
-				8EC079B1268993D400000F68 /* atelier-forest-light.min.css in Resources */,
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
-				8EC079C0268993D400000F68 /* ascetic.min.css in Resources */,
-				8EC07991268993D400000F68 /* qtcreator_light.min.css in Resources */,
 				7B95A32224F95F69000D141B /* Localizable.strings in Resources */,
-				8EC079DC268993D400000F68 /* an-old-hope.min.css in Resources */,
-				8EC07984268993D400000F68 /* vs.min.css in Resources */,
-				8EC079CA268993D400000F68 /* tomorrow-night-bright.min.css in Resources */,
-				8EC079BC268993D400000F68 /* atom-one-light.min.css in Resources */,
-				8EC07999268993D400000F68 /* railscasts.min.css in Resources */,
-				8EC079CC268993D400000F68 /* foundation.min.css in Resources */,
-				8EC079AD268993D400000F68 /* atelier-lakeside-dark.min.css in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
-				8EC079A0268993D400000F68 /* atelier-seaside-light.min.css in Resources */,
-				8EC079A6268993D400000F68 /* pojoaque.min.css in Resources */,
-				8EC079D4268993D400000F68 /* androidstudio.min.css in Resources */,
-				8EC079B5268993D400000F68 /* magula.min.css in Resources */,
-				8EC07987268993D400000F68 /* brown-paper.min.css in Resources */,
-				8EC07998268993D400000F68 /* kimbie.light.min.css in Resources */,
-				8EC079C7268993D400000F68 /* atelier-cave-dark.min.css in Resources */,
-				8EC079A1268993D400000F68 /* tomorrow-night-eighties.min.css in Resources */,
-				8EC079D0268993D400000F68 /* atom-one-dark-reasonable.min.css in Resources */,
-				8EC079A4268993D400000F68 /* atelier-savanna-dark.min.css in Resources */,
-				8EC07985268993D400000F68 /* atelier-seaside-dark.min.css in Resources */,
-				8EC079D8268993D400000F68 /* hybrid.min.css in Resources */,
-				8EC079BD268993D400000F68 /* monokai.min.css in Resources */,
-				8EC07989268993D400000F68 /* school-book.min.css in Resources */,
-				8EC079D6268993D400000F68 /* sunburst.min.css in Resources */,
-				8EC079D9268993D400000F68 /* darcula.min.css in Resources */,
-				8EC079CF268993D400000F68 /* googlecode.min.css in Resources */,
 				7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */,
-				8EC07986268993D400000F68 /* isbl-editor-dark.min.css in Resources */,
-				8EC079B9268993D400000F68 /* github.min.css in Resources */,
-				8EC07992268993D400000F68 /* a11y-light.min.css in Resources */,
-				8EC079AB268993D400000F68 /* obsidian.min.css in Resources */,
-				8EC0798B268993D400000F68 /* atelier-sulphurpool-dark.min.css in Resources */,
-				8EC079CB268993D400000F68 /* atelier-savanna-light.min.css in Resources */,
-				8EC079BF268993D400000F68 /* default.min.css in Resources */,
 				7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */,
-				8EC0799A268993D400000F68 /* solarized-dark.min.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +517,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F67CD6899394647EB5E6708 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONConverter/Pods-JSONConverter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSONConverter/Pods-JSONConverter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		27FF31990257AB50F1F0DFCE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1003,6 +596,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		BEBF0BDE365263175A5FECDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DC4F461EF08D19C117C896CF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1038,7 +649,6 @@
 				8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */,
 				8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				8E542C31251350080053C1E0 /* Export.swift in Sources */,
-				8EC0797E268993D400000F68 /* Highlightr.swift in Sources */,
 				8E2EE4132761A4F800FABCA0 /* SwiftyJSONBuilder.swift in Sources */,
 				7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */,
 				8E2A9D0224F9201F00F03DCB /* SettingViewController.swift in Sources */,
@@ -1048,13 +658,10 @@
 				7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */,
 				7B9FD5E62764FAA200CFD0A0 /* JavaBuilder.swift in Sources */,
 				7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */,
-				8EC0797D268993D400000F68 /* CodeAttributedString.swift in Sources */,
 				8E43D13A22E81E6D00F52C8E /* Version.swift in Sources */,
 				7B45DB0F202AA572007E8D56 /* File.swift in Sources */,
 				8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */,
-				8EC07982268993D400000F68 /* Shims.swift in Sources */,
 				7B7D5AE424FA345C00A54D27 /* CacheManager.swift in Sources */,
-				8EC07981268993D400000F68 /* Theme.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
 				8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
@@ -1068,7 +675,6 @@
 				8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */,
 				8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */,
 				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
-				8EC07980268993D400000F68 /* HTMLUtils.swift in Sources */,
 				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

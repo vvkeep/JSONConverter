@@ -7,6 +7,7 @@ target 'JSONConverter' do
 
   # Pods for JSONConverter
   pod 'SwiftLint', '~> 0.43.1'
+  pod 'Highlightr', '~> 2.1.0'
 
   target 'JSONConverterTests' do
     inherit! :search_paths
