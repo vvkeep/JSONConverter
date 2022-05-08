@@ -49,9 +49,9 @@ class GolangBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
-        propertiesText.removeLastChar()
-        return "\ntype \(clsName) struct {\n\(propertiesText)\n}\n"
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
+        let tempPropertiesText = StringUtils.removeLastChar(propertiesText)
+        return "\ntype \(clsName) struct {\n\(tempPropertiesText)\n}\n"
     }
     
     func fileSuffix() -> String {

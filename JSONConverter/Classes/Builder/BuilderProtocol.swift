@@ -17,7 +17,7 @@ protocol BuilderProtocol {
     func propertySetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, keyTypeName: String?) -> String
     
     func contentParentClassText(_ clsText: String?) -> String
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String
 
     func fileSuffix() -> String
     func fileImplSuffix() -> String

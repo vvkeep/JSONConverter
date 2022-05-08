@@ -45,7 +45,7 @@ class FlutterBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? " extends Object" : " extends \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
         return "\n@JsonSerializable()\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\t\(clsName)(\(propertiesInitText!));\n\n\tfactory \(clsName).fromJson(Map<String, dynamic> srcJson) => _$\(clsName)FromJson(srcJson);\n\n\tMap<String, dynamic> toJson() => _$\(clsName)ToJson(this);\n\n}\n"
     }
     

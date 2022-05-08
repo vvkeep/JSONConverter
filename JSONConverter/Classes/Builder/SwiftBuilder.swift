@@ -47,12 +47,12 @@ class SwiftBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
-        propertiesText.removeLastChar()
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
+        let tempPropertiesText = StringUtils.removeLastChar(propertiesText)
         if structType == .class {
-            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+            return "\nclass \(clsName)\(parentClsName) {\n\(tempPropertiesText)\n}\n"
         } else {
-            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+            return "\nstruct \(clsName)\(parentClsName) {\n\(tempPropertiesText)\n}\n"
         }
     }
     
