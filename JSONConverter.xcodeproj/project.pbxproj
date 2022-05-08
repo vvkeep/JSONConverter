@@ -15,6 +15,7 @@
 		7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */; };
 		7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */; };
 		7B41FC9D2827F225007DBD49 /* KakaJSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B41FC9C2827F225007DBD49 /* KakaJSONBuilder.swift */; };
+		7B41FC9F28281018007DBD49 /* YYModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B41FC9E28281018007DBD49 /* YYModelBuilder.swift */; };
 		7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */; };
 		7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAED202A95BE007E8D56 /* MainViewController.xib */; };
 		7B45DB00202A95BF007E8D56 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */; };
@@ -83,6 +84,7 @@
 		7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCBuilder.swift; sourceTree = "<group>"; };
 		7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBuilder.swift; sourceTree = "<group>"; };
 		7B41FC9C2827F225007DBD49 /* KakaJSONBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaJSONBuilder.swift; sourceTree = "<group>"; };
+		7B41FC9E28281018007DBD49 /* YYModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYModelBuilder.swift; sourceTree = "<group>"; };
 		7B45DAEC202A95BE007E8D56 /* JSONProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONProcesser.swift; sourceTree = "<group>"; };
 		7B45DAED202A95BE007E8D56 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		7B45DAEE202A95BE007E8D56 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				7B9FD5E52764FAA200CFD0A0 /* JavaBuilder.swift */,
 				8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */,
 				7B41FC9C2827F225007DBD49 /* KakaJSONBuilder.swift */,
+				7B41FC9E28281018007DBD49 /* YYModelBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				7B45DAFE202A95BF007E8D56 /* JSONProcesser.swift in Sources */,
 				8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */,
 				8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */,
+				7B41FC9F28281018007DBD49 /* YYModelBuilder.swift in Sources */,
 				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
 				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
 			);

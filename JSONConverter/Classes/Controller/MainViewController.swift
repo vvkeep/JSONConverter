@@ -280,7 +280,7 @@ class MainViewController: NSViewController {
         classImpStorage.language = langType.language
         classStorage.language = langType.language
         
-        if langType == .ObjC {
+        if langType.isDoubleClassFiles {
             horSpliteLineViewHeightCons.constant = 8
             classScrollViewHeightCons = classScrollViewHeightCons.setMultiplier(multiplier: 3.0/5)
             classImpTextView.isHidden = false
