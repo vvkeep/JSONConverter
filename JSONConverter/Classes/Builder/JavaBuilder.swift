@@ -212,8 +212,11 @@ class JavaBuilder: BuilderProtocol {
     
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
         assert(propertiesGetterSetterText != nil, "property getter setter text can't be nil")
-        let range = propertiesGetterSetterText!.index(propertiesGetterSetterText!.endIndex, offsetBy: -2)..<propertiesGetterSetterText!.endIndex
-        propertiesGetterSetterText?.removeSubrange(range)
+        if let getterSetterText = propertiesGetterSetterText, StringUtils.isNotEmpty(getterSetterText) {
+            let range = getterSetterText.index(getterSetterText.endIndex, offsetBy: -2)..<getterSetterText.endIndex
+            propertiesGetterSetterText?.removeSubrange(range)
+        }
+        
         return """
             \npublic class \(clsName) \(parentClsName) {
             \(propertiesText)

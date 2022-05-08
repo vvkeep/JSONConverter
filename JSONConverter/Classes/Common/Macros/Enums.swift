@@ -11,17 +11,18 @@ import Foundation
 enum LangType: Int {
     case Swift = 0
     case HandyJSON
+    case KakaJSON
     case SwiftyJSON
     case ObjectMapper
+    case Codable
     case ObjC
     case Flutter
-    case Codable
     case Java
     case Golang
     
     var language: String! {
         switch self {
-        case .Swift, .HandyJSON, .SwiftyJSON, .ObjectMapper, .Codable:
+        case .Swift, .HandyJSON, .SwiftyJSON, .KakaJSON, .ObjectMapper, .Codable:
             return "swift"
         case .ObjC:
             return "objectivec"
@@ -33,10 +34,20 @@ enum LangType: Int {
             return "golang"
         }
     }
-    
+        
     static func languages() -> [String] {
-        return ["Swift", "HandyJSON", "SwiftyJSON", "ObjectMapper", "ObjC", "Flutter", "Codable", "Java", "golang"]
-    }    
+        return ["Swift", "HandyJSON", "KakaJSON", "SwiftyJSON", "ObjectMapper", "Codable", "ObjC", "Flutter", "Java", "Golang"]
+    }
+    
+    var onlyCompatibleClass: Bool {
+        let compatibleLangList: [LangType] = [.ObjC, .Flutter]
+        return compatibleLangList.contains(self)
+    }
+    
+    var onlyCompatibleStruct: Bool {
+        let compatibleLangList: [LangType] = [.Codable, .Golang]
+        return compatibleLangList.contains(self)
+    }
 }
 
 enum StructType: Int {

@@ -1,0 +1,72 @@
+//
+//  KakaJSONBuilder.swift
+//  JSONConverter
+//
+//  Created by yaow on 2022/5/8.
+//  Copyright © 2022 姚巍. All rights reserved.
+//
+
+import Foundation
+
+class KakaJSONBuilder: BuilderProtocol {
+    func isMatchLang(_ lang: LangType) -> Bool {
+        return  lang == .KakaJSON
+    }
+    
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
+        let tempKeyName = strategy.processed(keyName)
+        switch type {
+        case .String, .Null:
+            return "\tvar \(tempKeyName): String?\n"
+        case .Int:
+            return "\tvar \(tempKeyName): Int = 0\n"
+        case .Float:
+            return "\tvar \(tempKeyName): Float = 0.0\n"
+        case .Double:
+            return "\tvar \(tempKeyName): Double = 0.0\n"
+        case .Bool:
+            return "\tvar \(tempKeyName): Bool = false\n"
+        case .Dictionary:
+            return "\tvar \(tempKeyName): \(keyTypeName!)?\n"
+        case .ArrayString, .ArrayNull:
+            return "\tvar \(tempKeyName) = [String]()\n"
+        case .ArrayInt:
+            return "\tvar \(tempKeyName) = [Int]()\n"
+        case .ArrayFloat:
+            return "\tvar \(tempKeyName) = [Float]()\n"
+        case .ArrayDouble:
+            return "\tvar \(tempKeyName) = [Double]()\n"
+        case .ArrayBool:
+            return "\tvar \(tempKeyName) = [Bool]()\n"
+        case .ArrayDictionary:
+            return "\tvar \(tempKeyName) = [\(keyTypeName!)]()\n"
+        }
+    }
+    
+    func contentParentClassText(_ clsText: String?) -> String {
+        return StringUtils.isEmpty(clsText) ? ": Convertible" : ": \(clsText!)"
+    }
+    
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
+        if structType == .class {
+            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
+        } else {
+            propertiesText.removeLastChar()
+            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+        }
+    }
+    
+    func fileSuffix() -> String {
+        return "swift"
+    }
+    
+    func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
+        return"\nimport Foundation\nimport KakaJSON\n"
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content)]
+    }
+}

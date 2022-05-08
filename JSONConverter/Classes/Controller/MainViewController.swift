@@ -60,7 +60,7 @@ class MainViewController: NSViewController {
         setupCacheConfig()
         checkVersion()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillTerminateNotiAction), name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
-        updateCacheConfigAndUI()
+        updateFileConfigAndViews()
     }
     
     private func checkVersion() {
@@ -268,7 +268,7 @@ class MainViewController: NSViewController {
         JSONStorage.highlightr.theme.codeFont = NSFont(name: "Menlo", size: 14)
     }
     
-    private func updateCacheConfigAndUI() {
+    private func updateFileConfigAndViews() {
         let configFile = FileCacheManager.shared.configFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
               let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
@@ -324,11 +324,11 @@ extension MainViewController {
 extension MainViewController: NSComboBoxDelegate {
     func comboBoxWillDismiss(_ notification: Notification) {
         let comBox = notification.object as! NSComboBox
-        if comBox == languageBox || comBox == structureBox { // Choose Language
-            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)
-            if langType == LangType.ObjC || langType == LangType.Flutter { // if OC Flutter choose class
+        if comBox == languageBox || comBox == structureBox {
+            let langType = LangType(rawValue: languageBox.indexOfSelectedItem)!
+            if langType.onlyCompatibleClass {
                 structureBox.selectItem(at: 1)
-            } else if langType == LangType.Codable || langType == LangType.Golang {// if Codable Golang choose struct
+            } else if langType.onlyCompatibleStruct {
                 structureBox.selectItem(at: 0)
             }
         } else if comBox == themeBox {
@@ -336,7 +336,7 @@ extension MainViewController: NSComboBoxDelegate {
             upateTextThemeUI(theme)
         }
         
-        updateCacheConfigAndUI()
+        updateFileConfigAndViews()
     }
 }
 
