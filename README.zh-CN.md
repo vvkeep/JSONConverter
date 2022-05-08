@@ -4,7 +4,7 @@
 
 JSONConverter
 =============
- JSONConverter是MAC上iOS/Flutter/Android/Server等开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持Java/Objective-C/Dart/Golang/Swift及流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建Class/Struct，省去手敲模型的麻烦，极大提高开发效率。
+ JSONConverter是MAC上iOS/Flutter/Android/Server等开发的辅助工具，可以快速的格式化JSON数据并转换生成对应的模型类属性，目前支持Java/Objective-C/Dart/Golang/Swift及流行的第三方库: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)、[HandyJSON](https://github.com/alibaba/HandyJSON)，[KakaJSON](https://github.com/kakaopensource/KakaJSON),[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper),可以灵活选择构建Class/Struct，省去手敲模型的麻烦，极大提高开发效率。
 
 应用比较
 ======
@@ -49,11 +49,12 @@ JSONConverter
     - 1.2 SwiftyJSON
     - 1.3 ObjectMapper
     - 1.4 Codable
+    - 1.5 KakaJSON
 - 2. Objective-C
 - 3. Flutter
 - 4. Java
 - 5. Golang
-- 如果你还有其他需要，可以通过[issues](https://github.com/DevYao/JSONConverter/issues)告诉我
+- 如果你还有其他需要，可以通过[issues](https://github.com/vvkeep/JSONConverter/issues)告诉我
 
 应用预览
 ======
@@ -67,7 +68,7 @@ JSONConverter
 安装说明
 ======
 * 使用Xcode Build，拷贝JSONConverter.app 至 Application 文件夹
-* 直接下载 [Release Packages](https://github.com/DevYao/JSONConverter/releases)
+* 直接下载 [Release Packages](https://github.com/vvkeep/JSONConverter/releases)
 
 开发计划
 ======

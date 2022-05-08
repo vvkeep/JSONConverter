@@ -4,7 +4,7 @@ English | [简体中文](./README.zh-CN.md)
 
 JSONConverter
 ============
-JSONConverter is an auxiliary tool developed for iOS/Flutter/Android/Server on MAC. It can quickly format JSON data and convert and generate corresponding model class attributes. It currently supports Java/Objective-C/Dart/Golang/Swift and popular libraries: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), [HandyJSON](https://github.com/alibaba/HandyJSON), [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper), you can flexibly choose to build Class/Struct, save the trouble of typing the model by hand, and greatly improve the development efficiency.
+JSONConverter is an auxiliary tool developed for iOS/Flutter/Android/Server on MAC. It can quickly format JSON data and convert and generate corresponding model class attributes. It currently supports Java/Objective-C/Dart/Golang/Swift and popular libraries: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), [HandyJSON](https://github.com/alibaba/HandyJSON), [KakaJSON](https://github.com/kakaopensource/KakaJSON), [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper), you can flexibly choose to build Class/Struct, save the trouble of typing the model by hand, and greatly improve the development efficiency.
 
 Why use JSONConverter
 ======
@@ -49,11 +49,12 @@ Currently supported languages
     - 1.2 SwiftyJSON
     - 1.3 ObjectMapper
     - 1.4 Codable
+    - 1.5 KakaJSON
 - 2. Objective-C
 - 3. Flutter
 - 4. Java
 - 5. Golang
-- if you have other needs, you can let us know by [issues](https://github.com/DevYao/JSONConverter/issues)
+- if you have any suggestions, you can let us know by [issues](https://github.com/vvkeep/JSONConverter/issues)
 
 Screenshots
 ========================
@@ -67,7 +68,7 @@ Screenshots
 Installation
 ============
 * clone the project, and build it using Xcode, then copy the app to applicaiton
-* Download [Release Packages](https://github.com/DevYao/JSONConverter/releases)
+* Download [Release Packages](https://github.com/vvkeep/JSONConverter/releases)
 
 To Do
 =====
