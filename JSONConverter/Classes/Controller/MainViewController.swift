@@ -133,7 +133,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupCacheConfig() {
-        let configFile = CacheManager.shared.currentConfigFile()
+        let configFile = FileCacheManager.shared.configFile()
         languageBox.selectItem(at: configFile.langStruct.langType.rawValue)
         structureBox.selectItem(at: configFile.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: { configFile.theme == $0 }) {
@@ -169,20 +169,15 @@ class MainViewController: NSViewController {
     }
     
     func exportClassesFileWithPath(_ path: String) {
-        let file = CacheManager.shared.currentConfigFile()
-        let classfilePath = "\(path)/\(file.rootName.className(withPrefix: file.prefix))"
+        let config = FileCacheManager.shared.configFile()
+        let builder = JSONProcesser.shared.builder(lang: config.langStruct.langType)
+        let content = classTextView.textStorage?.string ?? ""
+        let implContent = classImpTextView.textStorage?.string ?? ""
+        let exports = builder.fileExport(path, config: config, content: content, classImplContent: implContent)
         
-        let builder = JSONProcesser.shared.builder(lang: file.langStruct.langType)
-        let fileExtension = builder.fileExtension()
-        var exprotList = [Export(path: "\(classfilePath).\(fileExtension)", content: classTextView.textStorage!.string)]
-        if file.langStruct.langType == .ObjC {
-            let fileImplExtension = builder.fileImplExtension()
-            exprotList.append(Export(path: "\(classfilePath).\(fileImplExtension)", content: classImpTextView.textStorage!.string))
-        }
-        
-        for model in exprotList {
+        for export in exports {
             do {
-                try model.content.write(toFile: model.path, atomically: true, encoding: String.Encoding.utf8)
+                try export.content.write(toFile: export.path, atomically: true, encoding: String.Encoding.utf8)
             } catch let error as NSError {
                 alertError(error)
             }
@@ -215,7 +210,7 @@ class MainViewController: NSViewController {
                let JSONObject = try? JSONSerialization.jsonObject(with: JSONTextViewData, options: [.mutableContainers, .mutableLeaves]),
                let JSONData = try? JSONSerialization.data(withJSONObject: JSONObject, options: [.sortedKeys, .prettyPrinted]),
                let JSONString = String(data: JSONData, encoding: .utf8) {
-                let configFile = CacheManager.shared.currentConfigFile()
+                let configFile = FileCacheManager.shared.configFile()
                 let fileString = JSONProcesser.shared.buildWithJSONObject(JSONObject, file: configFile)
                 let endTime1 = CFAbsoluteTimeGetCurrent()
                 let offsetTime1 = Int((endTime1 - startTime) * 1000)
@@ -274,7 +269,7 @@ class MainViewController: NSViewController {
     }
     
     private func updateCacheConfigAndUI() {
-        let configFile = CacheManager.shared.currentConfigFile()
+        let configFile = FileCacheManager.shared.configFile()
         guard let langType = LangType(rawValue: languageBox.indexOfSelectedItem),
               let structType = StructType(rawValue: structureBox.indexOfSelectedItem)
         else {
@@ -302,7 +297,7 @@ class MainViewController: NSViewController {
         
         let theme = highlightr.availableThemes()[themeBox.indexOfSelectedItem]
         configFile.theme = theme
-        CacheManager.shared.updateConfigWithFile(configFile)
+        FileCacheManager.shared.updateConfigWithFile(configFile)
         generateClasses()
     }
     
@@ -321,8 +316,8 @@ class MainViewController: NSViewController {
 
 extension MainViewController {
     @objc func applicationWillTerminateNotiAction() {
-        let currentConfigFile = CacheManager.shared.currentConfigFile()
-        CacheManager.shared.updateConfigWithFile(currentConfigFile)
+        let config = FileCacheManager.shared.configFile()
+        FileCacheManager.shared.updateConfigWithFile(config)
     }
 }
 

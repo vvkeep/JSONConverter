@@ -52,7 +52,7 @@ class SettingViewController: NSViewController {
     }
     
     private func updateCacheConfigUI() {
-        let configFile = CacheManager.shared.currentConfigFile()
+        let configFile = FileCacheManager.shared.configFile()
         prefixField.stringValue = configFile.prefix ?? ""
         rootClassField.stringValue = configFile.rootName
         parentClassField.stringValue = configFile.parentName ?? ""
@@ -63,23 +63,23 @@ class SettingViewController: NSViewController {
     }
         
     @IBAction func saveConfigAction(_ sender: NSButton) {
-        let configFile = CacheManager.shared.currentConfigFile()
+        let configFile = FileCacheManager.shared.configFile()
         configFile.prefix = prefixField.stringValue
         configFile.rootName = rootClassField.stringValue
         configFile.parentName = parentClassField.stringValue
         configFile.header = headerField.stringValue
         configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1
         configFile.autoCaseUnderline = autoHumpSwitch.state.rawValue == 1
-        CacheManager.shared.updateConfigWithFile(configFile)
+        FileCacheManager.shared.updateConfigWithFile(configFile)
         fileConfigChangedClosure?()
         dismiss(nil)
     }
     
     @IBAction func customFileHeaderSwitch(_ sender: NSSwitch) {
-        let configFile = CacheManager.shared.currentConfigFile()
+        let configFile = FileCacheManager.shared.configFile()
         configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1
         configFile.autoCaseUnderline = autoHumpSwitch.state.rawValue == 1
-        CacheManager.shared.updateConfigWithFile(configFile)
+        FileCacheManager.shared.updateConfigWithFile(configFile)
         updateCacheConfigUI()
     }
 }

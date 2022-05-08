@@ -21,7 +21,7 @@ class Content {
     
     var parentClsName: String?
     
-    var prefixStr: String?
+    var prefix: String?
     
     var autoCaseUnderline: Bool
     
@@ -32,7 +32,7 @@ class Content {
         self.keyName = keyName
         self.langStruct = langStruct
         self.parentClsName = parentClsName
-        self.prefixStr = prefixStr
+        self.prefix = prefixStr
         self.autoCaseUnderline = autoCaseUnderline
         
         let tempPropertyKey = autoCaseUnderline ? keyName.underlineToHump() : keyName

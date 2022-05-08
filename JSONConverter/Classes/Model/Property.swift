@@ -44,25 +44,25 @@ class Property {
         
     func propertyString(_ maxKeyNameLength: Int) -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, typeName: className)
+        let propertyStr = builder.propertyText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, keyTypeName: className)
         return propertyStr
     }
         
     func initString(_ maxKeyNameLength: Int) -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let initStr = builder.initPropertyText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, typeName: className)
+        let initStr = builder.propertyInitText(type, keyName: keyName, strategy: strategy, maxKeyNameLength: maxKeyNameLength, keyTypeName: className)
         return initStr
     }
     
     func getterString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let getterStr = builder.propertyGetterText(type, keyName: keyName, strategy: strategy, typeName: className)
+        let getterStr = builder.propertyGetterText(type, keyName: keyName, strategy: strategy, keyTypeName: className)
         return getterStr
     }
     
     func setterString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let setterStr = builder.propertySetterText(type, keyName: keyName, strategy: strategy, typeName: className)
+        let setterStr = builder.propertySetterText(type, keyName: keyName, strategy: strategy, keyTypeName: className)
         return setterStr
     }
 }

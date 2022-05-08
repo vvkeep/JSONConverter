@@ -48,7 +48,7 @@ class File {
         if self.isCustomHeader {
             self.header = dic?["header"] ?? ""
         } else {
-            let suffix = builder.fileExtension()
+            let suffix = builder.fileSuffix()
             self.header = defaultHeaderString(suffix: suffix)
         }
     }
@@ -85,7 +85,7 @@ class File {
             if isCustomHeader {
                 tempString += header
             } else {
-              let suffix = builder.fileImplExtension()
+              let suffix = builder.fileImplSuffix()
                 tempString += defaultHeaderString(suffix: suffix)
             }
             
@@ -95,7 +95,7 @@ class File {
             
             for content in contents {
                 let keyName = autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
-                tempString += "\n@implementation \(keyName.className(withPrefix: content.prefixStr))\n\n@end\n"
+                tempString += "\n@implementation \(keyName.className(withPrefix: content.prefix))\n\n@end\n"
             }
             
             return tempString

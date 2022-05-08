@@ -14,8 +14,8 @@ class ObjectMapperBuilder: BuilderProtocol {
         return lang == .ObjectMapper
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -29,7 +29,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         case .Bool:
             return "\tvar \(tempKeyName): Bool = false\n"
         case .Dictionary:
-            return "\tvar \(tempKeyName): \(typeName!)?\n"
+            return "\tvar \(tempKeyName): \(keyTypeName!)?\n"
         case .ArrayString, .ArrayNull:
             return "\tvar \(tempKeyName) = [String]()\n"
         case .ArrayInt:
@@ -41,7 +41,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         case .ArrayBool:
             return "\tvar \(tempKeyName) = [Bool]()\n"
         case .ArrayDictionary:
-            return "\tvar \(tempKeyName) = [\(typeName!)]()\n"
+            return "\tvar \(tempKeyName) = [\(keyTypeName!)]()\n"
         }
     }
     
@@ -63,11 +63,16 @@ class ObjectMapperBuilder: BuilderProtocol {
         }
     }
     
-    func fileExtension() -> String {
+    func fileSuffix() -> String {
         return "swift"
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
         return"\nimport Foundation\nimport ObjectMapper\n"
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content)]
     }
 }

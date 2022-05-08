@@ -13,10 +13,10 @@ class GolangBuilder: BuilderProtocol {
         return lang == .Golang
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!(type.isDictionaryType() && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!(type.isDictionaryType() && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
-        let spaceText = String.numSpace(count: maxKeyNameLength - (type.isDictionaryType() ? typeName!.count : tempKeyName.count))
+        let spaceText = String.numSpace(count: maxKeyNameLength - (type.isDictionaryType() ? keyTypeName!.count : tempKeyName.count))
         switch type {
         case .String, .Null:
             return "\t \(tempKeyName.uppercaseFirstChar())\(spaceText) string `json:\"\(keyName)\"`\n"
@@ -29,7 +29,7 @@ class GolangBuilder: BuilderProtocol {
         case .Bool:
             return "\t \(tempKeyName.uppercaseFirstChar())\(spaceText) bool `json:\"\(keyName)\"`\n"
         case .Dictionary:
-            return "\t \(typeName!.uppercaseFirstChar())\(spaceText) []\(typeName!.uppercaseFirstChar()) `json:\"\(keyName)\"`\n"
+            return "\t \(keyTypeName!.uppercaseFirstChar())\(spaceText) []\(keyTypeName!.uppercaseFirstChar()) `json:\"\(keyName)\"`\n"
         case .ArrayString, .ArrayNull:
             return "\t \(tempKeyName.uppercaseFirstChar())\(spaceText) []string `json:\"\(keyName)\"`\n"
         case .ArrayInt:
@@ -41,7 +41,7 @@ class GolangBuilder: BuilderProtocol {
         case .ArrayBool:
             return "\t \(tempKeyName.uppercaseFirstChar())\(spaceText) []bool `json:\"\(keyName)\"`\n"
         case .ArrayDictionary:
-            return "\t \(typeName!.uppercaseFirstChar())\(spaceText) []\(typeName!.uppercaseFirstChar()) `json:\"\(keyName)\"`\n"
+            return "\t \(keyTypeName!.uppercaseFirstChar())\(spaceText) []\(keyTypeName!.uppercaseFirstChar()) `json:\"\(keyName)\"`\n"
         }
     }
     
@@ -54,11 +54,16 @@ class GolangBuilder: BuilderProtocol {
         return "\ntype \(clsName) struct {\n\(propertiesText)\n}\n"
     }
     
-    func fileExtension() -> String {
+    func fileSuffix() -> String {
         return "go"
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
-        return""
+        return ""
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content)]
     }
 }

@@ -13,8 +13,8 @@ class JavaBuilder: BuilderProtocol {
         return  lang == .Java
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -28,7 +28,7 @@ class JavaBuilder: BuilderProtocol {
         case .Bool:
             return "\tprivate Boolean \(tempKeyName);\n"
         case .Dictionary:
-            return "\tprivate \(typeName!) \(tempKeyName);\n"
+            return "\tprivate \(keyTypeName!) \(tempKeyName);\n"
         case .ArrayString, .ArrayNull:
             return "\tprivate List<String> \(tempKeyName);\n"
         case .ArrayInt:
@@ -40,12 +40,12 @@ class JavaBuilder: BuilderProtocol {
         case .ArrayBool:
             return "\tprivate List<Boolean> \(tempKeyName);\n"
         case .ArrayDictionary:
-            return "\tprivate List<\(typeName!)> \(tempKeyName);\n"
+            return "\tprivate List<\(keyTypeName!)> \(tempKeyName);\n"
         }
     }
     
-    func propertyGetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyGetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -80,7 +80,7 @@ class JavaBuilder: BuilderProtocol {
                 """
         case .Dictionary:
             return """
-                \tpublic \(typeName!) get\(tempKeyName.uppercaseFirstChar())() {
+                \tpublic \(keyTypeName!) get\(tempKeyName.uppercaseFirstChar())() {
                 \t\treturn \(tempKeyName);
                 \t}\n\n
                 """
@@ -116,15 +116,15 @@ class JavaBuilder: BuilderProtocol {
                 """
         case .ArrayDictionary:
             return """
-                \tpublic List<\(typeName!)> get\(tempKeyName.uppercaseFirstChar())() {
+                \tpublic List<\(keyTypeName!)> get\(tempKeyName.uppercaseFirstChar())() {
                 \t\treturn \(tempKeyName);
                 \t}\n\n
                 """
         }
     }
     
-    func propertySetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertySetterText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -159,7 +159,7 @@ class JavaBuilder: BuilderProtocol {
                 """
         case .Dictionary:
             return """
-                \tpublic void set\(tempKeyName.uppercaseFirstChar())(\(typeName!) \(tempKeyName)) {
+                \tpublic void set\(tempKeyName.uppercaseFirstChar())(\(keyTypeName!) \(tempKeyName)) {
                 \t\tthis.\(tempKeyName) = \(tempKeyName);
                 \t}\n\n
                 """
@@ -195,7 +195,7 @@ class JavaBuilder: BuilderProtocol {
                 """
         case .ArrayDictionary:
             return """
-                \tpublic void set\(tempKeyName.uppercaseFirstChar())(List<\(typeName!)> \(tempKeyName)) {
+                \tpublic void set\(tempKeyName.uppercaseFirstChar())(List<\(keyTypeName!)> \(tempKeyName)) {
                 \t\tthis.\(tempKeyName) = \(tempKeyName);
                 \t}\n\n
                 """
@@ -222,11 +222,16 @@ class JavaBuilder: BuilderProtocol {
             """
     }
     
-    func fileExtension() -> String {
+    func fileSuffix() -> String {
         return "java"
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
         return"\nimport java.io.Serializable;\nimport java.util.List;\n"
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content)]
     }
 }

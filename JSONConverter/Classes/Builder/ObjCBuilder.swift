@@ -12,8 +12,8 @@ class ObjCBuilder: BuilderProtocol {
         return lang == .ObjC
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -27,7 +27,7 @@ class ObjCBuilder: BuilderProtocol {
         case .Bool:
             return "@property (nonatomic, assign) BOOL \(tempKeyName);\n"
         case .Dictionary:
-            return "@property (nonatomic, strong) \(typeName!) *\(tempKeyName);\n"
+            return "@property (nonatomic, strong) \(keyTypeName!) *\(tempKeyName);\n"
         case .ArrayString, .ArrayNull:
             return "@property (nonatomic, strong) NSArray<NSString *> *\(tempKeyName);\n"
         case .ArrayInt:
@@ -39,7 +39,7 @@ class ObjCBuilder: BuilderProtocol {
         case .ArrayBool:
             return "@property (nonatomic, strong) NSArray<Bool> *\(tempKeyName);\n"
         case .ArrayDictionary:
-            return "@property (nonatomic, strong) NSArray<\(typeName!) *> *\(tempKeyName);\n"
+            return "@property (nonatomic, strong) NSArray<\(keyTypeName!) *> *\(tempKeyName);\n"
         }
     }
     
@@ -52,22 +52,27 @@ class ObjCBuilder: BuilderProtocol {
         return "\n@interface \(clsName)\(parentClsName)\n\(propertiesText)\n@end\n"
     }
     
-    func fileExtension() -> String {
+    func fileSuffix() -> String {
         return "h"
     }
     
-    func fileImplExtension() -> String {
+    func fileImplSuffix() -> String {
         return "m"
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
         var tempStr = "\n#import <Foundation/Foundation.h>\n"
         for (i, content) in contents.enumerated() where i > 0 {
-            let keyName = strategy.processed(content.keyName)
-            tempStr += "\n@class \(keyName.className(withPrefix: content.prefixStr));"
+            let className = strategy.processed(content.className)
+            tempStr += "\n@class \(className);"
         }
         
         tempStr += "\n"
         return tempStr
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content), Export(path: "\(filePath).\(fileImplSuffix())", content: classImplContent!)]
     }
 }

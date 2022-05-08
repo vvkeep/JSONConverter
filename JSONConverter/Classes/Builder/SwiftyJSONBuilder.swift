@@ -13,8 +13,8 @@ class SwiftyJSONBuilder: BuilderProtocol {
         return lang == .SwiftyJSON
     }
     
-    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -28,7 +28,7 @@ class SwiftyJSONBuilder: BuilderProtocol {
         case .Bool:
             return "\tvar \(tempKeyName): Bool = false\n"
         case .Dictionary:
-            return "\tvar \(tempKeyName): \(typeName!)\n"
+            return "\tvar \(tempKeyName): \(keyTypeName!)\n"
         case .ArrayString, .ArrayNull:
             return "\tvar \(tempKeyName) = [String]()\n"
         case .ArrayInt:
@@ -40,12 +40,12 @@ class SwiftyJSONBuilder: BuilderProtocol {
         case .ArrayBool:
             return "\tvar \(tempKeyName) = [Bool]()\n"
         case .ArrayDictionary:
-            return "\tvar \(tempKeyName) = [\(typeName!)]()\n"
+            return "\tvar \(tempKeyName) = [\(keyTypeName!)]()\n"
         }
     }
     
-    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
-        assert(!((type == .Dictionary || type == .ArrayDictionary) && typeName == nil), " Dictionary type the typeName can not be nil")
+    func propertyInitText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
+        assert(!((type == .Dictionary || type == .ArrayDictionary) && keyTypeName == nil), " Dictionary type the typeName can not be nil")
         let tempKeyName = strategy.processed(keyName)
         switch type {
         case .String, .Null:
@@ -59,7 +59,7 @@ class SwiftyJSONBuilder: BuilderProtocol {
         case .Bool:
             return "\t\t\(tempKeyName) = json[\"\(keyName)\"].boolValue\n"
         case .Dictionary:
-            return "\t\t\(tempKeyName) = \(typeName!)(json: json[\"\(keyName)\"])\n"
+            return "\t\t\(tempKeyName) = \(keyTypeName!)(json: json[\"\(keyName)\"])\n"
         case .ArrayString, .ArrayNull:
             return "\t\t\(tempKeyName) = json[\"\(keyName)\"].arrayValue.compactMap({$0.stringValue})\n"
         case .ArrayInt:
@@ -71,7 +71,7 @@ class SwiftyJSONBuilder: BuilderProtocol {
         case .ArrayBool:
             return "\t\t\(tempKeyName) = json[\"\(keyName)\"].arrayValue.compactMap({$0.boolValue})\n"
         case .ArrayDictionary:
-            return "\t\t\(tempKeyName) = json[\"\(keyName)\"].arrayValue.compactMap({ \(typeName!)(json: $0)})\n"
+            return "\t\t\(tempKeyName) = json[\"\(keyName)\"].arrayValue.compactMap({ \(keyTypeName!)(json: $0)})\n"
         }
     }
     
@@ -87,11 +87,16 @@ class SwiftyJSONBuilder: BuilderProtocol {
         }
     }
     
-    func fileExtension() -> String {
+    func fileSuffix() -> String {
         return "swift"
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
         return"\nimport Foundation\nimport SwiftyJSON\n"
+    }
+    
+    func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export] {
+        let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
+        return [Export(path: "\(filePath).\(fileSuffix())", content: content)]
     }
 }

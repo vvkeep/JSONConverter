@@ -3,7 +3,7 @@
 
 target 'JSONConverter' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+#  use_frameworks!
 
   # Pods for JSONConverter
   pod 'SwiftLint', '~> 0.43.1'
