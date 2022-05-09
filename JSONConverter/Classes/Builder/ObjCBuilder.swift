@@ -75,4 +75,17 @@ class ObjCBuilder: BuilderProtocol {
         let filePath = "\(path)/\(config.rootName.className(withPrefix: config.prefix))"
         return [Export(path: "\(filePath).\(fileSuffix())", content: content), Export(path: "\(filePath).\(fileImplSuffix())", content: classImplContent!)]
     }
+    
+    func fileImplText(_ header: String, contents: [Content]) -> String {
+        var tempString = header
+        if let content = contents.first {
+            tempString += "\n#import \"\(content.keyName.className(withPrefix: content.prefix)).h\"\n"
+        }
+        
+        for content in contents {
+            let keyName = content.autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
+            tempString += "\n@implementation \(keyName.className(withPrefix: content.prefix))\n\n@end\n"
+        }
+        return tempString
+    }
 }

@@ -43,7 +43,7 @@ class File {
         self.theme = dic?["theme"] ?? "tomorrow-night-bright"
         self.autoCaseUnderline = (dic?["autoCaseUnderline"] ?? "0").toBool()
         self.builder = JSONProcesser.shared.builder(lang: langStruct.langType)
-
+        
         self.isCustomHeader = (dic?["isCustomHeader"] ?? "0").toBool()
         if self.isCustomHeader {
             self.header = dic?["header"] ?? ""
@@ -62,13 +62,13 @@ class File {
         let property = Property(parentNodeName: parentNodeName, keyName: keyName, type: type, langStruct: langStruct, prefixStr: prefix, autoCaseUnderline: autoCaseUnderline)
         return property
     }
-        
+    
     func toClassesString() -> String {
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
         let importStr = builder.fileImportText(rootName, contents: contents, strategy: strategy, prefix: prefix)
         var classString = (header ?? "") + importStr
         contents.forEach { (content) in
-            classString += content.toString()
+            classString += content.toContentClassString()
         }
         
         if StringUtils.isEmpty(header) {
@@ -79,29 +79,9 @@ class File {
     }
     
     func toClassesImplString() -> String? {
-        switch langStruct.langType {
-        case .ObjC:
-            var tempString =  ""
-            if isCustomHeader {
-                tempString += header
-            } else {
-              let suffix = builder.fileImplSuffix()
-                tempString += defaultHeaderString(suffix: suffix)
-            }
-            
-            if let content = contents.first {
-                tempString += "\n#import \"\(content.keyName.className(withPrefix: prefix)).h\"\n"
-            }
-            
-            for content in contents {
-                let keyName = autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
-                tempString += "\n@implementation \(keyName.className(withPrefix: content.prefix))\n\n@end\n"
-            }
-            
-            return tempString
-        default:
-            return nil
-        }
+        let header = isCustomHeader ? header! : defaultHeaderString(suffix: builder.fileImplSuffix())
+        let implStr = builder.fileImplText(header, contents: contents)
+        return implStr
     }
     
     func toCacheConfig() -> [String: String] {

@@ -23,6 +23,8 @@ protocol BuilderProtocol {
     func fileImplSuffix() -> String
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String
     func fileExport(_ path: String, config: File, content: String, classImplContent: String?) -> [Export]
+    
+    func fileImplText(_ header: String, contents: [Content]) -> String
 }
 
 extension BuilderProtocol {
@@ -39,6 +41,10 @@ extension BuilderProtocol {
     }
     
     func fileImplSuffix() -> String {
+        return ""
+    }
+    
+    func fileImplText(_ header: String, contents: [Content]) -> String {
         return ""
     }
 }

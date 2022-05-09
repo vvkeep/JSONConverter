@@ -44,7 +44,7 @@ class Content {
         self.builder = JSONProcesser.shared.builder(lang: langStruct.langType)
     }
     
-    func toString() -> String {
+    func toContentClassString() -> String {
         properties.sort { $0 < $1 }
         let propertiesText = allPropertyString()
         let propertiesInitText: String? = allPropertyInitString()
