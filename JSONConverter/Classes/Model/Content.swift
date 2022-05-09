@@ -46,12 +46,12 @@ class Content {
     
     func toString() -> String {
         properties.sort { $0 < $1 }
-        var propertiesText = allPropertyString()
-        var propertiesInitText: String? = allPropertyInitString()
+        let propertiesText = allPropertyString()
+        let propertiesInitText: String? = allPropertyInitString()
         let parentClsName = builder.contentParentClassText(self.parentClsName)
-        var propertiesGetterSetterText: String? = allGetterSetterString()
+        let propertiesGetterSetterText: String? = allGetterSetterString()
         
-        let contentText = builder.contentText(langStruct.structType, clsName: className, parentClsName: parentClsName, propertiesText: &propertiesText, propertiesInitText: &propertiesInitText, propertiesGetterSetterText: &propertiesGetterSetterText)
+        let contentText = builder.contentText(langStruct.structType, clsName: className, parentClsName: parentClsName, propertiesText: propertiesText, propertiesInitText: propertiesInitText, propertiesGetterSetterText: propertiesGetterSetterText)
         return contentText
     }
 }

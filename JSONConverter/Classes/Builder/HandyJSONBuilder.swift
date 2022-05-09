@@ -48,12 +48,12 @@ class HandyJSONBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? ": HandyJSON" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init() {}\n}\n"
         } else {
-            propertiesText.removeLastChar()
-            return "\nstruct \(clsName)\(parentClsName) {\n\(propertiesText)\n}\n"
+            let tempPropertiesText = StringUtils.removeLastChar(propertiesText)
+            return "\nstruct \(clsName)\(parentClsName) {\n\(tempPropertiesText)\n}\n"
         }
     }
     

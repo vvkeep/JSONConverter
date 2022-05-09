@@ -47,9 +47,9 @@ class ObjCBuilder: BuilderProtocol {
        return StringUtils.isEmpty(clsText) ? ": NSObject" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
-        propertiesText.removeLastChar()
-        return "\n@interface \(clsName)\(parentClsName)\n\(propertiesText)\n@end\n"
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
+        let tempPropertiesText = StringUtils.removeLastChar(propertiesText)
+        return "\n@interface \(clsName)\(parentClsName)\n\(tempPropertiesText)\n@end\n"
     }
     
     func fileSuffix() -> String {

@@ -79,7 +79,7 @@ class SwiftyJSONBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? "" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\tinit(json: JSON) {\n\(propertiesInitText!)\t}\n}\n"
         } else {

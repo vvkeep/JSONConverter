@@ -45,7 +45,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         }
     }
     
-    func initPropertyText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, typeName: String?) -> String {
+    func propertyInitText(_ type: PropertyType, keyName: String, strategy: PropertyStrategy, maxKeyNameLength: Int, keyTypeName: String?) -> String {
         let tempKeyName = strategy.processed(keyName)
         let spaceText = String.numSpace(count: maxKeyNameLength - tempKeyName.count)
         return "\t\t\(tempKeyName)\(spaceText) <- map[\"\(keyName)\"]\n"
@@ -55,7 +55,7 @@ class ObjectMapperBuilder: BuilderProtocol {
         return StringUtils.isEmpty(clsText) ? ": Mappable" : ": \(clsText!)"
     }
     
-    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: inout String, propertiesInitText: inout String?, propertiesGetterSetterText: inout String?) -> String {
+    func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
         if structType == .class {
             return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\trequired init?(map: Map) {}\n\n\tfunc mapping(map: Map) {\n\(propertiesInitText!)\t}\n}\n"
         } else {
