@@ -65,6 +65,7 @@ class Property {
         let setterStr = builder.propertySetterText(type, keyName: keyName, strategy: strategy, keyTypeName: className)
         return setterStr
     }
+    
 }
 
 extension Property: Hashable, Equatable {

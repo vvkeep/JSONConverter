@@ -80,7 +80,9 @@ class File {
     
     func toClassesImplString() -> String? {
         let header = isCustomHeader ? header! : defaultHeaderString(suffix: builder.fileImplSuffix())
-        let implStr = builder.fileImplText(header, contents: contents)
+        let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
+        let contentImplTexts = contents.map { builder.contentImplText($0, strategy: strategy) }
+        let implStr = builder.fileImplText(header, rootName: rootName, prefix: prefix, contentCustomPropertyMapperTexts: contentImplTexts)
         return implStr
     }
     

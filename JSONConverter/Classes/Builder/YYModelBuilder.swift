@@ -53,6 +53,38 @@ class YYModelBuilder: BuilderProtocol {
         return "\n@interface \(clsName)\(parentClsName)\n\(tempPropertiesText)\n@end\n"
     }
     
+    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
+        let returnRowText = "    return @{"
+        let propertyMapperText = content.properties.enumerated().map { (index, property) in
+            let keyName = strategy.processed(property.keyName)
+            let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
+            return "\(numSpace)\"\(property.keyName)\": \"\(keyName)\""
+        }.joined(separator: ",\n")
+        
+        let containerPropertyText = content.properties.enumerated().compactMap { (index, property) in
+            if property.type == .ArrayDictionary {
+                let keyName = strategy.processed(property.keyName)
+                let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
+                return "\(numSpace)\"\(keyName)\": [\(property.className) class]"
+            } else {
+                return nil
+            }
+        }.joined(separator: ",\n")
+                
+        let text = """
+                 \n@implementation \(content.className)
+                 + (NSDictionary *)modelCustomPropertyMapper {
+                 \(returnRowText)\(propertyMapperText)}
+                 }
+                 
+                 + (NSDictionary *)modelContainerPropertyGenericClass {
+                 \(returnRowText)\(containerPropertyText)}
+                 }
+                 @end\n
+                 """
+        return text
+    }
+
     func fileSuffix() -> String {
         return "h"
     }
@@ -62,7 +94,10 @@ class YYModelBuilder: BuilderProtocol {
     }
     
     func fileImportText(_ rootName: String, contents: [Content], strategy: PropertyStrategy, prefix: String?) -> String {
-        var tempStr = "\n#import <Foundation/Foundation.h>\n"
+        var tempStr = """
+                    \n#import <Foundation/Foundation.h>
+                    #import <YYModel/YYModel.h>\n
+                    """
         for (i, content) in contents.enumerated() where i > 0 {
             let className = strategy.processed(content.className)
             tempStr += "\n@class \(className);"
@@ -77,16 +112,15 @@ class YYModelBuilder: BuilderProtocol {
         return [Export(path: "\(filePath).\(fileSuffix())", content: content), Export(path: "\(filePath).\(fileImplSuffix())", content: classImplContent!)]
     }
     
-    func fileImplText(_ header: String, contents: [Content]) -> String {
-        var tempString = header
-        if let content = contents.first {
-            tempString += "\n#import \"\(content.keyName.className(withPrefix: content.prefix)).h\"\n"
+    func fileImplText(_ header: String, rootName: String, prefix: String?, contentCustomPropertyMapperTexts: [String]) -> String {
+        var temp = header
+        let rootClsName = rootName.className(withPrefix: prefix)
+        temp += "\n#import \"\(rootClsName).h\"\n"
+
+        for item in contentCustomPropertyMapperTexts {
+            temp += item
         }
         
-        for content in contents {
-            let keyName = content.autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
-            tempString += "\n@implementation \(keyName.className(withPrefix: content.prefix))\n\n@end\n"
-        }
-        return tempString
+        return temp
     }
 }
