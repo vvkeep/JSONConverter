@@ -58,14 +58,14 @@ class YYModelBuilder: BuilderProtocol {
         let propertyMapperText = content.properties.enumerated().map { (index, property) in
             let keyName = strategy.processed(property.keyName)
             let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
-            return "\(numSpace)\"\(property.keyName)\": \"\(keyName)\""
+            return "\(numSpace)\"@\(property.keyName)\": \"@\(keyName)\""
         }.joined(separator: ",\n")
         
         let containerPropertyText = content.properties.enumerated().compactMap { (index, property) in
             if property.type == .ArrayDictionary {
                 let keyName = strategy.processed(property.keyName)
                 let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
-                return "\(numSpace)\"\(keyName)\": [\(property.className) class]"
+                return "\(numSpace)\"@\(keyName)\": [\(property.className) class]"
             } else {
                 return nil
             }
