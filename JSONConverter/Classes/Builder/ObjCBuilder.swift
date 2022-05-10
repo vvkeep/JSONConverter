@@ -44,12 +44,19 @@ class ObjCBuilder: BuilderProtocol {
     }
     
     func contentParentClassText(_ clsText: String?) -> String {
-       return StringUtils.isEmpty(clsText) ? ": NSObject" : ": \(clsText!)"
+        return StringUtils.isEmpty(clsText) ? ": NSObject" : ": \(clsText!)"
     }
     
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String {
         let tempPropertiesText = StringUtils.removeLastChar(propertiesText)
         return "\n@interface \(clsName)\(parentClsName)\n\(tempPropertiesText)\n@end\n"
+    }
+    
+    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
+        return """
+                 \n@implementation \(content.className)
+                 @end\n
+                 """
     }
     
     func fileSuffix() -> String {
@@ -76,15 +83,13 @@ class ObjCBuilder: BuilderProtocol {
         return [Export(path: "\(filePath).\(fileSuffix())", content: content), Export(path: "\(filePath).\(fileImplSuffix())", content: classImplContent!)]
     }
     
-    func fileImplText(_ header: String, contents: [Content]) -> String {
+    func fileImplText(_ header: String, rootName: String, prefix: String?, contentCustomPropertyMapperTexts: [String]) -> String {
         var tempString = header
-        if let content = contents.first {
-            tempString += "\n#import \"\(content.keyName.className(withPrefix: content.prefix)).h\"\n"
-        }
+        let rootClsName = rootName.className(withPrefix: prefix)
+        tempString += "\n#import \"\(rootClsName).h\"\n"
         
-        for content in contents {
-            let keyName = content.autoCaseUnderline ? content.keyName.underlineToHump() : content.keyName
-            tempString += "\n@implementation \(keyName.className(withPrefix: content.prefix))\n\n@end\n"
+        for item in contentCustomPropertyMapperTexts {
+            tempString += item
         }
         return tempString
     }
