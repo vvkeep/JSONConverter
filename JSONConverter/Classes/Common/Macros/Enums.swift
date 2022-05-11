@@ -17,6 +17,7 @@ enum LangType: Int {
     case Codable
     case ObjC
     case YYModel
+    case MJExtension
     case Flutter
     case Java
     case Golang
@@ -26,7 +27,7 @@ enum LangType: Int {
         switch self {
         case .Swift, .HandyJSON, .SwiftyJSON, .KakaJSON, .ObjectMapper, .Codable:
             return "swift"
-        case .ObjC, .YYModel:
+        case .ObjC, .YYModel, .MJExtension:
             return "objectivec"
         case .Flutter:
             return "dart"
@@ -39,11 +40,11 @@ enum LangType: Int {
         
     // the arrary index is enum LangType value
     static func languages() -> [String] {
-        return ["Swift", "HandyJSON", "KakaJSON", "SwiftyJSON", "ObjectMapper", "Codable", "ObjC", "YYModel", "Flutter", "Java", "Golang"]
+        return ["Swift", "HandyJSON", "KakaJSON", "SwiftyJSON", "ObjectMapper", "Codable", "ObjC", "YYModel", "MJExtension", "Flutter", "Java", "Golang"]
     }
     
     var onlyCompatibleClass: Bool {
-        let compatibleLangList: [LangType] = [.ObjC, .YYModel, .Flutter]
+        let compatibleLangList: [LangType] = [.ObjC, .YYModel, .MJExtension, .Flutter]
         return compatibleLangList.contains(self)
     }
     
@@ -53,7 +54,7 @@ enum LangType: Int {
     }
     
     var isDoubleClassFiles: Bool {
-        let doubleClassFilesLangList: [LangType] = [.ObjC, .YYModel]
+        let doubleClassFilesLangList: [LangType] = [.ObjC, .YYModel, .MJExtension]
         return doubleClassFilesLangList.contains(self)
     }
 }

@@ -34,6 +34,7 @@
 		7BD7FEDA202AC7C10003AE80 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FED9202AC7C10003AE80 /* Content.swift */; };
 		7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7FEDB202AC7EB0003AE80 /* Property.swift */; };
 		7BDF2972202BDB7D00B7E2F5 /* JSONConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */; };
+		7BE925A0282BF0F500C32A3A /* MJExtensionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9259F282BF0F500C32A3A /* MJExtensionBuilder.swift */; };
 		8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1945E92508A3CE00E7CDCC /* Enums.swift */; };
 		8E1B82972508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */; };
 		8E1B82992508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B82982508ED6400E8CA95 /* NSLayoutConstraint+Extension.swift */; };
@@ -112,6 +113,7 @@
 		7BDF296F202BDB7C00B7E2F5 /* JSONConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDF2971202BDB7D00B7E2F5 /* JSONConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterUITests.swift; sourceTree = "<group>"; };
 		7BDF2973202BDB7D00B7E2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BE9259F282BF0F500C32A3A /* MJExtensionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJExtensionBuilder.swift; sourceTree = "<group>"; };
 		8D3F42965596B11F33826F53 /* libPods-JSONConverterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSONConverterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1945E92508A3CE00E7CDCC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		8E1B82962508B22B00E8CA95 /* NSTextView+LineNumberRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+LineNumberRulerView.swift"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */,
 				7B41FC9C2827F225007DBD49 /* KakaJSONBuilder.swift */,
 				7B41FC9E28281018007DBD49 /* YYModelBuilder.swift */,
+				7BE9259F282BF0F500C32A3A /* MJExtensionBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				7B7D5AE424FA345C00A54D27 /* FileCacheManager.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
 				8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */,
+				7BE925A0282BF0F500C32A3A /* MJExtensionBuilder.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
