@@ -4,60 +4,36 @@ English | [简体中文](./README.zh-CN.md)
 
 JSONConverter
 ============
-JSONConverter is an auxiliary tool developed for iOS/Flutter/Android/Server on MAC. It can quickly format JSON data and convert and generate corresponding model class attributes. It currently supports Java/Objective-C/Dart/Golang/Swift and popular libraries: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), [HandyJSON](https://github.com/alibaba/HandyJSON), [KakaJSON](https://github.com/kakaopensource/KakaJSON), [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper), you can flexibly choose to build Class/Struct, save the trouble of typing the model by hand, and greatly improve the development efficiency.
-
-Why use JSONConverter
-======
-
-| Features | JSONConverter | JSONExport |
-| ------ | ------ | ------ |
-| Custom configuration | powerful | support |
-| Response | promptly | Recently 2019 |
-| Open source or free | ✅ | ✅  |
-| Dark mode | ✅ | ❌ |
-| Rich text display | ✅ | ❌ |
-| Automatic hump | ✅ | ❌ |
-| Class name anti-weight | ✅ | ❌ |
-| Type inference | ✅ | ❌ |
-| Integrity check | ✅ | ❌ |
-| JSON verification | ✅ | ✅  |
-| Class/Struct | ✅ | ❌ |
-| Java | ✅ | ✅ |
-| Swift | ✅ | ✅ |
-| Objective-C | ✅ | ✅ |
-| Flutter | ✅ | ❌ |
-| Golang | ✅ | ❌ |
-| ... | |  |
-
+A MacOS application with beautiful interface and powerful functions, it formats JSON and generates model class code in the corresponding language, supports multiple development languages and its popular third-party class libraries, multiple configuration options, and flexibly builds classes
 
 Features
-=======
-* Quickly convert JSON data to generate model classes and attributes corresponding to the supported languages.
-* Format rich text to display JSON data, support [185 languages ​​and 89 styles](https://highlightjs.org/static/demo/)
+========
+* Custom adjustment layout, rich text display, theme switching (support [185 languages and 89 styles] (https://highlightjs.org/static/demo/))
+* The configuration items are automatically memorized, no need to repeat the configuration every time
+* JSON verification, class name anti-duplication, type deduction, powerful functions
 * Preview and export the generated corresponding rich text model class
-* Configure the root class name
-* Configuration class prefix
-* Custom class file prefix
-* Automatic conversion of underscore hump
-* globalization
-* Array model attribute integrity check
+* Automatic conversion of custom configuration file header, root class name, parent class name, class prefix, and underscore camel case to meet various personalized needs
+* Array model attribute integrity check to generate the most complete model
+*...
 
-Currently supported languages
+Supported languages
 =============================
 - 1. Swift(Class/Struct)
-    - 1.1 HandyJSON
-    - 1.2 SwiftyJSON
-    - 1.3 ObjectMapper
+    - 1.1 [HandyJSON](https://github.com/alibaba/HandyJSON)
+    - 1.2 [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+    - 1.3 [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
     - 1.4 Codable
-    - 1.5 KakaJSON
+    - 1.5 [KakaJSON](https://github.com/kakaopensource/KakaJSON)
 - 2. Objective-C
+    - 1.1 [YYModel](https://github.com/ibireme/YYModel)
+    - 1.2 [MJExtension](https://github.com/CoderMJLee/MJExtension)
 - 3. Flutter
 - 4. Java
 - 5. Golang
-- if you have any suggestions, you can let us know by [issues](https://github.com/vvkeep/JSONConverter/issues)
 
 Screenshots
 ========================
+![yymodel.png](/Screenshots/yymodel.png)
 ![objc.png](/Screenshots/objc.png)
 ![swift.png](/Screenshots/swift.png)
 ![swiftyjson.png](/Screenshots/swiftyjson.png)
@@ -65,26 +41,15 @@ Screenshots
 ![flutter.png](/Screenshots/flutter.png)
 ![golang.png](/Screenshots/golang.png)
 
-Installation
+Install
 ============
-* clone the project, and build it using Xcode, then copy the app to applicaiton
-* Download [Release Packages](https://github.com/vvkeep/JSONConverter/releases)
+- Direct download [Release Packages](https://github.com/vvkeep/JSONConverter/releases)
+- Clone source code, execute build in Xcode, copy JSONConverter.app to Application folder
 
-To Do
+Notes
 =====
-* HTTP Request
-* Support C Struct
-* Support C++ Class/Struct
-* Support Kotlin Class/Struct
+* The Flutter JSON conversion function is compatible with [json_serializable](https://github.com/dart-lang/json_serializable)
 
-Flutter instructions
-========================
-* [json_serializable](https://github.com/dart-lang/json_serializable)
-
-Final
-==========
-* The application still in its early stage. Please report any issue so I can improve it, If you like it, please give a star to encourage a wave 😁
-
-License
-========================
-JSONConverter is available under custom version of **MIT** license.
+Others
+======
+Because some languages or frameworks have not been actually used, I do not know whether the model construction is reasonable. If you have better suggestions, please submit PR/Issues, thank you! , If you like it, please click a star to encourage me！ 😁

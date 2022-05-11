@@ -54,17 +54,19 @@ class MJExtensionBuilder: BuilderProtocol {
     }
     
     func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
-        let returnRowText = "    return @{"
+        let frontReturnText = "    return @{"
         let propertyMapperText = content.properties.enumerated().map { (index, property) in
             let keyName = strategy.processed(property.keyName)
-            let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
+            let numSpace = index == 0 ? "" : String.numSpace(count: frontReturnText.count)
             return "\(numSpace)\"@\(property.keyName)\": \"@\(keyName)\""
         }.joined(separator: ",\n")
         
-        let containerPropertyText = content.properties.enumerated().compactMap { (index, property) in
+        var firstArrayTypeFlag = true
+        let containerPropertyText = content.properties.compactMap { (property) in
             if property.type == .ArrayDictionary {
                 let keyName = strategy.processed(property.keyName)
-                let numSpace = index == 0 ? "" : String.numSpace(count: returnRowText.count)
+                let numSpace = String.numSpace(count: firstArrayTypeFlag ? 0 : frontReturnText.count)
+                firstArrayTypeFlag = false
                 return "\(numSpace)\"@\(keyName)\": [\(property.className) class]"
             } else {
                 return nil
@@ -74,11 +76,11 @@ class MJExtensionBuilder: BuilderProtocol {
         let text = """
                  \n@implementation \(content.className)
                  + (NSDictionary *)mj_replacedKeyFromPropertyName {
-                 \(returnRowText)\(propertyMapperText)}
+                 \(frontReturnText)\(propertyMapperText)}
                  }
                  
                  + (NSDictionary *)mj_objectClassInArray {
-                 \(returnRowText)\(containerPropertyText)}
+                 \(frontReturnText)\(containerPropertyText)}
                  }
                  @end\n
                  """
