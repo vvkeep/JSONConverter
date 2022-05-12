@@ -8,7 +8,7 @@ A MacOS application with beautiful interface and powerful functions, it formats 
 
 Features
 ========
-* Custom adjustment layout, rich text display, theme switching (support ![185 languages and 89 styles](https://highlightjs.org/static/demo/))
+* Custom adjustment layout, rich text display, theme switching (support [185 languages and 89 styles](https://highlightjs.org/static/demo/))
 * The configuration items are automatically memorized, no need to repeat the configuration every time
 * JSON verification, class name anti-duplication, type deduction, powerful functions
 * Preview and export the generated corresponding rich text model class
