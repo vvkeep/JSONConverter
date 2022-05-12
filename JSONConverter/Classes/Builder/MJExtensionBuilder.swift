@@ -77,11 +77,11 @@ class MJExtensionBuilder: BuilderProtocol {
                  \n@implementation \(content.className)
                  + (NSDictionary *)mj_replacedKeyFromPropertyName {
                  \(frontReturnText)\(propertyMapperText)}
-                 }
+                 };
                  
                  + (NSDictionary *)mj_objectClassInArray {
                  \(frontReturnText)\(containerPropertyText)}
-                 }
+                 };
                  @end\n
                  """
         return text
