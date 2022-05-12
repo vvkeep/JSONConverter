@@ -76,12 +76,12 @@ class MJExtensionBuilder: BuilderProtocol {
         let text = """
                  \n@implementation \(content.className)
                  + (NSDictionary *)mj_replacedKeyFromPropertyName {
-                 \(frontReturnText)\(propertyMapperText)}
-                 };
+                 \(frontReturnText)\(propertyMapperText)};
+                 }
                  
                  + (NSDictionary *)mj_objectClassInArray {
-                 \(frontReturnText)\(containerPropertyText)}
-                 };
+                 \(frontReturnText)\(containerPropertyText)};
+                 }
                  @end\n
                  """
         return text

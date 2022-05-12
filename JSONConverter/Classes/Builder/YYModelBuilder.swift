@@ -76,12 +76,12 @@ class YYModelBuilder: BuilderProtocol {
         let text = """
                  \n@implementation \(content.className)
                  + (NSDictionary *)modelCustomPropertyMapper {
-                 \(frontReturnText)\(propertyMapperText)}
-                 };
+                 \(frontReturnText)\(propertyMapperText)};
+                 }
                  
                  + (NSDictionary *)modelContainerPropertyGenericClass {
-                 \(frontReturnText)\(containerPropertyText)}
-                 };
+                 \(frontReturnText)\(containerPropertyText)};
+                 }
                  @end\n
                  """
         return text
