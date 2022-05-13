@@ -21,6 +21,9 @@ class SettingViewController: NSViewController {
     @IBOutlet weak var customHeaderKeyLab: NSTextField!
     @IBOutlet weak var customHeaderSwitch: NSSwitch!
     
+    @IBOutlet weak var keyMapperKeyLab: NSTextField!
+    @IBOutlet weak var keyMapperSwitch: NSSwitch!
+    
     @IBOutlet weak var headerKeyLab: NSTextField!
     @IBOutlet weak var headerField: NSTextField!
         
@@ -45,6 +48,7 @@ class SettingViewController: NSViewController {
         customHeaderKeyLab.stringValue = "parameter_custom_file_header_title".localized
         autoHumpKeyLab.stringValue = "parameter_auto_case_underline_hump".localized
         headerKeyLab.stringValue = "parameter_file_header_title".localized
+        keyMapperKeyLab.stringValue = "parameter_key_mapper_title".localized
         saveBtn.title = "parameter_save_title".localized
         
         headerField.textColor = NSColor.hexInt(hex: 0x3ab54a)
@@ -58,6 +62,7 @@ class SettingViewController: NSViewController {
         parentClassField.stringValue = configFile.parentName ?? ""
         autoHumpSwitch.state =  configFile.autoCaseUnderline ? .on : .off
         customHeaderSwitch.state = configFile.isCustomHeader ? .on : .off
+        keyMapperSwitch.state = configFile.useKeyMapper ? .on : .off
         headerField.isEditable = customHeaderSwitch.state == .on
         headerField.stringValue = configFile.header ?? ""
     }
@@ -70,6 +75,7 @@ class SettingViewController: NSViewController {
         configFile.header = headerField.stringValue
         configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1
         configFile.autoCaseUnderline = autoHumpSwitch.state.rawValue == 1
+        configFile.useKeyMapper = keyMapperSwitch.state.rawValue == 1
         FileCacheManager.shared.updateConfigWithFile(configFile)
         fileConfigChangedClosure?()
         dismiss(nil)

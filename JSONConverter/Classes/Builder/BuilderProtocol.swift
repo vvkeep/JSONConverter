@@ -18,7 +18,7 @@ protocol BuilderProtocol {
     
     func contentParentClassText(_ clsText: String?) -> String
     func contentText(_ structType: StructType, clsName: String, parentClsName: String, propertiesText: String, propertiesInitText: String?, propertiesGetterSetterText: String?) -> String
-    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String
+    func contentImplText(_ content: Content, strategy: PropertyStrategy, useKeyMapper: Bool) -> String
 
     func fileSuffix() -> String
     func fileImplSuffix() -> String
@@ -41,7 +41,7 @@ extension BuilderProtocol {
         return ""
     }
     
-    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
+    func contentImplText(_ content: Content, strategy: PropertyStrategy, useKeyMapper: Bool) -> String {
         return ""
     }
     

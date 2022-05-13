@@ -52,7 +52,7 @@ class ObjCBuilder: BuilderProtocol {
         return "\n@interface \(clsName)\(parentClsName)\n\(tempPropertiesText)\n@end\n"
     }
     
-    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
+    func contentImplText(_ content: Content, strategy: PropertyStrategy, useKeyMapper: Bool) -> String {
         return """
                  \n@implementation \(content.className)
                  @end\n

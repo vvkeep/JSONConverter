@@ -53,16 +53,26 @@ class YYModelBuilder: BuilderProtocol {
         return "\n@interface \(clsName)\(parentClsName)\n\(tempPropertiesText)\n@end\n"
     }
     
-    func contentImplText(_ content: Content, strategy: PropertyStrategy) -> String {
+    func contentImplText(_ content: Content, strategy: PropertyStrategy, useKeyMapper: Bool) -> String {
         let frontReturnText = "    return @{"
-        let propertyMapperText = content.properties.enumerated().map { (index, property) in
-            let keyName = strategy.processed(property.keyName)
-            let numSpace = index == 0 ? "" : String.numSpace(count: frontReturnText.count)
-            return "\(numSpace)@\"\(property.keyName)\": @\"\(keyName)\""
-        }.joined(separator: ",\n")
+        
+        var propertyMapperText = ""
+        if useKeyMapper {
+            let propertyMapperList = content.properties.enumerated().map { (index, property) -> String in
+                let keyName = strategy.processed(property.keyName)
+                let numSpace = index == 0 ? "" : String.numSpace(count: frontReturnText.count)
+                return "\(numSpace)@\"\(property.keyName)\": @\"\(keyName)\""
+            }
+            
+            propertyMapperText = """
+                                 \n+ (NSDictionary *)modelCustomPropertyMapper {
+                                 \(frontReturnText)\(propertyMapperList.joined(separator: ",\n"))};
+                                 }\n
+                                 """
+        }
         
         var firstArrayTypeFlag = true
-        let containerPropertyText = content.properties.compactMap { (property) in
+        let arrayTypePropertyList = content.properties.compactMap { property -> String? in
             if property.type == .ArrayDictionary {
                 let keyName = strategy.processed(property.keyName)
                 let numSpace = String.numSpace(count: firstArrayTypeFlag ? 0 : frontReturnText.count)
@@ -71,20 +81,22 @@ class YYModelBuilder: BuilderProtocol {
             } else {
                 return nil
             }
-        }.joined(separator: ",\n")
-
-        let text = """
-                 \n@implementation \(content.className)
-                 + (NSDictionary *)modelCustomPropertyMapper {
-                 \(frontReturnText)\(propertyMapperText)};
-                 }
-                 
-                 + (NSDictionary *)modelContainerPropertyGenericClass {
-                 \(frontReturnText)\(containerPropertyText)};
-                 }
-                 @end\n
-                 """
-        return text
+        }
+        
+        var arrayPropertyText = ""
+        if !arrayTypePropertyList.isEmpty {
+            arrayPropertyText = """
+                                \n+ (NSDictionary *)modelContainerPropertyGenericClass {
+                                \(frontReturnText)\(arrayTypePropertyList.joined(separator: ",\n"))};
+                                }\n
+                                """
+        }
+        
+        let result = """
+                     \n@implementation \(content.className)\(propertyMapperText)\(arrayPropertyText)
+                     @end\n
+                     """
+        return result
     }
 
     func fileSuffix() -> String {

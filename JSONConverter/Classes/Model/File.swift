@@ -27,6 +27,8 @@ class File {
     
     var autoCaseUnderline: Bool = false
     
+    var useKeyMapper: Bool = false
+    
     private var builder: BuilderProtocol!
     
     init(cacheConfig dic: [String: String]?) {
@@ -43,6 +45,7 @@ class File {
         self.theme = dic?["theme"] ?? "tomorrow-night-bright"
         self.autoCaseUnderline = (dic?["autoCaseUnderline"] ?? "0").toBool()
         self.builder = JSONProcesser.shared.builder(lang: langStruct.langType)
+        self.useKeyMapper = (dic?["useKeyMapper"] ?? "0").toBool()
         
         self.isCustomHeader = (dic?["isCustomHeader"] ?? "0").toBool()
         if self.isCustomHeader {
@@ -81,14 +84,15 @@ class File {
     func toClassesImplString() -> String? {
         let header = isCustomHeader ? header! : defaultHeaderString(suffix: builder.fileImplSuffix())
         let strategy: PropertyStrategy = autoCaseUnderline ? .underlineToHump : .origin
-        let contentImplTexts = contents.map { builder.contentImplText($0, strategy: strategy) }
+        let contentImplTexts = contents.map { builder.contentImplText($0, strategy: strategy, useKeyMapper: useKeyMapper) }
         let implStr = builder.fileImplText(header, rootName: rootName, prefix: prefix, contentCustomPropertyMapperTexts: contentImplTexts)
         return implStr
     }
     
     func toCacheConfig() -> [String: String] {
         return ["header": header, "isCustomHeader": "\(isCustomHeader ? 1 : 0)", "rootName": rootName,
-                "prefix": prefix ?? "", "parentName": parentName ?? "", "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)",
+                "prefix": prefix ?? "", "parentName": parentName ?? "",
+                "autoCaseUnderline": "\(autoCaseUnderline ? 1 : 0)", "useKeyMapper": "\(useKeyMapper ? 1 : 0)",
                 "langType": "\(langStruct.langType.rawValue)",
                 "structType": "\(langStruct.structType.rawValue)", "theme": theme]
     }

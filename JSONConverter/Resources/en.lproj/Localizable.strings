@@ -19,6 +19,7 @@
 "parameter_save_title" = "Save";
 "parameter_custom_file_header_title" = "Cusotm header";
 "parameter_auto_case_underline_hump" = "Auto hump";
+"parameter_key_mapper_title" = "Key mapper";
 
 "app_upgrade_veriosn_title" = "Version upgrade";
 "app_latest_veriosn_title" = "latest version";
