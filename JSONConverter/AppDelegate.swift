@@ -21,8 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        print("退出程序了")
-        NotificationCenter.default.post(name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.ApplicationWillTerminateNotification, object: nil)
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

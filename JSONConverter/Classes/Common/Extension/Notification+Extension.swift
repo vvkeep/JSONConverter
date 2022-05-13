@@ -8,5 +8,5 @@
 
 import Foundation
 extension Notification.Name {
-    static let ApplicationWillTerminateNoti = Notification.Name("ApplicationWillTerminateNoti")
+    static let ApplicationWillTerminateNotification = Notification.Name("ApplicationWillTerminateNotification")
 }

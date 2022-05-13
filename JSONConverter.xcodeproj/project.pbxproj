@@ -10,7 +10,6 @@
 		2F737EBB4FFE856B529C4398 /* libPods-JSONConverter-JSONConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5A7192A2087722969A9C45 /* libPods-JSONConverter-JSONConverterUITests.a */; };
 		34B0EFCEC2C64176E67E2F4F /* libPods-JSONConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3F42965596B11F33826F53 /* libPods-JSONConverterTests.a */; };
 		4A926928B4DE1C314D350C1E /* libPods-JSONConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCD32F63385B3C64CFA14DD /* libPods-JSONConverter.a */; };
-		7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D34F822E6072A009D2ED2 /* wechat.jpeg */; };
 		7B2E9EEB2760F3B000151B99 /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */; };
 		7B2E9EED2760FA3300151B99 /* ObjCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */; };
 		7B2E9EF02761062D00151B99 /* SwiftBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */; };
@@ -80,7 +79,6 @@
 		284ACF227ADB7DDD725B0195 /* Pods-JSONConverter-JSONConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter-JSONConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		534B6E6532347C4C75A6C372 /* Pods-JSONConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverter/Pods-JSONConverter.debug.xcconfig"; sourceTree = "<group>"; };
 		7812C44FB05AF4F67F19D831 /* Pods-JSONConverter-JSONConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7B2D34F822E6072A009D2ED2 /* wechat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpeg; sourceTree = "<group>"; };
 		7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
 		7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCBuilder.swift; sourceTree = "<group>"; };
 		7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBuilder.swift; sourceTree = "<group>"; };
@@ -186,15 +184,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7B2D34F122E603C7009D2ED2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				7B95A32424F95F69000D141B /* Localizable.strings */,
-				7B2D34F822E6072A009D2ED2 /* wechat.jpeg */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		7B2E9EE92760F2AE00151B99 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				7B45DAEA202A95BE007E8D56 /* Classes */,
-				7B2D34F122E603C7009D2ED2 /* Resources */,
 				7B45DAF5202A95BE007E8D56 /* JSONConverter.entitlements */,
+				7B95A32424F95F69000D141B /* Localizable.strings */,
 				7B45DAF6202A95BE007E8D56 /* Assets.xcassets */,
 				7B45DAF7202A95BE007E8D56 /* MainMenu.xib */,
 				7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */,
@@ -508,7 +497,6 @@
 				7B45DB06202A95BF007E8D56 /* Assets.xcassets in Resources */,
 				7B95A32224F95F69000D141B /* Localizable.strings in Resources */,
 				7B45DAFF202A95BF007E8D56 /* MainViewController.xib in Resources */,
-				7B2D34F922E6072B009D2ED2 /* wechat.jpeg in Resources */,
 				7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

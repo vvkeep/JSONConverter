@@ -61,8 +61,8 @@ class MainViewController: NSViewController {
         checkVersion()
         updateConfigUI()
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applicationWillTerminateNotiAction),
-                                               name: NSNotification.Name.ApplicationWillTerminateNoti, object: nil)
+                                               selector: #selector(applicationWillTerminateNotificationAction),
+                                               name: NSNotification.Name.ApplicationWillTerminateNotification, object: nil)
     }
     
     private func checkVersion() {
@@ -309,7 +309,7 @@ class MainViewController: NSViewController {
 }
 
 extension MainViewController {
-    @objc func applicationWillTerminateNotiAction() {
+    @objc func applicationWillTerminateNotificationAction() {
         let config = FileCacheManager.shared.configFile()
         FileCacheManager.shared.updateConfigWithFile(config)
     }
