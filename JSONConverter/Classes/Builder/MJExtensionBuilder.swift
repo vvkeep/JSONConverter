@@ -58,7 +58,7 @@ class MJExtensionBuilder: BuilderProtocol {
         let propertyMapperText = content.properties.enumerated().map { (index, property) in
             let keyName = strategy.processed(property.keyName)
             let numSpace = index == 0 ? "" : String.numSpace(count: frontReturnText.count)
-            return "\(numSpace)\"@\(property.keyName)\": \"@\(keyName)\""
+            return "\(numSpace)@\"\(property.keyName)\": @\"\(keyName)\""
         }.joined(separator: ",\n")
         
         var firstArrayTypeFlag = true
@@ -67,7 +67,7 @@ class MJExtensionBuilder: BuilderProtocol {
                 let keyName = strategy.processed(property.keyName)
                 let numSpace = String.numSpace(count: firstArrayTypeFlag ? 0 : frontReturnText.count)
                 firstArrayTypeFlag = false
-                return "\(numSpace)\"@\(keyName)\": [\(property.className) class]"
+                return "\(numSpace)@\"\(keyName)\": [\(property.className) class]"
             } else {
                 return nil
             }
