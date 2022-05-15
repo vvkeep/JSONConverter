@@ -1,4 +1,4 @@
-![JSONConverter logo](/Screenshots/logo.jpg)
+![JSONConverter](/Screenshots/logo.png)
 
 简体中文 | [English](./README.md)
 
