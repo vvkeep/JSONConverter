@@ -2,8 +2,8 @@
 
 简体中文 | [English](./README.md)
 
-首先感谢铁子们的支持！
-==================
+感谢您对此项目的支持
+================
 [![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
 
 JSONConverter
