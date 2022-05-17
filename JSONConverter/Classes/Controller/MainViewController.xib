@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,11 +16,11 @@
                 <outlet property="classTextView" destination="9fN-8x-2aw" id="9ab-zz-YPx"/>
                 <outlet property="horSplitLineView" destination="pJl-yO-yNu" id="d5u-NS-nQH"/>
                 <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
-                <outlet property="languageBox" destination="acr-Rb-HpB" id="oay-fL-mGr"/>
+                <outlet property="languagesPopup" destination="JNB-NE-r1E" id="3jm-tq-0SW"/>
                 <outlet property="saveBtn" destination="zHm-8W-mp8" id="QTa-Vt-8ik"/>
                 <outlet property="statusLab" destination="N2j-s3-kwM" id="rfL-un-tza"/>
-                <outlet property="structureBox" destination="3Ps-cQ-yR7" id="NNW-og-YdH"/>
-                <outlet property="themeBox" destination="rK9-Oe-Z2V" id="XmH-oe-o6z"/>
+                <outlet property="structurePopup" destination="d6h-R6-EFn" id="mmb-Cj-lLg"/>
+                <outlet property="themePopup" destination="axb-Mu-38g" id="YW6-kE-Exb"/>
                 <outlet property="verSplitLineView" destination="Jih-7b-sHs" id="OHM-CU-tEK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -34,15 +34,15 @@
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-9H-OB5" userLabel="JSON Scroll View">
                     <rect key="frame" x="0.0" y="50" width="400" height="600"/>
                     <clipView key="contentView" drawsBackground="NO" id="1E1-08-pKY">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="J8o-uy-DJ5">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="385" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="400" height="600"/>
+                                <size key="minSize" width="385" height="600"/>
                                 <size key="maxSize" width="503" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             </textView>
@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ycb-vU-LWp">
-                        <rect key="frame" x="384" y="0.0" width="16" height="600"/>
+                        <rect key="frame" x="385" y="0.0" width="15" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -156,30 +156,6 @@
                                 <action selector="saveBtnAction:" target="-2" id="cXI-8X-NTi"/>
                             </connections>
                         </button>
-                        <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="acr-Rb-HpB">
-                            <rect key="frame" x="775" y="11" width="123" height="26"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="T2a-pv-BJe"/>
-                                <constraint firstAttribute="width" constant="120" id="jFR-VO-k9q"/>
-                            </constraints>
-                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="SHd-ug-r0R">
-                                <font key="font" metaFont="label" size="13"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </comboBoxCell>
-                        </comboBox>
-                        <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-cQ-yR7">
-                            <rect key="frame" x="655" y="11" width="103" height="26"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Fah-te-PL1"/>
-                                <constraint firstAttribute="width" constant="100" id="Sf6-Sn-V4v"/>
-                            </constraints>
-                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="b5g-Qr-2Vq">
-                                <font key="font" metaFont="label" size="13"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </comboBoxCell>
-                        </comboBox>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="zBe-Rp-cI7">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                             <constraints>
@@ -201,34 +177,79 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rK9-Oe-Z2V">
-                            <rect key="frame" x="508" y="11" width="123" height="26"/>
+                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JNB-NE-r1E" userLabel="language Popup Button">
+                            <rect key="frame" x="722" y="11" width="172" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="120" id="C6Y-TL-YZl"/>
-                                <constraint firstAttribute="height" constant="20" id="NPl-KI-ad3"/>
+                                <constraint firstAttribute="width" constant="165" id="5Fg-0v-mF8"/>
                             </constraints>
-                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="VvY-w6-qw9">
-                                <font key="font" metaFont="label" size="13"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </comboBoxCell>
-                        </comboBox>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="L5V-RY-B65" id="e9m-eo-wWe">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="yle-gf-Slw">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="L5V-RY-B65"/>
+                                        <menuItem title="Item 2" id="CJc-zK-xyW"/>
+                                        <menuItem title="Item 3" id="548-Cy-BIm"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="languageSelectedChanged:" target="-2" id="rUz-jM-Ezn"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axb-Mu-38g" userLabel="theme Popup Button">
+                            <rect key="frame" x="461" y="11" width="147" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="140" id="vPy-mG-YgF"/>
+                            </constraints>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="GoE-NZ-LlG" id="lrq-uM-ZYb">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="Voo-XZ-BNX">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="GoE-NZ-LlG"/>
+                                        <menuItem title="Item 2" id="Ud2-Gc-UrH"/>
+                                        <menuItem title="Item 3" id="TzG-ZN-p9D"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="themeSelctedChanged:" target="-2" id="wAE-Hh-Tvp"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6h-R6-EFn">
+                            <rect key="frame" x="626" y="11" width="78" height="25"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="b6c-31-A1Z" id="cib-TS-Yno">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="O6f-25-B0A">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="b6c-31-A1Z"/>
+                                        <menuItem title="Item 2" id="pSh-p5-sLf"/>
+                                        <menuItem title="Item 3" id="7Zk-G9-0KX"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="structureSelectedChanged:" target="-2" id="qAc-Uy-kLJ"/>
+                            </connections>
+                        </popUpButton>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
                         <constraint firstItem="N2j-s3-kwM" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="6AU-2K-3Pi"/>
                         <constraint firstItem="N2j-s3-kwM" firstAttribute="leading" secondItem="zBe-Rp-cI7" secondAttribute="trailing" id="70Q-zi-LUf"/>
-                        <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="acr-Rb-HpB" secondAttribute="trailing" constant="20" id="L68-oy-Lfw"/>
+                        <constraint firstItem="d6h-R6-EFn" firstAttribute="centerY" secondItem="JNB-NE-r1E" secondAttribute="centerY" id="7i1-EW-VWM"/>
+                        <constraint firstItem="d6h-R6-EFn" firstAttribute="leading" secondItem="axb-Mu-38g" secondAttribute="trailing" constant="25" id="F0b-mx-ycg"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
-                        <constraint firstItem="3Ps-cQ-yR7" firstAttribute="leading" secondItem="rK9-Oe-Z2V" secondAttribute="trailing" constant="27" id="SaO-t0-9J8"/>
-                        <constraint firstItem="3Ps-cQ-yR7" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="TEL-yx-wep"/>
-                        <constraint firstItem="acr-Rb-HpB" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="XLk-k6-FyG"/>
-                        <constraint firstItem="acr-Rb-HpB" firstAttribute="leading" secondItem="3Ps-cQ-yR7" secondAttribute="trailing" constant="20" id="YfS-lM-89F"/>
+                        <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="JNB-NE-r1E" secondAttribute="trailing" constant="25" id="Yce-G1-5dc"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="top" secondItem="Rs5-vR-4VE" secondAttribute="top" id="ZAf-f1-Ce1"/>
+                        <constraint firstItem="JNB-NE-r1E" firstAttribute="centerY" secondItem="zHm-8W-mp8" secondAttribute="centerY" id="eZx-9t-zM2"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="leading" secondItem="Rs5-vR-4VE" secondAttribute="leading" id="ftP-av-yKY"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="gEI-lV-qMU"/>
-                        <constraint firstItem="rK9-Oe-Z2V" firstAttribute="centerY" secondItem="3Ps-cQ-yR7" secondAttribute="centerY" id="lhQ-7U-4HV"/>
+                        <constraint firstItem="axb-Mu-38g" firstAttribute="centerY" secondItem="JNB-NE-r1E" secondAttribute="centerY" id="jVg-rK-c2d"/>
                         <constraint firstAttribute="trailing" secondItem="zHm-8W-mp8" secondAttribute="trailing" constant="14" id="mrc-wa-6Xw"/>
+                        <constraint firstItem="JNB-NE-r1E" firstAttribute="leading" secondItem="d6h-R6-EFn" secondAttribute="trailing" constant="25" id="wPz-p3-coD"/>
                     </constraints>
                 </customView>
             </subviews>

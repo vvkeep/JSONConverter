@@ -1,4 +1,4 @@
-![JSONConverter logo](/Screenshots/logo.jpg)
+![JSONConverter](/Screenshots/logo.png)
 
 English | [简体中文](./README.zh-CN.md)
 
@@ -37,13 +37,13 @@ Supported languages
 
 Screenshots
 ========================
-![yymodel.png](/Screenshots/yymodel.png)
-![objc.png](/Screenshots/objc.png)
-![swift.png](/Screenshots/swift.png)
-![swiftyjson.png](/Screenshots/swiftyjson.png)
-![objectmapper.png](/Screenshots/objectmapper.png)
-![flutter.png](/Screenshots/flutter.png)
-![golang.png](/Screenshots/golang.png)
+![01.png](/Screenshots/01.png)
+![02.png](/Screenshots/02.png)
+![03.png](/Screenshots/03.png)
+![04.png](/Screenshots/04.png)
+![05.png](/Screenshots/05.png)
+![06.png](/Screenshots/06.png)
+![07.png](/Screenshots/07.png)
 
 Install
 ============

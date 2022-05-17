@@ -37,10 +37,38 @@ enum LangType: Int {
             return "golang"
         }
     }
+    
+    var title: String {
+        switch self {
+        case .Swift:
+            return "Swift"
+        case .HandyJSON:
+            return "Swift - HandyJSON"
+        case .SwiftyJSON:
+            return "Swift - SwiftyJSON"
+        case .KakaJSON:
+            return "Swift - KakaJSON"
+        case .ObjectMapper:
+            return "Swift - ObjectMapper"
+        case .Codable:
+            return "Swift - Codable"
+        case .ObjC:
+            return "ObjectiveC"
+        case .YYModel:
+            return "ObjectiveC - YYModel"
+        case .MJExtension:
+            return "ObjectiveC - MJExtension"
+        case .Flutter:
+            return "Flutter - json_serializable"
+        case .Java:
+            return "Java"
+        case .Golang:
+            return "Golang"
+        }
+    }
         
-    // the arrary index is enum LangType value
-    static func languages() -> [String] {
-        return ["Swift", "HandyJSON", "KakaJSON", "SwiftyJSON", "ObjectMapper", "Codable", "ObjC", "YYModel", "MJExtension", "Flutter", "Java", "Golang"]
+    static func allValues() -> [LangType] {
+        return [.Swift, .HandyJSON, .KakaJSON, .SwiftyJSON, .ObjectMapper, .Codable, .ObjC, .YYModel, .MJExtension, .Flutter, .Java, .Golang]
     }
     
     var onlyCompatibleClass: Bool {
