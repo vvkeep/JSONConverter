@@ -52,6 +52,6 @@ Notes
 
 Other
 ======
-Because some languages or frameworks have not been actually used, I do not know whether the model construction is reasonable. If you have better suggestions, please submit PR/Issues, thank you! , If you like it, please click a star to encourage me！ 😁
+Because some languages or frameworks have not been actually used, I do not know whether the model construction is reasonable. If you have better suggestions, please submit PR/Issues, thank you! , If you like it, please star to encourage me！ 😁
 
 [![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
