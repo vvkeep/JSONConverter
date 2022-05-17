@@ -2,6 +2,10 @@
 
 简体中文 | [English](./README.md)
 
+首先感谢铁子们的支持！
+==================
+[![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
+
 JSONConverter
 =============
 一款界面精美、功能强大的MacOS应用，格式化JSON并生成对应语言的模型类代码，支持多种开发语言及其流行的三方类库，多种配置选项，灵活构建Class/Struct，一键导出模型类文件，极大提高开发效率。
