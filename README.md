@@ -2,10 +2,6 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-Thanks for support
-==================
-[![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
-
 JSONConverter
 ============
 A MacOS application with beautiful interface and powerful functions, it formats JSON and generates model class code in the corresponding language, supports multiple development languages and its popular third-party class libraries, multiple configuration options, and flexibly builds classes
@@ -57,3 +53,5 @@ Notes
 Other
 ======
 Because some languages or frameworks have not been actually used, I do not know whether the model construction is reasonable. If you have better suggestions, please submit PR/Issues, thank you! , If you like it, please click a star to encourage me！ 😁
+
+[![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)

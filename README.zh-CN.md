@@ -2,10 +2,6 @@
 
 简体中文 | [English](./README.md)
 
-感谢您对此项目的支持
-================
-[![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
-
 JSONConverter
 =============
 一款界面精美、功能强大的MacOS应用，格式化JSON并生成对应语言的模型类代码，支持多种开发语言及其流行的三方类库，多种配置选项，灵活构建Class/Struct，一键导出模型类文件，极大提高开发效率。
@@ -46,7 +42,7 @@ JSONConverter
 ![06.png](/Screenshots/06.png)
 ![07.png](/Screenshots/07.png)
 
-安装说明
+安装
 ======
 - 直接下载 [Release Packages](https://github.com/vvkeep/JSONConverter/releases)
 - Clone源码，Xcode执行Build，拷贝JSONConverter.app 至 Application 文件夹
@@ -60,3 +56,5 @@ Flutter JSON转换功能是配合[json_serializable](https://github.com/dart-lan
 其他
 ===
 因为有些语言或框架并没有实际使用过，所以并不知道模型构建的是否合理，如果你有更好的建议，欢迎提PR/Issues，谢谢！,如果喜欢，请点个star，鼓励一波，哈哈哈哈😁
+
+[![Stargazers repo roster for @vvkeep/JSONConverter](https://reporoster.com/stars/vvkeep/JSONConverter)](https://github.com/vvkeep/JSONConverter/stargazers)
