@@ -20,24 +20,16 @@ class ObjCBuilder: BuilderProtocol {
             return "@property (nonatomic, copy) NSString *\(tempKeyName);\n"
         case .Int:
             return "@property (nonatomic, assign) NSInteger \(tempKeyName);\n"
-        case .Float:
-            return "@property (nonatomic, assign) Float \(tempKeyName);\n"
-        case .Double:
-            return "@property (nonatomic, assign) Double \(tempKeyName);\n"
+        case .Float, .Double:
+            return "@property (nonatomic, assign) CGFloat \(tempKeyName);\n"
         case .Bool:
             return "@property (nonatomic, assign) BOOL \(tempKeyName);\n"
         case .Dictionary:
             return "@property (nonatomic, strong) \(keyTypeName!) *\(tempKeyName);\n"
         case .ArrayString, .ArrayNull:
             return "@property (nonatomic, strong) NSArray<NSString *> *\(tempKeyName);\n"
-        case .ArrayInt:
-            return "@property (nonatomic, strong) NSArray<Int> *\(tempKeyName);\n"
-        case .ArrayFloat:
-            return "@property (nonatomic, strong) NSArray<Float> *\(tempKeyName);\n"
-        case .ArrayDouble:
-            return "@property (nonatomic, strong) NSArray<Double> *\(tempKeyName);\n"
-        case .ArrayBool:
-            return "@property (nonatomic, strong) NSArray<Bool> *\(tempKeyName);\n"
+        case .ArrayInt, .ArrayFloat, .ArrayDouble, .ArrayBool:
+            return "@property (nonatomic, strong) NSArray<NSNumber *> *\(tempKeyName);\n"
         case .ArrayDictionary:
             return "@property (nonatomic, strong) NSArray<\(keyTypeName!) *> *\(tempKeyName);\n"
         }
