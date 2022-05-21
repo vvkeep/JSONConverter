@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="autoHumpKeyLab" destination="tl1-1E-CMt" id="sLy-7b-VnA"/>
                 <outlet property="autoHumpSwitch" destination="Zzf-oj-my4" id="j7s-NV-gQC"/>
+                <outlet property="backgroundView" destination="rA8-TU-EHw" id="4gT-8T-IYk"/>
                 <outlet property="customHeaderKeyLab" destination="Fxj-jI-BgK" id="niA-B3-uJz"/>
                 <outlet property="customHeaderSwitch" destination="smN-MJ-qV3" id="6gf-ic-3M8"/>
                 <outlet property="headerField" destination="HoE-d7-MFG" id="tOR-Tg-cy0"/>
@@ -32,6 +33,9 @@
             <rect key="frame" x="0.0" y="0.0" width="662" height="574"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="rA8-TU-EHw" customClass="NSColorView" customModule="JSONConverter" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="662" height="574"/>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S4V-bE-2DN">
                     <rect key="frame" x="33" y="525" width="100" height="19"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Classes prefix" id="4OT-Ed-Ecs">
@@ -156,6 +160,8 @@
                 </switch>
             </subviews>
             <constraints>
+                <constraint firstItem="rA8-TU-EHw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="6C7-If-daA"/>
+                <constraint firstItem="rA8-TU-EHw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6aI-7p-C57"/>
                 <constraint firstItem="Zzf-oj-my4" firstAttribute="leading" secondItem="tl1-1E-CMt" secondAttribute="trailing" constant="15" id="7J3-do-vaO"/>
                 <constraint firstItem="Fxj-jI-BgK" firstAttribute="top" secondItem="Zm4-zI-OvN" secondAttribute="bottom" constant="25" id="7Ko-eB-0Kk"/>
                 <constraint firstItem="Zm4-zI-OvN" firstAttribute="leading" secondItem="zPf-iD-emB" secondAttribute="leading" id="9M3-uI-dGy"/>
@@ -178,6 +184,7 @@
                 <constraint firstItem="Pj9-J8-pkg" firstAttribute="centerY" secondItem="S4V-bE-2DN" secondAttribute="centerY" id="Q32-ze-JfX"/>
                 <constraint firstItem="8r7-oV-iPX" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="TcD-4e-JFQ"/>
                 <constraint firstItem="uT0-wp-2Rx" firstAttribute="height" secondItem="Pj9-J8-pkg" secondAttribute="height" id="V0J-cF-i0O"/>
+                <constraint firstAttribute="trailing" secondItem="rA8-TU-EHw" secondAttribute="trailing" id="W3d-lu-eoj"/>
                 <constraint firstItem="enz-fi-tWs" firstAttribute="leading" secondItem="rob-Nb-HSZ" secondAttribute="trailing" constant="15" id="WiE-Ku-z2i"/>
                 <constraint firstItem="uT0-wp-2Rx" firstAttribute="width" secondItem="Pj9-J8-pkg" secondAttribute="width" id="YGa-m0-Kcy"/>
                 <constraint firstItem="zPf-iD-emB" firstAttribute="top" secondItem="S4V-bE-2DN" secondAttribute="bottom" constant="25" id="akU-Fd-O7t"/>
@@ -189,11 +196,12 @@
                 <constraint firstAttribute="bottom" secondItem="8r7-oV-iPX" secondAttribute="bottom" constant="35" id="qFB-Xk-wZa"/>
                 <constraint firstItem="enz-fi-tWs" firstAttribute="centerY" secondItem="rob-Nb-HSZ" secondAttribute="centerY" id="qdP-qB-hKd"/>
                 <constraint firstItem="uT0-wp-2Rx" firstAttribute="centerY" secondItem="zPf-iD-emB" secondAttribute="centerY" id="uQY-sm-BxY"/>
+                <constraint firstAttribute="bottom" secondItem="rA8-TU-EHw" secondAttribute="bottom" id="xIr-tf-xYm"/>
                 <constraint firstItem="tl1-1E-CMt" firstAttribute="centerY" secondItem="Fxj-jI-BgK" secondAttribute="centerY" id="xky-Go-dM3"/>
                 <constraint firstItem="smN-MJ-qV3" firstAttribute="centerY" secondItem="Fxj-jI-BgK" secondAttribute="centerY" id="zCU-Uk-B3v"/>
                 <constraint firstItem="8r7-oV-iPX" firstAttribute="top" secondItem="HoE-d7-MFG" secondAttribute="bottom" constant="65" id="zLu-Pn-yZE"/>
             </constraints>
-            <point key="canvasLocation" x="245" y="350.5"/>
+            <point key="canvasLocation" x="245" y="350"/>
         </customView>
     </objects>
 </document>

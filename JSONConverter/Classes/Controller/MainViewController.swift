@@ -29,6 +29,7 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var statusLab: NSTextField!
     @IBOutlet weak var saveBtn: NSButton!
+    @IBOutlet weak var bottomToolBar: NSColorView!
     
     private let highlightr = Highlightr()!
     
@@ -82,6 +83,7 @@ class MainViewController: NSViewController {
     }
     
     private func setupUI() {
+        bottomToolBar.backgroundColor = NSColor(named: "LineColor")
         saveBtn.title = "parameter_save_title".localized
         
         languagesPopup.removeAllItems()

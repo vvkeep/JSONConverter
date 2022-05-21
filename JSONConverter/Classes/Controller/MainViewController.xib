@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="JSONScrollViewWidthCons" destination="ST4-zz-PbG" id="GtY-tm-3Bp"/>
                 <outlet property="JSONTextView" destination="J8o-uy-DJ5" id="Unv-oL-Sq6"/>
+                <outlet property="bottomToolBar" destination="Rs5-vR-4VE" id="BbI-05-r1d"/>
                 <outlet property="classContainerView" destination="VOt-ZW-E3V" id="uhe-Cs-Yba"/>
                 <outlet property="classImpTextView" destination="qu2-d0-ZZk" id="E5L-ip-pSi"/>
                 <outlet property="classScrollViewHeightCons" destination="Jye-DN-yss" id="shm-yr-RvK"/>
@@ -139,7 +140,7 @@
                         <constraint firstItem="xE3-MR-b0j" firstAttribute="leading" secondItem="VOt-ZW-E3V" secondAttribute="leading" id="vvm-1c-L9w"/>
                     </constraints>
                 </customView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE" userLabel="Bottom Tool Bar" customClass="CustomBackgroundView" customModule="JSONConverter" customModuleProvider="target">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-vR-4VE" userLabel="Bottom Tool Bar" customClass="NSColorView" customModule="JSONConverter" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="999" height="50"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zHm-8W-mp8">

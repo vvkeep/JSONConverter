@@ -32,6 +32,7 @@ class SettingViewController: NSViewController {
     
     @IBOutlet weak var saveBtn: NSButton!
     
+    @IBOutlet weak var backgroundView: NSColorView!
     var fileConfigChangedClosure:(() -> ())?
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class SettingViewController: NSViewController {
     }
     
     private func setupUI() {
+        backgroundView.backgroundColor = NSColor(named: "LineColor")
         title = "parameter_setting_title".localized
         prefixKeyLab.stringValue = "parameter_classes_prefix".localized
         rootClassKeyLab.stringValue = "parameter_root_class_title".localized

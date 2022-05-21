@@ -25,6 +25,7 @@
 		7B45DB07202A95BF007E8D56 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B45DAF7202A95BE007E8D56 /* MainMenu.xib */; };
 		7B45DB08202A95BF007E8D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DAF9202A95BE007E8D56 /* AppDelegate.swift */; };
 		7B45DB0F202AA572007E8D56 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45DB0E202AA572007E8D56 /* File.swift */; };
+		7B60176728388FB100E9EB93 /* NSColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B60176628388FB100E9EB93 /* NSColorView.swift */; };
 		7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */; };
 		7B7D5AE424FA345C00A54D27 /* FileCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE324FA345C00A54D27 /* FileCacheManager.swift */; };
 		7B7D5AE624FA520800A54D27 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7D5AE524FA520800A54D27 /* Date+Extension.swift */; };
@@ -51,7 +52,6 @@
 		8E68571D22850F4800DCDF2E /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E68571C22850F4800DCDF2E /* Notification+Extension.swift */; };
 		8E7CE0B1277581DB0044F018 /* GolangBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */; };
 		8EB0531424FCDABF00B96D79 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */; };
-		8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */; };
 		8ED4E1162755B81F004A682A /* JSONConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4E1152755B81F004A682A /* JSONConverterTests.swift */; };
 		8EE44C73276301FE0024D730 /* HandyJSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE44C72276301FE0024D730 /* HandyJSONBuilder.swift */; };
 		8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE44C742763024D0024D730 /* CodableBuilder.swift */; };
@@ -97,6 +97,7 @@
 		7B45DAFA202A95BE007E8D56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B45DB0E202AA572007E8D56 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7B4B5EAA201B87A10098712B /* JSONConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B60176628388FB100E9EB93 /* NSColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorView.swift; sourceTree = "<group>"; };
 		7B63C2D02826D11300E1FB61 /* Highlightr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Highlightr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B63C2D42826D25F00E1FB61 /* Highlightr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Highlightr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B7D5AE124FA2B2700A54D27 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
@@ -131,7 +132,6 @@
 		8E7CE0B0277581DB0044F018 /* GolangBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolangBuilder.swift; sourceTree = "<group>"; };
 		8E9E8D09268202C300F778D0 /* JSONConverter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONConverter-Bridging-Header.h"; sourceTree = "<group>"; };
 		8EB0531324FCDABF00B96D79 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
-		8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		8ED4E1132755B81F004A682A /* JSONConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED4E1152755B81F004A682A /* JSONConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverterTests.swift; sourceTree = "<group>"; };
 		8ED4E1172755B81F004A682A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				8E542C2E25130C160053C1E0 /* PanGestureIndicatorView.swift */,
-				8EC3AAC1269E9EAD00CE0262 /* CustomBackgroundView.swift */,
+				7B60176628388FB100E9EB93 /* NSColorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1023,6 +1023,7 @@
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
 				8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */,
 				7BE925A0282BF0F500C32A3A /* MJExtensionBuilder.swift in Sources */,
+				7B60176728388FB100E9EB93 /* NSColorView.swift in Sources */,
 				7B7D5AE224FA2B2700A54D27 /* StringUtils.swift in Sources */,
 				8E43D13D22E8235A00F52C8E /* UpgradeViewController.swift in Sources */,
 				7B45DB05202A95BF007E8D56 /* String+Extension.swift in Sources */,
@@ -1035,7 +1036,6 @@
 				8EE44C752763024D0024D730 /* CodableBuilder.swift in Sources */,
 				7B41FC9F28281018007DBD49 /* YYModelBuilder.swift in Sources */,
 				8E2EE4172761B1D600FABCA0 /* FlutterBuilder.swift in Sources */,
-				8EC3AAC2269E9EAD00CE0262 /* CustomBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
