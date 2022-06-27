@@ -11,10 +11,7 @@ import Cocoa
 class SettingViewController: NSViewController {
     @IBOutlet weak var prefixKeyLab: NSTextField!
     @IBOutlet weak var prefixField: NSTextField!
-    
-    @IBOutlet weak var rootClassKeyLab: NSTextField!
-    @IBOutlet weak var rootClassField: NSTextField!
-    
+        
     @IBOutlet weak var parentClassKeyLab: NSTextField!
     @IBOutlet weak var parentClassField: NSTextField!
     
@@ -45,7 +42,6 @@ class SettingViewController: NSViewController {
         backgroundView.backgroundColor = NSColor(named: "LineColor")
         title = "parameter_setting_title".localized
         prefixKeyLab.stringValue = "parameter_classes_prefix".localized
-        rootClassKeyLab.stringValue = "parameter_root_class_title".localized
         parentClassKeyLab.stringValue = "parameter_parent_class_title".localized
         customHeaderKeyLab.stringValue = "parameter_custom_file_header_title".localized
         autoHumpKeyLab.stringValue = "parameter_auto_case_underline_hump".localized
@@ -60,7 +56,6 @@ class SettingViewController: NSViewController {
     private func updateCacheConfigUI() {
         let configFile = FileCacheManager.shared.configFile()
         prefixField.stringValue = configFile.prefix ?? ""
-        rootClassField.stringValue = configFile.rootName
         parentClassField.stringValue = configFile.parentName ?? ""
         autoHumpSwitch.state =  configFile.autoCaseUnderline ? .on : .off
         customHeaderSwitch.state = configFile.isCustomHeader ? .on : .off
@@ -72,7 +67,6 @@ class SettingViewController: NSViewController {
     @IBAction func saveConfigAction(_ sender: NSButton) {
         let configFile = FileCacheManager.shared.configFile()
         configFile.prefix = prefixField.stringValue
-        configFile.rootName = rootClassField.stringValue
         configFile.parentName = parentClassField.stringValue
         configFile.header = headerField.stringValue
         configFile.isCustomHeader = customHeaderSwitch.state.rawValue == 1

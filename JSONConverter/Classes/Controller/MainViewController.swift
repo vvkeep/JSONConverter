@@ -10,6 +10,8 @@ import Cocoa
 import Highlightr
 
 class MainViewController: NSViewController {
+    @IBOutlet weak var rootClassField: NSTextField!
+    
     @IBOutlet weak var languagesPopup: NSPopUpButton!
     @IBOutlet weak var structurePopup: NSPopUpButton!
     @IBOutlet weak var themePopup: NSPopUpButton!
@@ -130,6 +132,7 @@ class MainViewController: NSViewController {
     
     private func loadCacheConfig() {
         let config = FileCacheManager.shared.configFile()
+        rootClassField.stringValue = config.rootName
         languagesPopup.selectItem(at: config.langStruct.langType.rawValue)
         structurePopup.selectItem(at: config.langStruct.structType.rawValue)
         if let themeIndex = highlightr.availableThemes().firstIndex(where: { config.theme == $0 }) {
@@ -291,6 +294,8 @@ class MainViewController: NSViewController {
         let transStruct = LangStruct(langType: langType, structType: structType)
         config.langStruct = transStruct
         
+        config.rootName = rootClassField.stringValue
+        
         let theme = highlightr.availableThemes()[themePopup.indexOfSelectedItem]
         config.theme = theme
         FileCacheManager.shared.updateConfigWithFile(config)
@@ -357,6 +362,15 @@ extension MainViewController: NSTextViewDelegate {
     }
     
     func textDidChange(_ notification: Notification) {
+        generateClasses()
+    }
+}
+
+extension MainViewController: NSTextFieldDelegate {
+    func controlTextDidEndEditing(_ obj: Notification) {
+        let config = FileCacheManager.shared.configFile()
+        config.rootName = rootClassField.stringValue
+        FileCacheManager.shared.updateConfigWithFile(config)
         generateClasses()
     }
 }

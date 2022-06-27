@@ -18,6 +18,7 @@
                 <outlet property="horSplitLineView" destination="pJl-yO-yNu" id="d5u-NS-nQH"/>
                 <outlet property="horSpliteLineViewHeightCons" destination="vPD-64-Bqo" id="qAL-Un-k5Q"/>
                 <outlet property="languagesPopup" destination="JNB-NE-r1E" id="3jm-tq-0SW"/>
+                <outlet property="rootClassField" destination="6TB-jR-Ead" id="pZp-9s-Fbc"/>
                 <outlet property="saveBtn" destination="zHm-8W-mp8" id="QTa-Vt-8ik"/>
                 <outlet property="statusLab" destination="N2j-s3-kwM" id="rfL-un-tza"/>
                 <outlet property="structurePopup" destination="d6h-R6-EFn" id="mmb-Cj-lLg"/>
@@ -235,13 +236,30 @@
                                 <action selector="structureSelectedChanged:" target="-2" id="qAc-Uy-kLJ"/>
                             </connections>
                         </popUpButton>
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6TB-jR-Ead">
+                            <rect key="frame" x="289" y="13" width="150" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="lko-yo-kfK"/>
+                                <constraint firstAttribute="width" constant="150" id="oFm-wX-qT1"/>
+                            </constraints>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Root Class" drawsBackground="YES" id="jAM-Lq-f09">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <outlet property="delegate" destination="-2" id="96K-2m-nL3"/>
+                            </connections>
+                        </textField>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="6TB-jR-Ead" firstAttribute="centerY" secondItem="axb-Mu-38g" secondAttribute="centerY" id="0EB-Xe-sez"/>
                         <constraint firstAttribute="bottom" secondItem="zBe-Rp-cI7" secondAttribute="bottom" id="0p8-ZJ-jBr"/>
                         <constraint firstItem="N2j-s3-kwM" firstAttribute="centerY" secondItem="Rs5-vR-4VE" secondAttribute="centerY" id="6AU-2K-3Pi"/>
                         <constraint firstItem="N2j-s3-kwM" firstAttribute="leading" secondItem="zBe-Rp-cI7" secondAttribute="trailing" id="70Q-zi-LUf"/>
                         <constraint firstItem="d6h-R6-EFn" firstAttribute="centerY" secondItem="JNB-NE-r1E" secondAttribute="centerY" id="7i1-EW-VWM"/>
                         <constraint firstItem="d6h-R6-EFn" firstAttribute="leading" secondItem="axb-Mu-38g" secondAttribute="trailing" constant="25" id="F0b-mx-ycg"/>
+                        <constraint firstItem="axb-Mu-38g" firstAttribute="leading" secondItem="6TB-jR-Ead" secondAttribute="trailing" constant="25" id="Qya-gL-2aW"/>
                         <constraint firstAttribute="height" constant="50" id="SAX-n5-KNq"/>
                         <constraint firstItem="zHm-8W-mp8" firstAttribute="leading" secondItem="JNB-NE-r1E" secondAttribute="trailing" constant="25" id="Yce-G1-5dc"/>
                         <constraint firstItem="zBe-Rp-cI7" firstAttribute="top" secondItem="Rs5-vR-4VE" secondAttribute="top" id="ZAf-f1-Ce1"/>

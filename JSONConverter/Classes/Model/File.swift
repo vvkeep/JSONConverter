@@ -32,7 +32,8 @@ class File {
     private var builder: BuilderProtocol!
     
     init(cacheConfig dic: [String: String]?) {
-        self.rootName = dic?["rootName"] ?? "RootClass"
+        
+        self.rootName = StringUtils.isNotEmpty(dic?["rootName"]) ? dic!["rootName"]! : "RootClass"
         self.prefix = dic?["prefix"] ?? ""
         self.parentName = dic?["parentName"] ?? ""
         
