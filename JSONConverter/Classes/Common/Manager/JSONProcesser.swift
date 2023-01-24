@@ -17,8 +17,16 @@ class JSONProcesser {
     private let builders: [BuilderProtocol] = [FlutterBuilder(),
                                                JavaBuilder(),
                                                GolangBuilder(),
-                                               ObjCBuilder(), YYModelBuilder(), MJExtensionBuilder(),
-                                               SwiftBuilder(), SwiftyJSONBuilder(), ObjectMapperBuilder(), CodableBuilder(), KakaJSONBuilder(), HandyJSONBuilder()]
+                                               ObjCBuilder(),
+                                               YYModelBuilder(),
+                                               MJExtensionBuilder(),
+                                               JSONModelBuilder(),
+                                               SwiftBuilder(),
+                                               SwiftyJSONBuilder(),
+                                               ObjectMapperBuilder(),
+                                               CodableBuilder(),
+                                               KakaJSONBuilder(),
+                                               HandyJSONBuilder()]
     
     private var file: File!
     

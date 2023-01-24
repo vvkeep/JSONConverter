@@ -18,6 +18,7 @@ enum LangType: Int {
     case ObjC
     case YYModel
     case MJExtension
+    case JSONModel
     case Flutter
     case Java
     case Golang
@@ -27,7 +28,7 @@ enum LangType: Int {
         switch self {
         case .Swift, .HandyJSON, .SwiftyJSON, .KakaJSON, .ObjectMapper, .Codable:
             return "swift"
-        case .ObjC, .YYModel, .MJExtension:
+        case .ObjC, .YYModel, .MJExtension, .JSONModel:
             return "objectivec"
         case .Flutter:
             return "dart"
@@ -58,6 +59,8 @@ enum LangType: Int {
             return "ObjectiveC - YYModel"
         case .MJExtension:
             return "ObjectiveC - MJExtension"
+        case .JSONModel:
+            return "ObjectiveC - JSONModel"
         case .Flutter:
             return "Flutter - json_serializable"
         case .Java:
@@ -68,7 +71,7 @@ enum LangType: Int {
     }
         
     static func allValues() -> [LangType] {
-        return [.Swift, .HandyJSON, .KakaJSON, .SwiftyJSON, .ObjectMapper, .Codable, .ObjC, .YYModel, .MJExtension, .Flutter, .Java, .Golang]
+        return [.Swift, .HandyJSON, .KakaJSON, .SwiftyJSON, .ObjectMapper, .Codable, .ObjC, .YYModel, .MJExtension, .JSONModel, .Flutter, .Java, .Golang]
     }
     
     var onlyCompatibleClass: Bool {
@@ -82,7 +85,7 @@ enum LangType: Int {
     }
     
     var isDoubleClassFiles: Bool {
-        let doubleClassFilesLangList: [LangType] = [.ObjC, .YYModel, .MJExtension]
+        let doubleClassFilesLangList: [LangType] = [.ObjC, .YYModel, .MJExtension, .JSONModel]
         return doubleClassFilesLangList.contains(self)
     }
 }
