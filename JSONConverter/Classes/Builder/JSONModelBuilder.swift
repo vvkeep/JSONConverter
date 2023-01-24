@@ -32,7 +32,7 @@ class JSONModelBuilder: BuilderProtocol {
         case .ArrayInt, .ArrayFloat, .ArrayDouble, .ArrayBool:
             return "@property (nonatomic, strong) NSArray<NSNumber *> *\(tempKeyName);\n"
         case .ArrayDictionary:
-            return "@property (nonatomic, strong) NSArray<\(keyTypeName!) *> *\(tempKeyName);\n"
+            return "@property (nonatomic, strong) NSArray<\(keyTypeName!)> *\(tempKeyName);\n"
         }
     }
     
@@ -58,7 +58,7 @@ class JSONModelBuilder: BuilderProtocol {
             
             propertyMapperText = """
                                  \n+ (JSONKeyMapper*)keyMapper {
-                                 \(frontReturnText)\(propertyMapperList.joined(separator: ",\n"))
+                                 \(frontReturnText)\(propertyMapperList.joined(separator: ",\n"))};\n
                                      return [[JSONKeyMapper alloc]initWithModelToJSONBlock:^NSString *(NSString *keyName) {
                                         return dict[keyName]?:keyName;
                                     }];
