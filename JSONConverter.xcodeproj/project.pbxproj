@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B7A2D4F297FA21700BA37C2 /* JSONModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7A2D4E297FA21700BA37C2 /* JSONModelBuilder.swift */; };
 		2F737EBB4FFE856B529C4398 /* libPods-JSONConverter-JSONConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5A7192A2087722969A9C45 /* libPods-JSONConverter-JSONConverterUITests.a */; };
 		34B0EFCEC2C64176E67E2F4F /* libPods-JSONConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3F42965596B11F33826F53 /* libPods-JSONConverterTests.a */; };
 		4A926928B4DE1C314D350C1E /* libPods-JSONConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCD32F63385B3C64CFA14DD /* libPods-JSONConverter.a */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		05AB8A8E6D68BAB20085C224 /* Pods-JSONConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter.release.xcconfig"; path = "Target Support Files/Pods-JSONConverter/Pods-JSONConverter.release.xcconfig"; sourceTree = "<group>"; };
 		284ACF227ADB7DDD725B0195 /* Pods-JSONConverter-JSONConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter-JSONConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2B7A2D4E297FA21700BA37C2 /* JSONModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONModelBuilder.swift; path = ../../../../../../../../.Trash/JSONConverter/JSONConverter/Classes/Builder/JSONModelBuilder.swift; sourceTree = "<group>"; };
 		534B6E6532347C4C75A6C372 /* Pods-JSONConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter.debug.xcconfig"; path = "Target Support Files/Pods-JSONConverter/Pods-JSONConverter.debug.xcconfig"; sourceTree = "<group>"; };
 		7812C44FB05AF4F67F19D831 /* Pods-JSONConverter-JSONConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-JSONConverter-JSONConverterUITests/Pods-JSONConverter-JSONConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		7B2E9EE92760F2AE00151B99 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
+				2B7A2D4E297FA21700BA37C2 /* JSONModelBuilder.swift */,
 				7B2E9EEA2760F3B000151B99 /* BuilderProtocol.swift */,
 				7B2E9EEC2760FA3300151B99 /* ObjCBuilder.swift */,
 				7B2E9EEF2761062D00151B99 /* SwiftBuilder.swift */,
@@ -1021,6 +1024,7 @@
 				8E1945EA2508A3CE00E7CDCC /* Enums.swift in Sources */,
 				7B7D5AE424FA345C00A54D27 /* FileCacheManager.swift in Sources */,
 				7BD7FEDC202AC7EB0003AE80 /* Property.swift in Sources */,
+				2B7A2D4F297FA21700BA37C2 /* JSONModelBuilder.swift in Sources */,
 				8E2EE4152761AF8800FABCA0 /* ObjectMapperBuilder.swift in Sources */,
 				7BE925A0282BF0F500C32A3A /* MJExtensionBuilder.swift in Sources */,
 				7B60176728388FB100E9EB93 /* NSColorView.swift in Sources */,
@@ -1216,7 +1220,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				DEVELOPMENT_TEAM = 9F2MXW99UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1241,7 +1245,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7DDW7FQJ8R;
+				DEVELOPMENT_TEAM = 9F2MXW99UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = JSONConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
