@@ -15,6 +15,7 @@ enum LangType: Int {
     case SwiftyJSON
     case ObjectMapper
     case Codable
+    case Swift_YYModel
     case ObjC
     case YYModel
     case MJExtension
@@ -26,7 +27,7 @@ enum LangType: Int {
     // the value is highlightr language
     var language: String! {
         switch self {
-        case .Swift, .HandyJSON, .SwiftyJSON, .KakaJSON, .ObjectMapper, .Codable:
+        case .Swift, .HandyJSON, .SwiftyJSON, .KakaJSON, .ObjectMapper, .Codable, .Swift_YYModel:
             return "swift"
         case .ObjC, .YYModel, .MJExtension, .JSONModel:
             return "objectivec"
@@ -53,6 +54,8 @@ enum LangType: Int {
             return "Swift - ObjectMapper"
         case .Codable:
             return "Swift - Codable"
+        case .Swift_YYModel:
+            return "Swift - YYModel"
         case .ObjC:
             return "ObjectiveC"
         case .YYModel:
@@ -69,13 +72,13 @@ enum LangType: Int {
             return "Golang"
         }
     }
-        
+    
     static func allValues() -> [LangType] {
-        return [.Swift, .HandyJSON, .KakaJSON, .SwiftyJSON, .ObjectMapper, .Codable, .ObjC, .YYModel, .MJExtension, .JSONModel, .Flutter, .Java, .Golang]
+        return [.Swift, .HandyJSON, .KakaJSON, .SwiftyJSON, .ObjectMapper, .Codable, .Swift_YYModel, .ObjC, .YYModel, .MJExtension, .JSONModel, .Flutter, .Java, .Golang]
     }
     
     var onlyCompatibleClass: Bool {
-        let compatibleLangList: [LangType] = [.ObjC, .YYModel, .MJExtension, .Flutter]
+        let compatibleLangList: [LangType] = [.ObjC, .YYModel, .Swift_YYModel, .MJExtension, .Flutter]
         return compatibleLangList.contains(self)
     }
     
