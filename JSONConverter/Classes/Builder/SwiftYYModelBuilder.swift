@@ -60,9 +60,9 @@ class SwiftYYModelBuilder: BuilderProtocol {
         guard structType == .class else { fatalError() }
         if let propertiesInitText = propertiesInitText, !propertiesInitText.isEmpty {
             let tempPropertiesInitText = StringUtils.removeLastChar(StringUtils.removeLastChar(propertiesInitText))
-            return "\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\tstatic func modelContainerPropertyGenericClass() -> [String : Any]? {\n\t\t[\(tempPropertiesInitText)]\n\t}\n}\n"
+            return "\n@objcMembers\nclass \(clsName)\(parentClsName) {\n\(propertiesText)\n\tstatic func modelContainerPropertyGenericClass() -> [String : Any]? {\n\t\t[\(tempPropertiesInitText)]\n\t}\n}\n"
         }
-        return "\nclass \(clsName)\(parentClsName) {\n\(tempPropertiesText)\n}\n"
+        return "\n@objcMembers\nclass \(clsName)\(parentClsName) {\n\(tempPropertiesText)\n}\n"
     }
     
     func fileSuffix() -> String {
