@@ -26,7 +26,8 @@ class JSONProcesser {
                                                ObjectMapperBuilder(),
                                                CodableBuilder(),
                                                KakaJSONBuilder(),
-                                               HandyJSONBuilder()]
+                                               HandyJSONBuilder(),
+                                               SwiftYYModelBuilder()]
     
     private var file: File!
     
